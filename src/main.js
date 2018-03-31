@@ -3,8 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './config/router/router.js'
-
 import geminiScrollbar from 'vue-gemini-scrollbar'
+
+import '@/assets/css/reset.css'
+import '@/assets/css/common.css'
 
 Vue.config.productionTip = false
 

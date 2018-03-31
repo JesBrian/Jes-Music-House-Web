@@ -5,9 +5,9 @@
     <navigation-bar />
 
     <!-- 前台二级路由 -->
-    <div style="width:100%; height:100%; top:55px; left:0; padding:0 3px 106px; display:inline-block; position:fixed; box-sizing:border-box;">
+    <div style="width:100%; height:100%; top:55px; left:0; padding:0 3px; display:inline-block; position:fixed; box-sizing:border-box; background:#2E2E2E;">
       <gemini-scrollbar>
-        <router-view />
+        <router-view style="background:#666;" />
       </gemini-scrollbar>
     </div>
 

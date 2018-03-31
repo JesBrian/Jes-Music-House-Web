@@ -1,6 +1,6 @@
 <template>
   <!-- 导航条 -->
-  <div style="width:100%; height:53px; top:0; left:0; position:fixed; background:lightblue;"></div>
+  <div class="glass-bg box-show" style="width:100%; height:53px; top:0; left:0; position:fixed; border-radius:0;"></div>
 </template>
 
 <script>
