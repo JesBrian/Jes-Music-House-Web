@@ -4,7 +4,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './config/router/router.js'
 
+import geminiScrollbar from 'vue-gemini-scrollbar'
+
 Vue.config.productionTip = false
+
+Vue.use(geminiScrollbar)
 
 /* eslint-disable no-new */
 new Vue({
@@ -13,3 +17,4 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
