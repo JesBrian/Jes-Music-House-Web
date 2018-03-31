@@ -1,5 +1,5 @@
 <template>
-  <div style="width:100%; min-width:1180px; height:1888px; background:lightcoral;">
+  <div id="homeLayout">
     this is home index
     <router-link to="/album">To Album</router-link>
   </div>
