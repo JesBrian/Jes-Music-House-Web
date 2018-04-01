@@ -36,7 +36,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   footer {
     width: 100%;
     height: 25px;
@@ -52,5 +52,9 @@ export default {
     text-shadow: 1px 1px 1px;
     line-height: 22px;
     text-align: right;
+  }
+
+  #backstageLayout {
+    width:1080px; margin:0 auto;
   }
 </style>

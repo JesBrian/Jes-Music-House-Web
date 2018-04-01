@@ -10,35 +10,35 @@ export default [
     children: [
       {
         path: 'index',
-        component: () => import('../../views/home/type/Index.vue')
+        component: () => import('../../views/home/type/base/Index.vue')
       },
       {
         path: 'user',
-        component: () => import('../../views/home/type/User.vue')
+        component: () => import('../../views/home/type/user/User.vue')
       },
       {
         path: 'update',
-        component: () => import('../../views/home/type/Update.vue')
+        component: () => import('../../views/home/type/user/Update.vue')
       },
       {
         path: 'level',
-        component: () => import('../../views/home/type/Level.vue')
+        component: () => import('../../views/home/type/user/Level.vue')
       },
       {
         path: 'vip',
-        component: () => import('../../views/home/type/Vip.vue')
+        component: () => import('../../views/home/type/user/Vip.vue')
       },
       {
         path: 'message',
-        component: () => import('../../views/home/type/Message.vue')
+        component: () => import('../../views/home/type/user/Message.vue')
       },
       {
         path: 'album',
-        component: () => import('../../views/home/type/Album.vue')
+        component: () => import('../../views/home/type/music/Album.vue')
       },
       {
         path: 'song',
-        component: () => import('../../views/home/type/Song.vue')
+        component: () => import('../../views/home/type/music/Song.vue')
       }
     ]
   }

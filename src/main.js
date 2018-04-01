@@ -3,13 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './config/router/router.js'
+import vueLazyload from 'vue-lazyload'
 import geminiScrollbar from 'vue-gemini-scrollbar'
 
 import '@/assets/css/reset.css'
 import '@/assets/css/common.css'
 
 Vue.config.productionTip = false
-
+Vue.use(vueLazyload, {
+  error: require('./assets/img/loading.svg'),
+  loading: require('./assets/img/loading.svg')
+})
 Vue.use(geminiScrollbar)
 
 /* eslint-disable no-new */
