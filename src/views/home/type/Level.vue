@@ -1,0 +1,16 @@
+<template>
+  <div id="homeLayout">
+    this is home level
+    <router-link to="/">To Index</router-link>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'level'
+}
+</script>
+
+<style scoped>
+
+</style>

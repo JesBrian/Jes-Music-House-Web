@@ -3,7 +3,7 @@
   <div class="glass-bg box-show" style="width:100%; height:53px; top:0; left:0; position:fixed; border-radius:0;">
     <div style="width:1188px; height:100%; margin:0 auto;">
       <router-link to="/" style="display:inline-block; line-height:52px;">
-        <img src="#" style="width:33px; height:33px; margin:9px 8px 0 0; background:lightcoral; float:left;"/>
+        <img src="../../../../static/img/logo.png" style="width:33px; height:33px; margin:9px 8px 0 0; float:left;"/>
         <span style="font-size:22px; font-weight:700; color:#22e8ff; text-shadow:1.5px 1.5px 6px #30cdff;">Music House</span>
       </router-link>
 
@@ -18,13 +18,16 @@
           <div class="cube-bg box-show" style="width:100px; margin-top:10px; padding:0 4px; text-align:center; line-height:30px;">
             <ul>
               <li>
-                <router-link to="user"><i class="MyIF home"></i> 个人信息</router-link>
+                <router-link to="user"><i class="MyIF home"></i> 个人主页</router-link>
               </li>
               <li>
-                <router-link to="/write"><i class="MyIF IDcard-1"></i> 编写文章</router-link>
+                <router-link to="/message"><i class="MyIF add-data"></i> 消息管理</router-link>
               </li>
               <li>
-                <router-link to="/management"><i class="MyIF add-data"></i> 文章管理</router-link>
+                <router-link to="/level"><i class="MyIF IDcard-1"></i> 我的等级</router-link>
+              </li>
+              <li>
+                <router-link to="/vip"><i class="MyIF IDcard-1"></i> VIP会员</router-link>
               </li>
               <li>
                 <router-link to="/update"><i class="MyIF gears"></i> 修改资料</router-link>
