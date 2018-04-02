@@ -8,6 +8,7 @@ import geminiScrollbar from 'vue-gemini-scrollbar'
 
 import '@/assets/css/reset.css'
 import '@/assets/css/common.css'
+import './assets/plugins/myiconfont/iconfont.css'
 
 Vue.config.productionTip = false
 Vue.use(vueLazyload, {

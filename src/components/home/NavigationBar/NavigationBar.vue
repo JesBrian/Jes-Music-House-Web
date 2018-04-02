@@ -33,7 +33,7 @@
                 <router-link to="/update"><i class="MyIF gears"></i> 修改资料</router-link>
               </li>
               <li>
-                <a><i class="MyIF exit-1"></i> 安全退出</a>
+                <a><i class="mh-if exit-1"></i> 安全退出</a>
               </li>
             </ul>
           </div>
@@ -41,8 +41,13 @@
       </div>
 
       <!-- 搜索栏 -->
-      <div class="super-btn-out" style="width:228px; height:38px; margin:6px 28px 0 0; float:right;">
-        <router-link to="/search" class="super-btn-in" style="width:29px; height:28.5px; top:48.6%; display:inline-block; float:right;" />
+      <div style="width:232px; height:38px; margin:6px 28px 0 0; float:right; position:relative;">
+        <div class="super-btn-out" style="width:100%; height:100%;">
+          <input class="super-btn-in" type="text" style="width:188px; height:30px; left:43%; text-align:left;"/>
+        </div>
+        <div class="super-btn-out" style="width:29.5px; height:28.5px; top:4px; right:2px; position:absolute;">
+          <router-link to="/" class="super-btn-in mh-if search" style="width:29.5px; height:28.5px; display:inline-block; float:right; font-size:21px; line-height:30px;" />
+        </div>
       </div>
     </div>
   </div>

@@ -2,9 +2,9 @@
   <div id="backstageLayout">
     <!--  -->
     <div class="cube-bg box-show" style="width:608px; height:52px; margin:28px auto 38px; position:relative; text-align:center; border-radius:6px; font-size:28px; line-height:45px; font-family:'Microsoft YaHei', '黑体', sans-serif; font-weight:700; color:#AAA; letter-spacing:1px;">
-      <i class="MyIF double-arrow-left" style="font-size:22px; color:#24c9ff"></i>
+      <i class="mh-if double-arrow-left" style="font-size:22px; color:#24c9ff"></i>
       <a class="font-style" style="margin:0 38px;">后台管理系统主页</a>
-      <i class="MyIF double-arrow-right" style="font-size:22px; color:#24c9ff"></i>
+      <i class="mh-if double-arrow-right" style="font-size:22px; color:#24c9ff"></i>
     </div>
 
   </div>
@@ -25,7 +25,7 @@ export default {
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     -webkit-background-size: 200% 100%;
-    -webkit-animation: masked-animation 3s infinite linear;
+    -webkit-animation: masked-animation 1.68s infinite linear;
   }
   @-webkit-keyframes masked-animation {
     0% {

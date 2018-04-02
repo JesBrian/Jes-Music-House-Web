@@ -33,7 +33,7 @@
                 <router-link to="/update"><i class="MyIF gears"></i> 修改资料</router-link>
               </li>
               <li>
-                <a><i class="MyIF exit-1"></i> 安全退出</a>
+                <a><i class="mh-if exit-1"></i> 安全退出</a>
               </li>
             </ul>
           </div>
