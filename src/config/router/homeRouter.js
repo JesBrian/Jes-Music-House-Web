@@ -13,6 +13,10 @@ export default [
         component: () => import('../../views/home/type/base/Index.vue')
       },
       {
+        path: 'search',
+        component: () => import('../../views/home/type/base/Search.vue')
+      },
+      {
         path: 'user',
         component: () => import('../../views/home/type/user/User.vue')
       },
