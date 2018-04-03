@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './config/router/router.js'
+import store from './config/vuex/store.js'
 import vueLazyload from 'vue-lazyload'
 import geminiScrollbar from 'vue-gemini-scrollbar'
 
@@ -21,6 +22,7 @@ Vue.use(geminiScrollbar)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

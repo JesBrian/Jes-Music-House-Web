@@ -14,7 +14,6 @@ export default {
 
   data () {
     return {
-      isPlay: false,
       musicSource: null
     }
   },
@@ -25,12 +24,12 @@ export default {
 
   methods: {
     switchMusicPlay () {
-      this.isPlay = !this.isPlay
-      this.isPlay ? this.musicSource.play() : this.musicSource.pause()
+      this.$store.commit('changeMusicIsPlayStatus')
+      this.$store.state.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
     },
 
     changeIsPlay () {
-      this.isPlay = !this.isPlay
+      this.$store.commit('changeMusicIsPlayStatus')
     }
   }
 }
