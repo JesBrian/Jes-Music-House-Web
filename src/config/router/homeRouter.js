@@ -43,6 +43,10 @@ export default [
       {
         path: 'song',
         component: () => import('../../views/home/type/music/Song.vue')
+      },
+      {
+        path: 'singer',
+        component: () => import('../../views/home/type/music/Singer.vue')
       }
     ]
   }

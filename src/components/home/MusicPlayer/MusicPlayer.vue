@@ -14,14 +14,27 @@
           <i class="mh-if back" style="float:right; font-size:23px;"></i>
         </div>
         <!-- 歌曲控制 -->
-        <div style="width:968px; height:100%; padding:0 16px 0 28px; box-sizing:border-box; display:inline-block; border-right:2px solid lightcoral;">
+        <div style="width:968px; height:100%; padding:0 16px 0 28px; box-sizing:border-box; display:inline-block; border-right:2px solid; border-image:linear-gradient(#181818, #1D1D1D, #444, #222, #181818) 1 1;">
           <router-link to="/song" class="glass-bg" style="width:31px; height:31px; margin:4px 0; float:left; display:inline-block; box-shadow:0 0.5px 3px -2px #FFF;">
             <img v-lazy="require('../../../../static/img/default/default_album.jpg')" style="width:100%; height:100%; border-radius:3.5px;" />
           </router-link>
           <div style="width:768px; height:100%; margin-left:28px; display:inline-block;">
-            <div style="width:100%; height:50%; margin:0; display:block; background:lightpink"></div>
-            <div style="width:80%; height:50%; float:left; background:lightgreen"></div>
-            <div style="width:20%; height:50%; float:right; background:#3fffbc"></div>
+            <div style="width:100%; height:19px; font-size:13.5px;">
+              <router-link to="/song" style="height:100%; margin:-9.5px 28px 0 0; float:left; color:#FFF;">Name of the Song 123 歌曲名字</router-link>
+              <router-link to="/singer" style="height:100%; margin-top:-9.5px; float:left; font-size:12px; color:#FFF;">歌手/Singer Name</router-link>
+            </div>
+            <div class="" style="width:84%; height:10px; margin-top:4px; float:left; border-radius:8px; background:#111;">
+              <div class="box-show" style="width:68%; height:100%; border-radius:6px; background:#181818; z-index:9;">
+                <div style="width:68%; height:100%; background:linear-gradient(to right, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px; position:relative;">
+                  <a class="glass-bg box-show" style="width:18px; height:18px; top:-4px; right:-9px; position:absolute; display:inline-block; border-radius:50%; line-height:12px; text-align:center;">
+                    <!--<i style="width:8px; height:8px; display:inline-block; background:lightgreen; border-radius:50%;"></i>-->
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div style="width:16%; height:50%; float:right; text-align:center; line-height:18.5px; font-size:13.5px;">
+              00:00 - 99:99
+            </div>
           </div>
           <div style="float:right;">
             <i class="mh-if add-collection" style="margin-right:6px; font-size:24px;"></i>
@@ -44,7 +57,7 @@
     <!-- 播放列表内容区域 -->
     <div v-if="this.$store.state.musicPlayListContentShowStatus === true" class="glass-bg box-show" style="width:1028px; height:290px; left:50%; bottom:45px; position:absolute; transform:translate(-50%,0); z-index:-1; background:#181818; opacity:0.96; border-radius:8px 8px 0 0;">
       <div class="box-show" style="width:100%; height:38px; border-radius:8px 8px 0 0; line-height:40px;">
-        <div style="width:62%; height:100%; padding:0 2%; float:left; box-sizing:border-box; color:#DDD;">
+        <div style="width:62%; height:100%; padding:0 2%; float:left; box-sizing:border-box;">
           <span style="font-weight:700;">播放列表 [ {{ this.$store.state.musicPlayList.length }} ]</span>
           <div style="float:right;">
             <a style="font-size:14px;"><i class="mh-if collection-music" style="margin:0 3px 0 18px;"></i>收藏全部</a>
@@ -55,7 +68,7 @@
           <p style="width:80%; height:100%; margin:0 auto; display:inline-block;">
             Name of the Song
           </p>
-          <i @click="changeMusicPlayListContentShowStatus" class="mh-if all-arrow" style="top:-7px; right:3px; position:absolute; font-size:20px; color:#DDD;"></i>
+          <i @click="changeMusicPlayListContentShowStatus" class="mh-if all-arrow" style="top:-7px; right:3px; position:absolute; font-size:20px;"></i>
         </div>
       </div>
       <div class="box-show" style="width:100%; height:250px; padding-bottom:2px; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;">
@@ -69,7 +82,7 @@
         </div>
         <!-- 歌词滚动区域 -->
         <div style="width:38%; height:100%; float:right; display:inline-block; position:relative; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;">
-          <i class="mh-if question" style="right:18px; top:53px; position:fixed; font-size:25px; color:#888;"></i>
+          <i class="mh-if question" style="right:18px; top:53px; position:fixed; font-size:25px;"></i>
           <div style="width:100%; height:100%; padding:12px 0 3px; box-sizing:border-box; text-align:center;">
             <gemini-scrollbar>
               <ul>
@@ -182,5 +195,12 @@ export default {
 </script>
 
 <style scoped>
-
+  .mh-if {
+    color:#999;
+  }
+  .mh-if:hover {
+    cursor:pointer;
+    color: #46dfff;
+    text-shadow:0 0 1px #000, 0 0 3px #FFF;
+  }
 </style>
