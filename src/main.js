@@ -5,7 +5,7 @@ import App from './App'
 import router from './config/router/router.js'
 import store from './config/vuex/store.js'
 import vueLazyload from 'vue-lazyload'
-import geminiScrollbar from 'vue-gemini-scrollbar'
+import GeminiScrollbar from 'vue-gemini-scrollbar'
 
 import '@/assets/css/reset.css'
 import '@/assets/css/common.css'
@@ -16,7 +16,7 @@ Vue.use(vueLazyload, {
   error: require('./assets/img/loading.svg'),
   loading: require('./assets/img/loading.svg')
 })
-Vue.use(geminiScrollbar)
+Vue.use(GeminiScrollbar)
 
 /* eslint-disable no-new */
 new Vue({

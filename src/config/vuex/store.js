@@ -7,8 +7,9 @@ export default new Vuex.Store({
   state: {
     musicIsPlay: false,
     musicPlayModel: 'loop', // 三种播放模式 [ loop-歌单循环，single-loop-单曲循环，random-歌单里歌曲随机播放 ]
-    musicPlayNowIndex: 0,
-    musicPlayList: ['test1', 'test2', 'test3']
+    musicPlayListNowIndex: 0,
+    musicPlayList: ['test1', 'test2', 'test3'],
+    musicPlayListContentShowStatus: false
   },
   mutations: {
     /**
@@ -34,16 +35,20 @@ export default new Vuex.Store({
      * @param nowIndexNum
      * @return {boolean}
      */
-    changeMusicPlayNowIndex (state, nowIndexNum = -1) {
+    changemusicPlayListNowIndex (state, nowIndexNum = -1) {
       if (nowIndexNum === -1) {
-        if ((state.musicPlayNowIndex + 1) === state.musicPlayList.length) {
-          state.musicPlayNowIndex = 0
+        if ((state.musicPlayListNowIndex + 1) === state.musicPlayList.length) {
+          state.musicPlayListNowIndex = 0
         } else {
-          state.musicPlayNowIndex++
+          state.musicPlayListNowIndex++
         }
       } else {
-        state.musicPlayNowIndex = nowIndexNum
+        state.musicPlayListNowIndex = nowIndexNum
       }
+    },
+
+    changeMusicPlayListContentShowStatus (state) {
+      state.musicPlayListContentShowStatus = !state.musicPlayListContentShowStatus
     }
   }
 })

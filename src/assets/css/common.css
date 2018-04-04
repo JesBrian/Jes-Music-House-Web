@@ -27,7 +27,7 @@
 }
 .box-shadow:before, .box-shadow:after {
   content: '';
-  width: 86%;
+  width: 99%;
   height: 1px;
   left:50%;
   transform:translate(-50%, 0);
