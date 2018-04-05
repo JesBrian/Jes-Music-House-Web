@@ -36,15 +36,21 @@ export default new Vuex.Store({
      * @param nowIndexNum
      * @return {boolean}
      */
-    changemusicPlayListNowIndex (state, nowIndexNum = -1) {
-      if (nowIndexNum === -1) {
-        if ((state.musicPlayListNowIndex + 1) === state.musicPlayList.length) {
+    changemusicPlayListNowIndex (state, option = {nowIndexNum: -1, prevOrNext: 'next'}) {
+      state.musicIsPlay = true
+      console.log(option.nowIndexNum + ' -- ' + option.prevOrNext)
+      if (option.nowIndexNum === -1) {
+        if ((option.prevOrNext === 'next') && ((state.musicPlayListNowIndex + 1) === state.musicPlayList.length)) {
           state.musicPlayListNowIndex = 0
-        } else {
+        } else if ((option.prevOrNext === 'prev') && ((state.musicPlayListNowIndex - 1) === -1)) {
+          state.musicPlayListNowIndex = state.musicPlayList.length - 1
+        } else if ((option.prevOrNext === 'next') && ((state.musicPlayListNowIndex + 1) < state.musicPlayList.length)) {
           state.musicPlayListNowIndex++
+        } else {
+          state.musicPlayListNowIndex--
         }
       } else {
-        state.musicPlayListNowIndex = nowIndexNum
+        state.musicPlayListNowIndex = option.nowIndexNum
       }
     },
 

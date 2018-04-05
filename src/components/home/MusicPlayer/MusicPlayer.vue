@@ -2,16 +2,16 @@
   <!-- 音乐播放器组件 -->
   <div style="width:100%; height:48px; left:0; bottom:0; position:fixed;">
     <!-- 音乐播放器资源 -->
-    <audio id="homeMusicSource" @ended="changeIsPlay" :src="'/static/music/' + this.$store.state.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0; position:absolute;"></audio>
+    <audio id="homeMusicSource" @ended="nowMusicEndNextPlay" :src="'/static/music/' + this.$store.state.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0; position:absolute;"></audio>
 
     <!-- 播放器主控制 -->
     <div class="glass-bg box-show" style="width:100%; height:100%; border-radius:0; opacity:0.96; background:#181818; z-index:9;">
       <div style="width:1208px; height:88%; margin:3px auto; line-height:42px; color:#AAA;">
         <!-- 播放控制 -->
         <div style="width:98px; height:100%; float:left; display:inline-block; text-align:center;">
-          <i class="mh-if double-arrow-left" style="margin-top:0.5px; float:left; font-size:18px;"></i>
+          <i @click="prevMusic" class="mh-if double-arrow-left" style="margin-top:0.5px; float:left; font-size:18px;"></i>
           <i @click="switchMusicPlay" class="mh-if" :class="this.$store.state.musicIsPlay ? 'stop' : 'play'" style="margin-right:-2px; font-size:33px;"></i>
-          <i class="mh-if double-arrow-right" style="margin-top:1px; float:right; font-size:18px;"></i>
+          <i @click="nextMusic" class="mh-if double-arrow-right" style="margin-top:1px; float:right; font-size:18px;"></i>
         </div>
         <!-- 歌曲控制 -->
         <div style="width:968px; height:100%; padding:0 16px 0 28px; box-sizing:border-box; display:inline-block; border-right:2px solid; border-image:linear-gradient(#181818, #1D1D1D, #444, #222, #181818) 1 1;">
@@ -27,9 +27,7 @@
             <div class="box-show" style="width:84%; height:10px; margin-top:5.5px; float:left; border-radius:8px; background:#000;">
               <div class="box-show" style="width:68%; height:100%; border-radius:6px; background:#181818; z-index:9;">
                 <div style="width:68%; height:90%; background:linear-gradient(to right, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px; position:relative;">
-                  <a id="progressPointer" class="controller-pointer glass-bg box-show">
-                    <!--<i style="width:8px; height:8px; display:inline-block; background:lightgreen; border-radius:50%;"></i>-->
-                  </a>
+                  <a id="progressPointer" class="controller-pointer glass-bg box-show"></a>
                 </div>
               </div>
             </div>
@@ -109,38 +107,7 @@
           <div style="width:100%; height:100%; padding:12px 0 3px; box-sizing:border-box; text-align:center; line-height:1.5em;">
             <gemini-scrollbar>
               <ul>
-                <li>rdtGbuybjk</li>
-                <li>rbuyb</li>
-                <li>rdt非常需要他vsvdGbuybjk</li>
-                <li>vvsdv</li>
-                <li>rdt56bjk</li>
-                <li>rbuyb</li>
-                <li>rdtvGy尝试</li>
-                <li>vvsdv</li>
-                <li>rdtGbuybjGbuGbuybjGbuybjGbuybjk</li>
-                <li>rbuyb</li>
-                <li>rdt非常需要buybjk</li>
-                <li>vvsdv</li>
-                <li>r</li>
-                <li>r产生d生dt56bjk</li>
-                <li>rbuyb</li>
-                <li>rdbn超时vcnv嘎的基本chsia吉林省v从sj空casnl长沙，klfuicasctv试</li>
-                <li>vvscasdv</li>
-                <li>rbuyb</li>
-                <li>rdt非常需要他vsvdGbuybjk</li>
-                <li>vvsdv</li>
-                <li>rdt56bjk</li>
-                <li>rbuyb</li>
-                <li>rdGy尝vGy尝ty尝vGy尝tv试</li>
-                <li>vvsdv</li>
-                <li>rdtGbuybjk</li>
-                <li>rbuybrbuybrbuybrbuybrbuyb</li>
-                <li>rdt非常需要buybjk</li>
-                <li>vvsdv</li>
-                <li>r产生dt56bjk</li>
-                <li>rbuyb</li>
-                <li>rdtvGy尝试</li>
-                <li>vvscasdv</li>
+                <li>rdtGbuybjk</li><li>rbuyb</li><li>rdt非常需要他vsvdGbuybjk</li><li>vvsdv</li><li>rdt56bjk</li><li>rbuyb</li><li>rdtvGy尝试</li><li>vvsdv</li><li>rdtGbuybjGbuGbuybjGbuybjGbuybjk</li><li>rbuyb</li><li>rdt非常需要buybjk</li><li>vvsdv</li><li>r</li><li>r产生d生dt56bjk</li><li>rbuyb</li><li>rdbn超时vcnv嘎的基本chsia吉林省v从sj空casnl长沙，klfuicasctv试</li><li>vvscasdv</li><li>rbuyb</li><li>rdt非常需要他vsvdGbuybjk</li><li>vvsdv</li><li>rdt56bjk</li><li>rbuyb</li><li>rdGy尝vGy尝ty尝vGy尝tv试</li><li>vvsdv</li><li>rdtGbuybjk</li><li>rbuybrbuybrbuybrbuybrbuyb</li><li>rdt非常需要buybjk</li><li>vvsdv</li><li>r产生dt56bjk</li><li>rbuyb</li><li>rdtvGy尝试</li><li>vvscasdv</li>
               </ul>
             </gemini-scrollbar>
           </div>
@@ -180,12 +147,48 @@ export default {
   },
 
   methods: {
+    /**
+     * 音乐播放 OR 停止
+     */
     switchMusicPlay () {
       this.$store.commit('changeMusicIsPlayStatus')
       this.$store.state.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
     },
 
-    changeIsPlay () {
+    /**
+     * 上一首播放
+     */
+    prevMusic () {
+      if (this.$store.state.musicPlayModel === 'random') {
+        let indexTemp
+        do {
+          indexTemp = Number.parseInt(this.$store.state.musicPlayList.length * Math.random())
+        } while (indexTemp === this.$store.state.musicPlayListNowIndex)
+        this.$store.commit('changemusicPlayListNowIndex', {nowIndexNum: indexTemp})
+      } else {
+        this.$store.commit('changemusicPlayListNowIndex', {nowIndexNum: -1, prevOrNext: 'prev'})
+      }
+    },
+
+    /**
+     * 下一首播放
+     */
+    nextMusic () {
+      if (this.$store.state.musicPlayModel === 'random') {
+        let indexTemp
+        do {
+          indexTemp = Number.parseInt(this.$store.state.musicPlayList.length * Math.random())
+        } while (indexTemp === this.$store.state.musicPlayListNowIndex)
+        this.$store.commit('changemusicPlayListNowIndex', {nowIndexNum: indexTemp})
+      } else {
+        this.$store.commit('changemusicPlayListNowIndex')
+      }
+    },
+
+    /**
+     * 播放结束下一首
+     */
+    nowMusicEndNextPlay () {
       if (this.$store.state.musicPlayModel === 'loop') {
         this.$store.commit('changemusicPlayListNowIndex')
       } else if (this.$store.state.musicPlayModel === 'single-loop') {
@@ -195,10 +198,13 @@ export default {
         do {
           indexTemp = Number.parseInt(this.$store.state.musicPlayList.length * Math.random())
         } while (indexTemp === this.$store.state.musicPlayListNowIndex)
-        this.$store.commit('changemusicPlayListNowIndex', indexTemp)
+        this.$store.commit('changemusicPlayListNowIndex', {nowIndexNum: indexTemp})
       }
     },
 
+    /**
+     * 改变播放模式
+     */
     changeMusicPlayModel () {
       let type
       if (this.$store.state.musicPlayModel === 'loop') {
@@ -211,10 +217,16 @@ export default {
       this.$store.commit('changeMusicPlayModel', type)
     },
 
+    /**
+     * 是否展示播放列表内容
+     */
     changeMusicPlayListContentShowStatus () {
       this.$store.commit('changeMusicPlayListContentShowStatus')
     },
 
+    /**
+     * 控制是否有音量
+     */
     changeMusicVolumeStatus () {
       this.$store.commit('changeMusicVolumeStatus')
     }
