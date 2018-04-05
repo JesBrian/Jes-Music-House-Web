@@ -1,5 +1,5 @@
 <template>
-  <div id="homeLayout">
+  <div id="homeLayout" style="height:1288px;">
     this is home song
     <router-link to="/">To Index</router-link>
   </div>

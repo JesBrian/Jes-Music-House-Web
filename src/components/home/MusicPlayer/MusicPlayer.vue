@@ -2,7 +2,7 @@
   <!-- 音乐播放器组件 -->
   <div style="width:100%; height:48px; left:0; bottom:0; position:fixed;">
     <!-- 音乐播放器资源 -->
-    <audio id="homeMusicSource" @ended="changeIsPlay" :src="'/static/music/' + this.$store.state.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0px; position:absolute;"></audio>
+    <audio id="homeMusicSource" @ended="changeIsPlay" :src="'/static/music/' + this.$store.state.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0; position:absolute;"></audio>
 
     <!-- 播放器主控制 -->
     <div class="glass-bg box-show" style="width:100%; height:100%; border-radius:0; opacity:0.96; background:#181818; z-index:9;">
@@ -15,7 +15,7 @@
         </div>
         <!-- 歌曲控制 -->
         <div style="width:968px; height:100%; padding:0 16px 0 28px; box-sizing:border-box; display:inline-block; border-right:2px solid; border-image:linear-gradient(#181818, #1D1D1D, #444, #222, #181818) 1 1;">
-          <router-link to="/song" class="glass-bg" style="width:31px; height:31px; margin:4px 0; float:left; display:inline-block; box-shadow:0 0.5px 3px -2px #FFF;">
+          <router-link id="songResource" to="/song" class="glass-bg" style="width:31px; height:31px; margin:4px 0; float:left; display:inline-block;">
             <img v-lazy="require('../../../../static/img/default/default_album.jpg')" style="width:100%; height:100%; border-radius:3.5px;" />
           </router-link>
           <div style="width:768px; height:100%; margin-left:28px; display:inline-block;">
@@ -23,10 +23,11 @@
               <router-link to="/song" style="height:100%; margin:-9.5px 28px 0 0; float:left; color:#FFF;">Name of the Song 123 歌曲名字</router-link>
               <router-link to="/singer" style="height:100%; margin-top:-9.5px; float:left; font-size:12px; color:#FFF;">歌手/Singer Name</router-link>
             </div>
-            <div class="" style="width:84%; height:10px; margin-top:4px; float:left; border-radius:8px; background:#111;">
+            <!-- 播放进度 -->
+            <div class="box-show" style="width:84%; height:10px; margin-top:4px; float:left; border-radius:8px; background:#000;">
               <div class="box-show" style="width:68%; height:100%; border-radius:6px; background:#181818; z-index:9;">
                 <div style="width:68%; height:100%; background:linear-gradient(to right, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px; position:relative;">
-                  <a class="glass-bg box-show" style="width:18px; height:18px; top:-4px; right:-9px; position:absolute; display:inline-block; border-radius:50%; line-height:12px; text-align:center;">
+                  <a id="progressPointer" class="controller-pointer glass-bg box-show">
                     <!--<i style="width:8px; height:8px; display:inline-block; background:lightgreen; border-radius:50%;"></i>-->
                   </a>
                 </div>
@@ -43,10 +44,20 @@
         </div>
         <!-- 其他控制 -->
         <div style="height:100%; margin-right:23px; display:inline-block; float:right;">
-          <i class="mh-if volume-on" style="margin-right:8px; font-size:23px;"></i>
+          <i @click="changeMusicVolumeStatus" id="volumeButton" class="mh-if" :class="this.$store.state.musicVolumeStatus ? 'volume-on' : 'volume-off'" style="margin-right:8px; font-size:23px; position:relative;">
+            <div id="volumeBar">
+              <div class="glass-bg box-show" style="width:100%; height:96%;">
+                <div class="box-show" style="width:10px; height:88%; margin:7px 9.5px; display:inline-block; position:relative; border-radius:5px; background:#000;">
+                  <div style="width:100%; height:68%; left:0; bottom:0; background:linear-gradient(to top, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px; position:absolute;">
+                    <a class="controller-pointer glass-bg box-show" style="right:-4px;"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </i>
           <i @click="changeMusicPlayModel" class="mh-if" :class="this.$store.state.musicPlayModel" style="margin-right:8px; font-size:22px;"></i>
           <i @click="changeMusicPlayListContentShowStatus" class="mh-if menu" style="margin-right:8px; position:relative; z-index:2; font-size:24px;">
-            <span style="width:38px; height:19px; top:3.2px; left:20px; padding:0 3px; position:absolute; z-index:-1; background:#181818; box-sizing:border-box; border:1px solid #000; border-radius:0 9px 9px 0; text-align:center; font-size:11.5px; line-height:19px; color:#666; text-shadow:2px 2px 6px #000;">
+            <span class="box-show" style="width:38px; height:19px; top:3.2px; left:20px; padding:0 3px; position:absolute; z-index:-1; background:#000; box-sizing:border-box; border-radius:0 9px 9px 0; text-align:center; font-size:12.5px; line-height:20px; color:#666; text-shadow:2px 2px 6px #000;">
               {{ this.$store.state.musicPlayList.length }}
             </span>
           </i>
@@ -65,10 +76,8 @@
           </div>
         </div>
         <div style="width:38%; height:100%; float:right; position:relative; text-align:center;">
-          <p style="width:80%; height:100%; margin:0 auto; display:inline-block;">
-            Name of the Song
-          </p>
-          <i @click="changeMusicPlayListContentShowStatus" class="mh-if all-arrow" style="top:-7px; right:3px; position:absolute; font-size:20px;"></i>
+          <p style="width:80%; height:100%; margin:0 auto; display:inline-block;">Name of the Song</p>
+          <i @click="changeMusicPlayListContentShowStatus" class="mh-if all-arrow" style="top:-3px; right:5px; position:absolute; font-size:20px;"></i>
         </div>
       </div>
       <div class="box-show" style="width:100%; height:250px; padding-bottom:2px; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;">
@@ -82,7 +91,7 @@
         </div>
         <!-- 歌词滚动区域 -->
         <div style="width:38%; height:100%; float:right; display:inline-block; position:relative; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;">
-          <i class="mh-if question" style="right:18px; top:53px; position:fixed; font-size:25px;"></i>
+          <i class="mh-if question" style="right:18px; top:53px; position:fixed; font-size:25px; opacity:0.38; z-index:9;"></i>
           <div style="width:100%; height:100%; padding:12px 0 3px; box-sizing:border-box; text-align:center;">
             <gemini-scrollbar>
               <ul>
@@ -94,23 +103,24 @@
                 <li>rbuyb</li>
                 <li>rdtvGy尝试</li>
                 <li>vvsdv</li>
-                <li>rdtGbuybjk</li>
+                <li>rdtGbuybjGbuGbuybjGbuybjGbuybjk</li>
                 <li>rbuyb</li>
                 <li>rdt非常需要buybjk</li>
                 <li>vvsdv</li>
-                <li>r产生dt56bjk</li>
+                <li>r</li>
+                <li>r产生d生dt56bjk</li>
                 <li>rbuyb</li>
-                <li>rdtvGy尝试</li>
+                <li>rdbn超时vcnv嘎的基本chsia吉林省v从sj空casnl长沙，klfuicasctv试</li>
                 <li>vvscasdv</li>
                 <li>rbuyb</li>
                 <li>rdt非常需要他vsvdGbuybjk</li>
                 <li>vvsdv</li>
                 <li>rdt56bjk</li>
                 <li>rbuyb</li>
-                <li>rdtvGy尝试</li>
+                <li>rdGy尝vGy尝ty尝vGy尝tv试</li>
                 <li>vvsdv</li>
                 <li>rdtGbuybjk</li>
-                <li>rbuyb</li>
+                <li>rbuybrbuybrbuybrbuybrbuyb</li>
                 <li>rdt非常需要buybjk</li>
                 <li>vvsdv</li>
                 <li>r产生dt56bjk</li>
@@ -189,6 +199,10 @@ export default {
 
     changeMusicPlayListContentShowStatus () {
       this.$store.commit('changeMusicPlayListContentShowStatus')
+    },
+
+    changeMusicVolumeStatus () {
+      this.$store.commit('changeMusicVolumeStatus')
     }
   }
 }
@@ -202,5 +216,40 @@ export default {
     cursor:pointer;
     color: #46dfff;
     text-shadow:0 0 1px #000, 0 0 3px #FFF;
+    opacity:1!important;
+  }
+  .mh-if:hover > span {
+    box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727, 0 0 3px #FFF;
+  }
+
+  #songResource {
+    box-shadow:0 0.5px 3px -2px #FFF;
+  }
+  #songResource:hover {
+    box-shadow:0 0.5px 3px -0.8px #FFF;
+  }
+
+  .controller-pointer {
+    width:18px; height:18px; top:-4px; right:-9px; position:absolute; display:inline-block; border-radius:50%; line-height:12px; text-align:center;
+  }
+  .controller-pointer:hover {
+    box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727, 0 0 8px #2af1fc;
+  }
+
+  #volumeButton {
+    display:inline-block;
+  }
+  #volumeBar {
+    width:30px; height:128px; left:-20%; bottom:40px; position:absolute;
+    display:none;
+  }
+  #volumeBar > div {
+    opacity:0.96; background:#181818; border-radius:4px 4px 0 0;
+  }
+  #volumeButton:hover > #volumeBar {
+    display:block;
+  }
+  #volumeButton:hover > #volumeBar:hover {
+    display:block;
   }
 </style>

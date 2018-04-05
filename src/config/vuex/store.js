@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     musicIsPlay: false,
+    musicVolumeStatus: true,
     musicPlayModel: 'loop', // 三种播放模式 [ loop-歌单循环，single-loop-单曲循环，random-歌单里歌曲随机播放 ]
     musicPlayListNowIndex: 0,
     musicPlayList: ['test1', 'test2', 'test3'],
@@ -47,8 +48,20 @@ export default new Vuex.Store({
       }
     },
 
+    /**
+     * 改变是否展示播放列表内容
+     * @param state
+     */
     changeMusicPlayListContentShowStatus (state) {
       state.musicPlayListContentShowStatus = !state.musicPlayListContentShowStatus
+    },
+
+    /**
+     * 改变声音On或者Off状态
+     * @param state
+     */
+    changeMusicVolumeStatus (state) {
+      state.musicVolumeStatus = !state.musicVolumeStatus
     }
   }
 })

@@ -1,7 +1,7 @@
 <template>
   <!-- 导航条 -->
   <div class="glass-bg box-show" style="width:100%; height:53px; top:0; left:0; position:fixed; border-radius:0; opacity:0.98;">
-    <div style="width:1188px; height:100%; margin:0 auto;">
+    <div style="width:1238px; height:100%; margin:0 auto;">
       <router-link to="/" style="display:inline-block; line-height:52px;">
         <img v-lazy="require('../../../../static/img/logo.png')" style="width:33px; height:33px; margin:9px 8px 0 0; float:left;"/>
         <span style="font-size:22px; font-weight:700; color:#22e8ff; text-shadow:1.5px 1.5px 6px #30cdff;">Music House</span>
