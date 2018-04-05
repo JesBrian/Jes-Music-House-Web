@@ -1,6 +1,6 @@
 <template>
   <div @click="goPViewsTop" class="super-btn-out" style="width:42px; height:42px; right:123px; bottom:113px; position:fixed;">
-    <div class="super-btn-in" style="width:31px; height:31px;"></div>
+    <div class="super-btn-in mh-if convenient" style="width:31px; height:31px; font-size:28px; line-height:33px;"></div>
   </div>
 </template>
 
