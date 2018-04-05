@@ -65,8 +65,8 @@
     </div>
 
     <!-- 播放列表内容区域 -->
-    <div v-if="this.$store.state.musicPlayListContentShowStatus === true" class="glass-bg box-show" style="width:1028px; height:290px; left:50%; bottom:45px; position:absolute; transform:translate(-50%,0); z-index:-1; background:#181818; opacity:0.96; border-radius:8px 8px 0 0; color:#AAA;">
-      <div class="box-show" style="width:100%; height:38px; border-radius:8px 8px 0 0; line-height:40px;">
+    <div v-show="this.$store.state.musicPlayListContentShowStatus" class="glass-bg box-show" style="width:1028px; height:290px; left:50%; bottom:45px; position:absolute; transform:translate(-50%,0); z-index:-1; background:#181818; opacity:0.96; border-radius:8px 8px 0 0; color:#AAA;">
+      <div class="box-show" style="width:100%; height:38px; border-radius:8px 8px 0 0; line-height:40px; z-index:9;">
         <div style="width:62%; height:100%; padding:0 2%; float:left; box-sizing:border-box;">
           <span style="font-weight:700;">播放列表 [ {{ this.$store.state.musicPlayList.length }} ]</span>
           <div style="float:right;">
@@ -81,22 +81,11 @@
       </div>
       <div class="box-show" style="width:100%; height:250px; padding-bottom:2px; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727; font-size:14px;">
         <!-- 歌曲列表 -->
-        <div style="width:62%; height:100%; float:left; display:inline-block; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;">
+        <div style="width:62%; height:100%; padding-top:3px; float:left; display:inline-block; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;">
           <gemini-scrollbar>
             <ul style="width:100%; height:100%; line-height:27px;">
-              <li v-for="n in 12" :key="n + n" class="box-shadow" style="width:100%; height:28px; padding:0 13px; box-sizing:border-box;">
-                <i class="mh-if play" style="margin-right:6px;"></i>
-                <p style="width:50%; display:inline-block; background:lightgreen;">12331 {{n}}</p>
-                <p style="width:15%; display:inline-block;">
-                  <i style="margin-left:2px;" class="mh-if non-colloection"></i>
-                  <i style="margin-left:2px;" class="mh-if share"></i>
-                  <i style="margin-left:2px;" class="mh-if download"></i>
-                  <i style="margin-left:2px;" class="mh-if trash-1"></i>
-                </p>
-                <p style="width:20%; display:inline-block; background:#7596ff;">
-                  <router-link to="/singer">{{n}}{{n}}</router-link>
-                </p>
-                <span style="width:8%; display:inline-block;">00:00</span>
+              <li v-for="(item, index) in this.$store.state.musicPlayList" :key="index" class="box-shadow" style="width:100%; height:28px; box-sizing:border-box; padding:0 2px; z-index:2;">
+                <music-list-cell :index="index" :content="item" />
               </li>
             </ul>
           </gemini-scrollbar>
@@ -119,8 +108,14 @@
 </template>
 
 <script>
+import MusicListCell from './MusicListCell.vue'
+
 export default {
   name: 'MusicPlayer',
+
+  components: {
+    MusicListCell
+  },
 
   data () {
     return {

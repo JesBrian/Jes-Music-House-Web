@@ -9,7 +9,7 @@ export default new Vuex.Store({
     musicVolumeStatus: true,
     musicPlayModel: 'loop', // 三种播放模式 [ loop-歌单循环，single-loop-单曲循环，random-歌单里歌曲随机播放 ]
     musicPlayListNowIndex: 0,
-    musicPlayList: ['test1', 'test2', 'test3'],
+    musicPlayList: ['test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7', 'test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7'],
     musicPlayListContentShowStatus: false
   },
   mutations: {
@@ -38,7 +38,6 @@ export default new Vuex.Store({
      */
     changemusicPlayListNowIndex (state, option = {nowIndexNum: -1, prevOrNext: 'next'}) {
       state.musicIsPlay = true
-      console.log(option.nowIndexNum + ' -- ' + option.prevOrNext)
       if (option.nowIndexNum === -1) {
         if ((option.prevOrNext === 'next') && ((state.musicPlayListNowIndex + 1) === state.musicPlayList.length)) {
           state.musicPlayListNowIndex = 0
