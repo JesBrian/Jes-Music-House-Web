@@ -5,13 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    musicIsPlay: false,
-    musicVolumeStatus: true,
+    musicIsPlay: false, // 音乐播放/暂停状态
+    musicVolumeStatus: true, // 音量开关状态
+    musicVolumeLevel: 0.6,
     musicPlayModel: 'loop', // 三种播放模式 [ loop-歌单循环，single-loop-单曲循环，random-歌单里歌曲随机播放 ]
-    musicPlayListNowIndex: 0,
+    musicPlayListNowIndex: 0, // 当前播放歌曲的下标 - 对应播放列表 musicPlayList 的数组下标
     musicPlayList: ['test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7', 'test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7'],
     musicPlayListContentShowStatus: false
   },
+
   mutations: {
     /**
      * 改变是否播放歌曲状态
@@ -79,6 +81,9 @@ export default new Vuex.Store({
         state.musicPlayListNowIndex = 0
         state.musicPlayList = []
       } else {
+        if (delMusicListIndex < state.musicPlayListNowIndex) {
+          state.musicPlayListNowIndex--
+        }
         state.musicPlayList.splice(delMusicListIndex, 1)
       }
     }

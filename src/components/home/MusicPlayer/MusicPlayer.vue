@@ -100,10 +100,10 @@
             </ul>
           </i>
           <!-- 滚动歌词区域 -->
-          <div style="width:100%; height:100%; padding:12px 0 3px; box-sizing:border-box; text-align:center; line-height:1.5em;">
+          <div style="width:100%; height:100%; padding:12px 0 3px; box-sizing:border-box; text-align:center; font-size:13px; line-height:1.5em; color:#777;">
             <gemini-scrollbar>
-              <ul>
-                <li>rdtGbuybjk</li><li>rbuyb</li><li>rdt非常需要他vsvdGbuybjk</li><li>vvsdv</li><li>rdt56bjk</li><li>rbuyb</li><li>rdtvGy尝试</li><li>vvsdv</li><li>rdtGbuybjGbuGbuybjGbuybjGbuybjk</li><li>rbuyb</li><li>rdt非常需要buybjk</li><li>vvsdv</li><li>r</li><li>r产生d生dt56bjk</li><li>rbuyb</li><li>rdbn超时vcnv嘎的基本chsia吉林省v从sj空casnl长沙，klfuicasctv试</li><li>vvscasdv</li><li>rbuyb</li><li>rdt非常需要他vsvdGbuybjk</li><li>vvsdv</li><li>rdt56bjk</li><li>rbuyb</li><li>rdGy尝vGy尝ty尝vGy尝tv试</li><li>vvsdv</li><li>rdtGbuybjk</li><li>rbuybrbuybrbuybrbuybrbuyb</li><li>rdt非常需要buybjk</li><li>vvsdv</li><li>r产生dt56bjk</li><li>rbuyb</li><li>rdtvGy尝试</li><li>vvscasdv</li>
+              <ul style="padding:0 18px; box-sizing:border-box;">
+                <li>rdtGbuybjk</li><li>rbuyb</li><li>rdt非常需要他vsvdGbuybjk</li><li>vvsdv</li><li>rdt56bjk</li><li>rbuyb</li><li>rdtvGy尝试</li><li>vvsdv</li><li>rdtGbuybjGbuGbuybjGbuybjGbuybjk</li><li>rbuyb</li><li>rdt非常需要buybjk</li><li>vvsdv</li><li>r</li><li>r产生d生dt56bjk</li><li>rbuyb</li><li class="active" style="margin:23px 0; font-size:17px; color:#DDD;">rdbn超时vcnv嘎的基本chsia吉林省v从sj空casnl长沙，klfuicasctv试</li><li>vvscasdv</li><li>rbuyb</li><li>rdt非常需要他vsvdGbuybjk</li><li>vvsdv</li><li>rdt56bjk</li><li>rbuyb</li><li>rdGy尝vGy尝ty尝vGy尝tv试</li><li>vvsdv</li><li>rdtGbuybjk</li><li>rbuybrbuybrbuybrbuybrbuyb</li><li>rdt非常需要buybjk</li><li>vvsdv</li><li>r产生dt56bjk</li><li>rbuyb</li><li>rdtvGy尝试</li><li>vvscasdv</li>
               </ul>
             </gemini-scrollbar>
           </div>
@@ -132,6 +132,7 @@ export default {
 
   mounted () {
     this.musicSource = document.getElementById('homeMusicSource')
+    this.musicSource.volume = this.$store.state.musicVolumeLevel
   },
 
   watch: {
@@ -153,6 +154,9 @@ export default {
      * 音乐播放 OR 停止
      */
     switchMusicPlay () {
+      if (this.$store.state.musicPlayList.length === 0) {
+        return false
+      }
       this.$store.commit('changeMusicIsPlayStatus')
       this.$store.state.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
     },
@@ -167,6 +171,9 @@ export default {
      * 上一首播放
      */
     prevMusic () {
+      if (this.$store.state.musicPlayList.length === 0) {
+        return false
+      }
       if (this.$store.state.musicPlayModel === 'random') {
         let indexTemp
         do {
@@ -182,6 +189,9 @@ export default {
      * 下一首播放
      */
     nextMusic () {
+      if (this.$store.state.musicPlayList.length === 0) {
+        return false
+      }
       if (this.$store.state.musicPlayModel === 'random') {
         let indexTemp
         do {
@@ -236,6 +246,7 @@ export default {
      * 控制是否有音量
      */
     changeMusicVolumeStatus () {
+      this.$store.state.musicVolumeStatus ? this.musicSource.volume = 0 : this.musicSource.volume = this.$store.state.musicVolumeLevel
       this.$store.commit('changeMusicVolumeStatus')
     },
 
