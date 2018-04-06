@@ -5,8 +5,6 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    screenWidth: document.body.clientWidth, // 浏览器宽度
-
     musicIsPlay: false,
     musicVolumeStatus: true,
     musicPlayModel: 'loop', // 三种播放模式 [ loop-歌单循环，single-loop-单曲循环，random-歌单里歌曲随机播放 ]
@@ -35,8 +33,7 @@ export default new Vuex.Store({
     /**
      * 改变现在播放音乐在播放列表的索引号
      * @param state
-     * @param nowIndexNum
-     * @return {boolean}
+     * @param option
      */
     changemusicPlayListNowIndex (state, option = {nowIndexNum: -1, prevOrNext: 'next'}) {
       state.musicIsPlay = true
@@ -69,6 +66,21 @@ export default new Vuex.Store({
      */
     changeMusicVolumeStatus (state) {
       state.musicVolumeStatus = !state.musicVolumeStatus
+    },
+
+    /**
+     * 删除特定/清空播放列表
+     * @param state
+     * @param delMusicListIndex
+     */
+    delMusicPlayList (state, delMusicListIndex) {
+      if (delMusicListIndex === -1) {
+        state.musicIsPlay = false
+        state.musicPlayListNowIndex = 0
+        state.musicPlayList = []
+      } else {
+        state.musicPlayList.splice(delMusicListIndex, 1)
+      }
     }
   }
 })

@@ -71,7 +71,7 @@
           <span style="font-weight:700;">播放列表 [ {{ this.$store.state.musicPlayList.length }} ]</span>
           <div style="float:right;">
             <a style="font-size:14px;"><i class="mh-if collection-music" style="margin:0 3px 0 18px;"></i>收藏全部</a>
-            <a style="font-size:14px;"><i class="mh-if trash-2" style="margin:0 3px 0 18px;"></i>清空列表</a>
+            <a @click="clearMusicPlayList" style="font-size:14px;"><i class="mh-if trash-2" style="margin:0 3px 0 18px;"></i>清空列表</a>
           </div>
         </div>
         <div style="width:38%; height:100%; float:right; position:relative; text-align:center;">
@@ -85,7 +85,7 @@
           <gemini-scrollbar>
             <ul style="width:100%; height:100%; line-height:27px;">
               <li v-for="(item, index) in this.$store.state.musicPlayList" :key="index" class="box-shadow" style="width:100%; height:28px; box-sizing:border-box; padding:0 2px; z-index:2;">
-                <music-list-cell :index="index" :content="item" />
+                <music-list-cell :index="index" :content="item" @musicPlay="musicPlay" />
               </li>
             </ul>
           </gemini-scrollbar>
@@ -138,7 +138,7 @@ export default {
     musicPlayListNowIndex () {
       setTimeout(() => {
         this.musicSource.play()
-      }, 68)
+      }, 88)
     }
   },
 
@@ -155,6 +155,12 @@ export default {
     switchMusicPlay () {
       this.$store.commit('changeMusicIsPlayStatus')
       this.$store.state.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
+    },
+
+    musicPlay () {
+      setTimeout(() => {
+        this.$store.state.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
+      }, 88)
     },
 
     /**
@@ -231,6 +237,14 @@ export default {
      */
     changeMusicVolumeStatus () {
       this.$store.commit('changeMusicVolumeStatus')
+    },
+
+    /**
+     * 清空播放列表
+     */
+    clearMusicPlayList () {
+      this.musicSource.pause()
+      this.$store.commit('delMusicPlayList', -1)
     }
   }
 }

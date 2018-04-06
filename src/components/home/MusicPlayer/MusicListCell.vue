@@ -6,7 +6,7 @@
       <i style="margin-left:3.5px;" class="mh-if non-colloection"></i>
       <i style="margin-left:3.5px;" class="mh-if share"></i>
       <i style="margin-left:3.5px;" class="mh-if download"></i>
-      <i style="margin-left:3.5px;" class="mh-if trash-1"></i>
+      <i @click="delMusicListItem(index)" style="margin-left:3.5px;" class="mh-if trash-1"></i>
     </p>
     <p style="width:20%; display:inline-block;">
       <router-link to="/singer">{{ index }}</router-link>
@@ -22,7 +22,14 @@ export default {
   props: [
     'index',
     'content'
-  ]
+  ],
+
+  methods: {
+    delMusicListItem (delMusicListIndex) {
+      this.$store.commit('delMusicPlayList', delMusicListIndex)
+      this.$emit('musicPlay')
+    }
+  }
 }
 </script>
 
