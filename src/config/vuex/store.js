@@ -5,6 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    screenWidth: document.body.clientWidth, // 浏览器宽度
+
     musicIsPlay: false,
     musicVolumeStatus: true,
     musicPlayModel: 'loop', // 三种播放模式 [ loop-歌单循环，single-loop-单曲循环，random-歌单里歌曲随机播放 ]
