@@ -10,22 +10,32 @@
       <!-- 导航菜单 -->
       <ul style="display:inline-block; line-height:52px; color:#999; font-weight:700;">
         <li style="float:left;">
-          <router-link to="/index" class="first-menu-link">发现音乐</router-link>
+          <router-link to="/index" class="first-menu-link">
+            发现音乐<div class="triangle-up"></div>
+          </router-link>
         </li>
         <li style="float:left;">
-          <router-link to="/user" class="first-menu-link">我的音乐</router-link>
+          <router-link to="/user" class="first-menu-link">
+            我的音乐<div class="triangle-up"></div>
+          </router-link>
         </li>
         <li style="float:left;">
-          <router-link to="/friend" class="first-menu-link">朋友动态</router-link>
+          <router-link to="/friend" class="first-menu-link">
+            朋友动态<div class="triangle-up"></div>
+          </router-link>
         </li>
         <li style="float:left;">
-          <router-link to="/musician" class="first-menu-link">音乐人</router-link>
+          <router-link to="/musician" class="first-menu-link">
+            音乐人<div class="triangle-up"></div>
+          </router-link>
         </li>
         <li style="float:left;">
-          <router-link to="/download/client" class="first-menu-link">下载客户端</router-link>
+          <router-link to="/download/client" class="first-menu-link">
+            下载客户端<div class="triangle-up"></div>
+          </router-link>
         </li>
       </ul>
-      <div class="super-btn-out" style="width:100%; min-height:8px; top:52.3px; left:0; padding-left:268px; position:absolute; border-radius:0;">
+      <div class="super-btn-out" style="width:100%; min-height:8px; top:52.3px; left:0; padding-left:268px; position:absolute; box-sizing:border-box; border-radius:0;">
         <div v-show="this.$route.path === '/index'" style="width:100%; height:100%; font-size:15px;">
           <router-link to="/index" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">主页推荐</router-link>
           <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">排行榜</router-link>
@@ -34,9 +44,13 @@
           <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">新碟上架</router-link>
         </div>
         <div v-show="this.$route.path === '/user'" style="width:100%; height:100%; font-size:15px;">
-          <router-link to="/index" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">个人推荐</router-link>
-          <router-link to="/index" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">我的歌单</router-link>
-          <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">听歌排行</router-link>
+          <router-link to="/user/album" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">我的歌单</router-link>
+          <router-link to="/user/recommend" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">个人推荐</router-link>
+          <router-link to="/user/rank" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">听歌排行</router-link>
+        </div>
+        <div v-show="this.$route.path === '/friend'" style="width:100%; height:100%; font-size:15px;">
+          <router-link to="/user/recommend" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">朋友圈</router-link>
+          <router-link to="/user/album" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">消息动态</router-link>
         </div>
       </div>
 
@@ -93,16 +107,31 @@ export default {
   .first-menu-link {
     padding:0 18px; display:inline-block; float:left; cursor:pointer; color:#999; position:relative;
   }
-  .first-menu-link.router-link-exact-active, .first-menu-link:hover {
+  .first-menu-link.router-link-active, .first-menu-link:hover {
     color:#BBB;
     background:#222;
     box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 0 12px rgba(0, 0, 0, 0.5), inset 0 0 0 1px #272727;
     z-index:5;
   }
-  .first-menu-link.router-link-exact-active{
+  .first-menu-link.router-link-active{
     color:#DDD;
     background:#232323;
     z-index:9;
+  }
+  .first-menu-link > .triangle-up {
+    width: 0;
+    height: 0;
+    left:50%;
+    bottom:-5px;
+    position:absolute;
+    transform:translate(-50%, 0);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 16px solid #27E0F3;
+    display: none;
+  }
+  .first-menu-link.router-link-active > .triangle-up {
+    display:block;
   }
 
   #navMenuUser > div {

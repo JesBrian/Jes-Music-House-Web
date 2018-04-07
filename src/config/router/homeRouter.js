@@ -45,6 +45,18 @@ export default [
         component: () => import('../../views/home/type/user/Message.vue')
       },
       {
+        path: 'user/recommend',
+        component: () => import('../../views/home/type/user/Recommend.vue')
+      },
+      {
+        path: 'user/album',
+        component: () => import('../../views/home/type/user/Album.vue')
+      },
+      {
+        path: 'user/rank',
+        component: () => import('../../views/home/type/user/Rank.vue')
+      },
+      {
         path: 'album',
         component: () => import('../../views/home/type/music/Album.vue')
       },
