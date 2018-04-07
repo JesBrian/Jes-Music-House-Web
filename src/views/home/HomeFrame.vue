@@ -11,8 +11,11 @@
       </gemini-scrollbar>
     </div>
 
-    <!-- 回到顶部 -->
+    <!-- 回到顶部组件 -->
     <float-block />
+
+    <!-- 拟态框组件 -->
+    <home-modal />
 
     <!-- 音乐播放器组件 -->
     <music-player />
@@ -23,6 +26,7 @@
 import NavigationBar from '../../components/home/NavigationBar/NavigationBar.vue'
 import MusicPlayer from '../../components/home/MusicPlayer/MusicPlayer.vue'
 import FloatBlock from '../../components/home/FloatBlock/FloatBlock'
+import HomeModal from '../../components/common/modal/HomeModal.vue'
 
 export default {
   name: 'HomeFrame',
@@ -30,6 +34,7 @@ export default {
   components: {
     FloatBlock,
     NavigationBar,
+    HomeModal,
     MusicPlayer
   },
 

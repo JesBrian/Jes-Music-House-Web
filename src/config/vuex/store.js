@@ -5,6 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    modalType: '', // 拟态框类型
+
     musicIsPlay: false, // 音乐播放/暂停状态
     musicVolumeStatus: true, // 音量开关状态
     musicVolumeLevel: 0.6,
@@ -15,6 +17,16 @@ export default new Vuex.Store({
   },
 
   mutations: {
+
+    /**
+     * 修改拟态框类型
+     * @param state
+     * @param type
+     */
+    changeModalType (state, type = '') {
+      state.modalType = type
+    },
+
     /**
      * 改变是否播放歌曲状态
      * @param state

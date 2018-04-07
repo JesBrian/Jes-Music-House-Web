@@ -35,7 +35,7 @@
           </router-link>
         </li>
       </ul>
-      <div class="super-btn-out" style="width:100%; min-height:8px; top:52.3px; left:0; padding-left:268px; position:absolute; box-sizing:border-box; border-radius:0;">
+      <div class="super-btn-out" style="width:100%; min-height:8px; top:52.3px; left:0; padding-left:268px; position:absolute; box-sizing:border-box; border-radius:0; cursor:default;">
         <div v-show="this.$route.path === '/index'" style="width:100%; height:100%; font-size:15px;">
           <router-link to="/index" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">主页推荐</router-link>
           <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">排行榜</router-link>
@@ -56,7 +56,7 @@
 
       <!-- 用户登录/操作 -->
       <div id="navMenuUser" class="super-btn-out" style="width:40px; height:38px; margin-top:6px; position:relative; float:right;">
-        <span class="super-btn-in" style="width:29.5px; height:28.5px; top:48.7%; line-height:29.5px; font-size:20px;">X</span>
+        <span @click="showUserLoginModal" class="super-btn-in" style="width:29.5px; height:28.5px; top:48.7%; line-height:29.5px; font-size:20px;">X</span>
 
         <div style="top:32px; left:-68%; position:absolute;">
           <div class="cube-bg box-show" style="width:100px; margin-top:10px; padding:0 4px; text-align:center; line-height:30px;">
@@ -99,7 +99,13 @@
 
 <script>
 export default {
-  name: 'NavigationBar'
+  name: 'NavigationBar',
+
+  methods: {
+    showUserLoginModal () {
+      this.$store.commit('changeModalType', 'login')
+    }
+  }
 }
 </script>
 
