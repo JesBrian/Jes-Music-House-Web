@@ -15,7 +15,7 @@
       <i @click="delMusicListItem(index)" style="margin-left:3.5px;" class="mh-if trash-1"></i>
     </p>
     <p style="max-width:18%; left:432px; display:inline-block;">
-      <router-link to="/singer">{{ index }}</router-link>
+      <router-link to="/singer" style="color:#999;">{{ index }}</router-link>
     </p>
     <p @click="playThisMusic(index)" style="width:6%; left:568px; display:inline-block;">00:00</p>
     <!-- END 歌曲信息 OR 操作 END -->

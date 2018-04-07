@@ -1,13 +1,13 @@
 <template>
   <div id="homeLayout">
-    this is home vip
+    this is home friend
     <router-link to="/">To Index</router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Vip'
+  name: 'Friend'
 }
 </script>
 

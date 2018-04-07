@@ -17,8 +17,16 @@ export default [
         component: () => import('../../views/home/type/base/Search.vue')
       },
       {
+        path: 'download/client',
+        component: () => import('../../views/home/type/download/DownloadClient.vue')
+      },
+      {
         path: 'user',
         component: () => import('../../views/home/type/user/User.vue')
+      },
+      {
+        path: 'friend',
+        component: () => import('../../views/home/type/user/Friend.vue')
       },
       {
         path: 'update',
@@ -45,8 +53,16 @@ export default [
         component: () => import('../../views/home/type/music/Song.vue')
       },
       {
+        path: 'download/music',
+        component: () => import('../../views/home/type/download/DownloadMusic.vue')
+      },
+      {
         path: 'singer',
         component: () => import('../../views/home/type/music/Singer.vue')
+      },
+      {
+        path: 'musician',
+        component: () => import('../../views/home/type/music/Musician.vue')
       }
     ]
   }

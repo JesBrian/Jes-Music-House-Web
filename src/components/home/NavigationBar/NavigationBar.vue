@@ -2,13 +2,43 @@
   <!-- 导航条 -->
   <div class="glass-bg box-show" style="width:100%; height:53px; top:0; left:0; position:fixed; border-radius:0; opacity:0.98;">
     <div style="width:1238px; height:100%; margin:0 auto;">
-      <router-link to="/" style="display:inline-block; line-height:52px;">
-        <img v-lazy="require('../../../../static/img/logo.png')" style="width:33px; height:33px; margin:9px 8px 0 0; float:left;"/>
+      <router-link to="/" style="margin-right:38px; float:left; line-height:48px;">
+        <img v-lazy="require('../../../../static/img/logo.png')" style="width:33px; height:33px; margin:8px 8px 0 0; float:left;"/>
         <span style="font-size:22px; font-weight:700; color:#22e8ff; text-shadow:1.5px 1.5px 6px #30cdff;">Music House</span>
       </router-link>
 
       <!-- 导航菜单 -->
-      <ul style="float:left;"></ul>
+      <ul style="display:inline-block; line-height:52px; color:#999; font-weight:700;">
+        <li style="float:left;">
+          <router-link to="/index" class="first-menu-link">发现音乐</router-link>
+        </li>
+        <li style="float:left;">
+          <router-link to="/user" class="first-menu-link">我的音乐</router-link>
+        </li>
+        <li style="float:left;">
+          <router-link to="/friend" class="first-menu-link">朋友动态</router-link>
+        </li>
+        <li style="float:left;">
+          <router-link to="/musician" class="first-menu-link">音乐人</router-link>
+        </li>
+        <li style="float:left;">
+          <router-link to="/download/client" class="first-menu-link">下载客户端</router-link>
+        </li>
+      </ul>
+      <div class="super-btn-out" style="width:100%; min-height:8px; top:52.3px; left:0; padding-left:268px; position:absolute; border-radius:0;">
+        <div v-show="this.$route.path === '/index'" style="width:100%; height:100%; font-size:15px;">
+          <router-link to="/index" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">主页推荐</router-link>
+          <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">排行榜</router-link>
+          <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">歌单</router-link>
+          <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">歌手</router-link>
+          <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">新碟上架</router-link>
+        </div>
+        <div v-show="this.$route.path === '/user'" style="width:100%; height:100%; font-size:15px;">
+          <router-link to="/index" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">个人推荐</router-link>
+          <router-link to="/index" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">我的歌单</router-link>
+          <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">听歌排行</router-link>
+        </div>
+      </div>
 
       <!-- 用户登录/操作 -->
       <div id="navMenuUser" class="super-btn-out" style="width:40px; height:38px; margin-top:6px; position:relative; float:right;">
@@ -60,38 +90,61 @@ export default {
 </script>
 
 <style scoped>
+  .first-menu-link {
+    padding:0 18px; display:inline-block; float:left; cursor:pointer; color:#999; position:relative;
+  }
+  .first-menu-link.router-link-exact-active, .first-menu-link:hover {
+    color:#BBB;
+    background:#222;
+    box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 0 12px rgba(0, 0, 0, 0.5), inset 0 0 0 1px #272727;
+    z-index:5;
+  }
+  .first-menu-link.router-link-exact-active{
+    color:#DDD;
+    background:#232323;
+    z-index:9;
+  }
+
   #navMenuUser > div {
     display: none;
   }
-
   #navMenuUser:hover > div {
     display: block;
   }
-
   #navMenuUser li {
     width: 100%;
     height: 30px;
     margin: 4px 0;
     box-sizing: border-box;
   }
-
   #navMenuUser li a {
     width:100%;
     height:100%;
     display:inline-block;
     color: #AAA;
   }
-
   #navMenuUser li:hover {
     background: #333;
     box-shadow: inset 0 0 0 1px #222, 0 0 0 1px lightseagreen;
   }
-
   #navMenuUser li:hover a {
     color: #EEE;
   }
-
   #navMenuUser li:hover i.MyIF {
     color: #2DBEFF;
+  }
+
+  .second-menu-link {
+    text-align: center;
+    font-weight: 700;
+    background-image: linear-gradient(#2e3537, #424748);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(80, 80, 80, 0.3), inset 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(80, 80, 80, 0.5), 0 2px 2px rgba(0, 0, 0, 0.4);
+    border: none;
+    color: #AAA;
+    text-shadow: 2px 2px 5px #000;
+  }
+  .second-menu-link:hover, .second-menu-link.router-link-exact-active {
+    color: #20dbfc;
+    box-shadow: 0 -0.1px 2px rgba(0, 0, 0, 0.7), 0 0 2px rgba(255, 255, 255, 0.4), 0 0 2px rgba(0, 0, 0, 0.3), inset 0 0 3px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6);
   }
 </style>
