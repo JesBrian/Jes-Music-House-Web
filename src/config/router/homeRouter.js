@@ -17,6 +17,10 @@ export default [
         component: () => import('../../views/home/type/base/Search.vue')
       },
       {
+        path: '/rank',
+        component: () => import('../../views/home/type/base/Rank.vue')
+      },
+      {
         path: 'download/client',
         component: () => import('../../views/home/type/download/DownloadClient.vue')
       },
@@ -59,6 +63,10 @@ export default [
       {
         path: 'album',
         component: () => import('../../views/home/type/music/Album.vue')
+      },
+      {
+        path: 'disc',
+        component: () => import('../../views/home/type/music/Disc.vue')
       },
       {
         path: 'song',

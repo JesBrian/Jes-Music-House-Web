@@ -160,10 +160,6 @@ export default {
   mounted () {
     this.musicSource = document.getElementById('homeMusicSource')
     this.musicSource.volume = this.musicVolumeLevel
-    // setTimeout(() => {
-    //   this.musicDTime = getMusicTime(this.musicSource)
-    // }, 168)
-
     this.addEventListeners()
   },
 
@@ -179,7 +175,6 @@ export default {
     musicPlayListNowIndex () {
       setTimeout(() => {
         this.musicSource.play()
-        // this.musicDTime = getMusicTime(this.musicSource)
       }, 88)
     }
   },
@@ -373,7 +368,7 @@ export default {
   .mh-if:hover {
     cursor:pointer;
     color: #46dfff;
-    text-shadow:0 0 1px #000, 0 0 3px #FFF;
+    text-shadow: 0 0 3px #000;
     opacity:1!important;
   }
   .mh-if:hover > span {

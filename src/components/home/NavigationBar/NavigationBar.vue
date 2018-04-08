@@ -8,50 +8,50 @@
       </router-link>
 
       <!-- 导航菜单 -->
-      <ul style="display:inline-block; line-height:52px; color:#999; font-weight:700;">
+      <ul style="display:inline-block; line-height:52px; color:#999; font-weight:700; letter-spacing:1.2px;">
         <li style="float:left;">
-          <router-link to="/index" class="first-menu-link">
+          <router-link to="/index" :class="{'active': menuType === 'find'}" class="first-menu-link" >
             发现音乐<div class="triangle-up"></div>
           </router-link>
         </li>
         <li style="float:left;">
-          <router-link to="/user" class="first-menu-link">
+          <router-link to="/user/album" :class="{'active': menuType === 'my'}" class="first-menu-link">
             我的音乐<div class="triangle-up"></div>
           </router-link>
         </li>
         <li style="float:left;">
-          <router-link to="/friend" class="first-menu-link">
-            朋友动态<div class="triangle-up"></div>
+          <router-link to="/friend" :class="{'active': menuType === 'friend'}" class="first-menu-link">
+            消息动态<div class="triangle-up"></div>
           </router-link>
         </li>
         <li style="float:left;">
-          <router-link to="/musician" class="first-menu-link">
+          <router-link to="/musician" :class="{'active': menuType === 'musician'}" class="first-menu-link">
             音乐人<div class="triangle-up"></div>
           </router-link>
         </li>
         <li style="float:left;">
-          <router-link to="/download/client" class="first-menu-link">
+          <router-link to="/download/client" :class="{'active': menuType === 'download'}" class="first-menu-link">
             下载客户端<div class="triangle-up"></div>
           </router-link>
         </li>
       </ul>
       <!-- 二级菜单 -->
       <div class="super-btn-out" style="width:100%; min-height:8px; top:52.3px; left:0; padding-left:268px; position:absolute; box-sizing:border-box; border-radius:0; cursor:default; font-size:15px; white-space:nowrap;">
-        <div v-show="this.$route.path === '/index'">
+        <div v-if="menuType === 'find'">
           <router-link to="/index" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">主页推荐</router-link>
-          <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">排行榜</router-link>
-          <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">歌单</router-link>
-          <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">歌手</router-link>
-          <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">新碟上架</router-link>
+          <router-link to="/rank" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">排行榜</router-link>
+          <router-link to="/album" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">歌单</router-link>
+          <router-link to="/singer" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">歌手</router-link>
+          <router-link to="/disc" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">新碟上架</router-link>
         </div>
-        <div v-show="this.$route.path === '/user'">
+        <div v-if="menuType === 'my'">
           <router-link to="/user/album" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">我的歌单</router-link>
           <router-link to="/user/recommend" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">个人推荐</router-link>
           <router-link to="/user/rank" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">听歌排行</router-link>
         </div>
-        <div v-show="this.$route.path === '/friend'">
-          <router-link to="/user/recommend" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">朋友圈</router-link>
-          <router-link to="/user/album" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">消息动态</router-link>
+        <div v-if="menuType === 'friend'">
+          <router-link to="/friend" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">朋友圈</router-link>
+          <router-link to="/message" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">我的消息</router-link>
         </div>
       </div>
 
@@ -88,7 +88,7 @@
       <!-- 搜索栏 -->
       <div style="width:236px; height:38px; margin:6px 28px 0 0; float:right; position:relative;">
         <div class="super-btn-out" style="width:100%; height:100%;"></div>
-        <input class="super-btn-in" type="text" style="width:190px; height:27px; left:43%; margin-top:1.2px; padding:2px 8px 0; box-sizing:border-box; text-align:left; letter-spacing:1px;"/>
+        <label><input class="super-btn-in" type="text" style="width:190px; height:27px; left:43%; margin-top:1.2px; padding:2px 8px 0; box-sizing:border-box; text-align:left; letter-spacing:1px;"/></label>
         <div class="super-btn-out" style="width:28px; height:28px; top:5px; right:4px; position:absolute;">
           <router-link to="/search" class="super-btn-in mh-if search" style="width:30px; height:28.5px; display:inline-block; float:right; font-size:21px; line-height:30px;" />
         </div>
@@ -102,9 +102,48 @@
 export default {
   name: 'NavigationBar',
 
+  data () {
+    return {
+      menuType: ''
+    }
+  },
+
+  watch: {
+    '$route' () {
+      this.switchMenuType()
+    }
+  },
+
+  mounted () {
+    this.switchMenuType()
+  },
+
   methods: {
     showUserLoginModal () {
       this.$store.commit('changeModalType', 'login')
+    },
+
+    switchMenuType () {
+      switch (this.$route.path) {
+        case '/user/album':
+        case '/user/recommend':
+        case '/user/rank':
+          this.menuType = 'my'
+          break
+        case '/friend':
+        case '/message':
+          this.menuType = 'friend'
+          break
+        case '/musician':
+          this.menuType = 'musician'
+          break
+        case '/download/client':
+          this.menuType = 'download'
+          break
+        default:
+          this.menuType = 'find'
+          break
+      }
     }
   }
 }
@@ -112,15 +151,15 @@ export default {
 
 <style scoped>
   .first-menu-link {
-    padding:0 18px; display:inline-block; float:left; cursor:pointer; color:#999; position:relative;
+    padding:0 13px 0 18px; display:inline-block; float:left; cursor:pointer; color:#999; position:relative;
   }
-  .first-menu-link.router-link-active, .first-menu-link:hover {
+  .first-menu-link.active, .first-menu-link:hover {
     color:#BBB;
     background:#222;
     box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 0 12px rgba(0, 0, 0, 0.5), inset 0 0 0 1px #272727;
     z-index:5;
   }
-  .first-menu-link.router-link-active{
+  .first-menu-link.active{
     color:#DDD;
     background:#232323;
     z-index:9;
@@ -137,7 +176,7 @@ export default {
     border-bottom: 16px solid #27E0F3;
     display: none;
   }
-  .first-menu-link.router-link-active > .triangle-up {
+  .first-menu-link.active > .triangle-up {
     display:block;
   }
 
