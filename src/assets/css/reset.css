@@ -69,9 +69,10 @@ audio:not([controls]) {
 }
 
 a {
-  background:transparent;
-  text-decoration:none;
-  cursor:pointer;
+  background: transparent;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
 }
 
 a:active, a:hover {

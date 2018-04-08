@@ -35,20 +35,21 @@
           </router-link>
         </li>
       </ul>
-      <div class="super-btn-out" style="width:100%; min-height:8px; top:52.3px; left:0; padding-left:268px; position:absolute; box-sizing:border-box; border-radius:0; cursor:default;">
-        <div v-show="this.$route.path === '/index'" style="width:100%; height:100%; font-size:15px;">
+      <!-- 二级菜单 -->
+      <div class="super-btn-out" style="width:100%; min-height:8px; top:52.3px; left:0; padding-left:268px; position:absolute; box-sizing:border-box; border-radius:0; cursor:default; font-size:15px; white-space:nowrap;">
+        <div v-show="this.$route.path === '/index'">
           <router-link to="/index" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">主页推荐</router-link>
           <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">排行榜</router-link>
           <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">歌单</router-link>
           <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">歌手</router-link>
           <router-link to="/" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">新碟上架</router-link>
         </div>
-        <div v-show="this.$route.path === '/user'" style="width:100%; height:100%; font-size:15px;">
+        <div v-show="this.$route.path === '/user'">
           <router-link to="/user/album" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">我的歌单</router-link>
           <router-link to="/user/recommend" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">个人推荐</router-link>
           <router-link to="/user/rank" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">听歌排行</router-link>
         </div>
-        <div v-show="this.$route.path === '/friend'" style="width:100%; height:100%; font-size:15px;">
+        <div v-show="this.$route.path === '/friend'">
           <router-link to="/user/recommend" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">朋友圈</router-link>
           <router-link to="/user/album" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">消息动态</router-link>
         </div>

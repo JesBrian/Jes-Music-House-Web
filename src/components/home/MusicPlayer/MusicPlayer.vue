@@ -2,7 +2,7 @@
   <!-- 音乐播放器组件 -->
   <div style="width:100%; height:48px; left:0; bottom:0; position:fixed;">
     <!-- 音乐播放器资源 -->
-    <audio id="homeMusicSource" @ended="nowMusicEndNextPlay" :src="'/static/music/' + this.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0; position:absolute;"></audio>
+    <audio ref="homeMusicSource" id="homeMusicSource" preload @ended="nowMusicEndNextPlay" :src="'/static/music/' + this.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0; position:absolute;"></audio>
 
     <!-- 播放器主控制 -->
     <div class="glass-bg box-show" style="width:100%; height:100%; border-radius:0; opacity:0.96; background:#181818; z-index:9;">
@@ -32,7 +32,9 @@
               </div>
             </div>
             <div style="width:16%; height:50%; float:right; text-align:center; line-height:18.5px; font-size:13.5px;">
-              00:00 - 99:99
+              {{ this.musicCTime }}
+              -
+              {{ this.musicDTime }}
             </div>
           </div>
           <div style="float:right;">
@@ -56,9 +58,7 @@
           </div>
           <i @click="changeMusicPlayModel" class="mh-if" :class="this.musicPlayModel" style="margin-right:8px; font-size:22px;"></i>
           <i @click="changeMusicPlayListContentShowStatus" class="mh-if menu" style="margin-right:8px; position:relative; z-index:2; font-size:24px;">
-            <span class="box-show" style="width:38px; height:19px; top:3.2px; left:20px; padding:0 3px; position:absolute; z-index:-1; background:#000; box-sizing:border-box; border-radius:0 9px 9px 0; text-align:center; font-size:12.5px; line-height:20px; color:#666; text-shadow:2px 2px 6px #000;">
-              {{ this.musicPlayList.length }}
-            </span>
+            <span class="box-show" style="width:38px; height:19px; top:3.2px; left:20px; padding:0 3px; position:absolute; z-index:-1; background:#000; box-sizing:border-box; border-radius:0 9px 9px 0; text-align:center; font-size:12.5px; line-height:20px; color:#666; text-shadow:2px 2px 6px #000;">{{ this.musicPlayList.length }}</span>
           </i>
         </div>
       </div>
@@ -136,16 +136,20 @@
 </template>
 
 <script>
+
+import {timeStampToTime} from '../../../assets/js/music/base.js'
+
 export default {
   name: 'MusicPlayer',
 
   data () {
     return {
-      musicSource: null,
-
+      musicSource: null, // 音乐资源 MP3
+      musicCTime: '00:00',
+      musicDTime: '00:00',
       musicIsPlay: false, // 音乐播放/暂停状态
       musicVolumeStatus: true, // 音量开关状态
-      musicVolumeLevel: 0.6,
+      musicVolumeLevel: 0.6, // 音量大小
       musicPlayModel: 'loop', // 三种播放模式 [ loop-歌单循环，single-loop-单曲循环，random-歌单里歌曲随机播放 ]
       musicPlayListNowIndex: 0, // 当前播放歌曲的下标 - 对应播放列表 musicPlayList 的数组下标
       musicPlayList: ['test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7', 'test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7'],
@@ -156,17 +160,50 @@ export default {
   mounted () {
     this.musicSource = document.getElementById('homeMusicSource')
     this.musicSource.volume = this.musicVolumeLevel
+    // setTimeout(() => {
+    //   this.musicDTime = getMusicTime(this.musicSource)
+    // }, 168)
+
+    this.addEventListeners()
+  },
+
+  beforeDestroy () {
+    this.removeEventListeners()
   },
 
   watch: {
+    '$route' () {
+      this.musicPlayListContentShowStatus = false
+    },
+
     musicPlayListNowIndex () {
       setTimeout(() => {
         this.musicSource.play()
+        // this.musicDTime = getMusicTime(this.musicSource)
       }, 88)
     }
   },
 
   methods: {
+
+    addEventListeners () {
+      this.musicSource.addEventListener('timeupdate', this._currentTime)
+      this.musicSource.addEventListener('canplay', this._durationTime)
+    },
+
+    removeEventListeners () {
+      this.musicSource.removeEventListener('timeupdate', this._currentTime)
+      this.musicSource.removeEventListener('canplay', this._durationTime)
+    },
+
+    _currentTime () {
+      this.musicCTime = timeStampToTime(this.musicSource.currentTime)
+    },
+
+    _durationTime () {
+      this.musicDTime = timeStampToTime(this.musicSource.duration)
+    },
+
     /**
      * 音乐播放 OR 停止
      */
@@ -176,12 +213,6 @@ export default {
       }
       this.musicIsPlay = !this.musicIsPlay
       this.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
-    },
-
-    musicPlay () {
-      setTimeout(() => {
-        this.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
-      }, 88)
     },
 
     /**
@@ -243,7 +274,9 @@ export default {
      */
     delMusicListItem (delMusicListIndex) {
       this.delMusicPlayList(delMusicListIndex)
-      this.musicPlay()
+      setTimeout(() => {
+        this.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
+      }, 88)
     },
 
     /**
