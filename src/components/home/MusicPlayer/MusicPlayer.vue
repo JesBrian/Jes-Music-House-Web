@@ -2,7 +2,7 @@
   <!-- 音乐播放器组件 -->
   <div style="width:100%; height:48px; left:0; bottom:0; position:fixed;">
     <!-- 音乐播放器资源 -->
-    <audio id="homeMusicSource" @ended="nowMusicEndNextPlay" :src="'/static/music/' + this.$store.state.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0; position:absolute;"></audio>
+    <audio id="homeMusicSource" @ended="nowMusicEndNextPlay" :src="'/static/music/' + this.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0; position:absolute;"></audio>
 
     <!-- 播放器主控制 -->
     <div class="glass-bg box-show" style="width:100%; height:100%; border-radius:0; opacity:0.96; background:#181818; z-index:9;">
@@ -10,7 +10,7 @@
         <!-- 播放控制 -->
         <div style="width:98px; height:100%; float:left; display:inline-block; text-align:center;">
           <i @click="prevMusic" class="mh-if double-arrow-left" style="margin-top:0.5px; float:left; font-size:18px;"></i>
-          <i @click="switchMusicPlay" class="mh-if" :class="this.$store.state.musicIsPlay ? 'stop' : 'play'" style="margin-right:-2px; font-size:33px;"></i>
+          <i @click="switchMusicPlay" class="mh-if" :class="this.musicIsPlay ? 'stop' : 'play'" style="margin-right:-2px; font-size:33px;"></i>
           <i @click="nextMusic" class="mh-if double-arrow-right" style="margin-top:1px; float:right; font-size:18px;"></i>
         </div>
         <!-- 歌曲控制 -->
@@ -43,8 +43,8 @@
         <!-- 其他控制 -->
         <div style="height:100%; margin-right:23px; display:inline-block; float:right;">
           <div id="volumeButton" style="margin-right:8px; display:inline-block; position:relative;">
-            <i @click="changeMusicVolumeStatus" class="mh-if" :class="this.$store.state.musicVolumeStatus ? 'volume-on' : 'volume-off'" style="font-size:23px;"></i>
-            <div v-show="this.$store.state.musicVolumeStatus" id="volumeBar">
+            <i @click="changeMusicVolumeStatus" class="mh-if" :class="this.musicVolumeStatus ? 'volume-on' : 'volume-off'" style="font-size:23px;"></i>
+            <div v-show="this.musicVolumeStatus" id="volumeBar">
               <div class="glass-bg box-show" style="width:100%; height:96%;">
                 <div class="box-show" style="width:10px; height:88%; margin:7px 9.5px; display:inline-block; position:relative; border-radius:5px; background:#000;">
                   <div style="width:100%; height:68%; left:0; bottom:0; background:linear-gradient(to top, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px; position:absolute;">
@@ -54,10 +54,10 @@
               </div>
             </div>
           </div>
-          <i @click="changeMusicPlayModel" class="mh-if" :class="this.$store.state.musicPlayModel" style="margin-right:8px; font-size:22px;"></i>
+          <i @click="changeMusicPlayModel" class="mh-if" :class="this.musicPlayModel" style="margin-right:8px; font-size:22px;"></i>
           <i @click="changeMusicPlayListContentShowStatus" class="mh-if menu" style="margin-right:8px; position:relative; z-index:2; font-size:24px;">
             <span class="box-show" style="width:38px; height:19px; top:3.2px; left:20px; padding:0 3px; position:absolute; z-index:-1; background:#000; box-sizing:border-box; border-radius:0 9px 9px 0; text-align:center; font-size:12.5px; line-height:20px; color:#666; text-shadow:2px 2px 6px #000;">
-              {{ this.$store.state.musicPlayList.length }}
+              {{ this.musicPlayList.length }}
             </span>
           </i>
         </div>
@@ -65,10 +65,10 @@
     </div>
 
     <!-- 播放列表内容区域 -->
-    <div v-show="this.$store.state.musicPlayListContentShowStatus" class="glass-bg box-show" style="width:1028px; height:290px; left:50%; bottom:45px; position:absolute; transform:translate(-50%,0); z-index:-1; background:#181818; opacity:0.96; border-radius:8px 8px 0 0; color:#AAA;">
+    <div v-show="this.musicPlayListContentShowStatus" class="glass-bg box-show" style="width:1028px; height:290px; left:50%; bottom:45px; position:absolute; transform:translate(-50%,0); z-index:-1; background:#181818; opacity:0.96; border-radius:8px 8px 0 0; color:#AAA;">
       <div class="box-show" style="width:100%; height:38px; border-radius:8px 8px 0 0; line-height:40px; z-index:9;">
         <div style="width:62%; height:100%; padding:0 2%; float:left; box-sizing:border-box;">
-          <span style="font-weight:700;">播放列表 [ {{ this.$store.state.musicPlayList.length }} ]</span>
+          <span style="font-weight:700;">播放列表 [ {{ this.musicPlayList.length }} ]</span>
           <div style="float:right;">
             <a style="font-size:14px;"><i class="mh-if collection-music" style="margin:0 3px 0 18px;"></i>收藏全部</a>
             <a @click="clearMusicPlayList" style="font-size:14px;"><i class="mh-if trash-2" style="margin:0 3px 0 18px;"></i>清空列表</a>
@@ -84,8 +84,29 @@
         <div style="width:62%; height:100%; padding-top:3px; float:left; display:inline-block; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;">
           <gemini-scrollbar>
             <ul style="width:100%; height:100%; line-height:27px;">
-              <li v-for="(item, index) in this.$store.state.musicPlayList" :key="index" class="box-shadow" style="width:100%; height:28px; box-sizing:border-box; padding:0 2px; z-index:2;">
-                <music-list-cell :index="index" :content="item" @musicPlay="musicPlay" />
+              <li v-for="(item, index) in this.musicPlayList" :key="index" class="box-shadow music-list-cell" style="width:100%; height:28px; box-sizing:border-box; padding:0 2px; z-index:2;">
+                <div :class="{'active': musicPlayListNowIndex === index}" style="width:100%; height:100%; position:relative;">
+
+                  <!-- BEGIN 点击切换播放歌曲 BEGIN -->
+                  <div @click="playThisMusic(index)" style="width:100%; height:100%; position:relative; z-index:1;"></div>
+                  <!-- END 点击切换播放歌曲 END -->
+
+                  <!-- BEGIN 歌曲信息 OR 操作 BEGIN -->
+                  <p @click="playThisMusic(index)" class="mh-if play" style="width:23px; display:inline-block; text-align:right;"></p>
+                  <p @click="playThisMusic(index)" style="max-width:288px; left:33px; display:inline-block;">12331 {{ index }}</p>
+                  <p class="music-cell-oper">
+                    <i style="margin-left:3.5px;" class="mh-if non-colloection"></i>
+                    <i style="margin-left:3.5px;" class="mh-if share"></i>
+                    <i style="margin-left:3.5px;" class="mh-if download"></i>
+                    <i @click="delMusicListItem(index)" style="margin-left:3.5px;" class="mh-if trash-1"></i>
+                  </p>
+                  <p style="max-width:18%; left:432px; display:inline-block;">
+                    <router-link to="/singer" style="color:#999;">{{ index }}</router-link>
+                  </p>
+                  <p @click="playThisMusic(index)" style="width:6%; left:568px; display:inline-block;">00:00</p>
+                  <!-- END 歌曲信息 OR 操作 END -->
+
+                </div>
               </li>
             </ul>
           </gemini-scrollbar>
@@ -115,24 +136,26 @@
 </template>
 
 <script>
-import MusicListCell from './MusicListCell.vue'
-
 export default {
   name: 'MusicPlayer',
 
-  components: {
-    MusicListCell
-  },
-
   data () {
     return {
-      musicSource: null
+      musicSource: null,
+
+      musicIsPlay: false, // 音乐播放/暂停状态
+      musicVolumeStatus: true, // 音量开关状态
+      musicVolumeLevel: 0.6,
+      musicPlayModel: 'loop', // 三种播放模式 [ loop-歌单循环，single-loop-单曲循环，random-歌单里歌曲随机播放 ]
+      musicPlayListNowIndex: 0, // 当前播放歌曲的下标 - 对应播放列表 musicPlayList 的数组下标
+      musicPlayList: ['test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7', 'test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7'],
+      musicPlayListContentShowStatus: false
     }
   },
 
   mounted () {
     this.musicSource = document.getElementById('homeMusicSource')
-    this.musicSource.volume = this.$store.state.musicVolumeLevel
+    this.musicSource.volume = this.musicVolumeLevel
   },
 
   watch: {
@@ -143,27 +166,21 @@ export default {
     }
   },
 
-  computed: {
-    musicPlayListNowIndex () {
-      return this.$store.state.musicPlayListNowIndex
-    }
-  },
-
   methods: {
     /**
      * 音乐播放 OR 停止
      */
     switchMusicPlay () {
-      if (this.$store.state.musicPlayList.length === 0) {
+      if (this.musicPlayList.length === 0) {
         return false
       }
-      this.$store.commit('changeMusicIsPlayStatus')
-      this.$store.state.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
+      this.musicIsPlay = !this.musicIsPlay
+      this.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
     },
 
     musicPlay () {
       setTimeout(() => {
-        this.$store.state.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
+        this.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
       }, 88)
     },
 
@@ -171,17 +188,17 @@ export default {
      * 上一首播放
      */
     prevMusic () {
-      if (this.$store.state.musicPlayList.length === 0) {
+      if (this.musicPlayList.length === 0) {
         return false
       }
-      if (this.$store.state.musicPlayModel === 'random') {
+      if (this.musicPlayModel === 'random') {
         let indexTemp
         do {
-          indexTemp = Number.parseInt(this.$store.state.musicPlayList.length * Math.random())
-        } while (indexTemp === this.$store.state.musicPlayListNowIndex)
-        this.$store.commit('changemusicPlayListNowIndex', {nowIndexNum: indexTemp})
+          indexTemp = Number.parseInt(this.musicPlayList.length * Math.random())
+        } while (indexTemp === this.musicPlayListNowIndex)
+        this.changemusicPlayListNowIndex({nowIndexNum: indexTemp})
       } else {
-        this.$store.commit('changemusicPlayListNowIndex', {nowIndexNum: -1, prevOrNext: 'prev'})
+        this.changemusicPlayListNowIndex({nowIndexNum: -1, prevOrNext: 'prev'})
       }
     },
 
@@ -189,17 +206,17 @@ export default {
      * 下一首播放
      */
     nextMusic () {
-      if (this.$store.state.musicPlayList.length === 0) {
+      if (this.musicPlayList.length === 0) {
         return false
       }
-      if (this.$store.state.musicPlayModel === 'random') {
+      if (this.musicPlayModel === 'random') {
         let indexTemp
         do {
-          indexTemp = Number.parseInt(this.$store.state.musicPlayList.length * Math.random())
-        } while (indexTemp === this.$store.state.musicPlayListNowIndex)
-        this.$store.commit('changemusicPlayListNowIndex', {nowIndexNum: indexTemp})
+          indexTemp = Number.parseInt(this.musicPlayList.length * Math.random())
+        } while (indexTemp === this.musicPlayListNowIndex)
+        this.changemusicPlayListNowIndex({nowIndexNum: indexTemp})
       } else {
-        this.$store.commit('changemusicPlayListNowIndex')
+        this.changemusicPlayListNowIndex()
       }
     },
 
@@ -207,17 +224,34 @@ export default {
      * 播放结束下一首
      */
     nowMusicEndNextPlay () {
-      if (this.$store.state.musicPlayModel === 'loop') {
-        this.$store.commit('changemusicPlayListNowIndex')
-      } else if (this.$store.state.musicPlayModel === 'single-loop') {
+      if (this.musicPlayModel === 'loop') {
+        this.changemusicPlayListNowIndex()
+      } else if (this.musicPlayModel === 'single-loop') {
         this.musicSource.play()
       } else {
         let indexTemp
         do {
-          indexTemp = Number.parseInt(this.$store.state.musicPlayList.length * Math.random())
-        } while (indexTemp === this.$store.state.musicPlayListNowIndex)
-        this.$store.commit('changemusicPlayListNowIndex', {nowIndexNum: indexTemp})
+          indexTemp = Number.parseInt(this.musicPlayList.length * Math.random())
+        } while (indexTemp === this.musicPlayListNowIndex)
+        this.changemusicPlayListNowIndex({nowIndexNum: indexTemp})
       }
+    },
+
+    /**
+     * 删除播放列表某项
+     * @param delMusicListIndex
+     */
+    delMusicListItem (delMusicListIndex) {
+      this.delMusicPlayList(delMusicListIndex)
+      this.musicPlay()
+    },
+
+    /**
+     * 切换播放列表中的歌曲
+     * @param playIndex
+     */
+    playThisMusic (playIndex) {
+      this.changemusicPlayListNowIndex({nowIndexNum: playIndex})
     },
 
     /**
@@ -225,29 +259,29 @@ export default {
      */
     changeMusicPlayModel () {
       let type
-      if (this.$store.state.musicPlayModel === 'loop') {
+      if (this.musicPlayModel === 'loop') {
         type = 'single-loop'
-      } else if (this.$store.state.musicPlayModel === 'single-loop') {
+      } else if (this.musicPlayModel === 'single-loop') {
         type = 'random'
       } else {
         type = 'loop'
       }
-      this.$store.commit('changeMusicPlayModel', type)
+      this.musicPlayModel = type
     },
 
     /**
      * 是否展示播放列表内容
      */
     changeMusicPlayListContentShowStatus () {
-      this.$store.commit('changeMusicPlayListContentShowStatus')
+      this.musicPlayListContentShowStatus = !this.musicPlayListContentShowStatus
     },
 
     /**
-     * 控制是否有音量
+     * 改变声音On或者Off状态
      */
     changeMusicVolumeStatus () {
-      this.$store.state.musicVolumeStatus ? this.musicSource.volume = 0 : this.musicSource.volume = this.$store.state.musicVolumeLevel
-      this.$store.commit('changeMusicVolumeStatus')
+      this.musicVolumeStatus ? this.musicSource.volume = 0 : this.musicSource.volume = this.musicVolumeLevel
+      this.musicVolumeStatus = !this.musicVolumeStatus
     },
 
     /**
@@ -255,7 +289,45 @@ export default {
      */
     clearMusicPlayList () {
       this.musicSource.pause()
-      this.$store.commit('delMusicPlayList', -1)
+      this.delMusicPlayList()
+    },
+
+    /**
+     * 改变现在播放音乐在播放列表的索引号
+     * @param option
+     */
+    changemusicPlayListNowIndex (option = {nowIndexNum: -1, prevOrNext: 'next'}) {
+      this.musicIsPlay = true
+      if (option.nowIndexNum === -1) {
+        if ((option.prevOrNext === 'next') && ((this.musicPlayListNowIndex + 1) === this.musicPlayList.length)) {
+          this.musicPlayListNowIndex = 0
+        } else if ((option.prevOrNext === 'prev') && ((this.musicPlayListNowIndex - 1) === -1)) {
+          this.musicPlayListNowIndex = this.musicPlayList.length - 1
+        } else if ((option.prevOrNext === 'next') && ((this.musicPlayListNowIndex + 1) < this.musicPlayList.length)) {
+          this.musicPlayListNowIndex++
+        } else {
+          this.musicPlayListNowIndex--
+        }
+      } else {
+        this.musicPlayListNowIndex = option.nowIndexNum
+      }
+    },
+
+    /**
+     * 删除特定/清空播放列表
+     * @param delMusicListIndex
+     */
+    delMusicPlayList (delMusicListIndex = -1) {
+      if (delMusicListIndex === -1) {
+        this.musicIsPlay = false
+        this.musicPlayListNowIndex = 0
+        this.musicPlayList = []
+      } else {
+        if (delMusicListIndex < this.musicPlayListNowIndex) {
+          this.musicPlayListNowIndex--
+        }
+        this.musicPlayList.splice(delMusicListIndex, 1)
+      }
     }
   }
 }
@@ -304,6 +376,37 @@ export default {
   }
   #volumeButton:hover > #volumeBar:hover {
     display:block;
+  }
+
+  .music-list-cell .play {
+    opacity:0;
+    color: #20dbfc;
+  }
+  .music-list-cell > div.active > .play {
+    opacity:1;
+  }
+  .music-list-cell .music-cell-oper {
+    width:15%;
+    left:325px;
+    opacity:0;
+    display:inline-block;
+  }
+  .music-list-cell > div {
+    padding:0 13px 0 0;
+  }
+  .music-list-cell > div:hover {
+    background:#111;
+  }
+  .music-list-cell > div.active {
+    background:#0D0D0D;
+  }
+  .music-list-cell > div:hover > .music-cell-oper {
+    opacity:1;
+  }
+  .music-list-cell > div > p {
+    top:0;
+    position:absolute;
+    z-index:9;
   }
 
   .question {
