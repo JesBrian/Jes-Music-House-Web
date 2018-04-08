@@ -42,6 +42,10 @@ export default {
     $route () {
       document.querySelector('.gm-scroll-view').scrollTop = 0
     }
+  },
+
+  created () {
+    document.getElementById('titleId').innerHTML = 'MH - 倾听这个世界'
   }
 }
 </script>

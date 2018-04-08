@@ -32,6 +32,10 @@ export default {
 
   components: {
     NavigationBar
+  },
+
+  created () {
+    document.getElementById('titleId').innerHTML = 'MH - 后台管理系统'
   }
 }
 </script>
