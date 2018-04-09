@@ -16,13 +16,15 @@
 <script>
 import Warning from './tyep/Warning.vue'
 import Login from './tyep/Login.vue'
+import Register from './tyep/Register.vue'
 
 export default {
   name: 'HomeModal',
 
   components: {
     Warning,
-    Login
+    Login,
+    Register
   },
 
   methods: {
@@ -35,7 +37,7 @@ export default {
 
 <style scoped>
   div >>> #modalType {
-    width:638px; top:50%; left:50%; padding:18px 16px; position:absolute; transform:translate(-50%, -50%); box-sizing:border-box;
+    width:638px; top:50%; left:50%; padding:18px; position:absolute; transform:translate(-50%, -50%); box-sizing:border-box;
     box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 0 5px -1px #20DBFC, inset 0 0 0 1px #272727;
   }
 </style>

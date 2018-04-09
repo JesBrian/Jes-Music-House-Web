@@ -5,8 +5,8 @@
 
     <!-- 拟态框标题 -->
     <div class="cube-bg box-show" style="width:100%; height:42px; line-height:35px; text-align:center;">
-      <img v-lazy="require('../../../../../static/img/icon/warning.png')" style="width:30px; height:30px; margin:0 8px -5px 0;"/>
-      <span style="display:inline-block; font-size:27px; letter-spacing:3px; font-weight:700;">操作警告</span>
+      <img v-lazy="require('../../../../../static/img/icon/addUser.png')" style="width:30px; height:30px; margin:0 8px -5px 0;"/>
+      <span style="display:inline-block; font-size:27px; letter-spacing:3px; font-weight:700;">用户注册</span>
     </div>
 
     <!-- 拟态框内容 -->
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'Warning'
+  name: 'Register'
 }
 </script>
 
