@@ -14,7 +14,7 @@
           <i @click="nextMusic" class="mh-if double-arrow-right" style="margin-top:1px; float:right; font-size:18px;"></i>
         </div>
         <!-- 歌曲控制 -->
-        <div style="width:968px; height:100%; padding:0 16px 0 28px; box-sizing:border-box; display:inline-block; border-right:2px solid; border-image:linear-gradient(#181818, #1D1D1D, #444, #222, #181818) 1 1;">
+        <div style="width:938px; height:100%; padding:0 0 0 28px; box-sizing:border-box; display:inline-block;">
           <router-link id="songResource" to="/song" class="glass-bg" style="width:31px; height:31px; margin:4px 0; float:left; display:inline-block;">
             <img v-lazy="require('../../../../static/img/default/default_album.jpg')" style="width:100%; height:100%; border-radius:3.5px;" />
           </router-link>
@@ -31,10 +31,9 @@
                 </div>
               </div>
             </div>
+            <!-- 播放时间 -->
             <div style="width:16%; height:50%; float:right; text-align:center; line-height:18.5px; font-size:13.5px;">
-              {{ this.musicCTime }}
-              -
-              {{ this.musicDTime }}
+              {{ this.musicCTime }} - {{ this.musicDTime }}
             </div>
           </div>
           <div style="float:right;">
@@ -43,7 +42,8 @@
           </div>
         </div>
         <!-- 其他控制 -->
-        <div style="height:100%; margin-right:23px; display:inline-block; float:right;">
+        <div style="height:100%; margin:0 23px; display:inline-block; float:right;">
+          <!-- 音量 -->
           <div id="volumeButton" style="margin-right:8px; display:inline-block; position:relative;">
             <i @click="changeMusicVolumeStatus" class="mh-if" :class="this.musicVolumeStatus ? 'volume-on' : 'volume-off'" style="font-size:23px;"></i>
             <div v-show="this.musicVolumeStatus" id="volumeBar">
@@ -56,11 +56,20 @@
               </div>
             </div>
           </div>
-          <i @click="changeMusicPlayModel" class="mh-if" :class="this.musicPlayModel" style="margin-right:8px; font-size:22px;"></i>
+          <!-- 播放模式 -->
+          <i @click="changeMusicPlayModel" class="play-model mh-if" :class="this.musicPlayModel" style="margin-right:8px; position:relative; z-index:2; font-size:22px;">
+            <span class="glass-bg box-show">{{ musicPlayModel === 'loop' ? '循环列表': musicPlayModel === 'single-loop' ? '单曲循环' : '随机播放' }}</span>
+          </i>
+          <!-- 播放列表 -->
           <i @click="changeMusicPlayListContentShowStatus" class="mh-if menu" style="margin-right:8px; position:relative; z-index:2; font-size:24px;">
-            <span class="box-show" style="width:38px; height:19px; top:3.2px; left:20px; padding:0 3px; position:absolute; z-index:-1; background:#000; box-sizing:border-box; border-radius:0 9px 9px 0; text-align:center; font-size:12.5px; line-height:20px; color:#666; text-shadow:2px 2px 6px #000;">{{ this.musicPlayList.length }}</span>
+            <span style="width:38px; height:19px; top:3.2px; left:20px; padding:0 3px; position:absolute; z-index:-1; box-sizing:border-box; border-radius:0 10px 10px 0;
+             box-shadow:0.3px 0.3px 2.5px -0.6px #AAA, inset 0 0 6px #000, inset 0 2px 2px #000, inset 3px 0 2px #000, inset -2px 0 2px #000;
+             text-align:center; font-size:12.5px; line-height:20px; color:#666; text-shadow:2px 2px 6px #000;">{{ this.musicPlayList.length }}</span>
           </i>
         </div>
+
+        <div style="width:0; height:100%; margin:0; padding:0; float:right; display:inline-block; border-right:1px solid; border-image:linear-gradient(#181818, #1D1D1D, #080808, #1D1D1D, #181818) 1 1;"></div>
+        <div style="width:0; height:100%; margin:0; padding:0; float:right; display:inline-block; border-left:1px solid; border-image:linear-gradient(#181818, #1D1D1D, #444, #1D1D1D, #181818) 1 1;"></div>
       </div>
     </div>
 
@@ -364,11 +373,12 @@ export default {
 <style scoped>
   .mh-if {
     color:#999;
+    text-shadow: 0 0 6px #000;
   }
   .mh-if:hover {
     cursor:pointer;
     color: #46dfff;
-    text-shadow: 0 0 3px #000;
+    text-shadow: 0 0 3px #666, 0 0 18px #000;
     opacity:1!important;
   }
   .mh-if:hover > span {
@@ -404,6 +414,13 @@ export default {
   }
   #volumeButton:hover > #volumeBar:hover {
     display:block;
+  }
+
+  .play-model > span {
+    width:80px; height:28px; top:-43px; left:50%; padding-left:2px; position:absolute; transform:translate(-50%,0); display:none; text-align:center; font-size:15px; line-height:28px; letter-spacing:1.2px;
+  }
+  .play-model:hover > span {
+    display: block;
   }
 
   .music-list-cell .play {

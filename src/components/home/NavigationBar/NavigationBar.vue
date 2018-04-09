@@ -154,14 +154,13 @@ export default {
     padding:0 13px 0 18px; display:inline-block; float:left; cursor:pointer; color:#999; position:relative;
   }
   .first-menu-link.active, .first-menu-link:hover {
-    color:#BBB;
+    color:#DDD;
     background:#222;
     box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 0 12px rgba(0, 0, 0, 0.5), inset 0 0 0 1px #272727;
     z-index:5;
   }
   .first-menu-link.active{
-    color:#DDD;
-    background:#232323;
+    background:#333;
     z-index:9;
   }
   .first-menu-link > .triangle-up {
