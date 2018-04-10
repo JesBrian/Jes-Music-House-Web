@@ -32,7 +32,7 @@ export default {
     // 为了保证兼容性，这里取两个值，哪个有值取哪一个
     let scrollTop = document.querySelector('.gm-scroll-view').scrollTop
     // scrollTop就是触发滚轮事件时滚轮的高度
-    if (scrollTop > 168) this.unshow = false
+    if (scrollTop > 108) this.unshow = false
     else {
       this.unshow = true
     }
@@ -43,7 +43,7 @@ export default {
       // 为了保证兼容性，这里取两个值，哪个有值取哪一个
       let scrollTop = document.querySelector('.gm-scroll-view').scrollTop
       // scrollTop就是触发滚轮事件时滚轮的高度
-      if (scrollTop > 168) that.unshow = false
+      if (scrollTop > 108) that.unshow = false
       else {
         that.unshow = true
       }

@@ -9,11 +9,11 @@ export default [
 
     children: [
       {
-        path: 'index',
+        path: '/index',
         component: () => import('../../views/home/type/base/Index.vue')
       },
       {
-        path: 'search',
+        path: '/search',
         component: () => import('../../views/home/type/base/Search.vue')
       },
       {
@@ -21,67 +21,67 @@ export default [
         component: () => import('../../views/home/type/base/Rank.vue')
       },
       {
-        path: 'download/client',
+        path: '/download/client',
         component: () => import('../../views/home/type/download/DownloadClient.vue')
       },
       {
-        path: 'user',
+        path: '/user',
         component: () => import('../../views/home/type/user/User.vue')
       },
       {
-        path: 'friend',
+        path: '/friend',
         component: () => import('../../views/home/type/user/Friend.vue')
       },
       {
-        path: 'update',
+        path: '/update',
         component: () => import('../../views/home/type/user/Update.vue')
       },
       {
-        path: 'level',
+        path: '/level',
         component: () => import('../../views/home/type/user/Level.vue')
       },
       {
-        path: 'vip',
+        path: '/vip',
         component: () => import('../../views/home/type/user/Vip.vue')
       },
       {
-        path: 'message',
+        path: '/message',
         component: () => import('../../views/home/type/user/Message.vue')
       },
       {
-        path: 'user/recommend',
+        path: '/user/recommend',
         component: () => import('../../views/home/type/user/Recommend.vue')
       },
       {
-        path: 'user/album',
+        path: '/user/album',
         component: () => import('../../views/home/type/user/Album.vue')
       },
       {
-        path: 'user/rank',
+        path: '/user/rank',
         component: () => import('../../views/home/type/user/Rank.vue')
       },
       {
-        path: 'album',
+        path: '/album',
         component: () => import('../../views/home/type/music/Album.vue')
       },
       {
-        path: 'disc',
+        path: '/disc',
         component: () => import('../../views/home/type/music/Disc.vue')
       },
       {
-        path: 'song',
+        path: '/song',
         component: () => import('../../views/home/type/music/Song.vue')
       },
       {
-        path: 'download/music',
+        path: '/download/music',
         component: () => import('../../views/home/type/download/DownloadMusic.vue')
       },
       {
-        path: 'singer',
+        path: '/singer',
         component: () => import('../../views/home/type/music/Singer.vue')
       },
       {
-        path: 'musician',
+        path: '/musician',
         component: () => import('../../views/home/type/music/Musician.vue')
       }
     ]
