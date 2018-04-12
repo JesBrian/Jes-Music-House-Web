@@ -2,9 +2,11 @@
   <div id="homeLayout">
     <div class="box-show" style="width:100%; height:328px; padding:0 68px; position:relative;">
       <!-- 轮播图区域 -->
-      <div style="width:76%; height:100%; float:left; background:#7596ff"></div>
-      <div style="width:68px; height:108px; top:50%; left:0; position:absolute; display:inline-block; transform:translate(0,-50%); background:lightgreen;"></div>
-      <div style="width:68px; height:108px; top:50%; right:0; position:absolute; display:inline-block; transform:translate(0,-50%); background:lightgreen;"></div>
+      <div style="width:76%; height:100%; padding:4px; float:left; box-sizing:border-box;">
+        <slide-box style="background:#FFF"/>
+      </div>
+      <div style="width:68px; height:108px; top:48%; left:0; position:absolute; display:inline-block; transform:translate(0,-50%); background:lightgreen;"></div>
+      <div style="width:68px; height:108px; top:48%; right:0; position:absolute; display:inline-block; transform:translate(0,-50%); background:lightgreen;"></div>
 
       <!-- 下载区域 -->
       <div class="box-show" style="width:24%; height:100%; float:right;">
@@ -35,8 +37,14 @@
 </template>
 
 <script>
+import SlideBox from '../../../../components/common/SlideBox/SlideBox'
+
 export default {
-  name: 'index'
+  name: 'index',
+
+  components: {
+    SlideBox
+  }
 }
 </script>
 

@@ -31,10 +31,10 @@
 
         <div style="text-align:center;">
           <span class="super-btn-out" style="width:108px; height:38px; margin:0 48px 0 0;">
-            <button class="super-btn-in mh-if cancel" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 重新填写</button>
+            <span class="super-btn-in mh-if cancel" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 重新填写</span>
           </span>
           <span class="super-btn-out" @click="userLogin" style="width:108px; height:38px; margin:0 0 0 48px;">
-            <button class="super-btn-in mh-if makesure" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 确认登陆</button>
+            <span class="super-btn-in mh-if makesure" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 确认登陆</span>
           </span>
         </div>
 
