@@ -5,8 +5,6 @@
       <div class="" style="width:76%; height:100%; padding:0.5px 0 0; float:left; box-sizing:border-box;">
         <slide-box style="background:#FFF"/>
       </div>
-      <a class="p-n-btn prev-btn ban-select" style="width:36px; height:68px; top:48%; left:15px; position:absolute; display:inline-block; transform:translate(0,-50%);"></a>
-      <a class="p-n-btn next-btn ban-select" style="width:36px; height:68px; top:48%; right:15px; position:absolute; display:inline-block; transform:translate(0,-50%);"></a>
 
       <!-- 下载区域 -->
       <div class="box-show" style="width:24%; height:100%; float:right; position:relative; z-index:9; background:url('../../../../../static/img/default/download.png') no-repeat; background-size:100% 100%;">
@@ -44,7 +42,7 @@
               </router-link>
             </div>
             <ul>
-              <li v-for="n in 6" style="padding:0 8px 8px;">
+              <li v-for="n in 6" :key="n" style="padding:0 8px 8px;">
                 <router-link to="/singer" class="box-show" style="width:100%; height:58px; display:inline-block;"></router-link>
               </li>
             </ul>
@@ -71,20 +69,5 @@ export default {
 </script>
 
 <style scoped>
-  .p-n-btn {
-    background:url('../../../../../static/img/button/button.png') no-repeat;
-    background-size:auto 103%;
-  }
-  .p-n-btn.prev-btn {
-    background-position:0 0;
-  }
-  .p-n-btn.prev-btn:hover {
-    background-position:-38px 0;
-  }
-  .p-n-btn.next-btn {
-    background-position:-78px 0;
-  }
-  .p-n-btn.next-btn:hover {
-    background-position:-116px 0;
-  }
+
 </style>

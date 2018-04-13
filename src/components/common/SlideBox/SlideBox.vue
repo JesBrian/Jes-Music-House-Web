@@ -1,6 +1,6 @@
 <template>
   <!--轮播图组件-->
-  <div style="width:100%; height:100%;">
+  <div style="width:100%; height:100%; position:relative;">
     <!--<div style="height:5%;"></div>-->
     <swiper :options="swiperOption" style="width:100%; height:100%; position:relative;">
       <swiper-slide v-for="(slide, index) in swiperSlides" class="s1c-Bg" style="border-radius:3px;" :key="index">
@@ -10,6 +10,9 @@
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination" style="padding-bottom:4px; background:rgba(0,0,0,0.3);"></div>
     </swiper>
+
+    <a class="p-n-btn prev-btn ban-select" style="width:36px; height:68px; top:50%; left:-50px; position:absolute; display:inline-block; transform:translate(0,-50%);"></a>
+    <a class="p-n-btn next-btn ban-select" style="width:36px; height:68px; top:48%; right:-301px; position:absolute; display:inline-block; transform:translate(0,-50%);"></a>
   </div>
 </template>
 
@@ -30,14 +33,14 @@ export default {
   data () {
     return {
       swiperOption: {
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        },
-
         pagination: {
           el: '.swiper-pagination',
           clickable: true
+        },
+
+        navigation: {
+          prevEl: '.prev-btn',
+          nextEl: '.next-btn'
         },
 
         effect: 'fade',
@@ -68,12 +71,7 @@ export default {
         'https://c.s-microsoft.com/zh-cn/CMSImages/Image_WordTablet_v02_750x421.png?version=48ad4fda-d8ff-8e42-7303-5bb3bb1ae33a'
       ]
     }
-  },
-
-  mounted () {
-  },
-
-  methods: {}
+  }
 }
 </script>
 
@@ -85,5 +83,22 @@ export default {
   }
   .swiper-pagination >>> .swiper-pagination-bullet-active {
     background:#24C9FF;
+  }
+
+  .p-n-btn {
+    background:url('../../../../static/img/button/button.png') no-repeat;
+    background-size:auto 103%;
+  }
+  .p-n-btn.prev-btn {
+    background-position:0 0;
+  }
+  .p-n-btn.prev-btn:hover {
+    background-position:-38px 0;
+  }
+  .p-n-btn.next-btn {
+    background-position:-78px 0;
+  }
+  .p-n-btn.next-btn:hover {
+    background-position:-116px 0;
   }
 </style>
