@@ -74,7 +74,7 @@
     </div>
 
     <!-- 播放列表内容区域 -->
-    <div v-show="this.musicPlayListContentShowStatus" class="glass-bg box-show" style="width:1028px; height:290px; left:50%; bottom:45px; position:absolute; transform:translate(-50%,0); z-index:-1; background:#181818; opacity:0.96; border-radius:8px 8px 0 0; color:#AAA;">
+    <div v-show="this.musicPlayListContentShowStatus" class="glass-bg box-show" style="width:1028px; height:290px; left:50%; bottom:45px; position:absolute; transform:translate(-50%,0); z-index:-1; background:#151515; opacity:0.988; border-radius:8px 8px 0 0; color:#999;">
       <div class="box-show" style="width:100%; height:38px; border-radius:8px 8px 0 0; line-height:40px; z-index:9;">
         <div style="width:62%; height:100%; padding:0 2%; float:left; box-sizing:border-box;">
           <span style="font-weight:700;">播放列表 [ {{ this.musicPlayList.length }} ]</span>
@@ -93,8 +93,8 @@
         <div style="width:62%; height:100%; padding-top:3px; float:left; display:inline-block; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;">
           <gemini-scrollbar>
             <ul style="width:100%; height:100%; line-height:27px;">
-              <li v-for="(item, index) in this.musicPlayList" :key="index" class="box-shadow music-list-cell" style="width:100%; height:28px; box-sizing:border-box; padding:0 2px; z-index:2;">
-                <div :class="{'active': musicPlayListNowIndex === index}" style="width:100%; height:100%; position:relative;">
+              <li v-for="(item, index) in this.musicPlayList" :key="index" class="box-shadow" style="width:100%; height:28px; padding:1px; box-sizing:border-box; z-index:2;">
+                <div :class="{'active': musicPlayListNowIndex === index}" class="music-list-cell" style="width:100%; height:100%; position:relative;">
 
                   <!-- BEGIN 点击切换播放歌曲 BEGIN -->
                   <div @click="playThisMusic(index)" style="width:100%; height:100%; position:relative; z-index:1;"></div>
@@ -427,7 +427,7 @@ export default {
     opacity:0;
     color: #20dbfc;
   }
-  .music-list-cell > div.active > .play {
+  .music-list-cell.active > .play {
     opacity:1;
   }
   .music-list-cell .music-cell-oper {
@@ -436,19 +436,22 @@ export default {
     opacity:0;
     display:inline-block;
   }
-  .music-list-cell > div {
+  .music-list-cell {
     padding:0 13px 0 0;
   }
-  .music-list-cell > div:hover {
-    background:#111;
+  .music-list-cell:hover, .music-list-cell.active {
+    color:#EEE;
   }
-  .music-list-cell > div.active {
-    background:#0D0D0D;
+  .music-list-cell:hover {
+    background:#0B0B0B;
   }
-  .music-list-cell > div:hover > .music-cell-oper {
+  .music-list-cell.active {
+    background:#030303;
+  }
+  .music-list-cell:hover > .music-cell-oper {
     opacity:1;
   }
-  .music-list-cell > div > p {
+  .music-list-cell > p {
     top:0;
     position:absolute;
     z-index:9;

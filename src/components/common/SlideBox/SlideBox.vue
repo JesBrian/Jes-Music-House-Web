@@ -8,7 +8,7 @@
         <!--<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>-->
         <!--<baseLoading class="my-lazy-preloader" style="top:50%; left:50%; transform:translate(-50%, -50%); position:absolute;"/>-->
       </swiper-slide>
-      <div class="swiper-pagination" slot="pagination" style="padding-bottom:4px; background:rgba(0,0,0,0.3);"></div>
+      <div class="swiper-pagination" slot="pagination" style="padding-bottom:4px; background:rgba(0,0,0,0.5);"></div>
     </swiper>
 
     <a class="p-n-btn prev-btn ban-select" style="width:36px; height:68px; top:50%; left:-50px; position:absolute; display:inline-block; transform:translate(0,-50%);"></a>
