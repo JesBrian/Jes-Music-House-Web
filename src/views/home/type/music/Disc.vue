@@ -10,10 +10,8 @@
       <span style="float:left; font-size:32px; font-weight:700;">全部新碟</span>
     </div>
 
-    <div style="width:100%; height:688px;">
-
-      <pagination />
-    </div>
+    <table style="width:100%; height:888px;"></table>
+    <pagination />
 
   </div>
 </template>
