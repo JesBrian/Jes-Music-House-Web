@@ -69,6 +69,10 @@ export default [
         component: () => import('../../views/home/type/music/Disc.vue')
       },
       {
+        path: '/playList',
+        component: () => import('../../views/home/type/music/PlayList.vue')
+      },
+      {
         path: '/song',
         component: () => import('../../views/home/type/music/Song.vue')
       },

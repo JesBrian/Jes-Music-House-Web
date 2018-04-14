@@ -44,7 +44,7 @@
             <ul>
               <li v-for="n in 6" :key="n" style="padding:0 8px 8px;">
                 <router-link to="/singer" class="box-show" style="width:100%; height:58px; display:inline-block;">
-                  <img v-lazy="" style="width:43px; height:43px; margin:7px 8px; float:left; background:lightskyblue;"/>
+                  <img v-lazy="" style="width:43px; height:43px; margin:7px 8px; float:left; border-radius:3px;"/>
                   <p style="line-height:1.8em; font-size:18px; font-weight:700; color:#BBB;">JesBrian</p>
                   <p class="text-hidden" style="width:70%; color:#888;">vghjbknlm;,.vdwjbknlm;,.vdwsvsd</p>
                 </router-link>
