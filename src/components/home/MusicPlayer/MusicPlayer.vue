@@ -26,14 +26,14 @@
             <!-- 播放进度 -->
             <div class="box-show" style="width:84%; height:10px; margin-top:5.5px; float:left; border-radius:8px; background:#000;">
               <div class="box-show" style="width:68%; height:100%; border-radius:6px; background:#181818; z-index:9;">
-                <div style="width:68%; height:90%; background:linear-gradient(to right, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px; position:relative;">
-                  <a id="progressPointer" class="controller-pointer glass-bg box-show"></a>
+                <div :style="{'width': musicCTime / musicDTime * 100 + '%'}" style="width:0; height:90%; background:linear-gradient(to right, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px; position:relative;">
+                  <a id="progressPointer" class="controller-pointer glass-bg box-show" style="top:-4px; right:-9px;"></a>
                 </div>
               </div>
             </div>
             <!-- 播放时间 -->
             <div style="width:16%; height:50%; float:right; text-align:center; line-height:18.5px; font-size:13.5px;">
-              {{ this.musicCTime }} - {{ this.musicDTime }}
+              {{ timeStampToTime(musicCTime) }} - {{ timeStampToTime(musicDTime) }}
             </div>
           </div>
           <div style="float:right;">
@@ -48,9 +48,9 @@
             <i @click="changeMusicVolumeStatus" class="mh-if" :class="this.musicVolumeStatus ? 'volume-on' : 'volume-off'" style="font-size:23px;"></i>
             <div v-show="this.musicVolumeStatus" id="volumeBar">
               <div class="glass-bg box-show" style="width:100%; height:96%;">
-                <div class="box-show" style="width:10px; height:88%; margin:7px 9.5px; display:inline-block; position:relative; border-radius:5px; background:#000;">
-                  <div style="width:100%; height:68%; left:0; bottom:0; background:linear-gradient(to top, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px; position:absolute;">
-                    <a class="controller-pointer glass-bg box-show" style="right:-4px;"></a>
+                <div @click="clickMusicVolumeBar" id="volumeBarClickContent" class="box-show" style="width:10px; height:100px; margin:13px 9.5px 0; display:inline-block; position:relative; border-radius:5px; background:#000;">
+                  <div :style="{'height': this.musicVolumeLevel * 100 + '%'}" style="width:100%; left:0; bottom:0; background:linear-gradient(to top, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px; position:absolute;">
+                    <a class="controller-pointer glass-bg box-show" style="top:-9px; right:-4px;"></a>
                   </div>
                 </div>
               </div>
@@ -154,11 +154,11 @@ export default {
   data () {
     return {
       musicSource: null, // 音乐资源 MP3
-      musicCTime: '00:00',
-      musicDTime: '00:00',
+      musicCTime: 0,
+      musicDTime: 0,
       musicIsPlay: false, // 音乐播放/暂停状态
       musicVolumeStatus: true, // 音量开关状态
-      musicVolumeLevel: 0.6, // 音量大小
+      musicVolumeLevel: 0.8, // 音量大小
       musicPlayModel: 'loop', // 三种播放模式 [ loop-歌单循环，single-loop-单曲循环，random-歌单里歌曲随机播放 ]
       musicPlayListNowIndex: 0, // 当前播放歌曲的下标 - 对应播放列表 musicPlayList 的数组下标
       musicPlayList: ['test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7', 'test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7'],
@@ -201,11 +201,11 @@ export default {
     },
 
     _currentTime () {
-      this.musicCTime = timeStampToTime(this.musicSource.currentTime)
+      this.musicCTime = this.musicSource.currentTime
     },
 
     _durationTime () {
-      this.musicDTime = timeStampToTime(this.musicSource.duration)
+      this.musicDTime = this.musicSource.duration
     },
 
     /**
@@ -322,6 +322,27 @@ export default {
     },
 
     /**
+     * 修改音量大小
+     */
+    changeMusicVolume (volume = 0) {
+      if (volume < 0 || volume > 1) {
+        return false
+      }
+      this.musicVolumeLevel = volume
+    },
+
+    /**
+     * 点击音量条
+     */
+    clickMusicVolumeBar (event) {
+      // 鼠标点击的绝对位置
+      let mousePos = this.mouseCoords(event)
+      let y = mousePos.y
+      let y1 = this.getElementTop(document.getElementById('volumeBarClickContent'))
+      this.changeMusicVolume(1 - (y - y1) / 100)
+    },
+
+    /**
      * 清空播放列表
      */
     clearMusicPlayList () {
@@ -365,6 +386,46 @@ export default {
         }
         this.musicPlayList.splice(delMusicListIndex, 1)
       }
+    },
+
+    timeStampToTime (timeStamp) {
+      return timeStampToTime(timeStamp)
+    },
+
+    mouseCoords (event) {
+      if (event.pageX || event.pageY) {
+        return {
+          x: event.pageX,
+          y: event.pageY
+        }
+      }
+      return {
+        x: event.clientX + document.body.scrollLeft - document.body.clientLeft,
+        y: event.clientY + document.body.scrollTop - document.body.clientTop
+      }
+    },
+
+    getElementLeft (element) {
+      var actualLeft = element.offsetLeft
+      var current = element.offsetParent
+
+      while (current !== null) {
+        actualLeft += current.offsetLeft
+        current = current.offsetParent
+      }
+
+      return actualLeft
+    },
+    getElementTop (element) {
+      var actualTop = element.offsetTop
+      var current = element.offsetParent
+
+      while (current !== null) {
+        actualTop += current.offsetTop
+        current = current.offsetParent
+      }
+
+      return actualTop
     }
   }
 }
@@ -393,7 +454,7 @@ export default {
   }
 
   .controller-pointer {
-    width:18px; height:18px; top:-4px; right:-9px; position:absolute; display:inline-block; border-radius:50%; line-height:12px; text-align:center;
+    width:18px; height:18px; position:absolute; display:inline-block; border-radius:50%; line-height:12px; text-align:center;
   }
   .controller-pointer:hover {
     box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727, 0 0 8px #2af1fc;
@@ -403,7 +464,7 @@ export default {
     display:inline-block;
   }
   #volumeBar {
-    width:30px; height:128px; left:-20%; bottom:41.5px; position:absolute;
+    width:30px; height:133px; left:-20%; bottom:41.5px; position:absolute;
     display:none;
   }
   #volumeBar > div {
