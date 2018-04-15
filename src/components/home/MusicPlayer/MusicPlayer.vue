@@ -24,11 +24,10 @@
               <router-link to="/singer" style="height:100%; margin-top:-10.7px; float:left; font-size:12px; color:#AAA;">歌手/Singer Name</router-link>
             </div>
             <!-- 播放进度 -->
-            <div class="box-show" style="width:84%; height:10px; margin-top:5.5px; float:left; border-radius:8px; background:#000;">
-              <div class="box-show" style="width:68%; height:100%; border-radius:6px; background:#181818; z-index:9;">
-                <div :style="{'width': musicCTime / musicDTime * 100 + '%'}" style="width:0; height:90%; background:linear-gradient(to right, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px; position:relative;">
-                  <a id="progressPointer" class="controller-pointer glass-bg box-show" style="top:-4px; right:-9px;"></a>
-                </div>
+            <div @click="clickMusicProgressBar" id="progressBarClickContent" class="box-show" style="width:638px; height:10px; margin-top:5.5px; float:left; position:relative; border-radius:8px; background:#000;">
+              <div class="box-show" style="width:68%; height:100%; border-radius:6px; background:#181818; z-index:9;"></div>
+              <div :style="{'width': musicCTime / musicDTime * 100 + '%'}" style="height:83%; top:9%; left:0; position:absolute; background:linear-gradient(to right, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px;">
+                <a id="progressPointer" class="controller-pointer glass-bg box-show" style="top:-4px; right:-9px;"></a>
               </div>
             </div>
             <!-- 播放时间 -->
@@ -185,6 +184,10 @@ export default {
       setTimeout(() => {
         this.musicSource.play()
       }, 88)
+    },
+
+    musicVolumeLevel () {
+      this.musicSource.volume = this.musicVolumeLevel
     }
   },
 
@@ -335,11 +338,31 @@ export default {
      * 点击音量条
      */
     clickMusicVolumeBar (event) {
-      // 鼠标点击的绝对位置
       let mousePos = this.mouseCoords(event)
       let y = mousePos.y
       let y1 = this.getElementTop(document.getElementById('volumeBarClickContent'))
       this.changeMusicVolume(1 - (y - y1) / 100)
+    },
+
+    /**
+     * 修改音乐播放进度
+     */
+    changeMusicPlayProgress (progress = 0) {
+      if (progress < 0 || progress > 638) {
+        return false
+      }
+      let progressRate = progress / 638
+      this.musicSource.currentTime = Number.parseInt(this.musicDTime * progressRate)
+    },
+
+    /**
+     * 点击播放进度条
+     */
+    clickMusicProgressBar (event) {
+      let mousePos = this.mouseCoords(event)
+      let x = mousePos.x
+      let x1 = this.getElementLeft(document.getElementById('progressBarClickContent'))
+      this.changeMusicPlayProgress(x - x1)
     },
 
     /**
