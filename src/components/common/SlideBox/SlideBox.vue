@@ -12,7 +12,7 @@
     </swiper>
 
     <a class="p-n-btn prev-btn ban-select" style="width:36px; height:68px; top:50%; left:-50px; position:absolute; display:inline-block; transform:translate(0,-50%);"></a>
-    <a class="p-n-btn next-btn ban-select" style="width:36px; height:68px; top:48%; right:-301px; position:absolute; display:inline-block; transform:translate(0,-50%);"></a>
+    <a class="p-n-btn next-btn ban-select" style="width:36px; height:68px; top:50%; right:-301px; position:absolute; display:inline-block; transform:translate(0,-50%);"></a>
   </div>
 </template>
 
