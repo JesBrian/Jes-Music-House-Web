@@ -2,7 +2,7 @@
   <!-- 音乐播放器组件 -->
   <div style="width:100%; height:48px; left:0; bottom:0; position:fixed;">
     <!-- 音乐播放器资源 -->
-    <audio ref="homeMusicSource" id="homeMusicSource" preload @ended="nowMusicEndNextPlay" :src="'http://music.jesbrian.cn/static/music/' + this.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0; position:absolute;"></audio>
+    <audio id="homeMusicSource" preload @ended="nowMusicEndNextPlay" :src="'http://music.jesbrian.cn/static/music/' + this.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0; position:absolute;"></audio>
 
     <!-- 播放器主控制 -->
     <div class="glass-bg box-show" style="width:100%; height:100%; border-radius:0; opacity:0.96; background:#181818; z-index:9;">
@@ -27,7 +27,7 @@
             <div @click="clickMusicProgressBar" id="progressBarClickContent" class="box-show" style="width:638px; height:10px; margin-top:5.5px; float:left; position:relative; border-radius:8px; background:#000;">
               <div :style="{'width': musicBufferedRate * 100 + '%'}" class="box-show" style="width:0; height:100%; border-radius:6px; background:#181818; z-index:9;"></div>
               <div :style="{'width': musicCTime / musicDTime * 100 + '%'}" style="height:83%; top:9%; left:0; position:absolute; background:linear-gradient(to right, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px;">
-                <a id="progressPointer" class="controller-pointer glass-bg box-show" style="top:-4px; right:-9px;"></a>
+                <a @mousedown="dragProgressControllerPointer" id="progressPointer" class="controller-pointer glass-bg box-show" style="top:-4px; right:-9px;"></a>
               </div>
             </div>
             <!-- 播放时间 -->
@@ -49,7 +49,7 @@
               <div class="glass-bg box-show" style="width:100%; height:96%;">
                 <div @click="clickMusicVolumeBar" id="volumeBarClickContent" class="box-show" style="width:10px; height:100px; margin:13px 9.5px 0; display:inline-block; position:relative; border-radius:5px; background:#000;">
                   <div :style="{'height': this.musicVolumeLevel * 100 + '%'}" style="width:100%; left:0; bottom:0; background:linear-gradient(to top, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px; position:absolute;">
-                    <a class="controller-pointer glass-bg box-show" style="top:-9px; right:-4px;"></a>
+                    <a @mousedown="dragVolumeControllerPointer" class="controller-pointer glass-bg box-show" style="top:-9px; right:-4px;"></a>
                   </div>
                 </div>
               </div>
@@ -211,11 +211,9 @@ export default {
       clearInterval(this.timer)
       this.timer = setInterval(() => {
         this.musicBufferedRate = this.musicSource.buffered.end(0) / this.musicDTime
-        console.log(this.musicBufferedRate)
         if (this.musicBufferedRate === 1) {
           clearInterval(this.timer)
           this.timer = null
-          console.log(666)
         }
       }, 368)
     },
@@ -354,13 +352,32 @@ export default {
     },
 
     /**
+     * 拖动音量指针
+     */
+    dragVolumeControllerPointer (event) {
+      // 注册document的mousemove事件
+      document.onmousemove = (ev) => {
+        let oEvent = ev || event
+        let mousePos = this.mouseCoords(oEvent)
+        let y = mousePos.y
+        let y1 = this.getElementTop(document.getElementById('volumeBarClickContent'))
+        this.changeMusicVolume(1 - (y - y1) / 100)
+      }
+
+      // 鼠标放开清除事件
+      document.onmouseup = () => {
+        document.onmousemove = null
+        document.onmouseup = null
+      }
+    },
+
+    /**
      * 修改音乐播放进度
      */
     changeMusicPlayProgress (progress = 0) {
       if (progress < 0 || progress > 638) {
         return false
       }
-      // console.log(this.timer)
       clearInterval(this.timer)
       let progressRate = progress / 638
       this.musicSource.currentTime = Number.parseInt(this.musicDTime * progressRate)
@@ -374,6 +391,26 @@ export default {
       let x = mousePos.x
       let x1 = this.getElementLeft(document.getElementById('progressBarClickContent'))
       this.changeMusicPlayProgress(x - x1)
+    },
+
+    /**
+     * 拖动播放进度条指针
+     */
+    dragProgressControllerPointer (event) {
+      // 注册document的mousemove事件
+      document.onmousemove = (ev) => {
+        let oEvent = ev || event
+        let mousePos = this.mouseCoords(oEvent)
+        let x = mousePos.x
+        let x1 = this.getElementLeft(document.getElementById('progressBarClickContent'))
+        this.changeMusicPlayProgress(x - x1)
+      }
+
+      // 鼠标放开清除事件
+      document.onmouseup = () => {
+        document.onmousemove = null
+        document.onmouseup = null
+      }
     },
 
     /**
