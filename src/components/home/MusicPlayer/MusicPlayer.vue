@@ -2,7 +2,7 @@
   <!-- 音乐播放器组件 -->
   <div style="width:100%; height:48px; left:0; bottom:0; position:fixed;">
     <!-- 音乐播放器资源 -->
-    <audio ref="homeMusicSource" id="homeMusicSource" preload @ended="nowMusicEndNextPlay" :src="'/static/music/' + this.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0; position:absolute;"></audio>
+    <audio ref="homeMusicSource" id="homeMusicSource" preload @ended="nowMusicEndNextPlay" :src="'http://music.jesbrian.cn/static/music/' + this.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0; position:absolute;"></audio>
 
     <!-- 播放器主控制 -->
     <div class="glass-bg box-show" style="width:100%; height:100%; border-radius:0; opacity:0.96; background:#181818; z-index:9;">
@@ -25,7 +25,7 @@
             </div>
             <!-- 播放进度 -->
             <div @click="clickMusicProgressBar" id="progressBarClickContent" class="box-show" style="width:638px; height:10px; margin-top:5.5px; float:left; position:relative; border-radius:8px; background:#000;">
-              <div class="box-show" style="width:68%; height:100%; border-radius:6px; background:#181818; z-index:9;"></div>
+              <div :style="{'width': musicBufferedRate * 100 + '%'}" class="box-show" style="width:0; height:100%; border-radius:6px; background:#181818; z-index:9;"></div>
               <div :style="{'width': musicCTime / musicDTime * 100 + '%'}" style="height:83%; top:9%; left:0; position:absolute; background:linear-gradient(to right, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px;">
                 <a id="progressPointer" class="controller-pointer glass-bg box-show" style="top:-4px; right:-9px;"></a>
               </div>
@@ -155,6 +155,8 @@ export default {
       musicSource: null, // 音乐资源 MP3
       musicCTime: 0,
       musicDTime: 0,
+      musicBufferedRate: 0,
+      timer: null,
       musicIsPlay: false, // 音乐播放/暂停状态
       musicVolumeStatus: true, // 音量开关状态
       musicVolumeLevel: 0.8, // 音量大小
@@ -168,11 +170,16 @@ export default {
   mounted () {
     this.musicSource = document.getElementById('homeMusicSource')
     this.musicSource.volume = this.musicVolumeLevel
-    this.addEventListeners()
+
+    this.musicSource.addEventListener('timeupdate', this._currentTime)
+    this.musicSource.addEventListener('canplay', this._durationTime)
+    this.musicSource.addEventListener('canplay', this._musicBuffered)
   },
 
   beforeDestroy () {
-    this.removeEventListeners()
+    this.musicSource.removeEventListener('timeupdate', this._currentTime)
+    this.musicSource.removeEventListener('canplay', this._durationTime)
+    this.musicSource.removeEventListener('canplay', this._musicBuffered)
   },
 
   watch: {
@@ -192,23 +199,25 @@ export default {
   },
 
   methods: {
-
-    addEventListeners () {
-      this.musicSource.addEventListener('timeupdate', this._currentTime)
-      this.musicSource.addEventListener('canplay', this._durationTime)
-    },
-
-    removeEventListeners () {
-      this.musicSource.removeEventListener('timeupdate', this._currentTime)
-      this.musicSource.removeEventListener('canplay', this._durationTime)
-    },
-
     _currentTime () {
       this.musicCTime = this.musicSource.currentTime
     },
 
     _durationTime () {
       this.musicDTime = this.musicSource.duration
+    },
+
+    _musicBuffered () {
+      clearInterval(this.timer)
+      this.timer = setInterval(() => {
+        this.musicBufferedRate = this.musicSource.buffered.end(0) / this.musicDTime
+        console.log(this.musicBufferedRate)
+        if (this.musicBufferedRate === 1) {
+          clearInterval(this.timer)
+          this.timer = null
+          console.log(666)
+        }
+      }, 368)
     },
 
     /**
@@ -351,6 +360,8 @@ export default {
       if (progress < 0 || progress > 638) {
         return false
       }
+      // console.log(this.timer)
+      clearInterval(this.timer)
       let progressRate = progress / 638
       this.musicSource.currentTime = Number.parseInt(this.musicDTime * progressRate)
     },
@@ -429,25 +440,21 @@ export default {
     },
 
     getElementLeft (element) {
-      var actualLeft = element.offsetLeft
-      var current = element.offsetParent
-
+      let actualLeft = element.offsetLeft
+      let current = element.offsetParent
       while (current !== null) {
         actualLeft += current.offsetLeft
         current = current.offsetParent
       }
-
       return actualLeft
     },
     getElementTop (element) {
-      var actualTop = element.offsetTop
-      var current = element.offsetParent
-
+      let actualTop = element.offsetTop
+      let current = element.offsetParent
       while (current !== null) {
         actualTop += current.offsetTop
         current = current.offsetParent
       }
-
       return actualTop
     }
   }
