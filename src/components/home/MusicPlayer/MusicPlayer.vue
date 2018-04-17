@@ -2,7 +2,7 @@
   <!-- 音乐播放器组件 -->
   <div style="width:100%; height:48px; left:0; bottom:0; position:fixed;">
     <!-- 音乐播放器资源 -->
-    <audio id="homeMusicSource" preload @ended="nowMusicEndNextPlay" :src="'http://music.jesbrian.cn/static/music/' + this.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0; position:absolute;"></audio>
+    <audio id="homeMusicSource" preload @ended="nowMusicEndNextPlay" :src="'/static/music/' + this.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0; position:absolute;"></audio>
 
     <!-- 播放器主控制 -->
     <div class="glass-bg box-show" style="width:100%; height:100%; border-radius:0; opacity:0.96; background:#181818; z-index:9;">
