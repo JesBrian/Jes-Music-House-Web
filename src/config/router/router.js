@@ -5,10 +5,12 @@ import BackstageRouter from './backstageRouter.js'
 
 Vue.use(Router)
 
+/**
+ * 路由跳转配置
+ */
 export default new Router({
-  /**
-   * 路由跳转配置
-   */
+  mode: 'history',
+
   routes: [
     ...HomeRouter,
     ...BackstageRouter
