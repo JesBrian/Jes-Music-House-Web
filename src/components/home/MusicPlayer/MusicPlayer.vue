@@ -355,12 +355,12 @@ export default {
      * 拖动音量指针
      */
     dragVolumeControllerPointer (event) {
+      let y1 = this.getElementTop(document.getElementById('volumeBarClickContent'))
       // 注册document的mousemove事件
       document.onmousemove = (ev) => {
         let oEvent = ev || event
         let mousePos = this.mouseCoords(oEvent)
         let y = mousePos.y
-        let y1 = this.getElementTop(document.getElementById('volumeBarClickContent'))
         this.changeMusicVolume(1 - (y - y1) / 100)
       }
 
@@ -397,12 +397,12 @@ export default {
      * 拖动播放进度条指针
      */
     dragProgressControllerPointer (event) {
+      let x1 = this.getElementLeft(document.getElementById('progressBarClickContent'))
       // 注册document的mousemove事件
       document.onmousemove = (ev) => {
         let oEvent = ev || event
         let mousePos = this.mouseCoords(oEvent)
         let x = mousePos.x
-        let x1 = this.getElementLeft(document.getElementById('progressBarClickContent'))
         this.changeMusicPlayProgress(x - x1)
       }
 
@@ -508,9 +508,6 @@ export default {
     color: #46dfff;
     text-shadow: 0 0 3px #666, 0 0 18px #000;
     opacity:1!important;
-  }
-  .mh-if:hover > span {
-    box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727, 0 0 3px #FFF;
   }
 
   #songResource {
