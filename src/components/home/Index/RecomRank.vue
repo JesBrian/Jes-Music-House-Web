@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div style="width:93%; height:68px; margin:0 auto 28px; padding:0 43px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;">
-      <span style="float:left; font-size:23px; font-weight:700;">榜单</span>
+    <div style="width:93%; height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;">
+      <i class="mh-if exponential" style="margin-right:8px; font-size:24px;"></i><span style="font-size:23px; font-weight:700;">榜单</span>
       <router-link to="/rank" class="read-more">更多 <i class="mh-if double-arrow-right"></i></router-link>
     </div>
 
@@ -24,7 +24,8 @@
         </div>
         <ul style="width:100%; line-height:32px;">
           <li v-for="n in 10" class="rank-cell" style="width:100%; height:32px; padding:0 12px 0 18px; box-sizing:border-box;">
-            {{ n }}
+            <span style="width:23px; float:left; margin-right:8px; text-align:center;">{{ n }}</span>
+            <p class="text-hidden" style="max-width:80%; float:left;">The Name of the Song {{ n }}</p>
           </li>
           <li class="rank-cell" style="width:100%; height:32px;">
             <router-link to="rank" class="read-more" style="margin:0 23px; line-height:32px;">查看全部 <i class="mh-if double-arrow-right"></i></router-link>
@@ -49,7 +50,8 @@
         </div>
         <ul style="width:100%; line-height:32px;">
           <li v-for="n in 10" class="rank-cell" style="width:100%; height:32px; padding:0 12px 0 18px; box-sizing:border-box;">
-            {{ n }}
+            <span style="width:23px; float:left; margin-right:8px; text-align:center;">{{ n }}</span>
+            <p class="text-hidden" style="max-width:80%; float:left;">The Name of the Song {{ n }}</p>
           </li>
           <li class="rank-cell" style="width:100%; height:32px;">
             <router-link to="rank" class="read-more" style="margin:0 23px; line-height:32px;">查看全部 <i class="mh-if double-arrow-right"></i></router-link>
@@ -74,7 +76,8 @@
         </div>
         <ul style="width:100%; line-height:32px;">
           <li v-for="n in 10" class="rank-cell" style="width:100%; height:32px; padding:0 12px 0 18px; box-sizing:border-box;">
-            {{ n }}
+            <span style="width:23px; margin-right:8px; float:left; text-align:center;">{{ n }}</span>
+            <p class="text-hidden" style="max-width:80%; float:left;">The Name of the Song {{ n }}</p>
           </li>
           <li class="rank-cell" style="width:100%; height:32px;">
             <router-link to="rank" class="read-more" style="margin:0 23px; line-height:32px;">查看全部 <i class="mh-if double-arrow-right"></i></router-link>

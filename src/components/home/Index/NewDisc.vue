@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div style="width:93%; height:68px; margin:0 auto 28px; padding:0 43px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;">
-      <span style="float:left; font-size:23px; font-weight:700;">新碟上架</span>
+    <div style="width:93%; height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;">
+      <i class="mh-if music-albu-2" style="margin-right:8px; font-size:24px;"></i><span style="font-size:23px; font-weight:700;">新碟上架</span>
       <router-link to="/disc" class="read-more">更多 <i class="mh-if double-arrow-right"></i></router-link>
     </div>
     <div class="glass-bg box-show" style="width:93%; height:138px; margin:0 auto 18px; position:relative;">

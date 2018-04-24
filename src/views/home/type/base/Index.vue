@@ -17,7 +17,7 @@
     <div class="box-show" style="width:100%; padding:0 68px;">
       <div class="box-show">
         <!-- 主页主体内容 -->
-        <div class="box-show" style="width:76%; padding-bottom:38px; display:inline-block;">
+        <div class="box-show" style="width:76%; padding:13px 0 38px; display:inline-block;">
 
           <hot-album />
 
@@ -36,9 +36,23 @@
             <router-link to="/user" style="float:left;">
               <img v-lazy="'http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80'" class="box-show" style="width:60px; height:60px; margin:13px; padding:3px; box-sizing:border-box; border-radius:2px;"/>
             </router-link>
-            <router-link to="/user" style="margin:12px 0 0; float:left; font-size:18px;">JesBrian</router-link>
+            <router-link to="/user" style="margin:14px 0 0; float:left; font-size:18px; color:#AAA;">JesBrian</router-link>
             <div class="super-btn-out" style="width:70px; height:28px; top:42px; left:86px; position:absolute;">
               <span class="super-btn-in mh-if sign-in" style="width:61px; height:20px; line-height:23px;"> 签到</span>
+            </div>
+            <div style="width:88%; height:40px; top:86px; left:50%; position:absolute; transform:translateX(-50%);">
+              <div style="width:33%; height:100%; float:left; box-sizing:border-box; text-align:center;">
+                <p style="line-height:1.5em; font-size:14px; color:#999;">1222</p>
+                <p style="text-indent:12px; letter-spacing:8px; color:#DDD; font-weight:700;">动态</p>
+              </div>
+              <div style="width:34%; height:100%; float:left; box-sizing:border-box; border:1px solid #666; border-top:none; border-bottom:none; text-align:center;">
+                <p style="line-height:1.5em; font-size:14px; color:#999;">1222</p>
+                <p style="text-indent:12px; letter-spacing:8px; color:#DDD; font-weight:700;">关注</p>
+              </div>
+              <div style="width:33%; height:100%; float:left; box-sizing:border-box; text-align:center;">
+                <p style="line-height:1.5em; font-size:14px; color:#999;">1222</p>
+                <p style="text-indent:12px; letter-spacing:8px; color:#DDD; font-weight:700;">粉丝</p>
+              </div>
             </div>
           </div>
 
@@ -46,16 +60,16 @@
           <div style="width:100%;">
             <div style="width:96%; height:40px; margin:8px auto; padding:0 12px; box-sizing:border-box; box-shadow:0 1.5px 3px -2px #AAA; line-height:42px;">
               <span style="font-size:18px; font-weight:700;">推荐歌手</span>
-              <router-link to="/singer" style="float:right; margin-top:3px;">
-                <i class="mh-if refresh"> 查看全部</i>
+              <router-link to="/singer" class="show-all-recom-singer">
+                <i class="mh-if refresh"></i> 查看全部
               </router-link>
             </div>
             <ul>
               <li v-for="n in 6" :key="n" style="padding:0 8px 8px;">
                 <router-link to="/singer" class="box-show" style="width:100%; height:58px; display:inline-block;">
-                  <img v-lazy="'http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80'" style="width:43px; height:43px; margin:7px 8px; float:left;"/>
-                  <p style="line-height:1.8em; font-size:18px; font-weight:700; color:#BBB;">JesBrian</p>
-                  <p class="text-hidden" style="width:70%; color:#888;">vghjbknlm;,.vdwjbknlm;,.vdwsvsd</p>
+                  <img v-lazy="'http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80'" class="box-show" style="width:43px; height:43px; margin:7px 8px; padding:2px; float:left;"/>
+                  <p style="padding-top:8px; font-size:18px; font-weight:700; color:#BBB;">JesBrian</p>
+                  <p class="text-hidden" style="width:70%; color:#888; font-size:14px; line-height:1.8em;">vghjbknlm;,.vdwjbknlm;,.vdwsvsd</p>
                 </router-link>
               </li>
             </ul>
@@ -91,4 +105,17 @@ export default {
 
 <style scoped>
 
+  .show-all-recom-singer {
+    margin-top:4px;
+    float: right;
+    color: #999;
+    font-size: 16px;
+    font-weight:700;
+  }
+  .show-all-recom-singer:hover {
+    color: #DDD;
+  }
+  .show-all-recom-singer:hover > i.mh-if {
+    color: #19D6E6;
+  }
 </style>
