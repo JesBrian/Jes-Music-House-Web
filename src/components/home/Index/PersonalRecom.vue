@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="width:93%; height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;">
-      <i class="mh-if music-info" style="margin-right:8px; font-size:24px;"></i><span style="font-size:23px; font-weight:700;">个性化推荐</span>
+      <i class="mh-if music-info" style="margin-right:8px; color:#00d8ff; font-size:29px;"></i><span style="font-size:23px; font-weight:700;">个性化推荐</span>
       <router-link to="/album" class="read-more">更多 <i class="mh-if double-arrow-right"></i></router-link>
     </div>
     <div style="width:93%; height:208px; margin:0 auto;">

@@ -78,16 +78,17 @@
 
         <div>
           <div style="width:100%; height:68px; margin-bottom:28px; padding:0 68px; box-sizing:border-box; box-shadow:0 2px 3px -3px #FFF; line-height:80px;">
-            <span style="float:left; font-size:26px; font-weight:700;">评论</span>
+            <span style="float:left; font-size:26px; font-weight:700;">听友评论</span>
           </div>
           <div>
             <img v-lazy="'http://p4.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=50y50'" class="box-show" style="width:42px; height:42px; margin:18px 28px; padding:2px; float:left;" />
-            <textarea class="cube-bg box-show" style="width:86%; height:82px; resize:none;" placeholder="评论"></textarea>
+            <textarea class="cube-bg box-show glow-input" style="width:86%; height:82px; resize:none;" placeholder="评论"></textarea>
             <div style="width:100%; height:38px; line-height:36px;">
-              <i class="mh-if exciting" style="margin-left:108px;"></i>
-              <a class="super-btn-out" style="width:68px; height:27px; margin:6px 56px; float:right;">
-                <span class="super-btn-in" style="width:60px; height:20px; line-height:22px;">评论</span>
+              <i class="mh-if exciting" style="margin-left:128px;"></i>
+              <a class="super-btn-out" style="width:68px; height:27px; margin:6px 56px 0 0; float:right;">
+                <span class="super-btn-in mh-if comment" style="width:60px; height:20px; line-height:22px;"> 评论</span>
               </a>
+              <span style="margin:3px 18px; float:right;">138</span>
             </div>
             <div style="width:100%; height:56px; padding:0 68px; box-sizing:border-box; box-shadow:0 2px 3px -3px #FFF;">
               <span style="margin-top:30px; float:left; font-size:16px; font-weight:700;">精彩评论</span>

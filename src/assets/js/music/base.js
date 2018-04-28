@@ -1,8 +1,3 @@
-export function getMusicTime (musicSource) {
-  let timeTemp = musicSource.duration
-  return timeStampToTime(timeTemp)
-}
-
 /**
  * 时间戳 转成 时间 [00:00]
  * @param timestamp

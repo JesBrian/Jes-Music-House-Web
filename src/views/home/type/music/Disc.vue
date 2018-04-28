@@ -10,7 +10,7 @@
         <li v-for="n in 15" style="width:20%; height:228px; margin:0; padding:0; position:relative; display:inline-block;">
           <router-link to="/playList" style="width:162px; height:138px; margin:0 20px; position:relative; display:inline-block;">
             <img v-lazy="'http://p3.music.126.net/w_GpzV7fky3gOgIf4-gC4Q==/109951163241853988.jpg?param=130y130'" style="width:127px; height:127px; top:5px; left:6px; position:absolute;"/>
-            <img v-lazy="require('../../../../../static/img/default/disc.png')" style="width:100%; height:100%;"/>
+            <img :src="require('../../../../../static/img/default/disc.png')" style="width:100%; height:100%;"/>
           </router-link>
           <i @click="playThisPlayList" class="mh-if play"></i>
           <p class="text-hidden" style="width:138px; margin-left:23px; color:#DDD;">
