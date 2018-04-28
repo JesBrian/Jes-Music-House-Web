@@ -3,8 +3,19 @@
     <div style="padding:0 58px 28px; box-sizing:border-box;">
       <div style="width:100%; height:80px; margin-bottom:28px; padding:0 68px; box-sizing:border-box; box-shadow:0 2px 3px -3px #FFF; line-height:88px;">
         <span style="float:left; font-size:32px; font-weight:700;">全部</span>
-        <div class="super-btn-out" style="width:128px; height:36px; margin:27px 28px 0;">
-          <span class="super-btn-in" style="width:118px; height:27px; top:48%; line-height:30px;">选择分类 <i class="mh-if double-arrow-down"></i></span>
+        <div style="width:128px; height:36px; margin:15px 28px 0; position:relative; display:inline-block;">
+          <div @click="changeShowAlbumTypeContent" class="super-btn-out" style="width:100%; height:100%;">
+            <span class="super-btn-in" style="width:118px; height:27px; top:48%; line-height:30px;">选择分类 <i class="mh-if double-arrow-down"></i></span>
+          </div>
+          <div v-if="showAlbumTypeContent" class="glass-bg box-show" style="width:688px; top:68px; left:-100%; position:absolute; z-index:9; line-height:1em;">
+            <i @click="changeShowAlbumTypeContent" style="top:3px; right:4px; position:absolute; font-size:25px; color:#BBB; cursor:pointer;">×</i>
+            <div style="width:100%; box-shadow:0 3px 3px -4px #FFF;">
+              <div class="super-btn-out" style="width:86px; height:30px; margin:10px 28px;">
+                <span class="super-btn-in" style="width:76px; height:22px; top:48.5%; padding-left:1.5px; line-height:22px; letter-spacing:1.2px;">全部风格</span>
+              </div>
+            </div>
+            <div style="width:128px; height:288px; display:inline-block; background:lightskyblue;"></div>
+          </div>
         </div>
         <div style="width:108px; height:32px; margin-top:30px; float:right; text-align:center; line-height:28.8px; font-weight:700; cursor:pointer;">
           <div class="glass-bg box-show" style="width:50%; height:100%; float:left; border-radius:5px 0 0 5px;">热门</div>
@@ -37,7 +48,7 @@
 </template>
 
 <script>
-import Pagination from '../../../../components/common/Pagination/Pagination.vue'
+import Pagination from '../../../../components/common/pagination/Pagination.vue'
 
 export default {
   name: 'album',
@@ -46,7 +57,17 @@ export default {
     Pagination
   },
 
+  data () {
+    return {
+      showAlbumTypeContent: false
+    }
+  },
+
   methods: {
+    changeShowAlbumTypeContent () {
+      this.showAlbumTypeContent = !this.showAlbumTypeContent
+    },
+
     playThisPlayList () {
       console.log(65666)
     }

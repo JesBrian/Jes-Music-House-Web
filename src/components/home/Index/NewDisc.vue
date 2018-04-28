@@ -135,7 +135,7 @@ export default {
 
 <style scoped>
   .read-more {
-    margin-top:38px; float:right; font-size:13px; color:#888; line-height:1em;
+    margin-top:46px; float:right; font-size:13px; color:#888; line-height:1em;
   }
   .read-more:hover {
     color:#EEE;

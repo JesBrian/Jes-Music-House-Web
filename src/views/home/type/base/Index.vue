@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import SlideBox from '../../../../components/common/SlideBox/SlideBox'
+import SlideBox from '../../../../components/common/slideBox/SlideBox'
 import NewDisc from '../../../../components/home/Index/NewDisc.vue'
 import RecomRank from '../../../../components/home/Index/RecomRank.vue'
 import PersonalRecom from '../../../../components/home/Index/PersonalRecom.vue'
