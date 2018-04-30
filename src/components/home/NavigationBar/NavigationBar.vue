@@ -86,13 +86,13 @@
       </div>
 
       <!-- 搜索栏 -->
-      <div style="width:236px; height:38px; margin:6px 28px 0 0; float:right; position:relative;">
-        <div class="super-btn-out" style="width:100%; height:100%;"></div>
-        <label><input class="super-btn-in" type="text" style="width:190px; height:27px; left:43%; margin-top:1.2px; padding:2px 8px 0; box-sizing:border-box; text-align:left; letter-spacing:1px;"/></label>
-        <div class="super-btn-out" style="width:28px; height:28px; top:5px; right:4px; position:absolute;">
-          <router-link to="/search" class="super-btn-in mh-if search" style="width:30px; height:28.5px; display:inline-block; float:right; font-size:21px; line-height:30px;" />
-        </div>
-      </div>
+      <label @keyup.enter="gotoSearch" style="width:288px; height:38px; margin:6px 28px 0 0; float:right; position:relative;">
+        <span class="super-btn-out" style="width:100%; height:100%;"></span>
+        <input v-model="searchKey" class="super-btn-in" placeholder="搜索一下更精彩！" style="width:242px; height:30px; left:44%; margin-top:1.2px; padding:0 8px; box-sizing:border-box; text-align:left; line-height:20px; letter-spacing:1px;"/>
+        <span @click="gotoSearch" class="super-btn-out" style="width:28px; height:28px; top:5px; right:4px; position:absolute;">
+          <span to="/search" class="super-btn-in mh-if search" style="width:30px; height:28.5px; display:inline-block; float:right; font-size:21px; line-height:30px;" ></span>
+        </span>
+      </label>
 
     </div>
   </div>
@@ -104,7 +104,8 @@ export default {
 
   data () {
     return {
-      menuType: ''
+      menuType: '',
+      searchKey: ''
     }
   },
 
@@ -124,26 +125,34 @@ export default {
     },
 
     switchMenuType () {
-      switch (this.$route.path) {
-        case '/user/album':
-        case '/user/recommend':
-        case '/user/rank':
+      switch (this.$route.path.split('/')[1]) {
+        case 'user':
           this.menuType = 'my'
           break
-        case '/friend':
-        case '/message':
+        case 'friend':
+        case 'message':
           this.menuType = 'friend'
           break
-        case '/musician':
+        case 'musician':
           this.menuType = 'musician'
           break
-        case '/download/client':
+        case 'download':
           this.menuType = 'download'
+          break
+        case 'search':
+          this.menuType = 'search'
           break
         default:
           this.menuType = 'find'
           break
       }
+    },
+
+    gotoSearch () {
+      if (this.searchKey === '') {
+        return false
+      }
+      this.$router.push('/search/song/' + this.searchKey)
     }
   }
 }

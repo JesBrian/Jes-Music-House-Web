@@ -13,9 +13,13 @@ export default [
         component: () => import('../../views/home/type/base/Index.vue')
       },
       {
-        path: '/search',
+        path: '/search/:searchType/:searchKey',
         component: () => import('../../views/home/type/base/Search.vue')
       },
+      // {
+      //   path: '/search',
+      //   component: () => import('../../views/home/type/base/Search.vue')
+      // },
       {
         path: '/rank',
         component: () => import('../../views/home/type/base/Rank.vue')
