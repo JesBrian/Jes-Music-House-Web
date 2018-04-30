@@ -3,7 +3,7 @@
   <div class="music-play">
 
     <!-- 音乐播放器资源 -->
-    <audio id="homeMusicSource" preload @ended="nowMusicEndNextPlay" :src="'/static/music/' + this.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0; position:absolute;"></audio>
+    <audio id="homeMusicSource" preload @ended="nowMusicEndNextPlay" :src="'/static/music/' + this.musicPlayList[musicPlayListNowIndex].name + '.mp3'" style="top:0; position:absolute;"></audio>
 
     <!-- 播放器主控制 -->
     <div :class="{'show-unlock' : !musicPlayShow}" class="music-play-controller glass-bg box-show">
@@ -98,7 +98,7 @@
         <div style="width:62%; height:100%; padding-top:3px; float:left; display:inline-block; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;">
           <gemini-scrollbar>
             <ul style="width:100%; height:100%; line-height:27px;">
-              <li v-for="(item, index) in this.musicPlayList" :key="index" class="box-shadow" style="width:100%; height:28px; padding:1px; box-sizing:border-box; z-index:2;">
+              <li v-for="(item ,index) in musicPlayList" class="box-shadow" style="width:100%; height:28px; padding:1px; box-sizing:border-box; z-index:2;">
                 <div :class="{'active': musicPlayListNowIndex === index}" class="music-list-cell" style="width:100%; height:100%; position:relative;">
 
                   <!-- BEGIN 点击切换播放歌曲 BEGIN -->
@@ -107,7 +107,7 @@
 
                   <!-- BEGIN 歌曲信息 OR 操作 BEGIN -->
                   <p @click="playThisMusic(index)" class="mh-if play" style="width:23px; display:inline-block; text-align:right;"></p>
-                  <p @click="playThisMusic(index)" style="max-width:288px; left:33px; display:inline-block;">12331 {{ index }}</p>
+                  <p @click="playThisMusic(index)" style="max-width:288px; left:33px; display:inline-block;">12331 {{ item.name }}</p>
                   <p class="music-cell-oper">
                     <i style="margin-left:3.5px;" class="mh-if non-colloection"></i>
                     <i style="margin-left:3.5px;" class="mh-if share"></i>
@@ -169,7 +169,64 @@ export default {
       musicVolumeLevel: 0.8, // 音量大小
       musicPlayModel: 'loop', // 三种播放模式 [ loop-歌单循环，single-loop-单曲循环，random-歌单里歌曲随机播放 ]
       musicPlayListNowIndex: 0, // 当前播放歌曲的下标 - 对应播放列表 musicPlayList 的数组下标
-      musicPlayList: ['test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7', 'test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7'],
+      musicPlayList: [
+        {
+          id: '11',
+          name: 'test1'
+        },
+        {
+          id: '12',
+          name: 'test2'
+        },
+        {
+          id: '13',
+          name: 'test3'
+        },
+        {
+          id: '14',
+          name: 'test4'
+        },
+        {
+          id: '15',
+          name: 'test5'
+        },
+        {
+          id: '16',
+          name: 'test6'
+        },
+        {
+          id: '17',
+          name: 'test7'
+        },
+        {
+          id: '18',
+          name: 'test1'
+        },
+        {
+          id: '19',
+          name: 'test2'
+        },
+        {
+          id: '20',
+          name: 'test3'
+        },
+        {
+          id: '21',
+          name: 'test4'
+        },
+        {
+          id: '22',
+          name: 'test5'
+        },
+        {
+          id: '23',
+          name: 'test6'
+        },
+        {
+          id: '24',
+          name: 'test7'
+        }
+      ],
       musicPlayListContentShowStatus: false
     }
   },
