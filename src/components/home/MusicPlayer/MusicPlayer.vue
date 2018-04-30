@@ -1,12 +1,18 @@
 <template>
   <!-- 音乐播放器组件 -->
-  <div style="width:100%; height:48px; left:0; bottom:0; position:fixed;">
+  <div class="music-play">
+
     <!-- 音乐播放器资源 -->
     <audio id="homeMusicSource" preload @ended="nowMusicEndNextPlay" :src="'/static/music/' + this.musicPlayList[musicPlayListNowIndex] + '.mp3'" style="top:0; position:absolute;"></audio>
 
     <!-- 播放器主控制 -->
-    <div class="glass-bg box-show" style="width:100%; height:100%; border-radius:0; opacity:0.96; background:#181818; z-index:9;">
-      <div style="width:1208px; height:88%; margin:3px auto; line-height:42px; color:#AAA;">
+    <div :class="{'show-unlock' : !musicPlayShow}" class="music-play-controller glass-bg box-show">
+      <!--<div style="width:28px; border:8px solid; border-bottom:18px solid; border-color:transparent transparent rgba(18,18,18, 0.8) transparent; top:-26px; right:38px; position:absolute; z-index:-1; opacity:0.96;"></div>-->
+      <div @click="changeShowMusicPlay" style="width:28px; border:8px solid; border-bottom:18px solid; border-color:transparent transparent rgba(18,18,18, 0.8) transparent; top:-26px; right:38px; position:absolute; z-index:-1; opacity:0.96;">
+        <i :class="musicPlayShow ? 'lock' : 'unlock'" class="mh-if" style="bottom:-17px; right:6px; position:absolute;"></i>
+      </div>
+
+      <div style="width:1208px; height:88%; margin:3px auto; position:relative; z-index:5; line-height:42px; color:#AAA;">
         <!-- 播放控制 -->
         <div style="width:98px; height:100%; float:left; display:inline-block; text-align:center;">
           <i @click="prevMusic" class="mh-if double-arrow-left" style="margin-top:0.5px; float:left; font-size:18px;"></i>
@@ -152,6 +158,7 @@ export default {
 
   data () {
     return {
+      musicPlayShow: false,
       musicSource: null, // 音乐资源 MP3
       musicCTime: 0,
       musicDTime: 0,
@@ -199,6 +206,10 @@ export default {
   },
 
   methods: {
+    changeShowMusicPlay () {
+      this.musicPlayShow = !this.musicPlayShow
+    },
+
     _currentTime () {
       this.musicCTime = this.musicSource.currentTime
     },
@@ -508,6 +519,21 @@ export default {
     color: #46dfff;
     text-shadow: 0 0 3px #666, 0 0 18px #000;
     opacity:1!important;
+  }
+
+
+  .music-play {
+    width:100%; height:48px; left:0; bottom:0; position:fixed;
+  }
+  .music-play-controller {
+    width:100%; height:100%; position:absolute; border-radius:0; opacity:0.96; background:#181818; z-index:9;
+    transition: all 0.28s;
+  }
+  .music-play > .music-play-controller.show-unlock {
+    bottom:-42px;
+  }
+  .music-play:hover > .music-play-controller.show-unlock {
+    bottom:0;
   }
 
   #songResource {

@@ -4,7 +4,7 @@
     <!--<div style="height:5%;"></div>-->
     <swiper :options="swiperOption" style="width:100%; height:100%; position:relative;">
       <swiper-slide v-for="(slide, index) in swiperSlides" class="s1c-Bg" style="border-radius:3px;" :key="index">
-        <img :data-src="slide" class="swiper-lazy" style="width:100%; height:100%;"/>
+        <router-link to="/user"><img :data-src="slide" class="swiper-lazy" style="width:100%; height:100%;"/></router-link>
         <!--<div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>-->
         <!--<baseLoading class="my-lazy-preloader" style="top:50%; left:50%; transform:translate(-50%, -50%); position:absolute;"/>-->
       </swiper-slide>
