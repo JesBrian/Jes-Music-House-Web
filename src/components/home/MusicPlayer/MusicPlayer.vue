@@ -3,7 +3,7 @@
   <div class="music-play">
 
     <!-- 音乐播放器资源 -->
-    <audio id="homeMusicSource" preload @ended="nowMusicEndNextPlay" :src="'/static/music/' + this.musicPlayList[musicPlayListNowIndex].name + '.mp3'" style="top:0; position:absolute;"></audio>
+    <audio id="homeMusicSource" v-if="this.musicPlayList.length !== 0" preload @ended="nowMusicEndNextPlay" :src="'/static/music/' + this.musicPlayList[musicPlayListNowIndex].name + '.mp3'" style="top:0; position:absolute;"></audio>
 
     <!-- 播放器主控制 -->
     <div :class="{'show-unlock' : !musicPlayShow}" class="music-play-controller glass-bg box-show">
@@ -95,7 +95,7 @@
       </div>
       <div class="box-show" style="width:100%; height:250px; padding-bottom:2px; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727; font-size:14px;">
         <!-- 歌曲列表 -->
-        <div style="width:62%; height:100%; padding-top:3px; float:left; display:inline-block; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;">
+        <div style="width:62%; height:100%; padding-top:3px; float:left; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;">
           <gemini-scrollbar>
             <ul style="width:100%; height:100%; line-height:27px;">
               <li v-for="(item ,index) in musicPlayList" class="box-shadow" style="width:100%; height:28px; padding:1px; box-sizing:border-box; z-index:2;">
@@ -135,12 +135,12 @@
             </ul>
           </i>
           <!-- 滚动歌词区域 -->
-          <div style="width:100%; height:100%; padding:12px 0 3px; box-sizing:border-box; text-align:center; font-size:13px; line-height:1.5em; color:#777;">
-            <gemini-scrollbar>
-              <ul style="padding:0 18px; box-sizing:border-box;">
+          <div @click="changeShowLyric" style="width:100%; height:100%; padding:8px 0 3px; box-sizing:border-box; text-align:center; font-size:13px; line-height:1.5em; color:#777; overflow:auto;">
+            <vue-scroll>
+              <ul v-if="showLyric" style="padding:0 18px; box-sizing:border-box;">
                 <li>rdtGbuybjk</li><li>rbuyb</li><li>rdt非常需要他vsvdGbuybjk</li><li>vvsdv</li><li>rdt56bjk</li><li>rbuyb</li><li>rdtvGy尝试</li><li>vvsdv</li><li>rdtGbuybjGbuGbuybjGbuybjGbuybjk</li><li>rbuyb</li><li>rdt非常需要buybjk</li><li>vvsdv</li><li>r</li><li>r产生d生dt56bjk</li><li>rbuyb</li><li class="active" style="margin:23px 0; font-size:17px; color:#DDD;">rdbn超时vcnv嘎的基本chsia吉林省v从sj空casnl长沙，klfuicasctv试</li><li>vvscasdv</li><li>rbuyb</li><li>rdt非常需要他vsvdGbuybjk</li><li>vvsdv</li><li>rdt56bjk</li><li>rbuyb</li><li>rdGy尝vGy尝ty尝vGy尝tv试</li><li>vvsdv</li><li>rdtGbuybjk</li><li>rbuybrbuybrbuybrbuybrbuyb</li><li>rdt非常需要buybjk</li><li>vvsdv</li><li>r产生dt56bjk</li><li>rbuyb</li><li>rdtvGy尝试</li><li>vvscasdv</li>
               </ul>
-            </gemini-scrollbar>
+            </vue-scroll>
           </div>
         </div>
       </div>
@@ -150,7 +150,6 @@
 </template>
 
 <script>
-
 import {timeStampToTime} from '../../../assets/js/music/base.js'
 
 export default {
@@ -158,7 +157,10 @@ export default {
 
   data () {
     return {
-      musicPlayShow: false,
+      showLyric: false,
+
+
+      musicPlayShow: true,
       musicSource: null, // 音乐资源 MP3
       musicCTime: 0,
       musicDTime: 0,
@@ -263,6 +265,10 @@ export default {
   },
 
   methods: {
+    changeShowLyric () {
+      this.showLyric = true
+    },
+
     changeShowMusicPlay () {
       this.musicPlayShow = !this.musicPlayShow
     },
@@ -348,17 +354,6 @@ export default {
         } while (indexTemp === this.musicPlayListNowIndex)
         this.changemusicPlayListNowIndex({nowIndexNum: indexTemp})
       }
-    },
-
-    /**
-     * 删除播放列表某项
-     * @param delMusicListIndex
-     */
-    delMusicListItem (delMusicListIndex) {
-      this.delMusicPlayList(delMusicListIndex)
-      setTimeout(() => {
-        this.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
-      }, 88)
     },
 
     /**
@@ -482,14 +477,6 @@ export default {
     },
 
     /**
-     * 清空播放列表
-     */
-    clearMusicPlayList () {
-      this.musicSource.pause()
-      this.delMusicPlayList()
-    },
-
-    /**
      * 改变现在播放音乐在播放列表的索引号
      * @param option
      */
@@ -511,6 +498,25 @@ export default {
     },
 
     /**
+     * 清空播放列表
+     */
+    clearMusicPlayList () {
+      this.musicSource.pause()
+      this.delMusicPlayList()
+    },
+
+    /**
+     * 删除播放列表某项
+     * @param delMusicListIndex
+     */
+    delMusicListItem (delMusicListIndex) {
+      this.delMusicPlayList(delMusicListIndex)
+      setTimeout(() => {
+        this.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
+      }, 88)
+    },
+
+    /**
      * 删除特定/清空播放列表
      * @param delMusicListIndex
      */
@@ -524,6 +530,12 @@ export default {
           this.musicPlayListNowIndex--
         }
         this.musicPlayList.splice(delMusicListIndex, 1)
+      }
+      if (this.musicPlayList.length === 0) {
+        this.musicSource.pause()
+        this.musicSource.src = ''
+        this.musicIsPlay = false
+        this.musicDTime = 0
       }
     },
 

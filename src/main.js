@@ -16,6 +16,9 @@ Vue.use(vueLazyload, {
   error: require('./assets/img/loading.svg'),
   loading: require('./assets/img/loading.svg')
 })
+import vuescroll from 'vuescroll'
+
+Vue.use(vuescroll)
 Vue.use(GeminiScrollbar)
 
 /* eslint-disable no-new */

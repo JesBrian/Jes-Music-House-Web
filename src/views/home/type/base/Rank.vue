@@ -50,7 +50,7 @@
       <!-- 榜单信息 -->
       <div style="width:100%; height:188px;">
         <img v-lazy="'http://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=150y150'" class="box-show" style="width:108px; height:108px; margin:36px 18px 0 56px; padding:6px; box-sizing:border-box; border-radius:4px;"/>
-        <div class="super-btn-out" style="width:70px; height:31px;">
+        <div @click="playThisRank" class="super-btn-out" style="width:70px; height:31px;">
           <span class="super-btn-in mh-if play" style="width:61px; height:23px; line-height:25px;"> 播放</span>
         </div>
         <div class="super-btn-out" style="width:70px; height:31px;">
@@ -123,6 +123,19 @@ export default {
 
   components: {
     Pagination
+  },
+
+  mounted () {
+    console.log(96666541561)
+  },
+
+  methods: {
+    playThisRank () {
+      console.log(6666)
+      let temp = 666
+      let lk = temp * temp
+      console.log(lk)
+    }
   }
 }
 </script>
