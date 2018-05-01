@@ -135,12 +135,12 @@
             </ul>
           </i>
           <!-- 滚动歌词区域 -->
-          <div @click="changeShowLyric" style="width:100%; height:100%; padding:8px 0 3px; box-sizing:border-box; text-align:center; font-size:13px; line-height:1.5em; color:#777; overflow:auto;">
-            <vue-scroll>
-              <ul v-if="showLyric" style="padding:0 18px; box-sizing:border-box;">
+          <div style="width:100%; height:100%; padding:8px 0 3px; box-sizing:border-box; text-align:center; font-size:13px; line-height:1.5em; color:#777; overflow:auto;">
+            <gemini-scrollbar>
+              <ul style="padding:0 18px; box-sizing:border-box;">
                 <li>rdtGbuybjk</li><li>rbuyb</li><li>rdt非常需要他vsvdGbuybjk</li><li>vvsdv</li><li>rdt56bjk</li><li>rbuyb</li><li>rdtvGy尝试</li><li>vvsdv</li><li>rdtGbuybjGbuGbuybjGbuybjGbuybjk</li><li>rbuyb</li><li>rdt非常需要buybjk</li><li>vvsdv</li><li>r</li><li>r产生d生dt56bjk</li><li>rbuyb</li><li class="active" style="margin:23px 0; font-size:17px; color:#DDD;">rdbn超时vcnv嘎的基本chsia吉林省v从sj空casnl长沙，klfuicasctv试</li><li>vvscasdv</li><li>rbuyb</li><li>rdt非常需要他vsvdGbuybjk</li><li>vvsdv</li><li>rdt56bjk</li><li>rbuyb</li><li>rdGy尝vGy尝ty尝vGy尝tv试</li><li>vvsdv</li><li>rdtGbuybjk</li><li>rbuybrbuybrbuybrbuybrbuyb</li><li>rdt非常需要buybjk</li><li>vvsdv</li><li>r产生dt56bjk</li><li>rbuyb</li><li>rdtvGy尝试</li><li>vvscasdv</li>
               </ul>
-            </vue-scroll>
+            </gemini-scrollbar>
           </div>
         </div>
       </div>
@@ -157,9 +157,6 @@ export default {
 
   data () {
     return {
-      showLyric: false,
-
-
       musicPlayShow: true,
       musicSource: null, // 音乐资源 MP3
       musicCTime: 0,
@@ -265,10 +262,6 @@ export default {
   },
 
   methods: {
-    changeShowLyric () {
-      this.showLyric = true
-    },
-
     changeShowMusicPlay () {
       this.musicPlayShow = !this.musicPlayShow
     },
