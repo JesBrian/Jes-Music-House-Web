@@ -33,7 +33,7 @@ export default [
         component: () => import('../../views/home/type/user/User.vue')
       },
       {
-        path: '/friend',
+        path: '/friend/:id',
         component: () => import('../../views/home/type/user/Friend.vue')
       },
       {

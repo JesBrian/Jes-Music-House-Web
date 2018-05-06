@@ -9,8 +9,6 @@ Vue.use(Router)
  * 路由跳转配置
  */
 export default new Router({
-  mode: 'history',
-
   routes: [
     ...HomeRouter,
     ...BackstageRouter

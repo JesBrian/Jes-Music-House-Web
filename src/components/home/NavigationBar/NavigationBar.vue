@@ -20,7 +20,7 @@
           </router-link>
         </li>
         <li style="float:left;">
-          <router-link to="/friend" :class="{'active': menuType === 'friend'}" class="first-menu-link">
+          <router-link to="/friend/0" :class="{'active': menuType === 'friend'}" class="first-menu-link">
             消息动态<div class="triangle-up"></div>
           </router-link>
         </li>
@@ -50,7 +50,8 @@
           <router-link to="/user/rank" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">听歌排行</router-link>
         </div>
         <div v-if="menuType === 'friend'">
-          <router-link to="/friend" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">朋友圈</router-link>
+          <router-link to="/friend/0" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">朋友圈</router-link>
+          <router-link to="/friend/888" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">我的动态</router-link>
           <router-link to="/message" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">我的消息</router-link>
         </div>
       </div>

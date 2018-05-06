@@ -33,7 +33,7 @@
             <div @click="clickMusicProgressBar" id="progressBarClickContent" class="box-show" style="width:638px; height:10px; margin-top:5.5px; float:left; position:relative; border-radius:8px; background:#000;">
               <div :style="{'width': musicBufferedRate * 100 + '%'}" class="box-show" style="width:0; height:100%; border-radius:6px; background:#181818; z-index:9;"></div>
               <div :style="{'width': musicCTime / musicDTime * 100 + '%'}" style="height:83%; top:9%; left:0; position:absolute; background:linear-gradient(to right, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px;">
-                <a @mousedown="dragProgressControllerPointer" id="progressPointer" class="controller-pointer glass-bg box-show" style="top:-4px; right:-9px;"></a>
+                <a @mousedown="dragProgressControllerPointer" id="progressPointer" class="controller-pointer box-show" style="top:-4px; right:-9px;"></a>
               </div>
             </div>
             <!-- 播放时间 -->
@@ -55,7 +55,7 @@
               <div class="glass-bg box-show" style="width:100%; height:96%;">
                 <div @click="clickMusicVolumeBar" id="volumeBarClickContent" class="box-show" style="width:10px; height:100px; margin:13px 9.5px 0; display:inline-block; position:relative; border-radius:5px; background:#000;">
                   <div :style="{'height': this.musicVolumeLevel * 100 + '%'}" style="width:100%; left:0; bottom:0; background:linear-gradient(to top, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px; position:absolute;">
-                    <a @mousedown="dragVolumeControllerPointer" class="controller-pointer glass-bg box-show" style="top:-9px; right:-4px;"></a>
+                    <a @mousedown="dragVolumeControllerPointer" class="controller-pointer box-show" style="top:-9px; right:-4px;"></a>
                   </div>
                 </div>
               </div>
@@ -607,6 +607,7 @@ export default {
 
   .controller-pointer {
     width:18px; height:18px; position:absolute; display:inline-block; border-radius:50%; line-height:12px; text-align:center;
+    background:url(../../../../static/img/default/slide-pointer.png) no-repeat; background-size:100% 100%;
   }
   .controller-pointer:hover {
     box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727, 0 0 8px #2af1fc;
