@@ -269,11 +269,9 @@ export default {
     _currentTime () {
       this.musicCTime = this.musicSource.currentTime
     },
-
     _durationTime () {
       this.musicDTime = this.musicSource.duration
     },
-
     _musicBuffered () {
       clearInterval(this.timer)
       this.timer = setInterval(() => {

@@ -7,18 +7,21 @@
           <div @click="changeShowAlbumTypeContent" class="super-btn-out" style="width:100%; height:100%;">
             <span class="super-btn-in" style="width:118px; height:27px; top:48%; line-height:30px;">选择分类 <i class="mh-if double-arrow-down"></i></span>
           </div>
+
           <div v-if="showAlbumTypeContent" class="glass-bg box-show" style="width:688px; top:68px; left:-100%; position:absolute; z-index:9; line-height:1em;">
             <i @click="changeShowAlbumTypeContent" style="top:3px; right:4px; position:absolute; font-size:25px; color:#BBB; cursor:pointer;">×</i>
             <div style="width:100%; box-shadow:0 3px 3px -4px #FFF;">
-              <div class="super-btn-out" style="width:86px; height:30px; margin:10px 28px;">
+              <div @click="chooseAlbumType" class="super-btn-out" style="width:86px; height:30px; margin:10px 28px;">
                 <span class="super-btn-in" style="width:76px; height:22px; top:48.5%; padding-left:1.5px; line-height:22px; letter-spacing:1.2px;">全部风格</span>
               </div>
             </div>
             <div style="width:128px; height:288px; display:inline-block; background:lightskyblue;"></div>
           </div>
+
         </div>
+
         <div style="width:108px; height:32px; margin-top:30px; float:right; text-align:center; line-height:28.8px; font-weight:700; cursor:pointer;">
-          <div class="glass-bg box-show" style="width:50%; height:100%; float:left; border-radius:5px 0 0 5px;">热门</div>
+          <div class="cube-bg box-show" style="width:50%; height:100%; float:left; border-radius:5px 0 0 5px; text-shadow:1px 1px 2px #000; cursor:not-allowed;">热门</div>
           <div class="glass-bg box-show" style="width:50%; height:100%; float:right; border-radius:0 5px 5px 0;">最新</div>
         </div>
       </div>
@@ -64,12 +67,16 @@ export default {
   },
 
   methods: {
+    playThisPlayList () {
+      console.log(65666)
+    },
+
     changeShowAlbumTypeContent () {
       this.showAlbumTypeContent = !this.showAlbumTypeContent
     },
 
-    playThisPlayList () {
-      console.log(65666)
+    chooseAlbumType () {
+      this.changeShowAlbumTypeContent()
     }
   }
 }

@@ -1,58 +1,102 @@
 <template>
   <div id="homeLayout">
-    <div class="box-show" style="width:20%; height:100%; top:0; left:0; padding-top:108px; position:absolute; box-sizing:border-box;">
+    <div class="box-show" style="width:20%; height:100%; top:0; left:0; padding-top:108px; position:absolute; box-sizing:border-box; color:#999;">
       <ul style="width:85%; margin:0 auto;">
         <li class="box-shadow" style="margin-top:8px; padding-bottom:8px;">
-          <span style="font-size:20px; font-weight:700; line-height:2em;">推荐</span>
+          <span class="singer-type-title">推荐</span>
           <ul>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">推荐歌手</li>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">入驻歌手</li>
+            <li class="box-show singer-type-cell">
+              <i></i>推荐歌手
+            </li>
+            <li class="box-show singer-type-cell">
+              <i></i>入驻歌手
+            </li>
           </ul>
         </li>
         <li class="box-shadow" style="margin-top:8px; padding-bottom:8px;">
-          <span style="font-size:20px; font-weight:700; line-height:2em;">华语</span>
+          <span class="singer-type-title">华语</span>
           <ul>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">华语男歌手</li>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">华语女歌手</li>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">华语组合/乐队</li>
+            <li class="box-show singer-type-cell active">
+              <i></i>华语男歌手
+            </li>
+            <li class="box-show singer-type-cell">
+              <i></i>华语女歌手
+            </li>
+            <li class="box-show singer-type-cell">
+              <i></i>华语组合/乐队
+            </li>
           </ul>
         </li>
         <li class="box-shadow" style="margin-top:8px; padding-bottom:8px;">
-          <span style="font-size:20px; font-weight:700; line-height:2em;">欧美</span>
+          <span class="singer-type-title">欧美</span>
           <ul>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">欧美男歌手</li>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">欧美女歌手</li>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">欧美组合/乐队</li>
+            <li class="box-show singer-type-cell">
+              <i></i>欧美男歌手
+            </li>
+            <li class="box-show singer-type-cell">
+              <i></i>欧美女歌手
+            </li>
+            <li class="box-show singer-type-cell">
+              <i></i>欧美组合/乐队
+            </li>
           </ul>
         </li>
         <li class="box-shadow" style="margin-top:8px; padding-bottom:8px;">
-          <span style="font-size:20px; font-weight:700; line-height:2em;">日本</span>
+          <span class="singer-type-title">日本</span>
           <ul>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">日本男歌手</li>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">日本女歌手</li>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">日本组合/乐队</li>
+            <li class="box-show singer-type-cell">
+              <i></i>日本男歌手
+            </li>
+            <li class="box-show singer-type-cell">
+              <i></i>日本女歌手
+            </li>
+            <li class="box-show singer-type-cell">
+              <i></i>日本组合/乐队
+            </li>
           </ul>
         </li>
         <li class="box-shadow" style="margin-top:8px; padding-bottom:8px;">
-          <span style="font-size:20px; font-weight:700; line-height:2em;">韩国</span>
+          <span class="singer-type-title">韩国</span>
           <ul>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">韩国男歌手</li>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">韩国女歌手</li>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">韩国组合/乐队</li>
+            <li class="box-show singer-type-cell">
+              <i></i>韩国男歌手
+            </li>
+            <li class="box-show singer-type-cell">
+              <i></i>韩国女歌手
+            </li>
+            <li class="box-show singer-type-cell">
+              <i></i>韩国组合/乐队
+            </li>
           </ul>
         </li>
         <li class="box-shadow" style="margin-top:8px; padding-bottom:8px;">
-          <span style="font-size:20px; font-weight:700; line-height:2em;">其他</span>
+          <span class="singer-type-title">其他</span>
           <ul>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">其他男歌手</li>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">其他女歌手</li>
-            <li class="box-show" style="width:100%; height:32px; margin-bottom:8px; line-height:30px;">其他组合/乐队</li>
+            <li class="box-show singer-type-cell">
+              <i></i>其他男歌手
+            </li>
+            <li class="box-show singer-type-cell">
+              <i></i>其他女歌手
+            </li>
+            <li class="box-show singer-type-cell">
+              <i></i>其他组合/乐队
+            </li>
           </ul>
         </li>
       </ul>
     </div>
     <div style="width:100%; height:2000px; padding:0 0 0 20%; box-sizing:border-box;">
-      <div style="width:100%; height:100%;"></div>
+
+      <div style="width:93%; height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;">
+        <span style="font-size:23px; font-weight:700;">入驻歌手</span>
+        <router-link to="/" class="read-more">更多 <i class="mh-if double-arrow-right"></i></router-link>
+      </div>
+
+
+      <div style="width:93%; height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;">
+        <span style="font-size:23px; font-weight:700;">热门歌手</span>
+        <router-link to="/" class="read-more">更多 <i class="mh-if double-arrow-right"></i></router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -64,5 +108,42 @@ export default {
 </script>
 
 <style scoped>
+  .singer-type-title {
+    font-size:20px; font-weight:700; line-height:2em; color:#DDD;
+  }
 
+  .singer-type-cell {
+    width:100%; height:32px; margin-bottom:8px;line-height:31px;
+  }
+  .singer-type-cell:hover {
+    color:#DDD; cursor:pointer;
+  }
+  .singer-type-cell.active {
+    color: #00d8ff;
+  }
+  .singer-type-cell > i {
+    width:6px; height:6px; margin:12.5px 15px; background:#999; float:left; opacity:0;
+  }
+  .singer-type-cell:hover > i {
+    opacity:1;
+  }
+  .singer-type-cell.active > i {
+    opacity:1;
+    background:#00d8ff;
+  }
+
+
+  .read-more {
+    margin-top:46px; float:right; font-size:13px; color:#888; line-height:1em;
+  }
+  .read-more:hover {
+    color:#EEE;
+    text-decoration:underline;
+  }
+  .read-more > .mh-if {
+    font-size:12.5px;
+  }
+  .read-more:hover > .mh-if {
+    color: #20dbfc;
+  }
 </style>
