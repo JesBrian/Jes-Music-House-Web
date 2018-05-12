@@ -61,7 +61,7 @@
         <span @click="showUserLoginModal" class="super-btn-in" style="width:29.5px; height:28.5px; top:48.7%; line-height:29.5px; font-size:20px;">X</span>
 
         <div style="top:32px; left:-68%; position:absolute;">
-          <div class="cube-bg box-show" style="width:100px; margin-top:10px; padding:0 4px; text-align:center; line-height:30px;">
+          <div class="super-btn-out" style="width:100px; margin:10px 0 0 -8px; padding:0 4px; text-align:center; line-height:30px;">
             <ul>
               <li>
                 <router-link to="user"><i class="MyIF home"></i> 个人主页</router-link>
@@ -190,10 +190,10 @@ export default {
   }
 
   #navMenuUser > div {
-    display: none;
+    transform:scaleY(0); transition:all 0.48s; transform-origin:0 10px;
   }
   #navMenuUser:hover > div {
-    display: block;
+    transform: scaleY(1);
   }
   #navMenuUser li {
     width: 100%;
@@ -206,6 +206,8 @@ export default {
     height:100%;
     display:inline-block;
     color: #AAA;
+    background-image: linear-gradient(#2e3537, #424748);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(80, 80, 80, 0.3), inset 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(80, 80, 80, 0.5), 0 2px 2px rgba(0, 0, 0, 0.4);
   }
   #navMenuUser li:hover {
     background: #333;

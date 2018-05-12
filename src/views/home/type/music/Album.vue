@@ -21,8 +21,8 @@
         </div>
 
         <div style="width:108px; height:32px; margin-top:30px; float:right; text-align:center; line-height:28.8px; font-weight:700; cursor:pointer;">
-          <div class="cube-bg box-show" style="width:50%; height:100%; float:left; border-radius:5px 0 0 5px; text-shadow:1px 1px 2px #000; cursor:not-allowed;">热门</div>
-          <div class="glass-bg box-show" style="width:50%; height:100%; float:right; border-radius:0 5px 5px 0;">最新</div>
+          <div @click="changeContentType('hot')" :class="contentType === 'hot' ? 'cube-bg' : 'glass-bg'" class="box-show" style="width:50%; height:100%; float:left; border-radius:5px 0 0 5px; text-shadow:1px 1px 2px #000;">热门</div>
+          <div @click="changeContentType('new')" :class="contentType === 'new' ? 'cube-bg' : 'glass-bg'" class="box-show" style="width:50%; height:100%; float:right; border-radius:0 5px 5px 0; text-shadow:1px 1px 2px #000;">最新</div>
         </div>
       </div>
 
@@ -62,6 +62,7 @@ export default {
 
   data () {
     return {
+      contentType: 'hot',
       showAlbumTypeContent: false
     }
   },
@@ -69,6 +70,10 @@ export default {
   methods: {
     playThisPlayList () {
       console.log(65666)
+    },
+
+    changeContentType (type) {
+      this.contentType = type
     },
 
     changeShowAlbumTypeContent () {
