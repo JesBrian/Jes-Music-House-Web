@@ -2,13 +2,16 @@
   <!-- 导航条 -->
   <div class="glass-bg box-show" style="width:100%; height:53px; top:0; left:0; position:fixed; border-radius:0; opacity:0.98;">
     <div style="width:1238px; height:100%; margin:0 auto;">
+
+      <!-- 导航栏LOGO -->
       <router-link to="/" style="margin-right:38px; float:left; line-height:48px;">
         <img v-lazy="require('../../../../static/img/logo.png')" style="width:33px; height:33px; margin:8px 8px 0 0; float:left;"/>
         <span style="font-size:22px; font-weight:700; color:#22e8ff; text-shadow:1.5px 1.5px 6px #30cdff;">Music House</span>
       </router-link>
 
       <!-- 导航菜单 -->
-      <ul style="display:inline-block; line-height:52px; color:#999; font-weight:700; letter-spacing:1.2px;">
+      <ul style="line-height:52px; color:#999; font-weight:700; letter-spacing:1.2px;">
+        <!-- 一级菜单 -->
         <li style="float:left;">
           <router-link to="/index" :class="{'active': menuType === 'find'}" class="first-menu-link" >
             发现音乐<div class="triangle-up"></div>
@@ -38,25 +41,25 @@
       <!-- 二级菜单 -->
       <div class="super-btn-out" style="width:100%; min-height:8px; top:52.3px; left:0; padding-left:268px; position:absolute; box-sizing:border-box; border-radius:0; cursor:default; font-size:15px; white-space:nowrap;">
         <div v-if="menuType === 'find'">
-          <router-link to="/index" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">主页推荐</router-link>
-          <router-link to="/rank" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">排行榜</router-link>
-          <router-link to="/album" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">歌单</router-link>
-          <router-link to="/singer" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">歌手</router-link>
-          <router-link to="/disc" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">新碟上架</router-link>
+          <router-link to="/index" class="second-menu-link box-show">主页推荐</router-link>
+          <router-link to="/rank" class="second-menu-link box-show">排行榜</router-link>
+          <router-link to="/album" class="second-menu-link box-show">歌单</router-link>
+          <router-link to="/singer" class="second-menu-link box-show">歌手</router-link>
+          <router-link to="/disc" class="second-menu-link box-show">新碟上架</router-link>
         </div>
         <div v-if="menuType === 'my'">
-          <router-link to="/user/album" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">我的歌单</router-link>
-          <router-link to="/user/recommend" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">个人推荐</router-link>
-          <router-link to="/user/rank" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">听歌排行</router-link>
+          <router-link to="/user/album" class="second-menu-link box-show">我的歌单</router-link>
+          <router-link to="/user/recommend" class="second-menu-link box-show">个人推荐</router-link>
+          <router-link to="/user/rank" class="second-menu-link box-show">听歌排行</router-link>
         </div>
         <div v-if="menuType === 'friend'">
-          <router-link to="/friend/0" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">朋友圈</router-link>
-          <router-link to="/friend/888" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">我的动态</router-link>
-          <router-link to="/message" class="second-menu-link box-show" style="margin:6px 38px 7px 18px; padding:3.5px 12px; display:inline-block; border-radius:12px;">我的消息</router-link>
+          <router-link to="/friend/0" class="second-menu-link box-show">朋友圈</router-link>
+          <router-link to="/friend/888" class="second-menu-link box-show">我的动态</router-link>
+          <router-link to="/message" class="second-menu-link box-show">我的消息</router-link>
         </div>
       </div>
 
-      <!-- 用户登录/操作 -->
+      <!-- 导航栏用户登录/操作 -->
       <div id="navMenuUser" class="super-btn-out" style="width:40px; height:38px; margin-top:6px; position:relative; float:right;">
         <span @click="showUserLoginModal" class="super-btn-in" style="width:29.5px; height:28.5px; top:48.7%; line-height:29.5px; font-size:20px;">X</span>
 
@@ -86,7 +89,7 @@
         </div>
       </div>
 
-      <!-- 搜索栏 -->
+      <!-- 导航栏搜索栏 -->
       <label @keyup.enter="gotoSearch" style="width:288px; height:38px; margin:6px 28px 0 0; float:right; position:relative;">
         <span class="super-btn-out" style="width:100%; height:100%;"></span>
         <input v-model="searchKey" class="super-btn-in" placeholder="搜索一下更精彩！" style="width:242px; height:30px; left:44%; margin-top:1.2px; padding:0 8px; box-sizing:border-box; text-align:left; line-height:20px; letter-spacing:1px;"/>
@@ -221,6 +224,10 @@ export default {
   }
 
   .second-menu-link {
+    height:23px;
+    margin:6px 38px 7px 18px; padding:0 12px 0 13px;
+    display:inline-block; border-radius:14px;
+    line-height:24px;
     text-align: center;
     font-weight: 700;
     background-image: linear-gradient(#2e3537, #424748);
@@ -231,6 +238,7 @@ export default {
   }
   .second-menu-link:hover, .second-menu-link.router-link-exact-active {
     color: #20dbfc;
+    line-height:22px;
     box-shadow: 0 -0.1px 2px rgba(0, 0, 0, 0.7), 0 0 2px rgba(255, 255, 255, 0.4), 0 0 2px rgba(0, 0, 0, 0.3), inset 0 0 3px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6);
   }
 </style>
