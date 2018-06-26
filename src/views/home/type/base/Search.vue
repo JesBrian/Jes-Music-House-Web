@@ -22,7 +22,7 @@
       </span>
       <div style="width:100%; margin-top:6px;">
         <ul>
-          <li v-for="n in 18" class="box-shadow">
+          <li v-for="n in 18" :key="n + 99" class="box-shadow">
             <div style="height:48px;"></div>
           </li>
         </ul>

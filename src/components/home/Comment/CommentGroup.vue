@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="n in 6" class="box-shadow">
+    <li v-for="n in 6" :key="n + 99" class="box-shadow">
       <comment-cell />
     </li>
   </ul>

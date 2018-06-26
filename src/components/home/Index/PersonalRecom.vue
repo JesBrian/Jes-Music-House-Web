@@ -18,7 +18,7 @@
         <router-link to="user" style="color:#BBB; font-size:20px; font-weight:700; line-height:2.8em;">每日歌曲推荐</router-link>
       </div>
       <ul style="float:right;">
-        <li v-for="n in 3" style="height:208px; padding:0; position:relative; float:right;">
+        <li v-for="n in 3" :key="n + 99" style="height:208px; padding:0; position:relative; float:right;">
           <router-link to="/playList" class="cube-bg box-show" style="width:138px; height:138px; margin:0 0 8px 22px; padding:2px; position:relative; display:inline-block;">
             <img v-lazy="'http://p1.music.126.net/7goVc5XONBxnSS5FiGtV9A==/18999560928548815.jpg?param=140y140'" style="width:100%; height:100%;"/>
             <div class="glass-bg" style="width:140px; height:30px; left:-2px; bottom:-1px; padding:0 8px; position:absolute; border-radius:0; opacity:0.9; line-height:28px; font-size:14px; color:#999;">

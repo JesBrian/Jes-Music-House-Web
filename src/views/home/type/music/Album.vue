@@ -27,7 +27,7 @@
       </div>
 
       <ul style="width:93%; margin:0 auto;">
-        <li v-for="n in 30" style="width:20%; height:208px; margin:0; padding:0; position:relative; display:inline-block;">
+        <li v-for="n in 30" :key="n + 99" style="width:20%; height:208px; margin:0; padding:0; position:relative; display:inline-block;">
           <router-link to="/playList" class="cube-bg box-show" style="width:138px; height:138px; margin:0 0 8px 23px; padding:2px; position:relative; display:inline-block;">
             <img v-lazy="'http://p1.music.126.net/7goVc5XONBxnSS5FiGtV9A==/18999560928548815.jpg?param=140y140'" style="width:100%; height:100%;"/>
             <div class="glass-bg" style="width:140px; height:30px; left:-2px; bottom:-1px; padding:0 8px; position:absolute; border-radius:0; opacity:0.9; line-height:28px; font-size:14px; color:#999;">

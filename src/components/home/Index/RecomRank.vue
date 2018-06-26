@@ -23,7 +23,7 @@
           </div>
         </div>
         <ul style="width:100%; line-height:32px;">
-          <li v-for="n in 10" class="rank-cell" style="width:100%; height:32px; padding:0 12px 0 18px; box-sizing:border-box;">
+          <li v-for="n in 10" :key="n + 99" class="rank-cell" style="width:100%; height:32px; padding:0 12px 0 18px; box-sizing:border-box;">
             <span style="width:23px; float:left; margin-right:8px; text-align:center;">{{ n }}</span>
             <p class="text-hidden" style="max-width:80%; float:left;">The Name of the Song {{ n }}</p>
           </li>
@@ -49,7 +49,7 @@
           </div>
         </div>
         <ul style="width:100%; line-height:32px;">
-          <li v-for="n in 10" class="rank-cell" style="width:100%; height:32px; padding:0 12px 0 18px; box-sizing:border-box;">
+          <li v-for="n in 10" :key="n + 99" class="rank-cell" style="width:100%; height:32px; padding:0 12px 0 18px; box-sizing:border-box;">
             <span style="width:23px; float:left; margin-right:8px; text-align:center;">{{ n }}</span>
             <p class="text-hidden" style="max-width:80%; float:left;">The Name of the Song {{ n }}</p>
           </li>
@@ -75,7 +75,7 @@
           </div>
         </div>
         <ul style="width:100%; line-height:32px;">
-          <li v-for="n in 10" class="rank-cell" style="width:100%; height:32px; padding:0 12px 0 18px; box-sizing:border-box;">
+          <li v-for="n in 10" :key="n + 99" class="rank-cell" style="width:100%; height:32px; padding:0 12px 0 18px; box-sizing:border-box;">
             <span style="width:23px; margin-right:8px; float:left; text-align:center;">{{ n }}</span>
             <p class="text-hidden" style="max-width:80%; float:left;">The Name of the Song {{ n }}</p>
           </li>

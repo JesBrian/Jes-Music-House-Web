@@ -93,7 +93,7 @@
       </div>
       <div style="height:338px;">
         <ul>
-          <li v-for="n in 10" style="width:20%; height:168px; float:left;">
+          <li v-for="n in 10" :key="n + 99" style="width:20%; height:168px; float:left;">
             <div style="width:68%; height:100%; margin:0 auto;">
               <router-link to="/singer" style="width:100%; height:118px; display:inline-block;">
                 <img class="box-show" src="http://p1.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=180y180" style="width:100%; height:100%; padding:4px;"/>
@@ -103,7 +103,6 @@
           </li>
         </ul>
       </div>
-
 
       <div style="height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;">
         <span style="font-size:23px; font-weight:700;">热门歌手</span>
@@ -111,7 +110,7 @@
       </div>
       <div style="height:338px;">
         <ul>
-          <li v-for="n in 10" style="width:20%; height:168px; float:left;">
+          <li v-for="n in 10" :key="n + 99" style="width:20%; height:168px; float:left;">
             <div style="width:68%; height:100%; margin:0 auto;">
               <router-link to="/singer" style="width:100%; height:118px; display:inline-block;">
                 <img class="box-show" src="http://p1.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=180y180" style="width:100%; height:100%; padding:4px;"/>
@@ -121,7 +120,6 @@
           </li>
         </ul>
       </div>
-
 
     </div>
   </div>
@@ -157,7 +155,6 @@ export default {
     opacity:1;
     background:#00d8ff;
   }
-
 
   .read-more {
     margin-top:46px; float:right; font-size:13px; color:#888; line-height:1em;

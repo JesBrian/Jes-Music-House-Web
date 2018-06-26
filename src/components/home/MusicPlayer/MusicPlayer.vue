@@ -98,7 +98,7 @@
         <div style="width:62%; height:100%; padding-top:3px; float:left; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;">
           <gemini-scrollbar>
             <ul style="width:100%; height:100%; line-height:27px;">
-              <li v-for="(item ,index) in musicPlayList" class="box-shadow" style="width:100%; height:28px; padding:1px; box-sizing:border-box; z-index:2;">
+              <li v-for="(item ,index) in musicPlayList" :key="index + 99" class="box-shadow" style="width:100%; height:28px; padding:1px; box-sizing:border-box; z-index:2;">
                 <div :class="{'active': musicPlayListNowIndex === index}" class="music-list-cell" style="width:100%; height:100%; position:relative;">
 
                   <!-- BEGIN 点击切换播放歌曲 BEGIN -->
@@ -571,16 +571,11 @@ export default {
 
 <style scoped>
   .mh-if {
-    color:#999;
-    text-shadow: 0 0 6px #000;
+    color:#999; text-shadow: 0 0 6px #000;
   }
   .mh-if:hover {
-    cursor:pointer;
-    color: #46dfff;
-    text-shadow: 0 0 3px #666, 0 0 18px #000;
-    opacity:1!important;
+    cursor:pointer; color: #46dfff; text-shadow: 0 0 3px #666, 0 0 18px #000; opacity:1!important;
   }
-
 
   .music-play {
     width:100%; height:48px; left:0; bottom:0; position:fixed;

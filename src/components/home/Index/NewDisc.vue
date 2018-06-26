@@ -125,9 +125,6 @@ export default {
     remove: function () {
       this.items.shift()
       this.items.push(this.nextNum++)
-    },
-    shuffle: function () {
-      this.items = _.shuffle(this.items)
     }
   }
 }
