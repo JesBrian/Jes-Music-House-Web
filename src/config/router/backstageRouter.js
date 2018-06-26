@@ -14,7 +14,7 @@ export default [
     children: [
       {
         path: 'index',
-        component: () => import('../../views/backstage/type/base/Index.vue')
+        component: () => import('../../views/backstage/pages/base/Index.vue')
       }
     ]
   }
