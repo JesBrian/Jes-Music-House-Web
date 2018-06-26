@@ -85,10 +85,10 @@
 
 <script>
 import SlideBox from '../../../../components/common/slideBox/SlideBox'
-import NewDisc from '../../../../components/home/Index/NewDisc.vue'
-import RecomRank from '../../../../components/home/Index/RecomRank.vue'
-import PersonalRecom from '../../../../components/home/Index/PersonalRecom.vue'
-import HotAlbum from '../../../../components/home/Index/HotAlbum.vue'
+import NewDisc from '../../../../components/frontend/Index/NewDisc.vue'
+import RecomRank from '../../../../components/frontend/Index/RecomRank.vue'
+import PersonalRecom from '../../../../components/frontend/Index/PersonalRecom.vue'
+import HotAlbum from '../../../../components/frontend/Index/HotAlbum.vue'
 
 export default {
   name: 'index',

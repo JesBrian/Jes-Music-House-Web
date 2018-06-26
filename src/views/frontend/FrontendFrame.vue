@@ -23,13 +23,13 @@
 </template>
 
 <script>
-import NavigationBar from '../../components/home/NavigationBar/NavigationBar.vue'
-import MusicPlayer from '../../components/home/MusicPlayer/MusicPlayer.vue'
-import FloatBlock from '../../components/home/FloatBlock/FloatBlock'
+import NavigationBar from '../../components/frontend/NavigationBar/NavigationBar.vue'
+import MusicPlayer from '../../components/frontend/MusicPlayer/MusicPlayer.vue'
+import FloatBlock from '../../components/frontend/FloatBlock/FloatBlock'
 import HomeModal from '../../components/common/modal/HomeModal.vue'
 
 export default {
-  name: 'HomeFrame',
+  name: 'FrontendFrame',
 
   components: {
     FloatBlock,

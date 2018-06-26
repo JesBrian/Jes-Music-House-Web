@@ -4,7 +4,7 @@
 export default [
   {
     path: '/login',
-    component: () => import('../../views/backstage/Login.vue')
+    component: () => import('../../views/login/Login.vue')
   },
   {
     path: '/backstage',
