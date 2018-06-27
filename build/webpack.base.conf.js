@@ -23,9 +23,9 @@ module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
     app: './src/main.js',
-    frontend: './src/frontend/main.js',
-    login: './src/login/main.js',
-    backstage: './src/backstage/main.js',
+    // frontend: './src/frontend/main.js',
+    login: './src/views/login/main.js',
+    backstage: './src/views/backstage/main.js',
   },
   output: {
     path: config.build.assetsRoot,

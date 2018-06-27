@@ -1,21 +1,28 @@
-/**
- *PC后台页面路由
- */
-export default [
-  {
-    path: '/login',
-    component: () => import('../../views/login/Login.vue')
-  },
-  {
-    path: '/backstage',
-    component: () => import('../../views/backstage/BackstageFrame.vue'),
-    redirect: '/backstage/index',
+import Vue from 'vue'
+import Router from 'vue-router'
 
-    children: [
-      {
-        path: 'index',
-        component: () => import('../../views/backstage/pages/base/Index.vue')
-      }
-    ]
-  }
-]
+Vue.use(Router)
+
+/**
+ * 路由跳转配置
+ */
+export default new Router({
+  routes: [
+    {
+      path: '/login',
+      component: () => import('../../views/login/Login.vue')
+    },
+    {
+      path: '/backstage',
+      component: () => import('../../views/backstage/BackstageFrame.vue'),
+      redirect: '/backstage/index',
+
+      children: [
+        {
+          path: 'index',
+          component: () => import('../../views/backstage/pages/base/Index.vue')
+        }
+      ]
+    }
+  ]
+})

@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <a href="/login.html" style="position:fixed; top:0; left:0; z-index:9999999999;">666</a>
+    <a href="/backstage.html" style="position:fixed; top:0; left:18px; z-index:9999999999;">666</a>
     <router-view/>
   </div>
 </template>

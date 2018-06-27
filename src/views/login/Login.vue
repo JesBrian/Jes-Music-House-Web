@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="login">
     this is backstage login
   </div>
 </template>

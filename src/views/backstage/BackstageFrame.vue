@@ -1,5 +1,5 @@
 <template>
-  <div style="background:#666;">
+  <div id="backstage" style="background:#666;">
 
     <!-- 导航条 -->
     <navigation-bar />
