@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import RankDetail from '../../../../components/home/Rank/RankDetail.vue'
+import RankDetail from '../../../../components/frontend/Rank/RankDetail.vue'
 
 export default {
   name: 'Rank',
