@@ -64,7 +64,7 @@
         <span @click="showUserLoginModal" class="super-btn-in" style="width:29.5px; height:28.5px; top:48.7%; line-height:29.5px; font-size:20px;">X</span>
 
         <div style="top:32px; left:-68%; position:absolute;">
-          <div class="super-btn-out" style="width:100px; margin:10px 0 0 -8px; padding:0 4px; text-align:center; line-height:30px;">
+          <div class="super-btn-out" style="width:100px; margin:10px 0 0 -8px; padding:0 4px 2px; text-align:center; line-height:30px;">
             <ul>
               <li>
                 <router-link to="user"><i class="MyIF home"></i> 个人主页</router-link>

@@ -22,10 +22,6 @@ export default new Router({
           path: '/search/:searchType/:searchKey',
           component: () => import('../../views/frontend/pages/base/Search.vue')
         },
-        // {
-        //   path: '/search',
-        //   component: () => import('../../views/frontend/pages/base/Search.vue')
-        // },
         {
           path: '/rank',
           component: () => import('../../views/frontend/pages/base/Rank.vue')

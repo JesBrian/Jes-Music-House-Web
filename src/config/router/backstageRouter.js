@@ -13,9 +13,9 @@ export default new Router({
       component: () => import('../../views/login/Login.vue')
     },
     {
-      path: '/backstage',
-      component: () => import('../../views/backstage/BackstageFrame.vue'),
-      redirect: '/backstage/index',
+      path: '/',
+      component: () => import('../../views/backstage/pages/base/Index.vue'),
+      redirect: '/index',
 
       children: [
         {
