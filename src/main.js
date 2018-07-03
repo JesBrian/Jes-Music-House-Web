@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './config/router/frontendRouter.js'
-import store from './config/vuex/store.js'
+import store from './config/vuex/index.js'
 import vueLazyload from 'vue-lazyload'
 import GeminiScrollbar from 'vue-gemini-scrollbar'
 
