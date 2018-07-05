@@ -12,7 +12,7 @@
         <i :class="musicPlayShow ? 'lock' : 'unlock'" class="mh-if" style="bottom:-17px; right:6px; position:absolute;"></i>
       </div>
 
-      <div style="width:1208px; height:88%; margin:3px auto; position:relative; z-index:5; line-height:42px; color:#AAA;">
+      <div style="width:1080px; height:88%; margin:3px auto; position:relative; z-index:5; line-height:42px; color:#AAA;">
         <!-- 播放控制 -->
         <div style="width:98px; height:100%; float:left; display:inline-block; text-align:center;">
           <i @click="prevMusic" class="mh-if double-arrow-left" style="margin-top:0.5px; float:left; font-size:18px;"></i>
@@ -20,30 +20,30 @@
           <i @click="nextMusic" class="mh-if double-arrow-right" style="margin-top:1px; float:right; font-size:18px;"></i>
         </div>
         <!-- 歌曲控制 -->
-        <div style="width:938px; height:100%; padding:0 0 0 28px; box-sizing:border-box; display:inline-block;">
+        <div style="width:800px; height:100%; padding:0 0 0 28px; box-sizing:border-box; display:inline-block;">
           <router-link id="songResource" to="/song" class="glass-bg" style="width:31px; height:31px; margin:4px 0; float:left; display:inline-block;">
             <img v-lazy="require('../../../../static/img/default/default_album.jpg')" style="width:100%; height:100%; border-radius:3.5px;" />
           </router-link>
-          <div style="width:768px; height:100%; margin-left:28px; display:inline-block;">
+          <div style="width:628px; height:100%; margin-left:28px; display:inline-block;">
             <div style="width:100%; height:19px; font-size:13.5px;">
-              <router-link to="/song" style="height:100%; margin:-10.5px 28px 0 0; float:left; color:#AAA;">Name of the Song 123 歌曲名字</router-link>
+              <router-link to="/song" style="height:100%; margin:-10.5px 28px 0 8px; float:left; color:#AAA;">Name of the Song 123 歌曲名字</router-link>
               <router-link to="/singer" style="height:100%; margin-top:-10.7px; float:left; font-size:12px; color:#AAA;">歌手<i style="margin:0 3px;">/</i>Singer Name</router-link>
             </div>
             <!-- 播放进度 -->
-            <div @click="clickMusicProgressBar" id="progressBarClickContent" class="box-show" style="width:638px; height:10px; margin-top:5.5px; float:left; position:relative; border-radius:8px; background:#000;">
+            <div @click="clickMusicProgressBar" id="progressBarClickContent" class="box-show" style="width:508px; height:10px; margin-top:5px; float:left; position:relative; border-radius:8px; background:#000;">
               <div :style="{'width': musicBufferedRate * 100 + '%'}" class="box-show" style="width:0; height:100%; border-radius:6px; background:#181818; z-index:9;"></div>
               <div :style="{'width': musicCTime / musicDTime * 100 + '%'}" style="height:83%; top:9%; left:0; position:absolute; background:linear-gradient(to right, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px;">
                 <a @mousedown="dragProgressControllerPointer" id="progressPointer" class="controller-pointer box-show" style="top:-4px; right:-9px;"></a>
               </div>
             </div>
             <!-- 播放时间 -->
-            <div style="width:16%; height:50%; float:right; text-align:center; line-height:18.5px; font-size:13.5px;">
+            <div style="width:16%; height:50%; float:right; text-align:center; line-height:8px; font-size:13.5px;">
               {{ timeStampToTime(musicCTime) }} - {{ timeStampToTime(musicDTime) }}
             </div>
           </div>
           <div style="float:right;">
             <i class="mh-if add-collection" style="margin-right:6px; font-size:24px;"></i>
-            <i class="mh-if share" style="margin-right:6px; font-size:22px; font-weight:700;"></i>
+            <i class="mh-if share" style="margin-right:6px; font-size:20px; font-weight:700;"></i>
           </div>
         </div>
         <!-- 其他控制 -->
@@ -429,11 +429,11 @@ export default {
      * 修改音乐播放进度
      */
     changeMusicPlayProgress (progress = 0) {
-      if (progress < 0 || progress > 638) {
+      if (progress < 0 || progress > 508) {
         return false
       }
       clearInterval(this.timer)
-      let progressRate = progress / 638
+      let progressRate = progress / 508
       this.musicSource.currentTime = Number.parseInt(this.musicDTime * progressRate)
     },
 

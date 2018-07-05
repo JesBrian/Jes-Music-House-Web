@@ -1,10 +1,10 @@
 <template>
   <!-- 导航条 -->
   <div class="glass-bg box-show" style="width:100%; height:53px; top:0; left:0; position:fixed; border-radius:0; opacity:0.98;">
-    <div style="width:1238px; height:100%; margin:0 auto;">
+    <div style="width:1088px; height:100%; margin:0 auto;">
 
       <!-- 导航栏LOGO -->
-      <router-link to="/" style="margin-right:38px; float:left; line-height:48px;">
+      <router-link to="/" style="margin-right:18px; float:left; line-height:48px;">
         <img v-lazy="require('../../../../static/img/logo.png')" style="width:33px; height:33px; margin:8px 8px 0 0; float:left;"/>
         <span style="font-size:22px; font-weight:700; color:#22e8ff; text-shadow:1.5px 1.5px 6px #30cdff;">Music House</span>
       </router-link>
@@ -60,7 +60,7 @@
       </div>
 
       <!-- 导航栏用户登录/操作 -->
-      <div id="navMenuUser" class="super-btn-out" style="width:40px; height:38px; margin-top:6px; position:relative; float:right;">
+      <div id="navMenuUser" class="super-btn-out" style="width:40px; height:38px; margin:6px -8px 0 0; position:relative; float:right;">
         <span @click="showUserLoginModal" class="super-btn-in" style="width:29.5px; height:28.5px; top:48.7%; line-height:29.5px; font-size:20px;">X</span>
 
         <div style="top:32px; left:-68%; position:absolute;">
@@ -90,11 +90,11 @@
       </div>
 
       <!-- 导航栏搜索栏 -->
-      <label @keyup.enter="gotoSearch" style="width:288px; height:38px; margin:6px 28px 0 0; float:right; position:relative;">
+      <label @keyup.enter="gotoSearch" style="width:288px; height:38px; margin:6px 18px 0 0; float:right; position:relative;">
         <span class="super-btn-out" style="width:100%; height:100%;"></span>
-        <input v-model="searchKey" class="super-btn-in" placeholder="搜索一下更精彩！" style="width:242px; height:30px; left:44%; margin-top:1.2px; padding:0 8px; box-sizing:border-box; text-align:left; line-height:20px; letter-spacing:1px;"/>
-        <span @click="gotoSearch" class="super-btn-out" style="width:28px; height:28px; top:5px; right:4px; position:absolute;">
-          <span to="/search" class="super-btn-in mh-if search" style="width:30px; height:28.5px; display:inline-block; float:right; font-size:21px; line-height:30px;" ></span>
+        <input v-model="searchKey" class="super-btn-in" placeholder="搜索一下更精彩！" style="width:242px; height:28px; left:44%; margin-top:1px; padding:0 8px; box-sizing:border-box; text-align:left; line-height:20px; letter-spacing:1px;"/>
+        <span @click="gotoSearch" class="super-btn-out" style="width:28px; height:27px; top:5px; right:4px; position:absolute;">
+          <span to="/search" class="super-btn-in mh-if search" style="width:30px; height:28px; display:inline-block; float:right; font-size:21px; line-height:30px;" ></span>
         </span>
       </label>
 

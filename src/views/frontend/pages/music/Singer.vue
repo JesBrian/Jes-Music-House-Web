@@ -94,8 +94,8 @@
       <div style="height:338px;">
         <ul>
           <li v-for="n in 10" :key="n + 99" style="width:20%; height:168px; float:left;">
-            <div style="width:68%; height:100%; margin:0 auto;">
-              <router-link to="/singer" style="width:100%; height:118px; display:inline-block;">
+            <div style="width:76%; height:100%; margin:0 auto;">
+              <router-link to="/singer" style="width:100%; height:108px; display:inline-block;">
                 <img class="box-show" src="http://p1.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=180y180" style="width:100%; height:100%; padding:4px;"/>
               </router-link>
               <router-link to="/singer" style="line-height:1.38em; color:#AAA;">JesBrian</router-link>
@@ -111,8 +111,8 @@
       <div style="height:338px;">
         <ul>
           <li v-for="n in 10" :key="n + 99" style="width:20%; height:168px; float:left;">
-            <div style="width:68%; height:100%; margin:0 auto;">
-              <router-link to="/singer" style="width:100%; height:118px; display:inline-block;">
+            <div style="width:76%; height:100%; margin:0 auto;">
+              <router-link to="/singer" style="width:100%; height:108px; display:inline-block;">
                 <img class="box-show" src="http://p1.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=180y180" style="width:100%; height:100%; padding:4px;"/>
               </router-link>
               <router-link to="/singer" style="line-height:1.38em; color:#AAA;">JesBrian</router-link>

@@ -16,10 +16,10 @@
               <img src="../../../../static/img/default/disc.png" style="width:88px; height:75px;"/>
             </router-link>
             <!--<i class="mh-if play"></i>-->
-            <p class="text-hidden" style="margin-left:18px; padding-right:8px; text-align:left;">
+            <p class="text-hidden" style="margin-left:12px; padding-right:8px; text-align:left;">
               <router-link to="playList" style="font-size:14.5px; color:#BBB;">{{ item.name }}</router-link>
             </p>
-            <p class="text-hidden" style="margin-left:18px; padding-right:8px; text-align:left;">
+            <p class="text-hidden" style="margin-left:12px; padding-right:8px; text-align:left;">
               <router-link to="singer" style="font-size:12.3px; color:#999;">{{ item.id + ' / ' + item.singer }}</router-link>
             </p>
           </div>

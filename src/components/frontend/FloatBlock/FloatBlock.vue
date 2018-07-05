@@ -61,7 +61,7 @@ export default {
      * 依据窗口宽度[vuex]改变浮动游标的位置
      */
     changePosition () {
-      document.getElementById('floatBlock').style.right = ((this.screenWidth - document.getElementById('homeLayout').clientWidth) / 2 - 56) + 'px'
+      document.getElementById('floatBlock').style.right = ((this.screenWidth - document.getElementById('homeLayout').clientWidth) / 2 - 58) + 'px'
     },
 
     goPViewsTop () {

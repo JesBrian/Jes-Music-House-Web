@@ -8,13 +8,13 @@
 
       <!-- 下载区域 -->
       <div class="box-show" style="width:24%; height:100%; float:right; position:relative; z-index:9; background:url('../../../../../static/img/default/download.png') no-repeat; background-size:100% 100%;">
-        <router-link to="/download/client" class="super-btn-out" style="width:148px; height:43px; margin:238px 52px 0;">
+        <router-link to="/download/client" class="super-btn-out" style="width:148px; height:43px; margin:238px 28px 0;">
           <span class="super-btn-in mh-if download" style="width:135px; height:30px; line-height:32px; font-size:20px;"> 下载客户端</span>
         </router-link>
       </div>
     </div>
 
-    <div class="box-show" style="width:100%; padding:0 68px;">
+    <div class="box-show" style="width:100%; padding:0;">
       <div class="box-show">
         <!-- 主页主体内容 -->
         <div class="box-show" style="width:76%; padding:13px 0 38px; display:inline-block;">

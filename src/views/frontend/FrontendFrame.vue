@@ -7,7 +7,7 @@
     <div style="width:100%; height:100%; left:0; padding:0 3px; display:inline-block; position:fixed; box-sizing:border-box; background:#2E2E2E; z-index:-1;">
       <gemini-scrollbar>
         <router-view class="glass-bg box-show" />
-        <div class="glass-bg box-show" style="width:1238px; height:103px; margin:-3px auto 0; position:relative; z-index:50;"></div>
+        <div class="glass-bg box-show" style="width:1120px; height:103px; margin:-3px auto 0; position:relative; z-index:50;"></div>
       </gemini-scrollbar>
     </div>
 
@@ -52,6 +52,6 @@ export default {
 
 <style>
   #homeLayout {
-    width:1180px; min-height:688px; margin:auto; padding:88px 0 0; position:relative; z-index:25;
+    width:988px; min-height:688px; margin:auto; padding:88px 0 0; position:relative; z-index:25;
   }
 </style>
