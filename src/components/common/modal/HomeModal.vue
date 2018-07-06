@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import Warning from './tyep/Warning.vue'
-import Login from './tyep/Login.vue'
-import Register from './tyep/Register.vue'
+import Warning from './type/Warning.vue'
+import Login from './type/Login.vue'
+import Register from './type/Register.vue'
 
 export default {
   name: 'HomeModal',
@@ -29,7 +29,7 @@ export default {
 
   methods: {
     closeShowModal () {
-      this.$store.commit('changeModalType')
+      this.$store.commit('CHANGE_MODAL_TYPE')
     }
   }
 }

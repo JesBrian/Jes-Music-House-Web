@@ -6,7 +6,17 @@
 
 <script>
 export default {
-  name: 'Musician'
+  name: 'Musician',
+
+  beforeCreate () {
+    if (this.$store.state.User.id !== '0') {
+      // this.axios
+      // if (this.$store.state.User.id === '1') {
+      //   window.open('http://www.baidu.com')
+      // }
+    }
+  }
+
 }
 </script>
 

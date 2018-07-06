@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './config/router/frontendRouter.js'
+import axios from 'axios'
 import store from './config/vuex/index.js'
 import vueLazyload from 'vue-lazyload'
 import GeminiScrollbar from 'vue-gemini-scrollbar'
@@ -12,6 +13,13 @@ import '@/assets/css/common.css'
 import './assets/plugins/myiconfont/iconfont.css'
 
 Vue.config.productionTip = false
+
+// axios.defaults.withCredentials = true
+// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+axios.defaults.baseURL = store.state.baseHost + 'index.php/' // 本地开发配置域名
+// axios.defaults.baseURL = store.state.baseHost // 服务器生产配置域名
+Vue.prototype.axios = axios
+
 Vue.use(vueLazyload, {
   error: require('./assets/img/loading.svg'),
   loading: require('./assets/img/loading.svg')

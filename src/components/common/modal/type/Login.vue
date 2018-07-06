@@ -15,18 +15,18 @@
       <!-- 注册本站用户登陆 -->
       <div style="width:72%; height:100%; float:left;">
 
-        <div style="width:100%; height:32%; margin:0 auto; font-size:19px;">
-          <label class="MyIF IDcard-1" for="loginUser" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
-            <span style="margin-left:8px; color:#DDD;">用户名</span>
+        <div style="width:83%; height:32%; margin:0 auto; font-size:19px;">
+          <label class="MyIF IDcard-1" for="loginPhone" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
+            <span style="margin-left:8px; color:#DDD;">手机</span>
           </label>
-          <input id="loginUser" type="text" class="s1c-Bg box-show" v-model="username" style="width:268px; padding:6px 12px; float:right;" placeholder="请填写用户名"/>
+          <input v-model="phone" id="loginPhone" type="text" class="s1c-Bg box-show" style="width:268px; padding:6px 12px; float:right;" placeholder="请填写手机号码"/>
         </div>
 
         <div style="width:83%; height:32%; margin:0 auto; font-size:19px;">
           <label class="MyIF yuechi" for="loginPwd" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
             <span style="margin-left:8px; color:#DDD;">密码</span>
           </label>
-          <input id="loginPwd" type="password" class="s1c-Bg box-show" v-model="passwd" style="width:268px; padding:6px 12px; float:right;" placeholder="请填写密码"/>
+          <input v-model="passwd" id="loginPwd" type="password" class="s1c-Bg box-show" style="width:268px; padding:6px 12px; float:right;" placeholder="请填写密码"/>
         </div>
 
         <div style="text-align:center;">
@@ -99,9 +99,26 @@
 export default {
   name: 'Login',
 
+  data () {
+    return {
+      phone: '',
+      passwd: ''
+    }
+  },
+
   methods: {
     showUserRegisterModal () {
-      this.$store.commit('changeModalType', 'register')
+      this.$store.commit('CHANGE_MODAL_TYPE', 'register')
+    },
+
+    userPhoneLogin () {
+      if (this.phone === '') {
+        return false
+      }
+      if (this.passwd === '') {
+        return false
+      }
+      // this.axios.post('', {})
     }
   }
 }

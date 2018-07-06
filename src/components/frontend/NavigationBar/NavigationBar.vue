@@ -60,31 +60,35 @@
       </div>
 
       <!-- 导航栏用户登录/操作 -->
-      <div id="navMenuUser" class="super-btn-out" style="width:40px; height:38px; margin:6px -8px 0 0; position:relative; float:right;">
-        <span @click="showUserLoginModal" class="super-btn-in" style="width:29.5px; height:28.5px; top:48.7%; line-height:29.5px; font-size:20px;">X</span>
-
-        <div style="top:32px; left:-68%; position:absolute;">
-          <div class="super-btn-out" style="width:100px; margin:10px 0 0 -8px; padding:0 4px 2px; text-align:center; line-height:30px;">
-            <ul>
-              <li>
-                <router-link to="user"><i class="MyIF home"></i> 个人主页</router-link>
-              </li>
-              <li>
-                <router-link to="/message"><i class="MyIF add-data"></i> 消息管理</router-link>
-              </li>
-              <li>
-                <router-link to="/level"><i class="MyIF IDcard-1"></i> 我的等级</router-link>
-              </li>
-              <li>
-                <router-link to="/vip"><i class="MyIF IDcard-1"></i> VIP会员</router-link>
-              </li>
-              <li>
-                <router-link to="/update"><i class="MyIF gears"></i> 修改资料</router-link>
-              </li>
-              <li>
-                <a><i class="mh-if exit-1"></i> 安全退出</a>
-              </li>
-            </ul>
+      <div style="width:40px; height:38px; margin:6px -8px 0 0; position:relative; float:right;">
+        <div v-if="$store.state.User.id === '0'" @click="showUserLoginModal" class="super-btn-out" style="width:100%; height:100%;">
+          <span class="super-btn-in mh-if collection-music" style="width:29.5px; height:28.5px; top:48.7%; line-height:29.5px; font-size:20px;"></span>
+        </div>
+        <div v-else id="navMenuUser" class="super-btn-out" style="width:100%; height:100%;">
+          <span class="super-btn-in" style="width:29.5px; height:28.5px; top:48.7%; line-height:29.5px; font-size:20px;">X</span>
+          <div style="top:32px; left:-68%; position:absolute;">
+            <div class="super-btn-out" style="width:100px; margin:10px 0 0 -8px; padding:0 4px 2px; text-align:center; line-height:30px;">
+              <ul>
+                <li>
+                  <router-link to="user"><i class="MyIF home"></i> 个人主页</router-link>
+                </li>
+                <li>
+                  <router-link to="/message"><i class="MyIF add-data"></i> 消息管理</router-link>
+                </li>
+                <li>
+                  <router-link to="/level"><i class="MyIF IDcard-1"></i> 我的等级</router-link>
+                </li>
+                <li>
+                  <router-link to="/vip"><i class="MyIF IDcard-1"></i> VIP会员</router-link>
+                </li>
+                <li>
+                  <router-link to="/update"><i class="MyIF gears"></i> 修改资料</router-link>
+                </li>
+                <li>
+                  <a><i class="mh-if exit-1"></i> 安全退出</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -125,7 +129,7 @@ export default {
 
   methods: {
     showUserLoginModal () {
-      this.$store.commit('changeModalType', 'login')
+      this.$store.commit('CHANGE_MODAL_TYPE', 'login')
     },
 
     switchMenuType () {

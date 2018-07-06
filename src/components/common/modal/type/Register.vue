@@ -31,11 +31,11 @@ export default {
 
   methods: {
     showWarningModal () {
-      this.$store.commit('changeModalType', 'warning')
+      this.$store.commit('CHANGE_MODAL_TYPE', 'warning')
     },
 
     showUserLoginModal () {
-      this.$store.commit('changeModalType', 'login')
+      this.$store.commit('CHANGE_MODAL_TYPE', 'login')
     },
 
     sureRegister () {
