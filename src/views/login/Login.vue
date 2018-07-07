@@ -4,6 +4,26 @@
       <div style="width:58%; height:100%; float:left; box-sizing:border-box; border-right:1px solid #888;"></div>
       <div style="width:42%; height:100%; float:right;">
         <div style="width:100%; text-align:center;">
+
+          <div style="width:83%; height:288px; margin:0 auto 8px; text-align:left;">
+            <div style="width:100%; height:58px; margin:0 auto; font-size:19px;">
+              <label class="MyIF IDcard-1" for="loginPhone" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
+              <span style="color:#DDD;">
+                <i class="mh-if headphone" style="margin:0 8px 0 0;"></i>手机
+              </span>
+              </label>
+              <input v-model="phone" id="loginPhone" type="text" class="cube-bg box-show" style="width:238px; margin-top:2px; padding:6px 10px; float:right; font-size:15px;" placeholder="请填写手机号码"/>
+            </div>
+            <div style="width:100%; height:58px; margin:0 auto; font-size:19px;">
+              <label class="MyIF yuechi" for="loginPwd" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
+              <span style="color:#DDD;">
+                <i class="mh-if headphone" style="margin:0 8px 0 0;"></i>密码
+              </span>
+              </label>
+              <input v-model="passwd" id="loginPwd" type="password" class="cube-bg box-show" style="width:238px; margin-top:2px; padding:6px 10px; float:right; font-size:15px;" placeholder="请填写密码"/>
+            </div>
+          </div>
+
           <div class="super-btn-out" style="width:118px; height:38px; margin:0 12px;">
             <span class="super-btn-in" style="width:106px; height:26px; line-height:26px;">确认登陆</span>
           </div>
@@ -13,6 +33,10 @@
         </div>
       </div>
     </div>
+
+    <footer class="glass-bg box-show" style="width:100%; bottom:0; left:0; position:fixed; z-index:98;">
+      ©<span style="margin:0 18px 0 8px;">2015 - 2020</span>Music House 所有版权归 JesBrian 个人所有
+    </footer>
   </div>
 </template>
 
@@ -23,5 +47,20 @@ export default {
 </script>
 
 <style scoped>
-
+  footer {
+    width: 100%;
+    height: 25px;
+    bottom: 0;
+    margin: 0;
+    padding: 0 68px;
+    box-sizing: border-box;
+    border-radius: 0;
+    position: fixed;
+    z-index: 99;
+    font-size: 15px;
+    color: #30CDFF;
+    text-shadow: 1px 1px 1px;
+    line-height: 22px;
+    text-align: right;
+  }
 </style>

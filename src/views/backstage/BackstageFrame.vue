@@ -19,7 +19,7 @@
 
     <!-- 底部信息条 -->
     <footer class="glass-bg box-show" style="width:100%; bottom:0; left:0; position:fixed; z-index:98;">
-      © 2015 - 2020 &nbsp;&nbsp;&nbsp;Music House 所有版权归 JesBrian 个人所有
+      ©<span style="margin:0 18px 0 8px;">2015 - 2020</span>Music House 所有版权归 JesBrian 个人所有
     </footer>
   </div>
 </template>

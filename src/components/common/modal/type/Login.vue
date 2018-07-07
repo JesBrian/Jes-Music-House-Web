@@ -15,30 +15,35 @@
       <!-- 注册本站用户登陆 -->
       <div style="width:72%; height:100%; float:left;">
 
-        <div style="width:83%; height:32%; margin:0 auto; font-size:19px;">
-          <label class="MyIF IDcard-1" for="loginPhone" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
-            <span style="margin-left:8px; color:#DDD;">手机</span>
-          </label>
-          <input v-model="phone" id="loginPhone" type="text" class="s1c-Bg box-show" style="width:268px; padding:6px 12px; float:right;" placeholder="请填写手机号码"/>
-        </div>
-
-        <div style="width:83%; height:32%; margin:0 auto; font-size:19px;">
-          <label class="MyIF yuechi" for="loginPwd" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
-            <span style="margin-left:8px; color:#DDD;">密码</span>
-          </label>
-          <input v-model="passwd" id="loginPwd" type="password" class="s1c-Bg box-show" style="width:268px; padding:6px 12px; float:right;" placeholder="请填写密码"/>
+        <div style="margin:28px 0 8px;">
+          <div style="width:83%; height:58px; margin:0 auto; font-size:19px;">
+            <label class="MyIF IDcard-1" for="loginPhone" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
+            <span style="margin-left:8px; color:#DDD;">
+              <i class="mh-if headphone" style="margin:0 8px 0 0;"></i>手机
+            </span>
+            </label>
+            <input v-model="phone" id="loginPhone" type="text" class="cube-bg box-show" style="width:268px; margin-top:2px; padding:6px 10px; float:right; font-size:15px;" placeholder="请填写手机号码"/>
+          </div>
+          <div style="width:83%; height:58px; margin:0 auto; font-size:19px;">
+            <label class="MyIF yuechi" for="loginPwd" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
+            <span style="margin-left:8px; color:#DDD;">
+              <i class="mh-if headphone" style="margin:0 8px 0 0;"></i>密码
+            </span>
+            </label>
+            <input v-model="passwd" id="loginPwd" type="password" class="cube-bg box-show" style="width:268px; margin-top:2px; padding:6px 10px; float:right; font-size:15px;" placeholder="请填写密码"/>
+          </div>
         </div>
 
         <div style="text-align:center;">
-          <span class="super-btn-out" style="width:108px; height:38px; margin:0 48px 0 0;">
+          <span class="super-btn-out" style="width:108px; height:38px; margin:0 18px;">
             <span class="super-btn-in mh-if cancel" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 重新填写</span>
           </span>
-          <span class="super-btn-out" @click="userLogin" style="width:108px; height:38px; margin:0 0 0 48px;">
+          <span class="super-btn-out" @click="userPhoneLogin" style="width:108px; height:38px; margin:0 18px;">
             <span class="super-btn-in mh-if makesure" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 确认登陆</span>
           </span>
         </div>
 
-        <p style="margin-right:18px; float:right; line-height:2.5em;">
+        <p style="margin-right:18px; float:right; line-height:5em; font-size:14px;">
           <a class="hover-underline" style="margin:0 18px;">忘记密码</a>/<a @click="showUserRegisterModal" class="hover-underline" style="margin:0 18px;">新用户注册</a>
         </p>
       </div>
