@@ -15,7 +15,7 @@
       <!-- 注册本站用户登陆 -->
       <div style="width:72%; height:100%; float:left;">
 
-        <div style="margin:28px 0 8px;">
+        <form style="margin:28px 0 8px;">
           <div style="width:83%; height:58px; margin:0 auto; font-size:19px;">
             <label class="MyIF IDcard-1" for="loginPhone" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
             <span style="margin-left:8px; color:#DDD;">
@@ -32,7 +32,7 @@
             </label>
             <input v-model="passwd" id="loginPwd" type="password" class="cube-bg box-show" style="width:268px; margin-top:2px; padding:6px 10px; float:right; font-size:15px;" placeholder="请填写密码"/>
           </div>
-        </div>
+        </form>
 
         <div style="text-align:center;">
           <span class="super-btn-out" style="width:108px; height:38px; margin:0 18px;">
@@ -54,13 +54,13 @@
           <tr>
             <td style="text-align:right">
               <!-- 微信 -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weixin'" target="_blank" @click="checkOAuthLogin" class="super-btn-out" title="微信登陆" style="width:40px; height:40px; margin:8px 0;">
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weixin'" target="_blank" class="super-btn-out" title="微信登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="super-btn-in MyIF wechat" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
             <td>
               <!-- QQ -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=QQ'" target="_blank" @click="checkOAuthLogin" class="super-btn-out" title="QQ登陆" style="width:40px; height:40px; margin:8px 0;">
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=QQ'" target="_blank" class="super-btn-out" title="QQ登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="super-btn-in MyIF qq" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
@@ -68,13 +68,13 @@
           <tr>
             <td style="text-align:right">
               <!-- 微博 -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weibo'" target="_blank" @click="checkOAuthLogin" class="super-btn-out" title="微博登陆" style="width:40px; height:40px; margin:8px 0;">
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weibo'" target="_blank" class="super-btn-out" title="微博登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="super-btn-in MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
             <td>
               <!-- 百度 -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Baidu'" target="_blank" @click="checkOAuthLogin" class="super-btn-out" style="width:40px; height:40px; margin:8px 0;">
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Baidu'" target="_blank" class="super-btn-out" style="width:40px; height:40px; margin:8px 0;">
                 <span class="super-btn-in MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
@@ -82,13 +82,13 @@
           <tr>
             <td style="text-align:right">
               <!-- Gitee -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Gitee'" target="_blank" @click="checkOAuthLogin" class="super-btn-out" title="码云登陆" style="width:40px; height:40px; margin:8px 0;">
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Gitee'" target="_blank" class="super-btn-out" title="码云登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="super-btn-in MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
             <td>
               <!-- Github -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" @click="checkOAuthLogin" class="super-btn-out" title="Github登陆" style="width:40px; height:40px; margin:8px 0;">
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" class="super-btn-out" title="Github登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="super-btn-in MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
@@ -123,7 +123,22 @@ export default {
       if (this.passwd === '') {
         return false
       }
-      // this.axios.post('', {})
+      this.axios.post('phoneLogin', {
+        phone: this.phone,
+        passwd: this.passwd
+      }).then((response) => {
+        console.log(response)
+        // let result = response.data
+        // let tipsType = 'warning'
+        //
+        // if (result.state === '620') {
+        //   tipsType = 'info'
+        //   this.$store.commit('SAVE_LOGIN_USER_INFO', result.data)
+        // }
+        // this.$store.commit('SHOW_TIPS', {msg: result.msg, type: tipsType})
+      }).catch((error) => {
+        console.error(error)
+      })
     }
   }
 }

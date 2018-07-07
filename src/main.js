@@ -16,8 +16,8 @@ Vue.config.productionTip = false
 
 // axios.defaults.withCredentials = true
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
-axios.defaults.baseURL = store.state.baseHost + 'index.php/' // 本地开发配置域名
-// axios.defaults.baseURL = store.state.baseHost // 服务器生产配置域名
+axios.defaults.baseURL = store.state.Global.DEV_API_URL // 本地开发配置 API 路径
+// axios.defaults.baseURL = store.state.Global.PROD_API_URL // 服务器生产配置 API 路径
 Vue.prototype.axios = axios
 
 Vue.use(vueLazyload, {
