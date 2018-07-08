@@ -111,6 +111,20 @@ export default {
     }
   },
 
+  computed: {
+    userId () {
+      return this.$store.state.User.id
+    }
+  },
+
+  watch: {
+    userId () {
+      if (this.userId !== '0') {
+        this.$store.commit('CHANGE_MODAL_TYPE')
+      }
+    }
+  },
+
   methods: {
     showUserRegisterModal () {
       this.$store.commit('CHANGE_MODAL_TYPE', 'register')
@@ -127,14 +141,13 @@ export default {
         phone: this.phone,
         passwd: this.passwd
       }).then((response) => {
-        console.log(response)
-        // let result = response.data
+        let result = response.data
         // let tipsType = 'warning'
-        //
-        // if (result.state === '620') {
-        //   tipsType = 'info'
-        //   this.$store.commit('SAVE_LOGIN_USER_INFO', result.data)
-        // }
+        if (result.state === '620') {
+          // tipsType = 'info'
+          this.$store.commit('SAVE_LOGIN_USER_INFO', result.data)
+          this.localForage.setItem('user', result.data)
+        }
         // this.$store.commit('SHOW_TIPS', {msg: result.msg, type: tipsType})
       }).catch((error) => {
         console.error(error)

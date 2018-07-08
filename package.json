@@ -16,6 +16,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "localforage": "^1.7.2",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^3.1.3",
     "vue-gemini-scrollbar": "^2.0.0",
