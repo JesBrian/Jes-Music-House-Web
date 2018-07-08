@@ -60,34 +60,22 @@
       </div>
 
       <!-- 导航栏用户登录/操作 -->
-      <div style="width:40px; height:38px; margin:6px -8px 0 0; position:relative; float:right;">
+      <div style="width:42px; height:38px; margin:6px -8px 0 0; position:relative; float:right;">
         <div v-if="$store.state.User.id === '0'" @click="showUserLoginModal" class="super-btn-out" style="width:100%; height:100%;">
-          <span class="super-btn-in mh-if collection-music" style="width:29.5px; height:28.5px; top:48.7%; line-height:29.5px; font-size:20px;"></span>
+          <span class="super-btn-in mh-if collection-music" style="width:32px; height:29px; top:48%; line-height:29.5px; font-size:20px;"></span>
         </div>
-        <div v-else id="navMenuUser" class="super-btn-out" style="width:100%; height:100%;">
-          <span class="super-btn-in" style="width:29.5px; height:28.5px; top:48.7%; line-height:29.5px; font-size:20px;">X</span>
-          <div style="top:32px; left:-68%; position:absolute;">
-            <div class="super-btn-out" style="width:100px; margin:10px 0 0 -8px; padding:0 4px 2px; text-align:center; line-height:30px;">
-              <ul>
-                <li>
-                  <router-link to="user"><i class="MyIF home"></i> 个人主页</router-link>
-                </li>
-                <li>
-                  <router-link to="/message"><i class="MyIF add-data"></i> 消息管理</router-link>
-                </li>
-                <li>
-                  <router-link to="/level"><i class="MyIF IDcard-1"></i> 我的等级</router-link>
-                </li>
-                <li>
-                  <router-link to="/vip"><i class="MyIF IDcard-1"></i> VIP会员</router-link>
-                </li>
-                <li>
-                  <router-link to="/update"><i class="MyIF gears"></i> 修改资料</router-link>
-                </li>
-                <li>
-                  <a><i class="mh-if exit-1"></i> 安全退出</a>
-                </li>
-              </ul>
+        <div v-else id="navMenuUser" style="width:100%; height:100%;">
+          <router-link to="/user" class="super-btn-out" style="width:100%; height:100%; display:inline-block;">
+            <span class="super-btn-in" style="width:32px; height:29px; top:48%; line-height:29.5px; font-size:20px;">X</span>
+          </router-link>
+          <div class="nav-user-operation" style="top:32px; left:-68%; position:absolute;">
+            <div class="super-btn-out" style="width:100px; margin:10px 0 0 -8px; padding:1px 4px 3px; text-align:center; line-height:30px;">
+              <router-link to="user"><i class="MyIF home"></i> 个人主页</router-link>
+              <router-link to="/message"><i class="MyIF add-data"></i> 消息管理</router-link>
+              <router-link to="/level"><i class="MyIF IDcard-1"></i> 我的等级</router-link>
+              <router-link to="/vip"><i class="MyIF IDcard-1"></i> VIP会员</router-link>
+              <router-link to="/update"><i class="MyIF gears"></i> 修改资料</router-link>
+              <a @click="userLogout"><i class="mh-if exit-1"></i> 安全退出</a>
             </div>
           </div>
         </div>
@@ -98,7 +86,7 @@
         <span class="super-btn-out" style="width:100%; height:100%;"></span>
         <input v-model="searchKey" class="super-btn-in" placeholder="搜索一下更精彩！" style="width:242px; height:28px; left:44%; margin-top:1px; padding:0 8px; box-sizing:border-box; text-align:left; line-height:20px; letter-spacing:1px;"/>
         <span @click="gotoSearch" class="super-btn-out" style="width:28px; height:27px; top:5px; right:4px; position:absolute;">
-          <span to="/search" class="super-btn-in mh-if search" style="width:30px; height:28px; display:inline-block; float:right; font-size:21px; line-height:30px;" ></span>
+          <span class="super-btn-in mh-if search" style="width:30px; height:28px; display:inline-block; float:right; font-size:21px; line-height:30px;" ></span>
         </span>
       </label>
 
@@ -161,6 +149,11 @@ export default {
         return false
       }
       this.$router.push('/search/song/' + this.searchKey)
+    },
+
+    userLogout () {
+      this.$store.commit('RESET_USER_INFO')
+      this.localForage.setItem('user', null)
     }
   }
 }
@@ -196,35 +189,21 @@ export default {
     display:block;
   }
 
-  #navMenuUser > div {
+  #navMenuUser > .nav-user-operation {
     transform:scaleY(0); transition:all 0.48s; transform-origin:0 10px;
   }
-  #navMenuUser:hover > div {
+  #navMenuUser:hover > .nav-user-operation {
     transform: scaleY(1);
   }
-  #navMenuUser li {
-    width: 100%;
-    height: 30px;
-    margin: 4px 0;
-    box-sizing: border-box;
-  }
-  #navMenuUser li a {
+  #navMenuUser .nav-user-operation a {
     width:100%;
-    height:100%;
+    height:30px;
+    margin:2px 0;
     display:inline-block;
+    box-sizing: border-box;
     color: #AAA;
     background-image: linear-gradient(#2e3537, #424748);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(80, 80, 80, 0.3), inset 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(80, 80, 80, 0.5), 0 2px 2px rgba(0, 0, 0, 0.4);
-  }
-  #navMenuUser li:hover {
-    background: #333;
-    box-shadow: inset 0 0 0 1px #222, 0 0 0 1px lightseagreen;
-  }
-  #navMenuUser li:hover a {
-    color: #EEE;
-  }
-  #navMenuUser li:hover i.MyIF {
-    color: #2DBEFF;
   }
 
   .second-menu-link {
