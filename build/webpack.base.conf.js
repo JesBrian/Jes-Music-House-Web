@@ -24,7 +24,6 @@ module.exports = {
   entry: {
     app: './src/main.js',
     // frontend: './src/frontend/main.js',
-    login: './src/views/login/main.js',
     backstage: './src/views/backstage/main.js',
   },
   output: {

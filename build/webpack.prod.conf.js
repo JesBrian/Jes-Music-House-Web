@@ -80,18 +80,6 @@ const webpackConfig = merge(baseWebpackConfig, {
       chunks: ['manifest', 'vendor', 'app']
     }),
     new HtmlWebpackPlugin({
-      filename: config.build.login,
-      template: 'login.html',
-      inject: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-      },
-      chunksSortMode: 'dependency',
-      chunks: ['manifest', 'vendor', 'login']
-    }),
-    new HtmlWebpackPlugin({
       filename: config.build.backstage,
       template: 'backstage.html',
       inject: true,

@@ -59,12 +59,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       chunks: ['app']
     }),
     new HtmlWebpackPlugin({
-      filename: 'login.html',
-      template: 'login.html',
-      inject: true,
-      chunks: ['login']
-    }),
-    new HtmlWebpackPlugin({
       filename: 'backstage.html',
       template: 'backstage.html',
       inject: true,

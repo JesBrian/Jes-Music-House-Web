@@ -64,8 +64,11 @@ export default {
         return false
       }
 
-      this.axios.post('', {
+      this.axios.post('backstageLogin', {
+        'phone': this.phone,
+        'passwd': this.passwd
       }).then((response) => {
+        console.log(response)
       }).catch((error) => {
         console.log(error)
       })

@@ -1,5 +1,5 @@
 <template>
-  <div id="backstage" style="background:#666;">
+  <div style="background:#666;">
 
     <!-- 导航条 -->
     <navigation-bar />
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import NavigationBar from '../../components/backstage/NavigationBar/NavigationBar.vue'
+import NavigationBar from '../../../components/backstage/NavigationBar/NavigationBar.vue'
 
 export default {
   name: 'BackstageFrame',
@@ -34,7 +34,13 @@ export default {
     NavigationBar
   },
 
-  created () {
+  beforeCreate () {
+    this.localForage.getItem('backstageLogin', (result, value) => {
+      if (value === null) {
+        this.$router.push('/login')
+      } else {
+      }
+    })
   }
 }
 </script>

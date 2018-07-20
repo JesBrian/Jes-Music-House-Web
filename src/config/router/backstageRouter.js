@@ -9,10 +9,13 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/login',
+      component: () => import('../../views/backstage/pages/Login.vue')
+    },
+    {
       path: '/',
-      component: () => import('../../views/backstage/pages/base/Index.vue'),
+      component: () => import('../../views/backstage/pages/BackstageFrame.vue'),
       redirect: '/index',
-
       children: [
         {
           path: 'index',
