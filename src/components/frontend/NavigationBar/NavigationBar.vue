@@ -70,7 +70,7 @@
           </router-link>
           <div class="nav-user-operation" style="top:32px; left:-68%; position:absolute;">
             <div class="super-btn-out" style="width:100px; margin:10px 0 0 -8px; padding:1px 4px 3px; text-align:center; line-height:30px;">
-              <router-link to="user"><i class="MyIF home"></i> 个人主页</router-link>
+              <router-link to="/user"><i class="MyIF home"></i> 个人主页</router-link>
               <router-link to="/message"><i class="MyIF add-data"></i> 消息管理</router-link>
               <router-link to="/level"><i class="MyIF IDcard-1"></i> 我的等级</router-link>
               <router-link to="/vip"><i class="MyIF IDcard-1"></i> VIP会员</router-link>

@@ -38,9 +38,6 @@
       </div>
     </div>
 
-    <footer class="glass-bg box-show" style="width:100%; bottom:0; left:0; position:fixed; z-index:98;">
-      ©<span style="margin:0 18px 0 8px;">2015 - 2020</span>Music House 所有版权归 JesBrian 个人所有
-    </footer>
   </div>
 </template>
 
@@ -53,6 +50,20 @@ export default {
       phone: '',
       passwd: ''
     }
+  },
+
+  beforeCreate () {
+    this.localForage.getItem('backstageLogin', (result, value) => {
+      if (value) {
+        this.axios.post('checkBackstageVerification', {
+        }).then((response) => {
+          console.log(response)
+        }).catch((error) => {
+          console.log(error)
+        })
+      } else {
+      }
+    })
   },
 
   methods: {
@@ -88,22 +99,5 @@ export default {
     border-color: #2abae6;
     box-shadow:inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 0 10px -1px #00d8ff, 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;
     color:#CCC;
-  }
-
-  footer {
-    width: 100%;
-    height: 25px;
-    bottom: 0;
-    margin: 0;
-    padding: 0 68px;
-    box-sizing: border-box;
-    border-radius: 0;
-    position: fixed;
-    z-index: 99;
-    font-size: 15px;
-    color: #30CDFF;
-    text-shadow: 1px 1px 1px;
-    line-height: 22px;
-    text-align: right;
   }
 </style>
