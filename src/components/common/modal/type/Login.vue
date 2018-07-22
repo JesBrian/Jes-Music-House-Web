@@ -44,7 +44,9 @@
         </div>
 
         <p style="margin-right:18px; float:right; line-height:5em; font-size:14px;">
-          <a class="hover-underline" style="margin:0 18px;">忘记密码</a>/<a @click="showUserRegisterModal" class="hover-underline" style="margin:0 18px;">新用户注册</a>
+          <a @click="retrievePassword" class="hover-underline" style="margin:0 18px;">忘记密码</a>
+          /
+          <a @click="showUserRegisterModal" class="hover-underline" style="margin:0 18px;">新用户注册</a>
         </p>
       </div>
 
@@ -128,6 +130,11 @@ export default {
   methods: {
     showUserRegisterModal () {
       this.$store.commit('CHANGE_MODAL_TYPE', 'register')
+    },
+
+    retrievePassword () {
+      this.$store.commit('CHANGE_MODAL_TYPE')
+      this.$router.push('/retrievePasswd')
     },
 
     userPhoneLogin () {

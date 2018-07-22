@@ -35,6 +35,14 @@ export default new Router({
           component: () => import('../../views/frontend/pages/user/User.vue')
         },
         {
+          path: '/retrievePasswd',
+          component: () => import('../../views/frontend/pages/user/RetrievePassword.vue')
+        },
+        {
+          path: '/modifyPasswd',
+          component: () => import('../../views/frontend/pages/user/ModifyPassword.vue')
+        },
+        {
           path: '/friend/:id',
           component: () => import('../../views/frontend/pages/user/Friend.vue')
         },
