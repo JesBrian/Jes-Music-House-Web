@@ -150,7 +150,7 @@ export default {
       }).then((response) => {
         let result = response.data
         // let tipsType = 'warning'
-        if (result.state === '620') {
+        if (result.state === '200') {
           // tipsType = 'info'
           this.$store.commit('SAVE_LOGIN_USER_INFO', result.data)
           this.localForage.setItem('user', result.data)
