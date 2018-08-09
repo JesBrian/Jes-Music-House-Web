@@ -2,31 +2,28 @@
   <div id="leftMenu" class="glass-bg box-show" style="width:208px; height:100%; top:0; left:0; padding:50px 0 28px; box-sizing:border-box; position:fixed; z-index:9;">
     <div style="width:100%; height:100%; padding:13px 0 0; overflow-y:auto; color:#DDD; box-sizing:border-box;">
       <gemini-scrollbar class="my-scroll-bar">
-        <ul>
-          <li v-for="n in 3" :key="`${n}3`" style="width:100%; margin:0 0 8px;">
-            <div class="glass-bg box-show" style="width:93%; height:33px; margin:0 auto; position:relative; cursor:pointer;">
-              <p class="text-hidden" style="line-height:30px; font-size:16px; display:inline-block;">
-                <i class="mh-if menu-user" style="margin:0 8px 0 12px;"></i>用户模块
-              </p>
-              <div class="show-second-menu-btn cube-bg box-show">
-                <i class="mh-if double-arrow-up" style="width:100%; height:100%; display:inline-block;"></i>
-              </div>
+        <div v-for="n in 3" :key="`${n}3`" class="first-menu" :class="{'active': n === 2}">
+          <div class="first-menu-link glass-bg box-show">
+            <i class="mh-if menu-user" style="margin:0 8px 0 12px;"></i>
+            <p class="first-menu-link-label text-hidden">用户模块</p>
+            <div class="show-second-menu-btn cube-bg box-show">
+              <i class="mh-if double-arrow-up" style="width:100%; height:100%; display:inline-block;"></i>
             </div>
-            <div style="width:100%; padding:6px 0;">
-              <router-link v-for="n in 6" :key="`${n}2`" to="/backstage/userList" class="cube-bg box-show second-menu-link">
-                <i class="mh-if all-user"></i>
-                <p class="second-menu-link-label text-hidden">用户列表</p>
-                <i class="mh-if double-arrow-left"></i>
-              </router-link>
+          </div>
+          <div class="second-menu">
+            <router-link v-for="n in 6" :key="`${n}2`" to="/backstage/userList" class="second-menu-link cube-bg box-show">
+              <i class="mh-if all-user"></i>
+              <p class="second-menu-link-label text-hidden">用户列表</p>
+              <i class="mh-if double-arrow-left"></i>
+            </router-link>
 
-              <router-link to="/backstage/userList" class="cube-bg box-show second-menu-link active">
-                <i class="mh-if all-user"></i>
-                <p class="second-menu-link-label text-hidden">用户列表</p>
-                <i class="mh-if double-arrow-left"></i>
-              </router-link>
-            </div>
-          </li>
-        </ul>
+            <router-link to="/backstage/userList" class="cube-bg box-show second-menu-link active">
+              <i class="mh-if all-user"></i>
+              <p class="second-menu-link-label text-hidden">用户列表</p>
+              <i class="mh-if double-arrow-left"></i>
+            </router-link>
+          </div>
+        </div>
       </gemini-scrollbar>
     </div>
   </div>
@@ -34,11 +31,28 @@
 
 <script>
 export default {
-  name: 'MenuBar'
+  name: 'MenuBar',
+
+  data () {
+    return {
+      nowFirstMenu: -1, // 当前一级菜单
+      nowSecondMenu: -1, // 当前二级菜单
+    }
+  }
 }
 </script>
 
 <style scoped>
+  .first-menu {
+    width:100%; margin:0 0 8px;
+  }
+  .first-menu-link {
+    width:93%; height:33px; margin:0 auto; position:relative; cursor:pointer;
+  }
+  .first-menu-link-label {
+    display:inline-block; line-height:30px; font-size:16px;
+  }
+
   .show-second-menu-btn {
     width: 23px;
     height: 22px;
@@ -64,6 +78,12 @@ export default {
     -webkit-animation: menuSwitchActive 0.6s forwards;
   }
 
+  .second-menu {
+    width:100%; padding:6px 0; display:none;
+  }
+  .first-menu.active > .second-menu {
+    display:block;
+  }
   .second-menu-link {
     width:85%; height:28px; margin:2px auto 6px; display:block; line-height:26px;
   }
