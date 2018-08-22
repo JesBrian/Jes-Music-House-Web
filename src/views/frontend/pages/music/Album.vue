@@ -8,15 +8,7 @@
             <span class="super-btn-in" style="width:118px; height:27px; top:48%; line-height:30px;">选择分类 <i class="mh-if double-arrow-down"></i></span>
           </div>
 
-          <div v-if="showAlbumTypeContent" class="glass-bg box-show" style="width:688px; top:68px; left:-100%; position:absolute; z-index:9; line-height:1em;">
-            <i @click="changeShowAlbumTypeContent" style="top:3px; right:4px; position:absolute; font-size:25px; color:#BBB; cursor:pointer;">×</i>
-            <div style="width:100%; box-shadow:0 3px 3px -4px #FFF;">
-              <div @click="chooseAlbumType" class="super-btn-out" style="width:86px; height:30px; margin:10px 28px;">
-                <span class="super-btn-in" style="width:76px; height:22px; top:48.5%; padding-left:1.5px; line-height:22px; letter-spacing:1.2px;">全部风格</span>
-              </div>
-            </div>
-            <div style="width:128px; height:288px; display:inline-block; background:lightskyblue;"></div>
-          </div>
+          <IndexPlayListStyle v-if="showAlbumTypeContent" />
 
         </div>
 
@@ -52,12 +44,13 @@
 
 <script>
 import Pagination from '../../../../components/common/pagination/Pagination.vue'
+import IndexPlayListStyle from '../../../../components/frontend/style/IndexPlayListStyle.vue'
 
 export default {
   name: 'album',
 
   components: {
-    Pagination
+    IndexPlayListStyle, Pagination
   },
 
   data () {

@@ -36,7 +36,7 @@ export default {
   data () {
     return {
       nowFirstMenu: -1, // 当前一级菜单
-      nowSecondMenu: -1, // 当前二级菜单
+      nowSecondMenu: -1 // 当前二级菜单
     }
   }
 }
