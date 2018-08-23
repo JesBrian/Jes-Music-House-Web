@@ -1,6 +1,6 @@
 <template>
   <div class="glass-bg box-show" style="width:840px; top:52px; left:-123%; position:absolute; z-index:9; line-height:1.68em;">
-    <i @click="closePlayListStyleContent" class="mh-if close" style="top:4px; right:8px; position:absolute; font-size:18px; color:#BBB; cursor:pointer;"></i>
+    <i @click="closePlayListStyleContent" class="mh-if all-arrow" style="top:4px; right:8px; position:absolute; font-size:18px; color:#BBB; cursor:pointer;"></i>
     <div style="width:100%; box-shadow:0 3px 3px -4px #FFF;">
       <div @click="changePlayListStyle(0, '全部')" class="super-btn-out" style="width:86px; height:30px; margin:8px 28px 2px;">
         <span class="super-btn-in" style="width:76px; height:22px; top:48.5%; padding-left:1.5px; line-height:22px; letter-spacing:1.2px;">全部风格</span>
