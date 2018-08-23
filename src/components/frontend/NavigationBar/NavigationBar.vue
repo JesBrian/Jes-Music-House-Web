@@ -153,7 +153,7 @@ export default {
 
     userLogout () {
       this.$store.commit('RESET_USER_INFO')
-      this.localForage.setItem('user', null)
+      this.$localForage.setItem('user', null)
     }
   }
 }

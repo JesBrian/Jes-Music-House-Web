@@ -144,7 +144,7 @@ export default {
       if (this.passwd === '') {
         return false
       }
-      this.axios.post('phoneLogin', {
+      this.$http.post('phoneLogin', {
         phone: this.phone,
         passwd: this.passwd
       }).then((response) => {
@@ -153,7 +153,7 @@ export default {
         if (result.state === '200') {
           // tipsType = 'info'
           this.$store.commit('SAVE_LOGIN_USER_INFO', result.data)
-          this.localForage.setItem('user', result.data)
+          this.$localForage.setItem('user', result.data)
         }
         // this.$store.commit('SHOW_TIPS', {msg: result.msg, type: tipsType})
       }).catch((error) => {

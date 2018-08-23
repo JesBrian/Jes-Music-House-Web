@@ -46,17 +46,17 @@ export default {
 
   created () {
     // 用户是否登录
-    this.localForage.getItem('user', (result, value) => {
+    this.$localForage.getItem('user', (result, value) => {
       if (value) { // 如果用户已经登陆了
         // 检验 localForage 所存的用户信息是否正确
-        this.axios.post('verifyUserLogin', {
+        this.$http.post('verifyUserLogin', {
           userId: value.id,
           username: value.username
         }).then((response) => {
           if (response.data.state === '200') {
             this.$store.commit('SAVE_LOGIN_USER_INFO', value)
           } else {
-            this.localForage.setItem('user', null)
+            this.$localForage.setItem('user', null)
           }
         }).catch((error) => {
           console.log(error)

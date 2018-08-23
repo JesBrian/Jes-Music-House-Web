@@ -10,7 +10,7 @@ export default {
 
   beforeCreate () {
     if (this.$store.state.User.id !== '0') {
-      // this.axios
+      // this.$http
       // if (this.$store.state.User.id === '1') {
       //   window.open('http://www.baidu.com')
       // }

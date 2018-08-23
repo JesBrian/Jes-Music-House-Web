@@ -53,9 +53,9 @@ export default {
   },
 
   beforeCreate () {
-    this.localForage.getItem('backstageLogin', (result, value) => {
+    this.$localForage.getItem('backstageLogin', (result, value) => {
       if (value) {
-        this.axios.post('checkBackstageVerification', {
+        this.$http.post('checkBackstageVerification', {
         }).then((response) => {
           console.log(response)
         }).catch((error) => {
@@ -75,7 +75,7 @@ export default {
         return false
       }
 
-      this.axios.post('backstageLogin', {
+      this.$http.post('backstageLogin', {
         'phone': this.phone,
         'passwd': this.passwd
       }).then((response) => {

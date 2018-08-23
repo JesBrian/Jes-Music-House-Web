@@ -17,7 +17,7 @@ Vue.config.productionTip = false
 
 axios.defaults.baseURL = store.state.Global.DEV_API_URL // 本地开发配置 API 路径
 // axios.defaults.baseURL = store.state.Global.PROD_API_URL // 服务器生产配置 API 路径
-Vue.prototype.axios = axios
+Vue.prototype.$http = axios
 
 Vue.use(vueLazyload, {
   error: require('../../assets/img/loading.svg'),
@@ -33,7 +33,7 @@ localForage.config({
   storeName: 'MH-localforage', // Should be alphanumeric, with underscores.
   description: 'Music House'
 })
-Vue.prototype.localForage = localForage
+Vue.prototype.$localForage = localForage
 
 /* eslint-disable no-new */
 new Vue({

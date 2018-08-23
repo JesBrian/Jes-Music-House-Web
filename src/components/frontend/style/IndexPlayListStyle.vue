@@ -38,15 +38,15 @@ export default {
   created () {
     let nowTimeStamp = (new Date()).valueOf()
 
-    this.localForage.getItem('allStyle', (result, value) => {
+    this.$localForage.getItem('allStyle', (result, value) => {
       if (value && ((nowTimeStamp - value.time) < 86400000)) {
         this.styleList = value.style
       } else {
-        this.axios.post('getAllStyle').then((response) => {
+        this.$http.post('getAllStyle').then((response) => {
           let result = response.data
           if (result.state === '200') {
             this.styleList = result.data
-            this.localForage.setItem('allStyle', {
+            this.$localForage.setItem('allStyle', {
               style: result.data,
               time: nowTimeStamp
             })
