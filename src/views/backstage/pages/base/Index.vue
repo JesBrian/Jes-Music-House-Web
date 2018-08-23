@@ -7,6 +7,8 @@
       <i class="mh-if double-arrow-right" style="font-size:22px; color:#24c9ff"></i>
     </div>
 
+    <router-link to="/menu">Menu</router-link>
+
   </div>
 </template>
 

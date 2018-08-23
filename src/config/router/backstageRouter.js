@@ -20,6 +20,10 @@ export default new Router({
         {
           path: 'index',
           component: () => import('../../views/backstage/pages/base/Index.vue')
+        },
+        {
+          path: 'menu',
+          component: () => import('../../views/backstage/pages/base/Menu/Menu.vue')
         }
       ]
     }
