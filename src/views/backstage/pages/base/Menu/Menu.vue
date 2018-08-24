@@ -31,11 +31,25 @@
     <div style="color:#DDD" v-if="isSecondMenu">
       <label>
         上级菜单
-        <input v-model="pid" type="text" class="cube-bg box-show" style="width:268px; margin-top:2px; padding:6px 10px; font-size:15px;"/>
+        <input v-model="parentMenuLabel" type="text" class="cube-bg box-show" disabled style="width:268px; margin-top:2px; padding:6px 10px; font-size:15px;"/>
         <div class="super-btn-out" style="width:68px; height:33px;">
           <span class="super-btn-in" style="width:58px; height:23px; line-height:23px;">选择</span>
         </div>
       </label>
+    </div>
+    <div style="color:#DDD" v-if="isSecondMenu">
+      <label>
+        页面链接
+        <input v-model="url" type="text" class="cube-bg box-show" style="width:268px; margin-top:2px; padding:6px 10px; font-size:15px;"/>
+      </label>
+    </div>
+    <div style="color:#DDD">
+      <div @click="createMenu" class="super-btn-out" style="width:118px; height:36px;">
+        <span class="super-btn-in" style="width:108px; height:26px; line-height:25.5px;">确认创建</span>
+      </div>
+      <div @click="cancelToBack" class="super-btn-out" style="width:118px; height:36px;">
+        <span class="super-btn-in" style="width:108px; height:26px; line-height:25.5px;">取消返回</span>
+      </div>
     </div>
 
   </div>
@@ -50,7 +64,17 @@ export default {
       icon: '',
       name: '',
       isSecondMenu: false,
-      pid: 0
+      pid: 0,
+      url: '',
+      parentMenuLabel: ''
+    }
+  },
+
+  methods: {
+    createMenu () {
+    },
+
+    cancelToBack () {
     }
   }
 }
