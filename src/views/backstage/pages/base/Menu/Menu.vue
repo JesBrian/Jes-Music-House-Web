@@ -10,7 +10,7 @@
     <div style="color:#DDD">
       <label>
         菜单名称
-        <input v-model="name" type="text" class="cube-bg box-show" style="width:268px; margin-top:2px; padding:6px 10px; font-size:15px;" placeholder="请填写菜单名称"/>
+        <input @blur="checkMenuNameExist" v-model="name" type="text" class="cube-bg box-show" style="width:268px; margin-top:2px; padding:6px 10px; font-size:15px;" placeholder="请填写菜单名称"/>
       </label>
     </div>
     <div style="color:#DDD">
@@ -71,7 +71,36 @@ export default {
   },
 
   methods: {
+    checkMenuNameExist () {
+      this.$http.post('checkMenuNameExist', {
+        name: this.name
+      }).then(response => {
+        if (response.data.state === '200') {
+        }
+      }).catch(error => {
+        console.log(error)
+      })
+    },
+
     createMenu () {
+      let data = {
+        name: this.name,
+        icon: this.icon,
+        isSecondMenu: this.isSecondMenu
+      }
+
+      if (data.isSecondMenu === true) {
+        data.pid = this.pid
+        data.url = this.url
+      }
+
+      this.$http.post('createMenu', data).then(response => {
+        if (response.data.state === '200') {
+          console.log(response.data)
+        }
+      }).catch(error => {
+        console.log(error)
+      })
     },
 
     cancelToBack () {

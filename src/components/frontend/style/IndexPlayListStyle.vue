@@ -42,7 +42,7 @@ export default {
       if (value && ((nowTimeStamp - value.time) < 86400000)) {
         this.styleList = value.style
       } else {
-        this.$http.post('getAllStyle').then((response) => {
+        this.$http.post('getAllStyle').then(response => {
           let result = response.data
           if (result.state === '200') {
             this.styleList = result.data
@@ -52,7 +52,7 @@ export default {
             })
           }
           console.log(this.styleList)
-        }).catch((error) => {
+        }).catch(error => {
           console.log(error)
         })
       }
