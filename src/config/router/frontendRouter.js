@@ -91,6 +91,10 @@ export default new Router({
           component: () => import('../../views/frontend/pages/music/Song.vue')
         },
         {
+          path: '/lyric',
+          component: () => import('../../views/frontend/pages/music/Lyric.vue')
+        },
+        {
           path: '/download/music',
           component: () => import('../../views/frontend/pages/download/DownloadMusic.vue')
         },
