@@ -1,7 +1,8 @@
 <template>
   <div>
     <div style="width:93%; height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;">
-      <i class="mh-if hot" style="margin-right:8px; color:#00d8ff; font-size:32px;"></i><span style="font-size:23px; font-weight:700;">热门推荐</span>
+      <i class="mh-if hot" style="margin-right:8px; color:#00d8ff; font-size:32px;"></i>
+      <span style="font-size:23px; font-weight:700;">热门推荐</span>
       <p style="margin:5px 0 0 28px; display:inline-block; font-size:14px;">
         <router-link to="/album" style="color:#999;">华语</router-link>
         <i style="margin:0 8px; color:#333;">|</i>
