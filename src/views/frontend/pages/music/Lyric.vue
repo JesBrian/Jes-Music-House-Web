@@ -35,7 +35,8 @@
         </div>
 
         <div v-show="lyricType === 'text'">
-          <textarea class="cube-bg box-show" style="width:588px; height:188px; margin:8px 0; resize:none;" />
+          <textarea class="cube-bg box-show" style="width:588px; height:188px; margin:8px 0; display:block; resize:none;"></textarea>
+          示例：[00:33.490]Look at the stars
         </div>
       </div>
 

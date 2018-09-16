@@ -2,24 +2,18 @@
   <div id="leftMenu" class="glass-bg box-show" style="width:208px; height:100%; top:0; left:0; padding:50px 0 28px; box-sizing:border-box; position:fixed; z-index:9;">
     <div style="width:100%; height:100%; padding:13px 0 0; overflow-y:auto; color:#DDD; box-sizing:border-box;">
       <gemini-scrollbar class="my-scroll-bar">
-        <div v-for="n in 3" :key="`${n}3`" class="first-menu" :class="{'active': n === 2}">
-          <div class="first-menu-link glass-bg box-show">
+        <div v-for="(firstMenuItem, index) in menuTreeData" :key="`${index}3`" class="first-menu" :class="{'active': firstMenuItem.id === nowFirstMenu}">
+          <div @click="showThisFirstMenuSecondMenuContainer(firstMenuItem.id)" class="first-menu-link glass-bg box-show">
             <i class="mh-if menu-user" style="margin:0 8px 0 12px;"></i>
-            <p class="first-menu-link-label text-hidden">用户模块</p>
+            <p class="first-menu-link-label text-hidden">{{ firstMenuItem.name }}</p>
             <div class="show-second-menu-btn cube-bg box-show">
               <i class="mh-if double-arrow-up" style="width:100%; height:100%; display:inline-block;"></i>
             </div>
           </div>
           <div class="second-menu">
-            <router-link v-for="n in 6" :key="`${n}2`" to="/backstage/userList" class="second-menu-link cube-bg box-show">
+            <router-link v-for="(secondMenuItem, index) in firstMenuItem.cell" :key="`${index}2`" :to="secondMenuItem.url" class="second-menu-link cube-bg box-show" :class="{'active': routerPath === secondMenuItem.url}">
               <i class="mh-if all-user"></i>
-              <p class="second-menu-link-label text-hidden">用户列表</p>
-              <i class="mh-if double-arrow-left"></i>
-            </router-link>
-
-            <router-link to="/backstage/userList" class="cube-bg box-show second-menu-link active">
-              <i class="mh-if all-user"></i>
-              <p class="second-menu-link-label text-hidden">用户列表</p>
+              <p class="second-menu-link-label text-hidden">{{ secondMenuItem.name }}</p>
               <i class="mh-if double-arrow-left"></i>
             </router-link>
           </div>
@@ -35,8 +29,36 @@ export default {
 
   data () {
     return {
-      nowFirstMenu: -1, // 当前一级菜单
-      nowSecondMenu: -1 // 当前二级菜单
+      nowFirstMenu: 0, // 当前一级菜单
+      nowSecondMenu: 0, // 当前二级菜单
+
+      menuTreeData: null
+    }
+  },
+
+  computed: {
+    routerPath () {
+      return this.$route.path
+    }
+  },
+
+  watch: {
+    routerPath (nVal) {
+      console.log(nVal)
+    }
+  },
+
+  created () {
+    this.$http.post('getAllMenuTreeData').then(result => {
+      this.menuTreeData = result.data.data
+    }).catch(error => {
+      console.log(error)
+    })
+  },
+
+  methods: {
+    showThisFirstMenuSecondMenuContainer (firstMenuId) {
+      this.nowFirstMenu = firstMenuId === this.nowFirstMenu ? 0 : firstMenuId
     }
   }
 }
