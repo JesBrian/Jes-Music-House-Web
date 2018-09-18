@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import Pagination from '../../../../components/common/pagination/Pagination.vue'
+import Pagination from '../../../../components/common/Pagination/Pagination.vue'
 import IndexPlayListStyle from '../../../../components/frontend/style/IndexPlayListStyle.vue'
 
 export default {

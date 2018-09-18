@@ -19,7 +19,7 @@
 <script>
 import {swiper, swiperSlide} from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
-// import baseLoading from '../../../../components/common/loading/baseLoading.vue'
+// import baseLoading from '../../../../components/common/Loading/baseLoading.vue'
 
 export default {
   name: 'SlideBox',
@@ -34,7 +34,7 @@ export default {
     return {
       swiperOption: {
         pagination: {
-          el: '.swiper-pagination',
+          el: '.swiper-Pagination',
           clickable: true
         },
 

@@ -26,7 +26,7 @@
 import NavigationBar from '../../components/frontend/NavigationBar/NavigationBar.vue'
 import MusicPlayer from '../../components/frontend/MusicPlayer/MusicPlayer.vue'
 import FloatBlock from '../../components/frontend/FloatBlock/FloatBlock'
-import HomeModal from '../../components/common/modal/HomeModal.vue'
+import HomeModal from '../../components/common/Modal/HomeModal.vue'
 
 export default {
   name: 'FrontendFrame',

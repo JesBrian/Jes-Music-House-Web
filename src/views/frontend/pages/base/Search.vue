@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import Pagination from '../../../../components/common/pagination/Pagination.vue'
+import Pagination from '../../../../components/common/Pagination/Pagination.vue'
 
 export default {
   name: 'search',

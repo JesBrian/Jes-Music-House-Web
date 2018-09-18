@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import Pagination from '../../common/pagination/Pagination'
+import Pagination from '../../common/Pagination/Pagination'
 import CommentGroup from '../Comment/CommentGroup.vue'
 
 export default {
