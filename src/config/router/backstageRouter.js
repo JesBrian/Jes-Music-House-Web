@@ -24,6 +24,14 @@ export default new Router({
         {
           path: 'menu',
           component: () => import('../../views/backstage/pages/base/Menu/Menu.vue')
+        },
+        {
+          path: 'menuList',
+          component: () => import('../../views/backstage/pages/base/Menu/MenuList.vue')
+        },
+        {
+          path: 'menuOrder',
+          component: () => import('../../views/backstage/pages/base/Menu/MenuOrder.vue')
         }
       ]
     }
