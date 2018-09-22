@@ -32,6 +32,19 @@ export default new Router({
         {
           path: 'menuOrder',
           component: () => import('../../views/backstage/pages/base/Menu/MenuOrder.vue')
+        },
+
+        {
+          path: 'slider',
+          component: () => import('../../views/backstage/pages/base/Slider/Slider.vue')
+        },
+        {
+          path: 'sliderList',
+          component: () => import('../../views/backstage/pages/base/Slider/SliderList.vue')
+        },
+        {
+          path: 'sliderOrder',
+          component: () => import('../../views/backstage/pages/base/Slider/SliderOrder.vue')
         }
       ]
     }
