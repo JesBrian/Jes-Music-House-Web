@@ -1,11 +1,18 @@
 <template>
   <div id="backstageLayout">
+    <title-bar />
   </div>
 </template>
 
 <script>
+import TitleBar from '../../../../../components/backstage/TitleBar/TitleBar.vue'
+
 export default {
-  name: 'SliderOrder'
+  name: 'SliderOrder',
+
+  components: {
+    TitleBar
+  }
 }
 </script>
 

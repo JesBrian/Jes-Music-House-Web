@@ -1,7 +1,7 @@
 <template>
   <div id="backstageLayout">
     <!--  -->
-    <TitleBar />
+    <title-bar />
 
     <div style="color:#DDD">
       <label>

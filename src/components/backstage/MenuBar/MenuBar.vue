@@ -91,13 +91,11 @@ export default {
   }
   .show-second-menu-btn > .mh-if {
     font-size: 14px;
-    line-height: 16px;
-    animation: menuSwitch 0.6s forwards;
-    -webkit-animation: menuSwitch 0.6s forwards;
+    line-height: 20px;
+    animation: menuSwitchClose 0.6s forwards;
   }
-  .show-second-menu-btn > .mh-if.active {
-    animation: menuSwitchActive 0.6s forwards;
-    -webkit-animation: menuSwitchActive 0.6s forwards;
+  .first-menu.active .show-second-menu-btn > .mh-if {
+    animation: menuSwitchOpen 0.6s forwards;
   }
 
   .second-menu {
@@ -116,12 +114,26 @@ export default {
     display:none;
   }
   .second-menu-link.active {
-    margin-left:23px;
+    animation: menuLinkActive 0.38s forwards;
   }
   .second-menu-link.active > .second-menu-link-label {
     color:#FFF;
   }
   .second-menu-link.active > .double-arrow-left {
     margin-right:5px; float:right; display:block; font-size:12px; color:#38daf0;
+  }
+
+  @keyframes menuSwitchOpen {
+    to {transform:rotate(180deg);}
+  }
+  @keyframes menuSwitchClose {
+    from {transform:rotate(-180deg);}
+    to {transform:rotate(0deg);}
+  }
+
+  @keyframes menuLinkActive {
+    to {
+      transform:translateX(8px);
+    }
   }
 </style>

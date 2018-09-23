@@ -1,18 +1,20 @@
 <template>
   <div id="backstageLayout">
-    <TitleBar />
+    <title-bar />
 
+    <pagination />
   </div>
 </template>
 
 <script>
 import TitleBar from '../../../../../components/backstage/TitleBar/TitleBar.vue'
+import Pagination from '../../../../../components/common/Pagination/Pagination.vue'
 
 export default {
   name: 'Slider',
 
   components: {
-    TitleBar
+    TitleBar, Pagination
   },
 
   data () {
