@@ -8,7 +8,7 @@
     <menu-bar />
 
     <!-- 后台二级路由 -->
-    <div style="width:100%; height:100%; top:0; left:0; padding:59px 6px 31px 215px; display:inline-block; position:fixed; box-sizing:border-box; background:#666;">
+    <div id="backstageContainer" :class="{'active' : $store.state.View.showLeftMenu}">
       <div class="glass-bg box-show" style="width:100%; height:100%; padding:3px;">
         <gemini-scrollbar>
           <router-view/>
@@ -38,6 +38,13 @@ export default {
 </script>
 
 <style>
+  #backstageContainer {
+    width:100%; height:100%; top:0; left:0; padding:59px 6px 31px 35px; display:inline-block; position:fixed; box-sizing:border-box; background:#666;
+  }
+  #backstageContainer.active {
+    padding-left:215px;
+  }
+
   #backstageLayout {
     width:988px; margin:0 auto;
   }

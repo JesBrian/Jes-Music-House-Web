@@ -1,6 +1,6 @@
 <template>
-  <div id="leftMenu" class="glass-bg box-show" style="width:208px; height:100%; top:0; left:0; padding:50px 0 28px; box-sizing:border-box; position:fixed; z-index:9;">
-    <div style="width:100%; height:100%; padding:13px 0 0; overflow-y:auto; color:#DDD; box-sizing:border-box;">
+  <div id="leftMenu" class="glass-bg box-show" :class="{'active' : $store.state.View.showLeftMenu}">
+    <div v-show="$store.state.View.showLeftMenu" style="width:100%; height:100%; padding:13px 0 0; overflow-y:auto; color:#DDD; box-sizing:border-box;">
       <gemini-scrollbar class="my-scroll-bar">
         <div v-for="(firstMenuItem, index) in menuTreeData" :key="`${index}3`" class="first-menu" :class="{'active': firstMenuItem.id === nowFirstMenu}">
           <div @click="showThisFirstMenuSecondMenuContainer(firstMenuItem.id)" class="first-menu-link glass-bg box-show">
@@ -19,6 +19,9 @@
           </div>
         </div>
       </gemini-scrollbar>
+    </div>
+    <div @click="showLeftMenu" v-show="!$store.state.View.showLeftMenu" style="width:100%; height:100%; padding-left:6px; position:relative;">
+      <i class="mh-if double-arrow-right" style="top:50%; position:absolute; display:inline-block; transform:translateY(-50%); color:#FFF;"></i>
     </div>
   </div>
 </template>
@@ -57,6 +60,10 @@ export default {
   },
 
   methods: {
+    showLeftMenu () {
+      this.$store.commit('CHANGE_SHOW_LEFT_MENU')
+    },
+
     showThisFirstMenuSecondMenuContainer (firstMenuId) {
       this.nowFirstMenu = firstMenuId === this.nowFirstMenu ? 0 : firstMenuId
     }
@@ -65,6 +72,13 @@ export default {
 </script>
 
 <style scoped>
+  #leftMenu {
+    width:28px; height:100%; top:0; left:0; padding:50px 0 28px; box-sizing:border-box; position:fixed; z-index:9;
+  }
+  #leftMenu.active {
+    width:208px;
+  }
+
   .first-menu {
     width:100%; margin:0 0 8px;
   }
@@ -114,6 +128,7 @@ export default {
     display:none;
   }
   .second-menu-link.active {
+    background:#181818;
     animation: menuLinkActive 0.38s forwards;
   }
   .second-menu-link.active > .second-menu-link-label {

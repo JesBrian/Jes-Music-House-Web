@@ -2,13 +2,14 @@
   <!-- 导航条 -->
   <div class="glass-bg box-show" style="width:100%; height:53px; top:0; left:0; position:fixed; z-index:99; border-radius:0;">
     <div style="width:1208px; height:100%; margin:0 auto;">
-      <router-link to="/" style="display:inline-block; line-height:52px;">
-        <img v-lazy="require('../../../../static/img/logo.png')" style="width:33px; height:33px; margin:9px 8px 0 0; float:left;"/>
+      <router-link to="/" style=" float:left; line-height:48px;">
+        <img v-lazy="require('../../../../static/img/logo.png')" style="width:33px; height:33px; margin:8px 8px 0 0; float:left;"/>
         <span style="font-size:22px; font-weight:700; color:#22e8ff; text-shadow:1.5px 1.5px 6px #30cdff;">Music House 后台管理系统</span>
       </router-link>
 
-      <!-- 导航菜单 -->
-      <ul style="float:left;"></ul>
+      <div @click="changeShowLeftMenu" class="cube-bg left-menu-switch">
+        <i class="mh-if double-arrow-left" style="margin-right:2px; line-height:31px; text-align:center; font-size:21px; color:#30cdff;"></i>
+      </div>
 
       <!-- 用户登录/操作 -->
       <div id="navMenuUser" style="width:40px; height:38px; margin:6px 68px; position:relative; float:right;">
@@ -35,6 +36,10 @@ export default {
   name: 'NavigationBar',
 
   methods: {
+    changeShowLeftMenu () {
+      this.$store.commit('CHANGE_SHOW_LEFT_MENU', !this.$store.state.View.showLeftMenu)
+    },
+
     backstageLogout () {
     }
   }
@@ -42,13 +47,20 @@ export default {
 </script>
 
 <style scoped>
-  #navMenuUser > .nav-user-operation {
+  .left-menu-switch {
+    width:33px; height:33px; margin:9px 12px; display:inline-block; text-align:center; box-shadow:inset 0 0 0 1px #272727, inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 3px 6px #000; cursor:pointer; opacity:0.8;
+  }
+  .left-menu-switch:hover {
+    opacity:1;
+  }
+
+  .nav-user-operation {
     transform:scaleY(0); transition:all 0.48s; transform-origin:0 10px;
   }
   #navMenuUser:hover > .nav-user-operation {
     transform: scaleY(1);
   }
-  #navMenuUser .nav-user-operation a {
+  .nav-user-operation a {
     width:100%;
     height:30px;
     margin:2px 0;
