@@ -2,7 +2,7 @@
   <div id="leftMenu" class="glass-bg box-show" :class="{'active' : $store.state.View.showLeftMenu}">
     <div v-show="$store.state.View.showLeftMenu" style="width:100%; height:100%; padding:13px 0 0; overflow-y:auto; color:#DDD; box-sizing:border-box;">
       <gemini-scrollbar class="my-scroll-bar">
-        <div v-for="(firstMenuItem, index) in menuTreeData" :key="`${index}3`" class="first-menu" :class="{'active': firstMenuActive(firstMenuItem.id, firstMenuItem.cell)}">
+        <div v-for="(firstMenuItem, index) in menuTreeData" :key="`${index}3`" class="first-menu" :class="{'active': firstMenuItem.id === nowFirstMenu}">
           <div @click="showThisFirstMenuSecondMenuContainer(firstMenuItem.id)" class="first-menu-link glass-bg box-show">
             <i class="mh-if menu-user" style="margin:0 8px 0 12px;"></i>
             <p class="first-menu-link-label text-hidden">{{ firstMenuItem.name }}</p>
@@ -47,7 +47,24 @@ export default {
 
   created () {
     this.$http.post('getAllMenuTreeData').then(result => {
-      this.menuTreeData = result.data.data
+      let data = result.data.data
+      this.menuTreeData = data
+
+      let flag = false
+      for (let i = 0, len = data.length; i < len; i++) {
+        if (data[i].cell) {
+          for (let j = 0, cellLen = data[i].cell.length; j < cellLen; j++) {
+            if (data[i].cell[j].url === this.routerPath) {
+              flag = true
+              this.nowFirstMenu = data[i].id
+              break
+            }
+            if (flag) break
+          }
+        } else {
+          continue
+        }
+      }
     }).catch(error => {
       console.log(error)
     })
@@ -56,10 +73,6 @@ export default {
   methods: {
     showLeftMenu () {
       this.$store.commit('CHANGE_SHOW_LEFT_MENU')
-    },
-
-    firstMenuActive (firstMenuItemId, firstToSecondMenuArr = []) {
-      return firstMenuItemId === this.nowFirstMenu
     },
 
     showThisFirstMenuSecondMenuContainer (firstMenuId) {
@@ -84,7 +97,7 @@ export default {
     width:93%; height:33px; margin:0 auto; position:relative; cursor:pointer;
   }
   .first-menu-link-label {
-    display:inline-block; line-height:30px; font-size:16px;
+    display:inline-block; line-height:30px; font-size:16.5px;
   }
 
   .show-second-menu-btn {
@@ -120,7 +133,7 @@ export default {
     width:85%; height:28px; margin:2px auto 6px; display:block; line-height:26px;
   }
   .second-menu-link-label {
-    margin-left:8px; display:inline-block; font-size:15px; color:#AAA;
+    margin-left:8px; display:inline-block; font-size:14px; color:#AAA;
   }
   .second-menu-link > .double-arrow-left {
     display:none;
