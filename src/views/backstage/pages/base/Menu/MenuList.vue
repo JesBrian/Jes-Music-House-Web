@@ -13,6 +13,17 @@ export default {
 
   components: {
     TitleBar
+  },
+
+  created () {
+    this.$http.post('getMenuListPagination').then(result => {
+      console.log(result)
+    }).catch(error => {
+      console.log(error)
+    })
+  },
+
+  methods: {
   }
 }
 </script>

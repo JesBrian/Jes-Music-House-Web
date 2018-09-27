@@ -45,6 +45,14 @@ export default new Router({
         {
           path: 'sliderOrder',
           component: () => import('../../views/backstage/pages/base/Slider/SliderOrder.vue')
+        },
+        {
+          path: 'style',
+          component: () => import('../../views/backstage/pages/base/Style/Style.vue')
+        },
+        {
+          path: 'styleList',
+          component: () => import('../../views/backstage/pages/base/Style/StyleList.vue')
         }
       ]
     }
