@@ -24,19 +24,28 @@
         <input type="checkbox" v-model="isSecondMenu" />
       </label>
     </div>
-    <div style="color:#DDD" v-if="isSecondMenu">
-      <label>
-        上级菜单
-        <input v-model="parentMenuLabel" type="text" class="cube-bg box-show" disabled style="width:268px; margin-top:2px; padding:6px 10px; font-size:15px;"/>
-        <div class="super-btn-out" style="width:68px; height:33px;">
-          <span class="super-btn-in" style="width:58px; height:23px; line-height:23px;">选择</span>
-        </div>
-      </label>
+    <div v-if="isSecondMenu">
+      <div style="color:#DDD">
+        <label>
+          上级菜单
+          <input v-model="parentMenuLabel" type="text" class="cube-bg box-show" disabled style="width:268px; margin-top:2px; padding:6px 10px; font-size:15px;"/>
+          <div class="super-btn-out" style="width:68px; height:33px;">
+            <span class="super-btn-in" style="width:58px; height:23px; line-height:23px;">选择</span>
+          </div>
+        </label>
+      </div>
+      <div style="color:#DDD">
+        <label>
+          页面链接
+          <input v-model="url" type="text" class="cube-bg box-show" style="width:268px; margin-top:2px; padding:6px 10px; font-size:15px;"/>
+        </label>
+      </div>
     </div>
-    <div style="color:#DDD" v-if="isSecondMenu">
+
+    <div style="color:#DDD">
       <label>
-        页面链接
-        <input v-model="url" type="text" class="cube-bg box-show" style="width:268px; margin-top:2px; padding:6px 10px; font-size:15px;"/>
+        是否启用
+        <super-switch />
       </label>
     </div>
     <div style="color:#DDD">
@@ -53,12 +62,13 @@
 
 <script>
 import TitleBar from '../../../../../components/backstage/TitleBar/TitleBar.vue'
+import SuperSwitch from '../../../../../components/common/Switch/SuperSwitch.vue'
 
 export default {
   name: 'Menu',
 
   components: {
-    TitleBar
+    TitleBar, SuperSwitch
   },
 
   data () {
