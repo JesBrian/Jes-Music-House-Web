@@ -103,6 +103,10 @@ export default new Router({
           component: () => import('../../views/frontend/pages/music/Singer.vue')
         },
         {
+          path: '/singerDetail/:id',
+          component: () => import('../../views/frontend/pages/music/SingerDetail.vue')
+        },
+        {
           path: '/musician',
           component: () => import('../../views/frontend/pages/music/Musician.vue')
         }
