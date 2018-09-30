@@ -14,7 +14,9 @@
 
       <page-loading v-if="menuListData === null" />
 
-      <div v-for="n in menuListData" :key="n + 'a'" class="box-shadow" style="width:100%; height:35px;"></div>
+      <div v-for="(item, index) in menuListData" :key="index + 'a'" class="box-shadow" style="width:100%; height:35px; line-height:35px; color:#AAA;">
+        {{index}}{{item.name}}
+      </div>
     </div>
 
     <pagination v-if="menuListData" />

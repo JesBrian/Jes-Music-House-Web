@@ -45,7 +45,7 @@
     <div style="color:#DDD">
       <label>
         是否启用
-        <super-switch />
+        <super-switch v-model="state" />
       </label>
     </div>
     <div style="color:#DDD">
@@ -78,6 +78,7 @@ export default {
       isSecondMenu: false,
       pid: 0,
       url: '',
+      state: true,
       parentMenuLabel: ''
     }
   },

@@ -210,7 +210,7 @@ export default {
     height:24px;
     margin:6px 38px 7px 18px; padding:0 12px 0 13px;
     display:inline-block; border-radius:14px;
-    line-height:24px;
+    line-height:26px;
     text-align: center;
     font-weight: 700;
     background-image: linear-gradient(#2e3537, #424748);
@@ -221,6 +221,7 @@ export default {
   }
   .second-menu-link:hover, .second-menu-link.router-link-exact-active {
     height:23px;
+    padding-top:1px;
     color: #20dbfc;
     line-height:22px;
     box-shadow: 0 -0.1px 2px rgba(0, 0, 0, 0.7), 0 0 2px rgba(255, 255, 255, 0.4), 0 0 2px rgba(0, 0, 0, 0.3), inset 0 0 3px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6);
