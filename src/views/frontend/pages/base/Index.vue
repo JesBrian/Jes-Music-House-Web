@@ -17,7 +17,7 @@
     <div class="box-show" style="width:100%; padding:0;">
       <div class="box-show">
         <!-- 主页主体内容 -->
-        <div class="box-show" style="width:76%; padding:13px 0 38px; display:inline-block;">
+        <div class="box-show" style="width:72.5%; padding:13px 0 38px; display:inline-block;">
 
           <hot-album />
 
@@ -29,7 +29,7 @@
         </div>
 
         <!--  -->
-        <div style="width:24%; height:100%; float:right;">
+        <div style="width:27.5%; height:100%; float:right;">
 
           <!-- 个人信息 -->
           <div style="width:100%; height:138px; border-bottom:2px solid #222; position:relative;">

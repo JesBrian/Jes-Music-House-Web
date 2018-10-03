@@ -1,36 +1,42 @@
 <template>
   <div id="homeLayout">
 
-    <!-- 歌手信息 -->
-    <div style="width:96%; margin:28px auto 18px;">
-      <div style="width:20%; height:100%; display:inline-block; text-align:center;">
-        <img src="http://p3.music.126.net/Ic8mQm7XI1nxe8DL-O9Eog==/103354093028496.jpg?param=640y300" class="glass-bg box-show" style="width:128px; height:128px; margin-right:28px; padding:6px;"/>
-      </div>
-      <div style="width:80%; height:100%; float:right;">
-        <p style="padding-top:8px; font-size:24px;">The Name of the Singer</p>
-        <p style="line-height:3em;">
-          <span style="margin-right:26px;">
-            <i class="mh-if music-albu" style="margin-right:6px;"></i>单曲数：253
-          </span>
-          <span style="margin-right:26px;">
-            <i class="mh-if redis" style="margin-right:6px;"></i>专辑数：63
-          </span>
-        </p>
-        <div class="super-btn-out" style="width:108px; height:38px;">
-          <span class="super-btn-in mh-if non-colloection" style="width:95px; height:25px; top:48%; font-size:21px; line-height:26px;"> 关注</span>
+    <div class="box-show" style="width:75%; height:100%; display:inline-block;">
+      <!-- 歌手信息 -->
+      <div style="width:96%; margin:28px auto 18px;">
+        <div style="width:20%; height:100%; display:inline-block; text-align:center;">
+          <img src="http://p3.music.126.net/Ic8mQm7XI1nxe8DL-O9Eog==/103354093028496.jpg?param=640y300" class="glass-bg box-show" style="width:128px; height:128px; margin-right:28px; padding:6px;"/>
+        </div>
+        <div style="width:80%; height:100%; float:right;">
+          <p style="padding-top:8px; font-size:24px;">The Name of the Singer</p>
+          <p style="line-height:3em;">
+            <span style="margin-right:26px;">
+              <i class="mh-if music-albu" style="margin-right:6px;"></i>单曲数：253
+            </span>
+            <span style="margin-right:26px;">
+              <i class="mh-if redis" style="margin-right:6px;"></i>专辑数：63
+            </span>
+          </p>
+          <div class="super-btn-out" style="width:108px; height:38px;">
+            <span class="super-btn-in mh-if non-colloection" style="width:95px; height:25px; top:48%; font-size:21px; line-height:26px;"> 关注</span>
+          </div>
         </div>
       </div>
+
+      <!-- 歌手内容切换 -->
+      <div style="width:100%; height:32px; margin:28px auto 0; padding:0 3%; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; color:#BBB; font-size:17px; font-weight:700; text-shadow:1px 1px 0.5px #000; line-height:28px;">
+        <span @click="changeContent('play-list')" :class="{'active': type === 'play-list'}" class="singer-menu-cell">专辑</span>
+        <span @click="changeContent('description')" :class="{'active': type === 'description'}" class="singer-menu-cell">歌手详情</span>
+      </div>
+
+      <!-- 不同内容 -->
+      <div style="margin:0 auto 28px;">
+        <component :is="type" :showType="playListShowType" />
+        <div style="height:388px;"></div>
+      </div>
     </div>
 
-    <!-- 歌手内容切换 -->
-    <div style="width:100%; height:32px; margin:28px auto 0; padding:0 3%; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; color:#BBB; font-size:17px; font-weight:700; text-shadow:1px 1px 0.5px #000; line-height:28px;">
-      <span @click="changeContent('play-list')" :class="{'active': type === 'play-list'}" class="singer-menu-cell">专辑</span>
-      <span @click="changeContent('description')" :class="{'active': type === 'description'}" class="singer-menu-cell">歌手详情</span>
-    </div>
-
-    <!-- 不同内容 -->
-    <div style="margin:0 auto 28px;">
-      <component :is="type" :showType="playListShowType" />
+    <div style="width:25%; float:right;">
     </div>
 
   </div>

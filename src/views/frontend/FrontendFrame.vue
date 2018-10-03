@@ -69,6 +69,6 @@ export default {
 
 <style>
   #homeLayout {
-    width:988px; min-height:688px; margin:auto; padding:88px 0 0; position:relative; z-index:25;
+    width:1000px; min-height:688px; margin:auto; padding:88px 0 0; position:relative; z-index:25;
   }
 </style>
