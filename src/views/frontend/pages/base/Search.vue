@@ -15,7 +15,7 @@
         <span class="super-btn-in mh-if datum"> 用户</span>
       </div>
 
-      <label class="super-btn-out ripple active" style="width:268px; height:32px; margin:-6px 28px 0; float:right; position:relative; border:none; border-radius:16px;">
+      <label class="super-btn-out active" style="width:268px; height:32px; margin:-6px 28px 0; float:right; position:relative; border:none; border-radius:16px;">
         <input v-model="searchKey" type="text" class="super-btn-in" placeholder="搜索本歌单音乐" style="width:258px; height:76%; top:50%; padding:0 12px; box-sizing:border-box; border-radius:12px; text-align:left; font-size:17px;"/>
         <i @click="goSearch" class="mh-if search" style="top:2px; right:14px; position:absolute; z-index:5;"></i>
       </label>
@@ -78,13 +78,13 @@ export default {
 
 <style scoped>
 
-  .super-btn-out ripple {
+  .super-btn-out {
     width:88px; height:32px; margin:0 18px; display:inline-block;
   }
-  .super-btn-out ripple > .super-btn-in {
+  .super-btn-out > .super-btn-in {
     width:79px; height:23px; line-height:23.8px;
   }
-  .super-btn-out ripple.active > .super-btn-in {
+  .super-btn-out.active > .super-btn-in {
     line-height:22px;
   }
 </style>

@@ -152,7 +152,8 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 input {
-  line-height: normal
+  line-height: normal;
+  outline:none
 }
 
 input[type="checkbox"], input[type="radio"] {
