@@ -28,10 +28,10 @@
             </div>
           </div>
 
-          <div class="super-btn-out" style="width:118px; height:38px; margin:0 18px;">
+          <div class="super-btn-out ripple" style="width:118px; height:38px; margin:0 18px;">
             <span class="super-btn-in" style="width:106px; height:26px; line-height:26px;">找回密码</span>
           </div>
-          <div @keyup.enter="backstageLogin" @click="backstageLogin" class="super-btn-out" style="width:118px; height:38px; margin:0 18px;">
+          <div @keyup.enter="backstageLogin" @click="backstageLogin" class="super-btn-out ripple" style="width:118px; height:38px; margin:0 18px;">
             <span class="super-btn-in" style="width:106px; height:26px; line-height:26px;">确认登陆</span>
           </div>
         </div>

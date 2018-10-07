@@ -8,7 +8,7 @@
 
       <!-- 下载区域 -->
       <div class="box-show" style="width:24%; height:100%; float:right; position:relative; z-index:9; background:url('../../../../../static/img/default/download.png') no-repeat; background-size:100% 100%;">
-        <router-link to="/download/client" class="super-btn-out" style="width:148px; height:43px; margin:238px 28px 0;">
+        <router-link to="/download/client" class="super-btn-out ripple" style="width:148px; height:43px; margin:238px 28px 0;">
           <span class="super-btn-in mh-if download" style="width:135px; height:30px; line-height:32px; font-size:20px;"> 下载客户端</span>
         </router-link>
       </div>
@@ -37,7 +37,7 @@
               <img v-lazy="'http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80'" class="box-show" style="width:60px; height:60px; margin:13px; padding:3px; box-sizing:border-box; border-radius:2px;"/>
             </router-link>
             <router-link to="/user" style="margin:14px 0 0; float:left; font-size:18px; color:#AAA;">JesBrian</router-link>
-            <div class="super-btn-out" style="width:70px; height:28px; top:42px; left:86px; position:absolute;">
+            <div class="super-btn-out ripple" style="width:70px; height:28px; top:42px; left:86px; position:absolute;">
               <span class="super-btn-in mh-if sign-in" style="width:61px; height:20px; line-height:23px;"> 签到</span>
             </div>
             <div style="width:88%; height:40px; top:86px; left:50%; position:absolute; transform:translateX(-50%);">
@@ -73,7 +73,7 @@
                 </router-link>
               </li>
             </ul>
-            <router-link to="/musician" class="super-btn-out" style="width:138px; height:38px; left:20%; margin-top:8px;">
+            <router-link to="/musician" class="super-btn-out ripple" style="width:138px; height:38px; left:20%; margin-top:8px;">
               <span class="super-btn-in" style="width:126px; height:28px; top:48%; line-height:30px;">申请入驻音乐人</span>
             </router-link>
           </div>

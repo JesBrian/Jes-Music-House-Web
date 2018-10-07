@@ -17,7 +17,7 @@
               <i class="mh-if redis" style="margin-right:6px;"></i>专辑数：63
             </span>
           </p>
-          <div class="super-btn-out" style="width:108px; height:38px;">
+          <div class="super-btn-out ripple" style="width:108px; height:38px;">
             <span class="super-btn-in mh-if non-colloection" style="width:95px; height:25px; top:48%; font-size:21px; line-height:26px;"> 关注</span>
           </div>
         </div>

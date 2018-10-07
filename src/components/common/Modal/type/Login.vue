@@ -15,7 +15,7 @@
       <!-- 注册本站用户登陆 -->
       <div style="width:72%; height:100%; float:left;">
 
-        <form style="margin:28px 0 8px;">
+        <form autocomplete="off" style="margin:28px 0 8px;">
           <div style="width:83%; height:58px; margin:0 auto; font-size:19px;">
             <label class="MyIF IDcard-1" for="loginPhone" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
             <span style="margin-left:8px; color:#DDD;">
@@ -35,10 +35,10 @@
         </form>
 
         <div style="text-align:center;">
-          <span class="super-btn-out" style="width:108px; height:38px; margin:0 18px;">
+          <span class="super-btn-out ripple" style="width:108px; height:38px; margin:0 18px;">
             <span class="super-btn-in mh-if cancel" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 重新填写</span>
           </span>
-          <span class="super-btn-out" @click="userPhoneLogin" style="width:108px; height:38px; margin:0 18px;">
+          <span class="super-btn-out ripple" @click="userPhoneLogin" style="width:108px; height:38px; margin:0 18px;">
             <span class="super-btn-in mh-if makesure" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 确认登陆</span>
           </span>
         </div>
@@ -56,13 +56,13 @@
           <tr>
             <td style="text-align:right">
               <!-- 微信 -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weixin'" target="_blank" class="super-btn-out" title="微信登陆" style="width:40px; height:40px; margin:8px 0;">
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weixin'" target="_blank" class="super-btn-out ripple" title="微信登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="super-btn-in MyIF wechat" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
             <td>
               <!-- QQ -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=QQ'" target="_blank" class="super-btn-out" title="QQ登陆" style="width:40px; height:40px; margin:8px 0;">
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=QQ'" target="_blank" class="super-btn-out ripple" title="QQ登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="super-btn-in MyIF qq" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
@@ -70,13 +70,13 @@
           <tr>
             <td style="text-align:right">
               <!-- 微博 -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weibo'" target="_blank" class="super-btn-out" title="微博登陆" style="width:40px; height:40px; margin:8px 0;">
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weibo'" target="_blank" class="super-btn-out ripple" title="微博登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="super-btn-in MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
             <td>
               <!-- 百度 -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Baidu'" target="_blank" class="super-btn-out" style="width:40px; height:40px; margin:8px 0;">
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Baidu'" target="_blank" class="super-btn-out ripple" style="width:40px; height:40px; margin:8px 0;">
                 <span class="super-btn-in MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
@@ -84,13 +84,13 @@
           <tr>
             <td style="text-align:right">
               <!-- Gitee -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Gitee'" target="_blank" class="super-btn-out" title="码云登陆" style="width:40px; height:40px; margin:8px 0;">
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Gitee'" target="_blank" class="super-btn-out ripple" title="码云登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="super-btn-in MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>
             <td>
               <!-- Github -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" class="super-btn-out" title="Github登陆" style="width:40px; height:40px; margin:8px 0;">
+              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" class="super-btn-out ripple" title="Github登陆" style="width:40px; height:40px; margin:8px 0;">
                 <span class="super-btn-in MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
               </a>
             </td>

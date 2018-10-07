@@ -4,7 +4,7 @@
       <div style="width:100%; height:80px; margin-bottom:28px; padding:0 68px; box-sizing:border-box; box-shadow:0 2px 3px -3px #FFF; line-height:88px;">
         <span style="float:left; font-size:32px; font-weight:700;">{{ styleLabel }}</span>
         <div style="width:128px; height:36px; margin:15px 28px 0; position:relative; display:inline-block;">
-          <div @click="changeShowPlayListStyleContent" class="super-btn-out" style="width:100%; height:100%;">
+          <div @click="changeShowPlayListStyleContent" class="super-btn-out ripple" style="width:100%; height:100%;">
             <span class="super-btn-in" style="width:118px; height:27px; line-height:27px;">选择分类 <i class="mh-if double-arrow-down"></i></span>
           </div>
 

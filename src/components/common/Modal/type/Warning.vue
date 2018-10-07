@@ -16,10 +16,10 @@
         确定是否要执行该操作。
       </div>
 
-      <span @click="cancelOperation" class="super-btn-out" style="width:108px; height:38px; margin:0 168px 0 0;">
+      <span @click="cancelOperation" class="super-btn-out ripple" style="width:108px; height:38px; margin:0 168px 0 0;">
         <span class="super-btn-in mh-if cancel" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 取消操作</span>
       </span>
-      <span @click="sureOperation" class="super-btn-out" style="width:108px; height:38px; margin:0 0 0 168px;">
+      <span @click="sureOperation" class="super-btn-out ripple" style="width:108px; height:38px; margin:0 0 0 168px;">
         <span class="super-btn-in mh-if makesure" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 确认操作</span>
       </span>
     </div>

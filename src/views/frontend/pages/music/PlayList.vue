@@ -19,19 +19,19 @@
           </div>
 
           <div style="margin:18px 0;">
-            <div class="super-btn-out" style="width:72px; height:29px; margin:10px 13px 0 0;">
+            <div class="super-btn-out ripple" style="width:72px; height:29px; margin:10px 13px 0 0;">
               <span class="super-btn-in mh-if play" style="width:64px; height:20px; line-height:21px;"> 播放</span>
             </div>
-            <div class="super-btn-out" style="width:72px; height:29px; margin:10px 13px 0 0;">
+            <div class="super-btn-out ripple" style="width:72px; height:29px; margin:10px 13px 0 0;">
               <span class="super-btn-in mh-if play" style="width:64px; height:20px; line-height:21px;"> 列表</span>
             </div>
-            <div @click="showModal('AddAlbum')" class="super-btn-out" style="width:72px; height:29px; margin:10px 13px 0 0;">
+            <div @click="showModal('AddAlbum')" class="super-btn-out ripple" style="width:72px; height:29px; margin:10px 13px 0 0;">
               <span class="super-btn-in mh-if collection-music" style="width:64px; height:20px; line-height:21px;"> 收藏</span>
             </div>
-            <div class="super-btn-out" style="width:72px; height:29px; margin:10px 13px 0 0;">
+            <div class="super-btn-out ripple" style="width:72px; height:29px; margin:10px 13px 0 0;">
               <span class="super-btn-in mh-if download" style="width:64px; height:20px; line-height:21px;"> 下载</span>
             </div>
-            <div @click="showModal('Share')" class="super-btn-out" style="width:72px; height:29px; margin:10px 13px 0 0;">
+            <div @click="showModal('Share')" class="super-btn-out ripple" style="width:72px; height:29px; margin:10px 13px 0 0;">
               <span class="super-btn-in mh-if share" style="width:64px; height:20px; line-height:21px;"> 分享</span>
             </div>
           </div>
@@ -58,7 +58,7 @@
       <div style="width:100%; height:32px; margin:32px auto 0; padding:0 3%; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; color:#BBB; font-size:17px; font-weight:700; text-shadow:1px 1px 0.5px #000; line-height:28px;">
         <span @click="changeContent('SongGroup')" :class="{'active': type === 'SongGroup'}" class="play-list-menu-cell">歌曲列表</span>
         <span @click="changeContent('CommentTotal')" :class="{'active': type === 'CommentTotal'}" class="play-list-menu-cell">评论 [666]</span>
-        <label v-if="type === 'SongGroup'" class="super-btn-out active" style="width:268px; height:32px; margin:-2px 8px 0 0; float:right; position:relative; border:none; border-radius:16px;">
+        <label v-if="type === 'SongGroup'" class="super-btn-out ripple active" style="width:268px; height:32px; margin:-2px 8px 0 0; float:right; position:relative; border:none; border-radius:16px;">
           <input type="text" class="super-btn-in" placeholder="搜索本歌单音乐" style="width:258px; height:76%; top:50%; padding:0 12px; box-sizing:border-box; border-radius:12px; text-align:left; font-size:17px;"/>
           <i class="mh-if search" style="top:2px; right:14px; position:absolute;"></i>
         </label>

@@ -28,7 +28,7 @@
         上传带时间轴的lrc歌词，将获得20积分！
 
         <div v-show="lyricType === 'file'" class="cube-bg box-show" style="width:328px; height:80px; margin:8px 0; position:relative;">
-          <div @click="uploadLyricFile" class="super-btn-out" style="width:108px; height:36px; top:48%; left:18px; position:absolute; transform:translateY(-50%);">
+          <div @click="uploadLyricFile" class="super-btn-out ripple" style="width:108px; height:36px; top:48%; left:18px; position:absolute; transform:translateY(-50%);">
             <span class="super-btn-in" style="width:96px; height:25px; line-height:25px;">上传文件</span>
           </div>
           <span style="margin-right:18px; float:right; line-height:75px;">（支持lrc格式文件）</span>
@@ -47,7 +47,7 @@
           </label>
         </div>
 
-        <div @click="uploadSongLyric" class="super-btn-out" style="width:108px; height:36px;">
+        <div @click="uploadSongLyric" class="super-btn-out ripple" style="width:108px; height:36px;">
           <span class="super-btn-in" style="width:96px; height:25px; line-height:25px;">提交上传</span>
         </div>
       </div>
