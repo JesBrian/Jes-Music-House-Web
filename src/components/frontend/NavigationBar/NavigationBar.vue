@@ -84,7 +84,7 @@
       <!-- 导航栏搜索栏 -->
       <label @keyup.enter="gotoSearch" style="width:288px; height:38px; margin:6px 18px 0 0; float:right; position:relative;">
         <span class="super-btn-out" style="width:100%; height:100%;"></span>
-        <input v-model="searchKey" class="super-btn-in" placeholder="搜索一下更精彩！" style="width:242px; height:28px; left:44%; margin-top:1px; padding:0 8px; box-sizing:border-box; text-align:left; line-height:20px; letter-spacing:1px;"/>
+        <input v-model="searchKey" class="super-btn-in" placeholder="搜索一下更精彩！" style="width:240px; height:28px; left:44.3%; margin-top:1px; padding:0 8px; box-sizing:border-box; text-align:left; line-height:20px; letter-spacing:1px;"/>
         <span @click="gotoSearch" class="super-btn-out" style="width:28px; height:27px; top:5px; right:4px; position:absolute;">
           <span class="super-btn-in mh-if search" style="width:30px; height:28px; display:inline-block; float:right; font-size:21px; line-height:30px;" ></span>
         </span>
