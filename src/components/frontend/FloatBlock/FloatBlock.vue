@@ -1,5 +1,5 @@
 <template>
-  <div id="floatBlock" @click="goPViewsTop" class="super-btn-out" :class="{'unshow': unshow}" style="width:42px; height:42px; bottom:113px; position:fixed;">
+  <div id="floatBlock" @click="goPViewsTop" class="super-btn-out ripple" :class="{'unshow': unshow}" style="width:42px; height:42px; bottom:113px; position:fixed;">
     <div class="super-btn-in mh-if convenient" style="width:31px; height:31px; font-size:28px; line-height:33px;"></div>
   </div>
 </template>

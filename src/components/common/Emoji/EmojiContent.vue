@@ -38,10 +38,10 @@ export default {
       this.$parent.writeEmoji(info)
     },
     showEmoji (index) {
-      document.getElementById('showEmoji').src = '../../../../static/img/Emoji/' + index + '.png'
+      document.getElementById('showEmoji').src = '../../../../static/img/emoji/' + index + '.png'
     },
     hiddenEmoji () {
-      document.getElementById('showEmoji').src = '../../../../static/img/Emoji/0.jpg'
+      document.getElementById('showEmoji').src = '../../../../static/img/emoji/0.jpg'
     }
   }
 }

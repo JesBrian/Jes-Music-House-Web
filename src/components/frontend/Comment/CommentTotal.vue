@@ -1,6 +1,6 @@
 <template>
   <div style="padding:0 3%; box-sizing:border-box;">
-    <!--<new-comment />-->
+    <new-comment />
 
     <div style="width:100%; margin-top:18px;">
       <div style="height:53px; margin:0 auto; padding:0 23px; box-sizing:border-box; box-shadow:0 3px 3px -3px #999; line-height:68px; text-shadow:1px 1px 0.5px #000;">
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-// import NewComment from './NewComment.vue'
+import NewComment from './NewComment.vue'
 import CommentGroup from './CommentGroup.vue'
 import Pagination from '../../common/Pagination/Pagination.vue'
 
@@ -27,7 +27,7 @@ export default {
   name: 'CommentTotal',
 
   components: {
-    CommentGroup, Pagination
+    NewComment, CommentGroup, Pagination
   }
 }
 </script>

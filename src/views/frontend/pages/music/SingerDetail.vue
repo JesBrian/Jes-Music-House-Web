@@ -25,8 +25,9 @@
 
       <!-- 歌手内容切换 -->
       <div style="width:100%; height:32px; margin:28px auto 0; padding:0 3%; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; color:#BBB; font-size:17px; font-weight:700; text-shadow:1px 1px 0.5px #000; line-height:28px;">
-        <span @click="changeContent('play-list')" :class="{'active': type === 'play-list'}" class="singer-menu-cell">专辑</span>
-        <span @click="changeContent('description')" :class="{'active': type === 'description'}" class="singer-menu-cell">歌手详情</span>
+        <span @click="changeContent('hot-song')" :class="{'active': type === 'hot-song'}" class="singer-menu-cell">热门歌曲</span>
+        <span @click="changeContent('play-list')" :class="{'active': type === 'play-list'}" class="singer-menu-cell">所有专辑</span>
+        <span @click="changeContent('description')" :class="{'active': type === 'description'}" class="singer-menu-cell">艺人介绍</span>
       </div>
 
       <!-- 不同内容 -->
