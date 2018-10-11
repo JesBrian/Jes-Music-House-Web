@@ -62,7 +62,7 @@
       <!-- 导航栏用户登录/操作 -->
       <div style="width:42px; height:38px; margin:6px -8px 0 0; position:relative; float:right;">
         <div v-if="$store.state.User.id === '0'" @click="showUserLoginModal" class="super-btn-out" style="width:100%; height:100%;">
-          <span class="super-btn-in mh-if collection-music" style="width:32px; height:29px; top:48%; line-height:29.5px; font-size:20px;"></span>
+          <span class="super-btn-in mh-if avatar" style="width:32px; height:29px; top:48%; line-height:29.5px; font-size:20px;"></span>
         </div>
         <div v-else id="navMenuUser" style="width:100%; height:100%;">
           <router-link to="/user" class="super-btn-out" style="width:100%; height:100%; display:inline-block;">
