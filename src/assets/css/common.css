@@ -75,7 +75,9 @@
   top: 49%;
   left: 50%;
   padding: 0;
-  display: inline-block;
+  display: flex;
+  justify-content:center;
+  align-items:center;
   position: absolute;
   transform: translate(-50%, -50%);
   text-align: center;

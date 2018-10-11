@@ -9,7 +9,7 @@
       <!-- 下载区域 -->
       <div class="box-show" style="width:24%; height:100%; float:right; position:relative; z-index:9; background:url('../../../../../static/img/default/download.png') no-repeat; background-size:100% 100%;">
         <router-link to="/download/client" class="super-btn-out ripple" style="width:148px; height:43px; margin:238px 28px 0;">
-          <span class="super-btn-in mh-if download" style="width:135px; height:30px; line-height:32px; font-size:20px;"> 下载客户端</span>
+          <span class="super-btn-in mh-if download" style="width:135px; height:30px; font-size:20px;"> 下载客户端</span>
         </router-link>
       </div>
     </div>
@@ -38,7 +38,7 @@
             </router-link>
             <router-link to="/user" style="margin:14px 0 0; float:left; font-size:18px; color:#AAA;">JesBrian</router-link>
             <div class="super-btn-out ripple" style="width:70px; height:28px; top:42px; left:86px; position:absolute;">
-              <span class="super-btn-in mh-if sign-in" style="width:61px; height:20px; line-height:23px;"> 签到</span>
+              <span class="super-btn-in mh-if sign-in" style="width:61px; height:20px;"> 签到</span>
             </div>
             <div style="width:88%; height:40px; top:86px; left:50%; position:absolute; transform:translateX(-50%);">
               <div style="width:33%; height:100%; float:left; box-sizing:border-box; text-align:center;">
@@ -74,7 +74,7 @@
               </li>
             </ul>
             <router-link to="/musician" class="super-btn-out ripple" style="width:138px; height:38px; left:20%; margin-top:8px;">
-              <span class="super-btn-in" style="width:126px; height:28px; top:48%; line-height:30px;">申请入驻音乐人</span>
+              <span class="super-btn-in" style="width:126px; height:28px; top:48%;">申请入驻音乐人</span>
             </router-link>
           </div>
         </div>

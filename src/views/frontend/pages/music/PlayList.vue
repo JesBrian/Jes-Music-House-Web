@@ -20,19 +20,19 @@
 
           <div style="margin:18px 0;">
             <div class="super-btn-out ripple" style="width:72px; height:29px; margin:10px 13px 0 0;">
-              <span class="super-btn-in mh-if play" style="width:64px; height:20px; line-height:21px;"> 播放</span>
+              <span class="super-btn-in mh-if play" style="width:64px; height:22px;"> 播放</span>
             </div>
             <div class="super-btn-out ripple" style="width:72px; height:29px; margin:10px 13px 0 0;">
-              <span class="super-btn-in mh-if play" style="width:64px; height:20px; line-height:21px;"> 列表</span>
+              <span class="super-btn-in mh-if play" style="width:64px; height:22px;"> 列表</span>
             </div>
             <div @click="showModal('AddAlbum')" class="super-btn-out ripple" style="width:72px; height:29px; margin:10px 13px 0 0;">
-              <span class="super-btn-in mh-if collection-music" style="width:64px; height:20px; line-height:21px;"> 收藏</span>
+              <span class="super-btn-in mh-if collection-music" style="width:64px; height:22px;"> 收藏</span>
             </div>
             <div class="super-btn-out ripple" style="width:72px; height:29px; margin:10px 13px 0 0;">
-              <span class="super-btn-in mh-if download" style="width:64px; height:20px; line-height:21px;"> 下载</span>
+              <span class="super-btn-in mh-if download" style="width:64px; height:22px;"> 下载</span>
             </div>
             <div @click="showModal('Share')" class="super-btn-out ripple" style="width:72px; height:29px; margin:10px 13px 0 0;">
-              <span class="super-btn-in mh-if share" style="width:64px; height:20px; line-height:21px;"> 分享</span>
+              <span class="super-btn-in mh-if share" style="width:64px; height:22px;"> 分享</span>
             </div>
           </div>
 
