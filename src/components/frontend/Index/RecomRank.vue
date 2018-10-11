@@ -7,19 +7,19 @@
 
     <div style="width:93%; height:100%; margin:0 auto;">
       <div class="" style="width:33%; height:100%; float:left; box-sizing:border-box; border:1px solid #282828;">
-        <div style="width:100%; height:114px;">
+        <div style="width:100%; height:104px; overflow:auto;">
           <router-link to="rank">
-            <img class="box-show" v-lazy="'http://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=150y150'" style="width:80px; height:80px; margin:16px 10px 0 16px; padding:3px; float:left;"/>
+            <img class="box-show" v-lazy="'http://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=150y150'" style="width:68px; height:68px; margin:16px 10px 0 16px; padding:3px; float:left;"/>
           </router-link>
-          <p style="width:100%; line-height:3.3em; font-size:18px;"><router-link to="rank" style="color:#BBB;">XXXX飙升榜单</router-link></p>
-          <div class="super-btn-out" style="width:33px; height:33px; top:-3px;">
-            <span class="super-btn-in mh-if play" style="width:25px; height:25px; top:48%; font-size:20px; line-height:27px;"></span>
+          <p style="width:100%; margin:18px 0 12px; font-size:17px;"><router-link to="rank" style="color:#BBB;">XXXX飙升榜单</router-link></p>
+          <div class="super-btn-out" style="width:30px; height:30px;">
+            <span class="super-btn-in mh-if play" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
           </div>
-          <div class="super-btn-out" style="width:33px; height:33px; top:-3px;">
-            <span class="super-btn-in mh-if collection-music" style="width:25px; height:25px; top:48%; font-size:20px; line-height:27px;"></span>
+          <div class="super-btn-out" style="width:30px; height:30px;">
+            <span class="super-btn-in mh-if collection-music" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
           </div>
-          <div class="super-btn-out" style="width:33px; height:33px; top:-3px;">
-            <span class="super-btn-in mh-if share" style="width:25px; height:25px; top:48%; font-size:20px; line-height:27px;"></span>
+          <div class="super-btn-out" style="width:30px; height:30px;">
+            <span class="super-btn-in mh-if share" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
           </div>
         </div>
         <ul style="width:100%; line-height:32px;">
@@ -33,19 +33,19 @@
         </ul>
       </div>
       <div  style="width:34%; height:100%; float:left; box-sizing:border-box; border-top:1px solid #282828; border-bottom:1px solid #282828;">
-        <div style="width:100%; height:114px;">
+        <div style="width:100%; height:104px; overflow:auto;">
           <router-link to="rank">
-            <img class="box-show" v-lazy="'http://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=150y150'" style="width:80px; height:80px; margin:16px 10px 0 16px; padding:3px; float:left;"/>
+            <img class="box-show" v-lazy="'http://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=150y150'" style="width:68px; height:68px; margin:16px 10px 0 16px; padding:3px; float:left;"/>
           </router-link>
-          <p style="width:100%; line-height:3.3em; font-size:18px;"><router-link to="rank" style="color:#BBB;">XXXX飙升榜单</router-link></p>
-          <div class="super-btn-out" style="width:33px; height:33px; top:-3px;">
-            <span class="super-btn-in mh-if play" style="width:25px; height:25px; top:48%; font-size:20px; line-height:27px;"></span>
+          <p style="width:100%; margin:18px 0 12px; font-size:17px;"><router-link to="rank" style="color:#BBB;">XXXX飙升榜单</router-link></p>
+          <div class="super-btn-out" style="width:30px; height:30px;">
+            <span class="super-btn-in mh-if play" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
           </div>
-          <div class="super-btn-out" style="width:33px; height:33px; top:-3px;">
-            <span class="super-btn-in mh-if collection-music" style="width:25px; height:25px; top:48%; font-size:20px; line-height:27px;"></span>
+          <div class="super-btn-out" style="width:30px; height:30px;">
+            <span class="super-btn-in mh-if collection-music" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
           </div>
-          <div class="super-btn-out" style="width:33px; height:33px; top:-3px;">
-            <span class="super-btn-in mh-if share" style="width:25px; height:25px; top:48%; font-size:20px; line-height:27px;"></span>
+          <div class="super-btn-out" style="width:30px; height:30px;">
+            <span class="super-btn-in mh-if share" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
           </div>
         </div>
         <ul style="width:100%; line-height:32px;">
@@ -59,19 +59,19 @@
         </ul>
       </div>
       <div style="width:33%; height:100%; float:left; box-sizing:border-box; border:1px solid #282828;">
-        <div style="width:100%; height:114px;">
+        <div style="width:100%; height:104px; overflow:auto;">
           <router-link to="rank">
-            <img class="box-show" v-lazy="'http://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=150y150'" style="width:80px; height:80px; margin:16px 10px 0 16px; padding:3px; float:left;"/>
+            <img class="box-show" v-lazy="'http://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=150y150'" style="width:68px; height:68px; margin:16px 10px 0 16px; padding:3px; float:left;"/>
           </router-link>
-          <p style="width:100%; line-height:3.3em; font-size:18px;"><router-link to="rank" style="color:#BBB;">XXXX飙升榜单</router-link></p>
-          <div class="super-btn-out" style="width:33px; height:33px; top:-3px;">
-            <span class="super-btn-in mh-if play" style="width:25px; height:25px; top:48%; font-size:20px; line-height:27px;"></span>
+          <p style="width:100%; margin:18px 0 12px; font-size:17px;"><router-link to="rank" style="color:#BBB;">XXXX飙升榜单</router-link></p>
+          <div class="super-btn-out" style="width:30px; height:30px;">
+            <span class="super-btn-in mh-if play" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
           </div>
-          <div class="super-btn-out" style="width:33px; height:33px; top:-3px;">
-            <span class="super-btn-in mh-if collection-music" style="width:25px; height:25px; top:48%; font-size:20px; line-height:27px;"></span>
+          <div class="super-btn-out" style="width:30px; height:30px;">
+            <span class="super-btn-in mh-if collection-music" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
           </div>
-          <div class="super-btn-out" style="width:33px; height:33px; top:-3px;">
-            <span class="super-btn-in mh-if share" style="width:25px; height:25px; top:48%; font-size:20px; line-height:27px;"></span>
+          <div class="super-btn-out" style="width:30px; height:30px;">
+            <span class="super-btn-in mh-if share" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
           </div>
         </div>
         <ul style="width:100%; line-height:32px;">

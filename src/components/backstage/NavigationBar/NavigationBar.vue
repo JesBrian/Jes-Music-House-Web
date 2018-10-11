@@ -1,14 +1,14 @@
 <template>
   <!-- 导航条 -->
   <div class="glass-bg box-show" style="width:100%; height:53px; top:0; left:0; position:fixed; z-index:99; border-radius:0;">
-    <div style="width:1208px; height:100%; margin:0 auto;">
-      <router-link to="/" style=" float:left; line-height:48px;">
+    <div style="min-width:1208px; width:100%; height:100%; margin:0 auto;">
+      <router-link to="/" style="margin-left:28px; float:left; line-height:48px;">
         <img v-lazy="require('../../../../static/img/logo.png')" style="width:33px; height:33px; margin:8px 8px 0 0; float:left;"/>
         <span style="font-size:22px; font-weight:700; color:#22e8ff; text-shadow:1.5px 1.5px 6px #30cdff;">Music House 后台管理系统</span>
       </router-link>
 
       <div @click="changeShowLeftMenu" class="cube-bg left-menu-switch">
-        <i class="mh-if double-arrow-left" style="margin-right:2px; line-height:31px; text-align:center; font-size:21px; color:#30cdff;"></i>
+        <i class="mh-if" :class="$store.state.View.showLeftMenu ? 'double-arrow-left' : 'double-arrow-right'" style="margin-right:2px; line-height:31px; text-align:center; font-size:21px; color:#30cdff;"></i>
       </div>
 
       <!-- 用户登录/操作 -->

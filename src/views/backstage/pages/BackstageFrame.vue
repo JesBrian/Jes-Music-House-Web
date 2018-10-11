@@ -46,6 +46,6 @@ export default {
   }
 
   #backstageLayout {
-    width:988px; margin:0 auto;
+    min-width:988px; width:100%; margin:0 auto; padding:0 38px; box-sizing:border-box;
   }
 </style>
