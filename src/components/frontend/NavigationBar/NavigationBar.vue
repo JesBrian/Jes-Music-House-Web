@@ -61,11 +61,11 @@
 
       <!-- 导航栏用户登录/操作 -->
       <div style="width:42px; height:38px; margin:6px -8px 0 0; position:relative; float:right;">
-        <div v-if="$store.state.User.id === '0'" @click="showUserLoginModal" class="super-btn-out" style="width:100%; height:100%;">
+        <div v-if="$store.state.User.id === '0'" @click="showUserLoginModal" class="super-btn-out ripple" style="width:100%; height:100%;">
           <span class="super-btn-in mh-if avatar" style="width:32px; height:29px; top:48%; line-height:29.5px; font-size:20px;"></span>
         </div>
         <div v-else id="navMenuUser" style="width:100%; height:100%;">
-          <router-link to="/user" class="super-btn-out" style="width:100%; height:100%; display:inline-block;">
+          <router-link to="/user" class="super-btn-out ripple" style="width:100%; height:100%; display:inline-block;">
             <span class="super-btn-in" style="width:32px; height:29px; top:48%; line-height:29.5px; font-size:20px;">X</span>
           </router-link>
           <div class="nav-user-operation" style="top:32px; left:-68%; position:absolute;">
@@ -210,7 +210,7 @@ export default {
     height:24px;
     margin:6px 38px 7px 18px; padding:0 12px 0 13px;
     display:inline-block; border-radius:14px;
-    line-height:26px;
+    line-height:25px;
     text-align: center;
     font-weight: 700;
     background-image: linear-gradient(#2e3537, #424748);
@@ -221,7 +221,7 @@ export default {
   }
   .second-menu-link:hover, .second-menu-link.router-link-exact-active {
     height:23px;
-    padding-top:1px;
+    padding-bottom:1px;
     color: #20dbfc;
     line-height:22px;
     box-shadow: 0 -0.1px 2px rgba(0, 0, 0, 0.7), 0 0 2px rgba(255, 255, 255, 0.4), 0 0 2px rgba(0, 0, 0, 0.3), inset 0 0 3px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6);
