@@ -8,13 +8,13 @@
 
       <ul style="width:93%; margin:0 auto;">
         <li v-for="n in 25" :key="n + 99" style="width:20%; height:228px; margin:0; padding:0; position:relative; display:inline-block;">
-          <router-link to="/playList" style="width:139px; height:119px; margin:0 20px; position:relative; display:inline-block;">
+          <router-link to="/play-list/song-group/1" style="width:139px; height:119px; margin:0 20px; position:relative; display:inline-block;">
             <img v-lazy="'http://p3.music.126.net/w_GpzV7fky3gOgIf4-gC4Q==/109951163241853988.jpg?param=130y130'" style="width:108px; height:108px; top:5px; left:6px; position:absolute;"/>
             <img v-lazy="require('../../../../../static/img/default/disc.png')" style="width:100%; height:100%;"/>
           </router-link>
           <i @click="playThisPlayList" class="mh-if play"></i>
           <p class="text-hidden" style="width:138px; margin-left:23px; color:#DDD;">
-            <router-link to="/playList" style="color:#DDD;">c4s成8识vg删除yr54</router-link>
+            <router-link to="/play-list/song-group/1" style="color:#DDD;">c4s成8识vg删除yr54</router-link>
           </p>
           <p class="text-hidden" style="width:138px; margin-left:23px; line-height:2em; color:#888; font-size:13.3px;">
             <span style="float:left; margin:-1px 8px 0 0;">by</span><router-link to="singer" style="color:#AAA;">JesBrian</router-link>
@@ -28,13 +28,13 @@
 
       <ul style="width:93%; margin:0 auto 18px;">
         <li v-for="n in 25" :key="n + 99" style="width:20%; height:228px; margin:0; padding:0; position:relative; display:inline-block;">
-          <router-link to="/playList" style="width:139px; height:119px; margin:0 20px; position:relative; display:inline-block;">
+          <router-link to="/play-list/song-group/1" style="width:139px; height:119px; margin:0 20px; position:relative; display:inline-block;">
             <img v-lazy="'http://p3.music.126.net/w_GpzV7fky3gOgIf4-gC4Q==/109951163241853988.jpg?param=130y130'" style="width:108px; height:108px; top:5px; left:6px; position:absolute;"/>
             <img v-lazy="require('../../../../../static/img/default/disc.png')" style="width:100%; height:100%;"/>
           </router-link>
           <i @click="playThisPlayList" class="mh-if play"></i>
           <p class="text-hidden" style="width:138px; margin-left:23px; color:#DDD;">
-            <router-link to="/playList" style="color:#DDD;">c4s成8识vg删除yr54</router-link>
+            <router-link to="/play-list/song-group/1" style="color:#DDD;">c4s成8识vg删除yr54</router-link>
           </p>
           <p class="text-hidden" style="width:138px; margin-left:23px; line-height:2em; color:#888; font-size:13.3px;">
             <span style="float:left; margin:-1px 8px 0 0;">by</span><router-link to="singer" style="color:#AAA;">JesBrian</router-link>

@@ -32,7 +32,7 @@
 
       <!-- 不同内容 -->
       <div style="margin:0 auto 28px;">
-        <component :is="type" :showType="playListShowType" />
+        <!--<component :is="type" />-->
         <div style="height:388px;"></div>
       </div>
     </div>
@@ -52,37 +52,19 @@ export default {
 
   data () {
     return {
-      type: 'play-list',
-      playListShowType: 'picture-group'
+      singerId: this.$route.params['id'],
+      type: this.$route.params['type']
     }
   },
 
   created () {
-    this.$localForage.getItem('playListShowType', (result, value) => {
-      if (value) {
-        this.playListShowType = value.singer
-      }
-    })
   },
 
   methods: {
     changeContent (type) {
       this.type = type
-    },
 
-    changePlayListShowType (type = 'picture') {
-      this.playListShowType = type
-      this.$localForage.getItem('playListShowType', (result, value) => {
-        let saveData = {}
-        if (value) {
-          saveData = value
-        } else {
-          saveData.create = 'picture-group'
-          saveData.collection = 'picture-group'
-        }
-        saveData.singer = this.playListShowType
-        this.$localForage.setItem('playListShowType', saveData)
-      })
+      this.$router.push(`/singer-detail/${type}/${this.singerId}`)
     }
   }
 }

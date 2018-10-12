@@ -35,11 +35,11 @@ export default new Router({
           component: () => import('../../views/frontend/pages/user/User.vue')
         },
         {
-          path: '/retrievePasswd',
+          path: '/retrieve-password',
           component: () => import('../../views/frontend/pages/user/RetrievePassword.vue')
         },
         {
-          path: '/modifyPasswd',
+          path: '/modify-password',
           component: () => import('../../views/frontend/pages/user/ModifyPassword.vue')
         },
         {
@@ -83,7 +83,7 @@ export default new Router({
           component: () => import('../../views/frontend/pages/music/Disc.vue')
         },
         {
-          path: '/playList',
+          path: '/play-list/:type/:id',
           component: () => import('../../views/frontend/pages/music/PlayList.vue')
         },
         {
@@ -103,7 +103,7 @@ export default new Router({
           component: () => import('../../views/frontend/pages/music/Singer.vue')
         },
         {
-          path: '/singerDetail/:id',
+          path: '/singer-detail/:type/:id',
           component: () => import('../../views/frontend/pages/music/SingerDetail.vue')
         },
         {

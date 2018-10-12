@@ -134,7 +134,7 @@ export default {
 
     retrievePassword () {
       this.$store.commit('CHANGE_MODAL_TYPE')
-      this.$router.push('/retrievePasswd')
+      this.$router.push('/retrieve-password')
     },
 
     userPhoneLogin () {
