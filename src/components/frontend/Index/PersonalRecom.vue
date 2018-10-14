@@ -40,7 +40,12 @@
 
 <script>
 export default {
-  name: 'PersonalRecom'
+  name: 'PersonalRecom',
+
+  methods: {
+    playThisPlayList () {
+    }
+  }
 }
 </script>
 

@@ -38,7 +38,12 @@
 
 <script>
 export default {
-  name: 'HotAlbum'
+  name: 'HotAlbum',
+
+  methods: {
+    playThisPlayList () {
+    }
+  }
 }
 </script>
 

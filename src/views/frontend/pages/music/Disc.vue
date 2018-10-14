@@ -56,6 +56,11 @@ export default {
 
   components: {
     Pagination
+  },
+
+  methods: {
+    playThisPlayList () {
+    }
   }
 }
 </script>

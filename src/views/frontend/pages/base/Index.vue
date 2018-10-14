@@ -3,7 +3,7 @@
     <div class="box-show" style="width:100%; height:328px; padding:2px 68px 0; position:relative;">
       <!-- 轮播图区域 -->
       <div class="" style="width:76%; height:100%; padding:0.5px 0 0; float:left; box-sizing:border-box;">
-        <slide-box style="background:#FFF"/>
+        <slide-box :slider-data="sliderData"/>
       </div>
 
       <!-- 下载区域 -->
@@ -84,7 +84,7 @@
 </template>
 
 <script>
-import SlideBox from '../../../../components/common/SlideBox/SlideBox'
+import SlideBox from '../../../../components/frontend/SlideBox/SlideBox'
 import NewDisc from '../../../../components/frontend/Index/NewDisc.vue'
 import RecomRank from '../../../../components/frontend/Index/RecomRank.vue'
 import PersonalRecom from '../../../../components/frontend/Index/PersonalRecom.vue'
@@ -94,11 +94,25 @@ export default {
   name: 'index',
 
   components: {
-    HotAlbum,
-    PersonalRecom,
-    RecomRank,
-    NewDisc,
-    SlideBox
+    SlideBox, HotAlbum, PersonalRecom, RecomRank, NewDisc
+  },
+
+  data () {
+    return {
+      sliderData: []
+    }
+  },
+
+  created () {
+    this.$http.post('getFrontendSlider').then(res => {
+      // console.log(res)
+      if (res.data.state === '200') {
+        this.sliderData = res.data.data
+      }
+      console.log(this.sliderData)
+    }).catch(err => {
+      console.log(err)
+    })
   }
 }
 </script>
