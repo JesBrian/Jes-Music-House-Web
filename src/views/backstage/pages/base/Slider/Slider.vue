@@ -2,7 +2,6 @@
   <div id="backstageLayout">
     <title-bar />
 
-    <pagination />
   </div>
 </template>
 
