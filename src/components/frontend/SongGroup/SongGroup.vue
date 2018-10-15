@@ -1,6 +1,6 @@
 <template>
-  <dl>
-    <dt style="margin:2px 0; padding:2px 0 0; box-shadow:inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.5), inset 0 0 0 1px #272727; line-height:31px;">
+  <div>
+    <div style="margin:2px 0; padding:2px 0 0; box-shadow:inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.5), inset 0 0 0 1px #272727; line-height:31px;">
       <div style="height:30px;">
         <div style="width:6%; height:100%; float:left; box-sizing:border-box; border-right:1px solid #282828;"></div>
         <div style="width:12%; height:100%; float:left; box-sizing:border-box; border-right:1px solid #282828; text-align:center;">操作</div>
@@ -14,11 +14,11 @@
           时长<i :class="timeOrder" class="mh-if" style="top:0; right:10px; position:absolute; font-size:13px; color:#888;"></i>
         </div>
       </div>
-    </dt>
-    <dd v-for="n in 108" :key="n + '22'" class="box-shadow" style="padding:2px 0;">
+    </div>
+    <div v-for="n in 108" :key="n + '22'" class="box-shadow" style="padding:2px 0;">
       <song-item :index="n" />
-    </dd>
-  </dl>
+    </div>
+  </div>
 </template>
 
 <script>

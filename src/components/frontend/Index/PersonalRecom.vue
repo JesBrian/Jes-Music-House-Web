@@ -2,11 +2,11 @@
   <div>
     <div style="width:93%; height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;">
       <i class="mh-if music-info" style="margin-right:8px; color:#00d8ff; font-size:29px;"></i><span style="font-size:23px; font-weight:700;">个性化推荐</span>
-      <router-link to="/album" class="read-more">更多 <i class="mh-if double-arrow-right"></i></router-link>
+      <router-link to="/user/recommend" class="read-more">更多 <i class="mh-if double-arrow-right"></i></router-link>
     </div>
     <div style="width:93%; height:188px; margin:0 auto;">
       <div style="width:208px; height:100%; float:left; text-align:center;">
-        <router-link to="/user" style="width:100%; height:108px; margin-top:3px; display:inline-block; position:relative; line-height:103px;">
+        <router-link to="/user/recommend" style="width:100%; height:108px; margin-top:3px; display:inline-block; position:relative; line-height:103px;">
           <img v-lazy="require('../../../../static/img/default/calendar.png')" style="width:100%; height:100%;"/>
           <div style="width:50%; height:100%; top:-3px; left:0; position:absolute;">
             <b style="display:inline-block; transform:scaleY(1.2); font-size:56px; color:#666; text-shadow:rgb(0, 0, 0) 0.5px 0.5px 1px;">12</b>
