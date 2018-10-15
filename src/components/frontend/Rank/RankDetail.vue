@@ -14,19 +14,19 @@
         <p style="margin-top:25px; font-size:28px; line-height:3em;">云音乐飙升榜</p>
 
         <div @click="playThisRank" class="super-btn-out" style="width:80px; height:35px; margin-right:18px;">
-          <span class="super-btn-in mh-if play" style="width:68px; height:26px; line-height:28px;"> 播放</span>
+          <span class="super-btn-in mh-if play" style="width:68px; height:26px;">&nbsp;播放</span>
         </div>
         <div class="super-btn-out" style="width:80px; height:35px; margin-right:18px;">
-          <span class="super-btn-in mh-if menu" style="width:68px; height:26px; line-height:28px;"> 添加</span>
+          <span class="super-btn-in mh-if menu" style="width:68px; height:26px;">&nbsp;添加</span>
         </div>
         <div class="super-btn-out" style="width:80px; height:35px; margin-right:18px;">
-          <span class="super-btn-in mh-if collection-music" style="width:68px; height:26px; line-height:28px;"> 收藏</span>
+          <span class="super-btn-in mh-if collection-music" style="width:68px; height:26px;">&nbsp;收藏</span>
         </div>
         <div class="super-btn-out" style="width:80px; height:35px; margin-right:18px;">
-          <span class="super-btn-in mh-if share" style="width:68px; height:26px; line-height:28px;"> 分享</span>
+          <span class="super-btn-in mh-if share" style="width:68px; height:26px;">&nbsp;分享</span>
         </div>
         <div class="super-btn-out" style="width:80px; height:35px; margin-right:18px;">
-          <span class="super-btn-in mh-if comment" style="width:68px; height:26px; line-height:28px;"> 留言</span>
+          <span class="super-btn-in mh-if comment" style="width:68px; height:26px;">&nbsp;留言</span>
         </div>
       </div>
     </div>

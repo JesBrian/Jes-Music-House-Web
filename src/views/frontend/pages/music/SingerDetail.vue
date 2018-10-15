@@ -24,7 +24,7 @@
       </div>
 
       <!-- 歌手内容切换 -->
-      <div style="width:100%; height:32px; margin:28px auto 0; padding:0 3%; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; color:#BBB; font-size:17px; font-weight:700; text-shadow:1px 1px 0.5px #000; line-height:28px;">
+      <div style="height:32px; margin:28px auto 0; padding:0 3%; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; color:#BBB; font-size:17px; font-weight:700; text-shadow:1px 1px 0.5px #000; line-height:28px;">
         <span @click="changeContent('hot-song')" :class="{'active': type === 'hot-song'}" class="singer-menu-cell">热门歌曲</span>
         <span @click="changeContent('play-list')" :class="{'active': type === 'play-list'}" class="singer-menu-cell">所有专辑</span>
         <span @click="changeContent('description')" :class="{'active': type === 'description'}" class="singer-menu-cell">艺人介绍</span>
@@ -38,11 +38,20 @@
     </div>
 
     <div style="width:25%; padding:34px 18px; float:right; box-sizing:border-box;">
-      <div style="width:100%; margin-bottom:48px;">
+      <div style="margin-bottom:38px;">
         <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">相似歌手推荐</div>
+        <div style="display:flex; justify-content:space-between; flex-wrap:wrap;">
+          <div v-for="n in 6" style="margin-bottom:16px;">
+            <img class="box-show" style="width:58px; height:58px; padding:2px;" src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80"/>
+            <p style="font-size:14px;">JesBrian</p>
+          </div>
+        </div>
       </div>
-      <div style="width:100%; margin-bottom:48px;">
+      <div style="margin-bottom:38px;">
         <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">网易云音乐多端下载</div>
+        <div>
+          <p>同步歌单，随时畅听云音乐</p>
+        </div>
       </div>
     </div>
 

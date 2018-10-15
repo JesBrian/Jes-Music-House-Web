@@ -2,7 +2,7 @@
   <div id="homeLayout">
     <div class="box-show" style="width:75%; height:100%; display:inline-block;">
       <!-- 歌单基本信息 -->
-      <div style="width:100%; margin-top:28px;">
+      <div style="margin-top:28px;">
         <div style="width:32%; margin-top:12px; float:left; text-align:center;">
           <img class="cube-bg box-show" v-lazy="'http://p4.music.126.net/fNps5V_Auva93TgjLURyEw==/7960464187263772.jpg?param=200y200'" style="width:188px; height:188px; padding:8px; border-radius:6px;"/>
         </div>
@@ -19,20 +19,20 @@
           </div>
 
           <div style="margin:18px 0;">
-            <div class="super-btn-out ripple" style="width:72px; height:29px; margin:10px 13px 0 0;">
-              <span class="super-btn-in mh-if play" style="width:64px; height:22px;"> 播放</span>
+            <div class="super-btn-out ripple" style="width:72px; height:31px; margin:10px 13px 0 0;">
+              <span class="super-btn-in mh-if play" style="width:64px; height:23px;">&nbsp;播放</span>
             </div>
-            <div class="super-btn-out ripple" style="width:72px; height:29px; margin:10px 13px 0 0;">
-              <span class="super-btn-in mh-if play" style="width:64px; height:22px;"> 列表</span>
+            <div class="super-btn-out ripple" style="width:72px; height:31px; margin:10px 13px 0 0;">
+              <span class="super-btn-in mh-if play" style="width:64px; height:23px;">&nbsp;列表</span>
             </div>
-            <div @click="showModal('AddAlbum')" class="super-btn-out ripple" style="width:72px; height:29px; margin:10px 13px 0 0;">
-              <span class="super-btn-in mh-if collection-music" style="width:64px; height:22px;"> 收藏</span>
+            <div @click="showModal('AddAlbum')" class="super-btn-out ripple" style="width:72px; height:31px; margin:10px 13px 0 0;">
+              <span class="super-btn-in mh-if collection-music" style="width:64px; height:23px;">&nbsp;收藏</span>
             </div>
-            <div class="super-btn-out ripple" style="width:72px; height:29px; margin:10px 13px 0 0;">
-              <span class="super-btn-in mh-if download" style="width:64px; height:22px;"> 下载</span>
+            <div class="super-btn-out ripple" style="width:72px; height:31px; margin:10px 13px 0 0;">
+              <span class="super-btn-in mh-if download" style="width:64px; height:23px;">&nbsp;下载</span>
             </div>
-            <div @click="showModal('Share')" class="super-btn-out ripple" style="width:72px; height:29px; margin:10px 13px 0 0;">
-              <span class="super-btn-in mh-if share" style="width:64px; height:22px;"> 分享</span>
+            <div @click="showModal('Share')" class="super-btn-out ripple" style="width:72px; height:31px; margin:10px 13px 0 0;">
+              <span class="super-btn-in mh-if share" style="width:64px; height:23px;">&nbsp;分享</span>
             </div>
           </div>
 
@@ -55,7 +55,7 @@
       </div>
 
       <!-- 歌单内容切换 -->
-      <div style="width:100%; height:32px; margin:32px auto 0; padding:0 3%; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; color:#BBB; font-size:17px; font-weight:700; text-shadow:1px 1px 0.5px #000; line-height:28px;">
+      <div style="height:32px; margin:32px auto 0; padding:0 3%; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; color:#BBB; font-size:17px; font-weight:700; text-shadow:1px 1px 0.5px #000; line-height:28px;">
         <span @click="changeContent('song-group')" :class="{'active': type === 'song-group'}" class="play-list-menu-cell">歌曲 [888]</span>
         <span @click="changeContent('comment-total')" :class="{'active': type === 'comment-total'}" class="play-list-menu-cell">评论 [666]</span>
         <label v-if="type === 'song-group'" class="super-btn-out active" style="width:268px; height:32px; margin:-2px 8px 0 0; float:right; position:relative; border:none; border-radius:16px;">
@@ -71,14 +71,27 @@
     </div>
 
     <div style="width:25%; padding:34px 18px; float:right; box-sizing:border-box;">
-      <div style="width:100%; margin-bottom:48px;">
+      <div style="margin-bottom:38px;">
         <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">收藏这个歌单的人</div>
+        <div style="display:flex; justify-content:space-between; flex-wrap:wrap;">
+          <img v-for="n in 8" class="box-show" style="width:43px; height:43px; margin-bottom:16px; padding:2px;" src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80"/>
+        </div>
       </div>
-      <div style="width:100%; margin-bottom:48px;">
+      <div style="margin-bottom:48px;">
         <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">相关推荐</div>
+        <div v-for="n in 5" class="box-show" style="width:100%; height:50px; margin-bottom:8px; border-radius:3px;">
+          <img class="box-show" src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80" style="width:35px; height:35px; margin:8px; padding:2px; float:left;"/>
+          <div>
+            <p class="text-hidden" style="padding:10px 0 5px; font-size:14px;">The Name of the Song</p>
+            <p style="font-size:12px;">JesBrian</p>
+          </div>
+        </div>
       </div>
-      <div style="width:100%; margin-bottom:48px;">
+      <div style="margin-bottom:38px;">
         <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">网易云音乐多端下载</div>
+        <div>
+          <p>同步歌单，随时畅听云音乐</p>
+        </div>
       </div>
     </div>
   </div>
