@@ -37,7 +37,13 @@
       </div>
     </div>
 
-    <div style="width:25%; float:right;">
+    <div style="width:25%; padding:34px 18px; float:right; box-sizing:border-box;">
+      <div style="width:100%; margin-bottom:48px;">
+        <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">相似歌手推荐</div>
+      </div>
+      <div style="width:100%; margin-bottom:48px;">
+        <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">网易云音乐多端下载</div>
+      </div>
     </div>
 
   </div>

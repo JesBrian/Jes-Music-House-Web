@@ -18,7 +18,7 @@
           </router-link>
         </li>
         <li style="float:left;">
-          <router-link to="/user/album" :class="{'active': menuType === 'my'}" class="first-menu-link">
+          <router-link to="/user/music" :class="{'active': menuType === 'my'}" class="first-menu-link">
             我的音乐<div class="triangle-up"></div>
           </router-link>
         </li>
@@ -48,7 +48,7 @@
           <router-link to="/disc" class="second-menu-link box-show">新碟上架</router-link>
         </div>
         <div v-if="menuType === 'my'">
-          <router-link to="/user/album" class="second-menu-link box-show">我的歌单</router-link>
+          <router-link to="/user/music" class="second-menu-link box-show">我的音乐</router-link>
           <router-link to="/user/recommend" class="second-menu-link box-show">个人推荐</router-link>
           <router-link to="/user/rank" class="second-menu-link box-show">听歌排行</router-link>
         </div>

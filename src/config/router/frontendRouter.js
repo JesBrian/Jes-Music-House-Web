@@ -67,8 +67,8 @@ export default new Router({
           component: () => import('../../views/frontend/pages/user/Recommend.vue')
         },
         {
-          path: '/user/album',
-          component: () => import('../../views/frontend/pages/user/Album.vue')
+          path: '/user/music',
+          component: () => import('../../views/frontend/pages/user/Music.vue')
         },
         {
           path: '/user/rank',
