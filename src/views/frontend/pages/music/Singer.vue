@@ -1,6 +1,6 @@
 <template>
   <div id="homeLayout">
-    <div class="box-show" style="width:20%; height:100%; top:0; left:0; padding-top:108px; position:absolute; box-sizing:border-box; color:#999;">
+    <div class="box-show" style="width:20%; height:100%; top:0; left:0; padding-top:12px; position:absolute; box-sizing:border-box; color:#999;">
       <ul style="width:85%; margin:0 auto;">
         <li class="box-shadow" style="margin-top:8px; padding-bottom:8px;">
           <span class="singer-type-title">推荐</span>

@@ -1,8 +1,10 @@
 <template>
-  <div id="backstageLayout">
-    <title-bar />
+  <gemini-scrollbar>
+    <div id="backstageLayout">
+      <title-bar />
 
-  </div>
+    </div>
+  </gemini-scrollbar>
 </template>
 
 <script>

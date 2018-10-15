@@ -10,9 +10,7 @@
     <!-- 后台二级路由 -->
     <div id="backstageContainer" :class="{'active' : $store.state.View.showLeftMenu}">
       <div class="glass-bg box-show" style="width:100%; height:100%; padding:3px;">
-        <gemini-scrollbar>
-          <router-view/>
-        </gemini-scrollbar>
+        <router-view/>
       </div>
     </div>
   </div>

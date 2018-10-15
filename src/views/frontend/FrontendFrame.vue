@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div style="background:lightgreen">
     <!-- 导航条 -->
     <navigation-bar />
 
     <!-- 前台二级路由 -->
-    <div style="width:100%; height:100%; left:0; padding:0 3px; display:inline-block; position:fixed; box-sizing:border-box; background:#2E2E2E; z-index:-1;">
-      <gemini-scrollbar>
+    <div style="width:100%; height:100%; left:0; padding:92px 3px 48px; display:inline-block; position:fixed; box-sizing:border-box; background:#2E2E2E; z-index:-1;">
+      <gemini-scrollbar v-if="hackReset">
         <router-view class="glass-bg box-show" />
-        <div class="glass-bg box-show" style="width:1120px; height:103px; margin:-3px auto 0; position:relative; z-index:50;"></div>
+        <div class="glass-bg box-show" style="width:1120px; height:55px; margin:-3px auto -8px; position:relative; z-index:50;"></div>
       </gemini-scrollbar>
     </div>
 
@@ -38,9 +38,19 @@ export default {
     MusicPlayer
   },
 
+  data () {
+    return {
+      hackReset: true
+    }
+  },
+
   watch: {
     $route () {
       document.querySelector('.gm-scroll-view').scrollTop = 0
+      this.hackReset = false
+      this.$nextTick(() => {
+        this.hackReset = true
+      })
     }
   },
 
@@ -69,6 +79,6 @@ export default {
 
 <style>
   #homeLayout {
-    width:1000px; min-height:688px; margin:auto; padding:88px 0 0; position:relative; z-index:25;
+    width:1000px; min-height:688px; margin:-5px auto; padding:0; position:relative; z-index:25;
   }
 </style>

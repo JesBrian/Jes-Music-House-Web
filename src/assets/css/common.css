@@ -140,3 +140,23 @@
     box-shadow: 0 0 20px rgba(46, 231, 255, 0.6), inset 0 0 10px rgba(46, 231, 255, 0.4), 0 2px 0 #000;
   }
 }
+
+
+/* vertical scrollbar track */
+.gm-scrollbar.-vertical {
+  background-color:#222;
+}
+/* horizontal scrollbar track */
+.gm-scrollbar.-horizontal {
+  background-color:transparent;
+}
+/* scrollbar thumb */
+.gm-scrollbar .thumb {
+  background-color:#79EBFF;
+}
+.gm-scrollbar .thumb:active {
+  background-color:#37BDE6;
+}
+.gm-scrollbar .thumb:hover {
+  background-color:#37BDE6;
+}

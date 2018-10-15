@@ -41,7 +41,7 @@
       <div style="margin-bottom:38px;">
         <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">相似歌手推荐</div>
         <div style="display:flex; justify-content:space-between; flex-wrap:wrap;">
-          <div v-for="n in 6" style="margin-bottom:16px;">
+          <div v-for="n in 6" :key="`${n}88`" style="margin-bottom:16px;">
             <img class="box-show" style="width:58px; height:58px; padding:2px;" src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80"/>
             <p style="font-size:14px;">JesBrian</p>
           </div>
