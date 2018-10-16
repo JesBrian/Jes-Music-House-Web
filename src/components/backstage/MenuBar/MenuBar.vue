@@ -47,6 +47,15 @@ export default {
     }
   },
 
+  watch: {
+    $route () {
+      this.hackReset = false
+      this.$nextTick(() => {
+        this.hackReset = true
+      })
+    }
+  },
+
   created () {
     this.$http.post('getAllMenuTreeData').then(result => {
       let data = result.data.data
@@ -79,6 +88,10 @@ export default {
 
     showThisFirstMenuSecondMenuContainer (firstMenuId) {
       this.nowFirstMenu = firstMenuId === this.nowFirstMenu ? 0 : firstMenuId
+      this.hackReset = false
+      this.$nextTick(() => {
+        this.hackReset = true
+      })
     }
   }
 }
