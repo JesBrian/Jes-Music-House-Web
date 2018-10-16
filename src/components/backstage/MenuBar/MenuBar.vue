@@ -32,8 +32,6 @@ export default {
 
   data () {
     return {
-      hackReset: true,
-
       nowFirstMenu: 0, // 当前一级菜单
       nowSecondMenu: 0, // 当前二级菜单
 
