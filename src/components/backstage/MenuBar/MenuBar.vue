@@ -1,7 +1,7 @@
 <template>
   <div id="leftMenu" class="glass-bg box-show" :class="{'active' : $store.state.View.showLeftMenu}">
     <div v-show="$store.state.View.showLeftMenu" style="width:100%; height:100%; padding:13px 0 0; overflow-y:auto; color:#DDD; box-sizing:border-box;">
-      <gemini-scrollbar >
+      <gemini-scrollbar id="superScrollbar">
         <div v-for="(firstMenuItem, index) in menuTreeData" :key="`${index}3`" class="first-menu" :class="{'active': firstMenuItem.id === nowFirstMenu}">
           <div @click="showThisFirstMenuSecondMenuContainer(firstMenuItem.id)" class="first-menu-link glass-bg box-show">
             <i class="mh-if menu-user" style="margin:0 8px 0 12px;"></i>
@@ -174,5 +174,9 @@ export default {
     to {
       transform:translateX(8px);
     }
+  }
+
+  #superScrollbar >>> .gm-scrollbar.-vertical {
+    background:#111;
   }
 </style>

@@ -5,7 +5,7 @@
       <!-- 歌手信息 -->
       <div style="width:96%; margin:28px auto 18px;">
         <div style="width:20%; height:100%; display:inline-block; text-align:center;">
-          <img src="http://p3.music.126.net/Ic8mQm7XI1nxe8DL-O9Eog==/103354093028496.jpg?param=640y300" class="glass-bg box-show" style="width:128px; height:128px; margin-right:28px; padding:6px;"/>
+          <img src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80" class="glass-bg box-show" style="width:128px; height:128px; margin-right:28px; padding:6px;"/>
         </div>
         <div style="width:80%; height:100%; float:right;">
           <p style="padding-top:8px; font-size:24px;">The Name of the Singer</p>
@@ -48,7 +48,7 @@
         </div>
       </div>
       <div style="margin-bottom:38px;">
-        <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">网易云音乐多端下载</div>
+        <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">客户端多端下载</div>
         <div>
           <p>同步歌单，随时畅听云音乐</p>
         </div>
