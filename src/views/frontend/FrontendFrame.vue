@@ -12,7 +12,7 @@
     </div>
 
     <!-- 回到顶部组件 -->
-    <float-block />
+    <float-block v-if="hackReset" />
 
     <!-- 拟态框组件 -->
     <home-modal />
