@@ -10,10 +10,10 @@
           <p style="font-size:23px; color:#EEE;">史克威尔艾尼克斯 · 游戏音乐编年史 ♪</p>
           <div style="height:32px; margin-top:18px; display:inline-block; line-height:32px;">
 
-            <router-link url="/singer" style="width:26px; height:26px; margin:1px 12px 0 0; float:left; border-radius:50%;">
+            <router-link to="/singer-detail/hot-song/1" style="width:26px; height:26px; margin:1px 12px 0 0; float:left; border-radius:50%;">
               <img class="box-show" src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80" style="width:100%; height:100%; padding:1px; border-radius:50%;"/>
             </router-link>
-            <router-link url="/singer" style="margin-right:38px; font-size:20px;">JesBrian</router-link>
+            <router-link to="/singer-detail/hot-song/1" style="margin-right:38px; font-size:20px;">JesBrian</router-link>
 
             <span style="font-size:13.5px;">2018-09-23 创建</span>
           </div>
@@ -39,11 +39,11 @@
           <div style="position:relative; letter-spacing:1px; font-size:14px;">
             <p style="margin-bottom:8px;">
               <span style="color:#DDD;">标签：</span>
-              <router-link :url="'/index/play-list'" style="color:#00d8ff;">666</router-link>
+              <router-link :to="'/index/play-list'" style="color:#00d8ff;">666</router-link>
               <i style="margin:0 3px; color:#FFF;">/</i>
-              <router-link :url="'/index/play-list'" style="color:#00d8ff;">888</router-link>
+              <router-link :to="'/index/play-list'" style="color:#00d8ff;">888</router-link>
               <i style="margin:0 3px; color:#FFF;">/</i>
-              <router-link :url="'/index/play-list'" style="color:#00d8ff;">999</router-link>
+              <router-link :to="'/index/play-list'" style="color:#00d8ff;">999</router-link>
             </p>
             <p ref="playListDescription" :style="isShowDescription ? 'height:100%;' : 'height:38px;'" style="width:92%; word-break:break-all; line-height:19px; overflow:hidden;">
               <span style="color:#DDD;">简介：</span>
