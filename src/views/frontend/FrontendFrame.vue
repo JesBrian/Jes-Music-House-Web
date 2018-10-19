@@ -1,13 +1,15 @@
 <template>
-  <div style="background:lightgreen">
+  <div>
     <!-- 导航条 -->
     <navigation-bar />
 
     <!-- 前台二级路由 -->
-    <div style="width:100%; height:100%; left:0; padding:92px 3px 48px; display:inline-block; position:fixed; box-sizing:border-box; background:#2E2E2E; z-index:-1;">
+    <div id="homeMainContainer">
       <gemini-scrollbar v-if="hackReset">
+
         <router-view class="glass-bg box-show" />
-        <div class="glass-bg box-show" style="width:1120px; height:55px; margin:-3px auto -8px; position:relative; z-index:50;"></div>
+
+        <home-footer />
       </gemini-scrollbar>
     </div>
 
@@ -27,15 +29,13 @@ import NavigationBar from '../../components/frontend/NavigationBar/NavigationBar
 import MusicPlayer from '../../components/frontend/MusicPlayer/MusicPlayer.vue'
 import FloatBlock from '../../components/frontend/FloatBlock/FloatBlock'
 import HomeModal from '../../components/common/Modal/HomeModal.vue'
+import HomeFooter from '../../components/frontend/HomeFooter/HomeFooter.vue'
 
 export default {
   name: 'FrontendFrame',
 
   components: {
-    FloatBlock,
-    NavigationBar,
-    HomeModal,
-    MusicPlayer
+    NavigationBar, HomeFooter, FloatBlock, HomeModal, MusicPlayer
   },
 
   data () {
@@ -78,6 +78,10 @@ export default {
 </script>
 
 <style>
+  #homeMainContainer {
+    width:100%; height:100%; left:0; padding:92px 3px 48px; display:inline-block; position:fixed; box-sizing:border-box; background:#2E2E2E; z-index:-1;
+  }
+
   #homeLayout {
     width:1000px; min-height:688px; margin:-5px auto; padding:0; position:relative; z-index:25;
   }

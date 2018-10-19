@@ -9,8 +9,8 @@ import vueLazyload from 'vue-lazyload'
 import GeminiScrollbar from 'vue-gemini-scrollbar'
 import localForage from 'localforage'
 
-import '@/assets/css/reset.css'
-import '@/assets/css/common.css'
+import '@/assets/css/reset.less'
+import '@/assets/css/common.less'
 import '../../assets/plugins/myiconfont/iconfont.css'
 
 Vue.config.productionTip = false
