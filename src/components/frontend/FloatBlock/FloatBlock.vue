@@ -1,6 +1,6 @@
 <template>
-  <div id="floatBlock" @click="goPViewsTop" class="super-btn-out ripple" :class="{'unshow': unshow}" style="width:42px; height:42px; bottom:113px; position:fixed;">
-    <div class="super-btn-in mh-if convenient" style="width:31px; height:31px; font-size:28px; line-height:33px;"></div>
+  <div id="floatBlock" @click="goPViewsTop" class="super-btn-out ripple" :class="{'unshow': unshow}">
+    <div class="super-btn-in mh-if convenient"></div>
   </div>
 </template>
 
@@ -81,8 +81,16 @@ export default {
 }
 </script>
 
-<style scoped>
-  #floatBlock.unshow {
-    display: none;
+<style lang="less" scoped>
+  #floatBlock {
+    width:42px; height:42px; bottom:128px; position:fixed;
+
+    &.unshow {
+      display: none;
+    }
+
+    > .super-btn-in {
+      width:35px; height:35px; font-size:26px;
+    }
   }
 </style>

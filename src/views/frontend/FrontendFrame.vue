@@ -4,7 +4,7 @@
     <navigation-bar />
 
     <!-- 前台二级路由 -->
-    <div id="homeMainContainer">
+    <div id="homeMainContainer" :class="{active: $store.state.View.topMenuIsShowSecond}">
       <gemini-scrollbar v-if="hackReset">
 
         <router-view class="glass-bg box-show" />
@@ -77,9 +77,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less" >
   #homeMainContainer {
-    width:100%; height:100%; left:0; padding:92px 3px 48px; display:inline-block; position:fixed; box-sizing:border-box; background:#2E2E2E; z-index:-1;
+    width:100%; height:100%; left:0; padding:63px 3px 6px; display:inline-block; position:fixed; box-sizing:border-box; background:#2E2E2E; z-index:-1;
+
+    &.active {
+      padding-top:92px;
+    }
   }
 
   #homeLayout {

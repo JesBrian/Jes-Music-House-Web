@@ -10,6 +10,6 @@ export default {
 
 <style lang="less" scoped>
   #homeFooter {
-    width:1120px; height:55px; margin:-3px auto; position:relative; z-index:50;
+    width:100%; height:108px; margin:-3px auto; position:relative; z-index:50;
   }
 </style>

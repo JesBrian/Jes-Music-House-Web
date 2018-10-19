@@ -39,20 +39,20 @@
         </li>
       </ul>
       <!-- 二级菜单 -->
-      <div class="super-btn-out" style="width:100%; min-height:8px; top:52.3px; left:0; padding-left:268px; position:absolute; box-sizing:border-box; border-radius:0; cursor:default; font-size:15px; white-space:nowrap;">
-        <div v-if="menuType === 'find'">
+      <div class="super-btn-out" style="width:100%; min-height:8px; top:52px; left:0; position:absolute; box-sizing:border-box; border-radius:0; cursor:default; font-size:15px; white-space:nowrap;">
+        <div v-if="menuType === 'find'" style="width:1088px; margin:0 auto; padding-left:168px; box-sizing:border-box; display:flex; flex-wrap:nowrap;">
           <router-link to="/index" class="second-menu-link box-show">主页推荐</router-link>
           <router-link to="/rank" class="second-menu-link box-show">排行榜</router-link>
           <router-link to="/album" class="second-menu-link box-show">歌单</router-link>
           <router-link to="/singer" class="second-menu-link box-show">歌手</router-link>
           <router-link to="/disc" class="second-menu-link box-show">新碟上架</router-link>
         </div>
-        <div v-if="menuType === 'my'">
+        <div v-else-if="menuType === 'my'" style="width:1088px; margin:0 auto; padding-left:168px; box-sizing:border-box; display:flex; flex-wrap:nowrap;">
           <router-link to="/user/music" class="second-menu-link box-show">我的音乐</router-link>
           <router-link to="/user/recommend" class="second-menu-link box-show">个人推荐</router-link>
           <router-link to="/user/rank" class="second-menu-link box-show">听歌排行</router-link>
         </div>
-        <div v-if="menuType === 'friend'">
+        <div v-else-if="menuType === 'friend'" style="width:1088px; margin:0 auto; padding-left:168px; box-sizing:border-box; display:flex; flex-wrap:nowrap;">
           <router-link to="/friend/0" class="second-menu-link box-show">朋友圈</router-link>
           <router-link to="/friend/888" class="second-menu-link box-show">我的动态</router-link>
           <router-link to="/message" class="second-menu-link box-show">我的消息</router-link>
@@ -124,22 +124,28 @@ export default {
       switch (this.$route.path.split('/')[1]) {
         case 'user':
           this.menuType = 'my'
+          this.$store.commit('changeTopMenuIsShowSecond', true)
           break
         case 'friend':
         case 'message':
           this.menuType = 'friend'
+          this.$store.commit('changeTopMenuIsShowSecond', true)
           break
         case 'musician':
           this.menuType = 'musician'
+          this.$store.commit('changeTopMenuIsShowSecond', false)
           break
         case 'download':
           this.menuType = 'download'
+          this.$store.commit('changeTopMenuIsShowSecond', false)
           break
         case 'search':
           this.menuType = 'search'
+          this.$store.commit('changeTopMenuIsShowSecond', false)
           break
         default:
           this.menuType = 'find'
+          this.$store.commit('changeTopMenuIsShowSecond', true)
           break
       }
     },

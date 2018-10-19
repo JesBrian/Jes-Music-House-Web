@@ -49,7 +49,7 @@ export default {
 
   data () {
     return {
-      searchType: 'song',
+      searchType: this.$route.params['searchType'],
       searchKey: this.$route.params['searchKey']
     }
   },
