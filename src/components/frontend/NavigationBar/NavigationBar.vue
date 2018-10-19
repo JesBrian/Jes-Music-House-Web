@@ -1,95 +1,86 @@
 <template>
   <!-- 导航条 -->
-  <div class="glass-bg box-show" style="width:100%; height:53px; top:0; left:0; position:fixed; border-radius:0; opacity:0.98;">
-    <div style="width:1088px; height:100%; margin:0 auto;">
+  <div id="homeNavigationBar" class="glass-bg box-show">
+    <div class="main-menu">
 
       <!-- 导航栏LOGO -->
-      <router-link to="/" style="margin-right:18px; float:left; line-height:48px;">
-        <img v-lazy="require('../../../../static/img/logo.png')" style="width:33px; height:33px; margin:8px 8px 0 0; float:left;"/>
-        <span style="font-size:22px; font-weight:700; color:#22e8ff; text-shadow:1.5px 1.5px 6px #30cdff;">Music House</span>
+      <router-link to="/" class="main-menu-logo">
+        <img v-lazy="require('../../../../static/img/logo.png')" class="main-menu-logo-img" />
+        <span class="main-menu-logo-label">Music House</span>
       </router-link>
 
       <!-- 导航菜单 -->
-      <ul style="line-height:52px; color:#999; font-weight:700; letter-spacing:1.2px;">
+      <div class="first-menu-container">
         <!-- 一级菜单 -->
-        <li style="float:left;">
-          <router-link to="/index" :class="{'active': menuType === 'find'}" class="first-menu-link" >
-            发现音乐<div class="triangle-up"></div>
-          </router-link>
-        </li>
-        <li style="float:left;">
-          <router-link to="/user/music" :class="{'active': menuType === 'my'}" class="first-menu-link">
-            我的音乐<div class="triangle-up"></div>
-          </router-link>
-        </li>
-        <li style="float:left;">
-          <router-link to="/friend/0" :class="{'active': menuType === 'friend'}" class="first-menu-link">
-            消息动态<div class="triangle-up"></div>
-          </router-link>
-        </li>
-        <li style="float:left;">
-          <router-link to="/musician" :class="{'active': menuType === 'musician'}" class="first-menu-link">
-            音乐人<div class="triangle-up"></div>
-          </router-link>
-        </li>
-        <li style="float:left;">
-          <router-link to="/download/client" :class="{'active': menuType === 'download'}" class="first-menu-link">
-            下载客户端<div class="triangle-up"></div>
-          </router-link>
-        </li>
-      </ul>
-      <!-- 二级菜单 -->
-      <div class="super-btn-out" style="width:100%; min-height:8px; top:52px; left:0; position:absolute; box-sizing:border-box; border-radius:0; cursor:default; font-size:15px; white-space:nowrap;">
-        <div v-if="menuType === 'find'" style="width:1088px; margin:0 auto; padding-left:168px; box-sizing:border-box; display:flex; flex-wrap:nowrap;">
-          <router-link to="/index" class="second-menu-link box-show">主页推荐</router-link>
-          <router-link to="/rank" class="second-menu-link box-show">排行榜</router-link>
-          <router-link to="/album" class="second-menu-link box-show">歌单</router-link>
-          <router-link to="/singer" class="second-menu-link box-show">歌手</router-link>
-          <router-link to="/disc" class="second-menu-link box-show">新碟上架</router-link>
-        </div>
-        <div v-else-if="menuType === 'my'" style="width:1088px; margin:0 auto; padding-left:168px; box-sizing:border-box; display:flex; flex-wrap:nowrap;">
-          <router-link to="/user/music" class="second-menu-link box-show">我的音乐</router-link>
-          <router-link to="/user/recommend" class="second-menu-link box-show">个人推荐</router-link>
-          <router-link to="/user/rank" class="second-menu-link box-show">听歌排行</router-link>
-        </div>
-        <div v-else-if="menuType === 'friend'" style="width:1088px; margin:0 auto; padding-left:168px; box-sizing:border-box; display:flex; flex-wrap:nowrap;">
-          <router-link to="/friend/0" class="second-menu-link box-show">朋友圈</router-link>
-          <router-link to="/friend/888" class="second-menu-link box-show">我的动态</router-link>
-          <router-link to="/message" class="second-menu-link box-show">我的消息</router-link>
-        </div>
+        <router-link to="/index" :class="{'active': menuType === 'find'}" class="first-menu-link" >
+          发现音乐<div class="triangle-up"></div>
+        </router-link>
+        <router-link to="/user/music" :class="{'active': menuType === 'my'}" class="first-menu-link">
+          我的音乐<div class="triangle-up"></div>
+        </router-link>
+        <router-link to="/friend/0" :class="{'active': menuType === 'friend'}" class="first-menu-link">
+          消息动态<div class="triangle-up"></div>
+        </router-link>
+        <router-link to="/musician" :class="{'active': menuType === 'musician'}" class="first-menu-link">
+          音乐人<div class="triangle-up"></div>
+        </router-link>
+        <router-link to="/download/client" :class="{'active': menuType === 'download'}" class="first-menu-link">
+          下载客户端<div class="triangle-up"></div>
+        </router-link>
       </div>
 
       <!-- 导航栏用户登录/操作 -->
-      <div style="width:42px; height:38px; margin:6px -8px 0 0; position:relative; float:right;">
-        <div v-if="$store.state.User.id === '0'" @click="showUserLoginModal" class="super-btn-out ripple" style="width:100%; height:100%;">
-          <span class="super-btn-in mh-if avatar" style="width:32px; height:29px; top:48%; line-height:29.5px; font-size:20px;"></span>
+      <div class="user-operation-container">
+        <div v-if="$store.state.User.id === '0'" @click="showUserLoginModal" class="user-operation-login super-btn-out ripple">
+          <span class="super-btn-in mh-if avatar"></span>
         </div>
-        <div v-else id="navMenuUser" style="width:100%; height:100%;">
-          <router-link to="/user" class="super-btn-out ripple" style="width:100%; height:100%; display:inline-block;">
-            <span class="super-btn-in" style="width:32px; height:29px; top:48%; line-height:29.5px; font-size:20px;">X</span>
+        <div v-else class="user-operation-info-container">
+          <router-link to="/user" class="user-operation-info super-btn-out ripple">
+            <span class="super-btn-in">X</span>
           </router-link>
-          <div class="nav-user-operation" style="top:32px; left:-68%; position:absolute;">
-            <div class="super-btn-out" style="width:100px; margin:10px 0 0 -8px; padding:1px 4px 3px; text-align:center; line-height:30px;">
-              <router-link to="/user"><i class="MyIF home"></i> 个人主页</router-link>
-              <router-link to="/message"><i class="MyIF add-data"></i> 消息管理</router-link>
-              <router-link to="/level"><i class="MyIF IDcard-1"></i> 我的等级</router-link>
-              <router-link to="/vip"><i class="MyIF IDcard-1"></i> VIP会员</router-link>
-              <router-link to="/update"><i class="MyIF gears"></i> 修改资料</router-link>
-              <a @click="userLogout"><i class="mh-if exit-1"></i> 安全退出</a>
+          <div class="user-operation-info-btn-container">
+            <div class="super-btn-out">
+              <router-link class="btn-cell" to="/user"><i class="MyIF home"></i> 个人主页</router-link>
+              <router-link class="btn-cell" to="/message"><i class="MyIF add-data"></i> 消息管理</router-link>
+              <router-link class="btn-cell" to="/level"><i class="MyIF IDcard-1"></i> 我的等级</router-link>
+              <router-link class="btn-cell" to="/vip"><i class="MyIF IDcard-1"></i> VIP会员</router-link>
+              <router-link class="btn-cell" to="/update"><i class="MyIF gears"></i> 修改资料</router-link>
+              <a @click="userLogout" class="btn-cell"><i class="mh-if exit-1"></i> 安全退出</a>
             </div>
           </div>
         </div>
       </div>
 
       <!-- 导航栏搜索栏 -->
-      <label @keyup.enter="gotoSearch" style="width:288px; height:38px; margin:6px 18px 0 0; float:right; position:relative;">
-        <span class="super-btn-out" style="width:100%; height:100%;"></span>
-        <input v-model="searchKey" class="super-btn-in" placeholder="搜索一下更精彩！" style="width:240px; height:28px; left:44.3%; margin-top:1px; padding:0 8px; box-sizing:border-box; text-align:left; line-height:20px; letter-spacing:1px;"/>
-        <span @click="gotoSearch" class="super-btn-out" style="width:28px; height:27px; top:5px; right:4px; position:absolute;">
-          <span class="super-btn-in mh-if search" style="width:30px; height:28px; display:inline-block; float:right; font-size:21px; line-height:30px;" ></span>
+      <label class="search-bar-container" @keyup.enter="gotoSearch">
+        <span class="search-bar-bg super-btn-out"></span>
+        <input v-model="searchKey" class="search-bar-input super-btn-in" placeholder="搜索一下更精彩！" />
+        <span @click="gotoSearch" class="search-bar-btn super-btn-out">
+          <span class="super-btn-in mh-if search" ></span>
         </span>
       </label>
 
+    </div>
+
+    <!-- 二级菜单 -->
+    <div class="second-menu super-btn-out">
+      <div v-if="menuType === 'find'" class="second-menu-container">
+        <router-link to="/index" class="second-menu-link box-show">主页推荐</router-link>
+        <router-link to="/rank" class="second-menu-link box-show">排行榜</router-link>
+        <router-link to="/album" class="second-menu-link box-show">歌单</router-link>
+        <router-link to="/singer" class="second-menu-link box-show">歌手</router-link>
+        <router-link to="/disc" class="second-menu-link box-show">新碟上架</router-link>
+      </div>
+      <div v-else-if="menuType === 'my'" class="second-menu-container">
+        <router-link to="/user/music" class="second-menu-link box-show">我的音乐</router-link>
+        <router-link to="/user/recommend" class="second-menu-link box-show">个人推荐</router-link>
+        <router-link to="/user/rank" class="second-menu-link box-show">听歌排行</router-link>
+      </div>
+      <div v-else-if="menuType === 'friend'" class="second-menu-container">
+        <router-link to="/friend/0" class="second-menu-link box-show">朋友圈</router-link>
+        <router-link to="/friend/888" class="second-menu-link box-show">我的动态</router-link>
+        <router-link to="/message" class="second-menu-link box-show">我的消息</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -165,71 +156,151 @@ export default {
 }
 </script>
 
-<style scoped>
-  .first-menu-link {
-    padding:0 13px 0 18px; display:inline-block; float:left; cursor:pointer; color:#999; position:relative;
-  }
-  .first-menu-link.active, .first-menu-link:hover {
-    color:#DDD;
-    background:#222;
-    box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 0 12px rgba(0, 0, 0, 0.5), inset 0 0 0 1px #272727;
-    z-index:5;
-  }
-  .first-menu-link.active{
-    background:#333;
-    z-index:9;
-  }
-  .first-menu-link > .triangle-up {
-    width: 0;
-    height: 0;
-    left:50%;
-    bottom:-5px;
-    position:absolute;
-    transform:translate(-50%, 0);
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 16px solid #27E0F3;
-    display: none;
-  }
-  .first-menu-link.active > .triangle-up {
-    display:block;
+<style lang="less" scoped>
+  #homeNavigationBar {
+    width:100%; height:53px; top:0; left:0; position:fixed; border-radius:0; opacity:0.98;
   }
 
-  #navMenuUser > .nav-user-operation {
-    transform:scaleY(0); transition:all 0.48s; transform-origin:0 10px;
-  }
-  #navMenuUser:hover > .nav-user-operation {
-    transform: scaleY(1);
-  }
-  #navMenuUser .nav-user-operation a {
-    width:100%;
-    height:30px;
-    margin:2px 0;
-    display:inline-block;
-    box-sizing: border-box;
-    color: #AAA;
-    background-image: linear-gradient(#2e3537, #424748);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(80, 80, 80, 0.3), inset 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(80, 80, 80, 0.5), 0 2px 2px rgba(0, 0, 0, 0.4);
+  .main-menu{
+    width:1088px; height:100%; margin:0 auto; position:relative; z-index:9;
+
+    &-logo {
+      margin-right:18px; float:left; line-height:48px;
+
+      &-img {
+        width:33px; height:33px; margin:8px 8px 0 0; float:left;
+      }
+      &-label {
+        font-size:22px; font-weight:700; color:#22e8ff; text-shadow:1.5px 1.5px 6px #30cdff;
+      }
+    }
+
+    .first-menu {
+      &-container {
+        line-height:52px; color:#999; font-weight:700; letter-spacing:1.2px;
+      }
+
+      &-link {
+        padding:0 13px 0 18px; display:inline-block; float:left; cursor:pointer; color:#999; position:relative;
+
+        &.active, &:hover {
+          color:#DDD;
+          background:#222;
+          box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 0 12px rgba(0, 0, 0, 0.5), inset 0 0 0 1px #272727;
+          z-index:5;
+        }
+        &.active{
+          background:#333;
+          z-index:9;
+          > .triangle-up {
+            display:block;
+          }
+        }
+
+        > .triangle-up {
+          width: 0;
+          height: 0;
+          left:50%;
+          bottom:-5px;
+          position:absolute;
+          transform:translate(-50%, 0);
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-bottom: 16px solid #27E0F3;
+          display: none;
+        }
+      }
+    }
+
+    .user-operation {
+      &-container {
+        width:42px; height:38px; margin:6px -8px 0 0; position:relative; float:right;
+      }
+      &-info-container {
+        width:100%; height:100%;
+
+        > .user-operation-info-btn-container {
+          top:32px; left:-65%; position:absolute;
+          transform:scaleY(0); transition:all 0.48s; transform-origin:0 10px;
+
+          > .super-btn-out {
+            width:100px; margin:10px 0 0 -8px; padding:1px 4px 3px; text-align:center; line-height:26px;
+
+            > .btn-cell {
+              width:100%;
+              height:25px;
+              margin:2px 0;
+              display:inline-block;
+              box-sizing: border-box;
+              color: #AAA;
+              background-image: linear-gradient(#2e3537, #424748);
+              box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(80, 80, 80, 0.3), inset 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(80, 80, 80, 0.5), 0 2px 2px rgba(0, 0, 0, 0.4);
+
+              &:active {
+                color: #20dbfc;
+                box-shadow: 0 -0.1px 2px rgba(0, 0, 0, 0.7), 0 0 2px rgba(255, 255, 255, 0.4), 0 0 2px rgba(0, 0, 0, 0.3), inset 0 0 3px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6);
+              }
+            }
+          }
+        }
+        &:hover > .user-operation-info-btn-container {
+          transform: scaleY(1);
+        }
+      }
+      &-login, &-info {
+        width:100%; height:100%;
+        > .super-btn-in {
+          width:32px; height:29px; top:48%; line-height:29.5px; font-size:20px;
+        }
+      }
+    }
+
+    .search-bar {
+      &-container {
+        width:288px; height:38px; margin:6px 18px 0 0; float:right; position:relative;
+      }
+      &-bg {
+        width:100%; height:100%;
+      }
+      &-input {
+        width:240px; height:28px; left:127px; padding:0 8px; box-sizing:border-box; text-align:left; letter-spacing:1px; font-size:15px;
+      }
+      &-btn {
+        width:28px; height:27px; top:5px; right:4px; position:absolute;
+        > .super-btn-in {
+          width:30px; height:28px; display:inline-block; float:right; font-size:21px; line-height:30px;
+        }
+      }
+    }
   }
 
-  .second-menu-link {
-    height:24px;
-    margin:6px 28px; padding:0 12px 0 13px; position:relative;
-    float:left; border-radius:14px;
-    text-align: center;
-    font-weight: 700;
-    background-image: linear-gradient(#2e3537, #424748);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(80, 80, 80, 0.3), inset 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(80, 80, 80, 0.5), 0 2px 2px rgba(0, 0, 0, 0.4);
-    border: none;
-    color: #AAA;
-    line-height:24px;
-    text-shadow: 2px 2px 5px #000;
-  }
-  .second-menu-link:hover, .second-menu-link.router-link-exact-active {
-    margin-top:7px;
-    height:23px;
-    color: #20dbfc;
-    line-height:22px;
-    box-shadow: 0 -0.1px 2px rgba(0, 0, 0, 0.7), 0 0 2px rgba(255, 255, 255, 0.4), 0 0 2px rgba(0, 0, 0, 0.3), inset 0 0 3px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6);
+  .second-menu {
+    width:100%; min-height:8px; top:52px; left:0; position:absolute; box-sizing:border-box; border-radius:0; cursor:default; font-size:15px; white-space:nowrap;
+
+    &-container {
+      width:1088px; margin:0 auto; padding-left:168px; box-sizing:border-box; display:flex; flex-wrap:nowrap;
+    }
+
+    &-link {
+      height:24px;
+      margin:6px 28px; padding:0 12px 0 13px; position:relative;
+      float:left; border-radius:14px;
+      text-align: center;
+      font-weight: 700;
+      background-image: linear-gradient(#2e3537, #424748);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(80, 80, 80, 0.3), inset 0 0 0 1px rgba(0, 0, 0, 0.1), 0 0 1px rgba(80, 80, 80, 0.5), 0 2px 2px rgba(0, 0, 0, 0.4);
+      border: none;
+      color: #AAA;
+      line-height:24px;
+      text-shadow: 2px 2px 5px #000;
+
+      &:hover, &.router-link-exact-active {
+        margin-top:7px;
+        height:23px;
+        color: #20dbfc;
+        line-height:22px;
+        box-shadow: 0 -0.1px 2px rgba(0, 0, 0, 0.7), 0 0 2px rgba(255, 255, 255, 0.4), 0 0 2px rgba(0, 0, 0, 0.3), inset 0 0 3px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(0, 0, 0, 0.6);
+      }
+    }
   }
 </style>

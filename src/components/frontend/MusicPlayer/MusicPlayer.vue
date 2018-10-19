@@ -581,7 +581,7 @@ export default {
     width:100%; height:48px; left:0; bottom:0; position:fixed;
   }
   .music-play-controller {
-    width:100%; height:100%; position:absolute; border-radius:0; background:rgba(24,24,24,0.98); z-index:9;
+    width:100%; height:100%; position:absolute; border-radius:0; background:rgba(24,24,24,0.985); z-index:9;
     transition: all 0.28s;
   }
   .music-play > .music-play-controller.show-unlock {

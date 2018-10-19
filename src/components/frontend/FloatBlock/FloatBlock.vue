@@ -83,7 +83,7 @@ export default {
 
 <style lang="less" scoped>
   #floatBlock {
-    width:42px; height:42px; bottom:128px; position:fixed;
+    width:42px; height:42px; bottom:125px; position:fixed;
 
     &.unshow {
       display: none;
