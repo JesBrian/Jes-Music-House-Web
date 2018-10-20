@@ -11,6 +11,8 @@ import localForage from 'localforage'
 
 import '@/assets/styles/reset.less'
 import '@/assets/styles/common.less'
+import '@/assets/styles/mixin.less'
+import '@/assets/styles/animation.less'
 import '@/assets/fonts/iconfont.css'
 
 Vue.config.productionTip = false

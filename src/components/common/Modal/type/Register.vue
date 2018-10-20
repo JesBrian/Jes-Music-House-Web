@@ -4,21 +4,21 @@
     <slot />
 
     <!-- 拟态框标题 -->
-    <div class="cube-bg box-show" style="width:100%; height:42px; line-height:35px; text-align:center;">
-      <img v-lazy="require('../../../../../static/img/icon/addUser.png')" style="width:30px; height:30px; margin:0 8px -5px 0;"/>
-      <span style="display:inline-block; font-size:27px; letter-spacing:3px; font-weight:700;">用户注册</span>
+    <div class="modal-title cube-bg box-show">
+      <img v-lazy="require('../../../../../static/img/icon/addUser.png')" class="modal-title-icon" />
+      <span class="modal-title-label">用户注册</span>
     </div>
 
     <!-- 拟态框内容 -->
-    <div style="width:100%; height:138px; text-align:center;">
+    <div class="modal-register-container">
       <div @click="showWarningModal">Warning</div>
       <div @click="showUserLoginModal">用户登陆</div>
 
       <span @click="cancelRegister" class="super-btn-out" style="width:108px; height:38px; margin:0 168px 0 0;">
-        <span class="super-btn-in mh-if cancel" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 取消返回</span>
+        <span class="super-btn-in mh-if cancel" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;">&nbsp;取消返回</span>
       </span>
       <span @click="sureRegister" class="super-btn-out" style="width:108px; height:38px; margin:0 0 0 168px;">
-        <span class="super-btn-in mh-if makesure" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 确认注册</span>
+        <span class="super-btn-in mh-if makesure" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;">&nbsp;确认注册</span>
       </span>
     </div>
 
@@ -51,6 +51,21 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  #modalType {
+    .modal-title {
+      width:100%; height:42px; line-height:35px; text-align:center;
 
+      &-icon {
+        width:30px; height:30px; margin:0 8px -5px 0;
+      }
+      &-label {
+        display:inline-block; font-size:27px; letter-spacing:3px; font-weight:700;
+      }
+    }
+
+    .modal-register-container {
+      width:100%; height:138px; text-align:center;
+    }
+  }
 </style>

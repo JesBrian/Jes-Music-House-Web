@@ -4,16 +4,16 @@
     <slot />
 
     <!-- 拟态框标题 -->
-    <div class="cube-bg box-show" style="width:100%; height:42px; line-height:35px; text-align:center;">
-      <img v-lazy="require('../../../../../static/img/icon/login.png')" style="width:30px; height:30px; margin:0 8px -5px 0;"/>
-      <span style="display:inline-block; font-size:27px; letter-spacing:3px; font-weight:700;">用户登录</span>
+    <div class="modal-title cube-bg box-show">
+      <img v-lazy="require('../../../../../static/img/icon/login.png')" class="modal-title-icon" />
+      <span class="modal-title-label">用户登录</span>
     </div>
 
     <!-- 拟态框内容 -->
-    <div style="width:100%; height:238px; padding-top:18px;">
+    <div class="modal-login-container">
 
       <!-- 注册本站用户登陆 -->
-      <div style="width:72%; height:100%; float:left;">
+      <div class="modal-user-container">
 
         <form autocomplete="off" style="margin:28px 0 8px;">
           <div style="width:83%; height:58px; margin:0 auto; font-size:19px;">
@@ -36,10 +36,10 @@
 
         <div style="text-align:center;">
           <span class="super-btn-out ripple" style="width:108px; height:38px; margin:0 18px;">
-            <span class="super-btn-in mh-if cancel" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 重新填写</span>
+            <span class="super-btn-in mh-if cancel" style="width:98px; height:28px; top:49%; left:50%; font-size:16px;">&nbsp;重新填写</span>
           </span>
           <span class="super-btn-out ripple" @click="userPhoneLogin" style="width:108px; height:38px; margin:0 18px;">
-            <span class="super-btn-in mh-if makesure" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 确认登陆</span>
+            <span class="super-btn-in mh-if makesure" style="width:98px; height:28px; top:49%; left:50%; font-size:16px;">&nbsp;确认登陆</span>
           </span>
         </div>
 
@@ -51,7 +51,7 @@
       </div>
 
       <!-- 其他授权登陆方式 -->
-      <div style="width:28%; height:100%; padding-top:30px; float:right; box-sizing:border-box; border-left:1px solid #000; border-image:linear-gradient(#25b8dd, #3072cc, #25b8dd) 2; text-align:center;">
+      <div class="modal-oauth-container">
         <table style="width:100%;">
           <tr>
             <td style="text-align:right">
@@ -164,6 +164,29 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  #modalType {
+    .modal-title {
+      width:100%; height:42px; line-height:35px; text-align:center;
 
+      &-icon {
+        width:30px; height:30px; margin:0 8px -5px 0;
+      }
+      &-label {
+        display:inline-block; font-size:27px; letter-spacing:3px; font-weight:700;
+      }
+    }
+
+    .modal-login-container {
+      width:100%; height:238px; padding-top:18px;
+
+      .modal-user-container {
+        width:72%; height:100%; float:left;
+      }
+
+      .modal-oauth-container {
+        width:28%; height:100%; padding-top:30px; float:right; box-sizing:border-box; border-left:1px solid #000; border-image:linear-gradient(#25b8dd, #3072cc, #25b8dd) 2; text-align:center;
+      }
+    }
+  }
 </style>

@@ -7,7 +7,13 @@
 
 <script>
 export default {
-  name: 'ModalCloseBtn'
+  name: 'ModalCloseBtn',
+
+  methods: {
+    closeShowModal () {
+      this.$store.commit('CHANGE_MODAL_TYPE')
+    }
+  }
 }
 </script>
 
@@ -16,7 +22,7 @@ export default {
     width:28px; height:28px; top:-6px; right:-6px; position:absolute;
 
     > .super-btn-in {
-      width:21px; height:20.5px; top:48%; font-size:17px; font-weight:500; line-height:23px;
+      width:21px; height:22px; top:50%; font-size:17px; font-weight:500;
     }
   }
 </style>

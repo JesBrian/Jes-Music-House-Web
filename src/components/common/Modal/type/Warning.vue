@@ -4,23 +4,21 @@
     <slot />
 
     <!-- 拟态框标题 -->
-    <div class="cube-bg box-show" style="width:100%; height:42px; margin-bottom:18px; line-height:35px; text-align:center;">
-      <img v-lazy="require('../../../../../static/img/icon/warning.png')" style="width:30px; height:30px; margin:0 8px -5px 0;"/>
-      <span style="display:inline-block; font-size:27px; letter-spacing:3px; font-weight:700;">操作警告</span>
+    <div class="modal-title cube-bg box-show">
+      <img v-lazy="require('../../../../../static/img/icon/warning.png')" class="modal-title-icon" />
+      <span class="modal-title-label">操作警告</span>
     </div>
 
     <!-- 拟态框内容 -->
-    <div style="width:100%; height:108px; text-align:center;">
+    <div class="modal-warning-container">
 
-      <div style="width:86%; height:48px; margin:0 auto 13px; text-align:left; font-size:22px; line-height:40px; letter-spacing:1.3px;">
-        确定是否要执行该操作。
-      </div>
+      <div class="modal-warning-label">{{ label }}</div>
 
-      <span @click="cancelOperation" class="super-btn-out ripple" style="width:108px; height:38px; margin:0 168px 0 0;">
-        <span class="super-btn-in mh-if cancel" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 取消操作</span>
+      <span @click="cancelOperation" class="btn-cancel super-btn-out ripple">
+        <span class="super-btn-in mh-if cancel">&nbsp;取消操作</span>
       </span>
-      <span @click="sureOperation" class="super-btn-out ripple" style="width:108px; height:38px; margin:0 0 0 168px;">
-        <span class="super-btn-in mh-if makesure" style="width:98px; height:28px; top:49%; left:50%; line-height:31px; font-size:16px;"> 确认操作</span>
+      <span @click="sureOperation" class="btn-sure super-btn-out ripple">
+        <span class="super-btn-in mh-if makesure">&nbsp;确认操作</span>
       </span>
     </div>
 
@@ -30,6 +28,13 @@
 <script>
 export default {
   name: 'Warning',
+
+  props: {
+    label: {
+      type: String,
+      default: '确定要执行该操作 ?'
+    }
+  },
 
   methods: {
     sureOperation () {
@@ -43,6 +48,42 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  #modalType {
+    .modal-title {
+      width:100%; line-height:35px; text-align:center;
 
+      &-icon {
+        width:30px; height:30px; margin:0 8px -5px 0;
+      }
+      &-label {
+        display:inline-block; font-size:27px; letter-spacing:3px; font-weight:700;
+      }
+    }
+
+    .modal-warning {
+      &-container {
+        width:100%; text-align:center;
+
+        .btn-cancel, .btn-sure {
+          width:108px; height:38px; margin:0;
+
+          > .super-btn-in {
+            width:98px; height:28px; font-size:16px;
+          }
+        }
+
+        .btn-cancel {
+          margin-right:168px;
+        }
+        .btn-sure {
+          margin-left:168px;
+        }
+      }
+
+      &-label {
+        width:86%; margin:13px auto; text-align:left; font-size:22px; line-height:40px; letter-spacing:1.3px;
+      }
+    }
+  }
 </style>
