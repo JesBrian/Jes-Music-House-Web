@@ -1,7 +1,7 @@
 <template>
   <!-- 单个小表情组件 -->
   <a class="emoji-cell" :title="emojiInfo" @click="getEmoji" @mouseenter="showEmoji" @mouseleave="hiddenEmoji">
-    <img :src="'../../../../static/img/emoji/' + this.index + '.png'"/>
+    <img class="emoji-cell-img" :src="'../../../../static/img/emoji/' + this.index + '.png'"/>
   </a>
 </template>
 
@@ -28,33 +28,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
   .emoji-cell {
-    width: 32px;
-    height: 32px;
-    display: inline-block;
-    position: relative;
-    box-sizing: border-box;
-    border: 0.5px solid #444;
-    opacity: 0.68;
-  }
+    width: 32px; height: 32px; margin:1px 0 2.5px 3px; display: inline-block; position: relative; box-sizing: border-box; border: 0.5px solid #444; opacity: 0.68;
 
-  .emoji-cell:hover {
-    background: #050505;
-    border: 1px solid #000;
-    border-radius: 3px;
-    box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;
-    opacity: 1;
-  }
+    &:hover {
+      background: #050505; border: 1px solid #000; border-radius: 3px; box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727; opacity: 1;
+    }
 
-  .emoji-cell > img {
-    width: 76%;
-    height: 76%;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
-    position: absolute;
+    &-img {
+      width: 76%; height: 76%; top: 0; left: 0; bottom: 0; right: 0; margin: auto; position: absolute;
+    }
   }
 </style>

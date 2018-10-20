@@ -1,16 +1,12 @@
 <template>
   <!-- 表情选择组件 -->
   <div @mouseleave="mouseLeave" class="emoji-content glass-bg box-show">
-    <ul>
-      <li style="margin:1px 0 -18px 3px; float:left;" v-for="(value, index) in emojiInfos" :key="index">
-        <!-- 单个小表情组件 -->
-        <emoji-cell :index=index+1 :emojiInfo="value"/>
-      </li>
-    </ul>
+    <!-- 单个小表情组件 -->
+    <emoji-cell :index=index+1 :emojiInfo="value" style="float:left;" v-for="(value, index) in emojiInfos" :key="index"/>
 
     <!-- 当前鼠标选中的表情展示 -->
-    <div class="glass-bg box-show" style="width:40px; height:40px; bottom:0; right:0; position:absolute;">
-      <img id="showEmoji" src="../../../../static/img/emoji/0.jpg" style="width:82%; height:82%; top:0; left:0; bottom:0; right:0; margin:auto; position:absolute;"/>
+    <div class="now-emoji glass-bg box-show">
+      <img ref="showEmoji" class="now-emoji-img" src="../../../../static/img/emoji/0.jpg"/>
     </div>
   </div>
 </template>
@@ -38,17 +34,24 @@ export default {
       this.$parent.writeEmoji(info)
     },
     showEmoji (index) {
-      document.getElementById('showEmoji').src = '../../../../static/img/emoji/' + index + '.png'
+      this.$refs['showEmoji'].src = '../../../../static/img/emoji/' + index + '.png'
     },
     hiddenEmoji () {
-      document.getElementById('showEmoji').src = '../../../../static/img/emoji/0.jpg'
+      this.$refs['showEmoji'].src = '../../../../static/img/emoji/0.jpg'
     }
   }
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
   .emoji-content {
     width:540px; height:157px; top:78%; left:0; padding:8px 5px; position:absolute; z-index:9999;
+
+    .now-emoji {
+      width:40px; height:40px; bottom:0; right:0; position:absolute;
+      &-img {
+        width:82%; height:82%; top:0; left:0; bottom:0; right:0; margin:auto; position:absolute;
+      }
+    }
   }
 </style>

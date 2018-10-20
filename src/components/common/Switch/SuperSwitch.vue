@@ -1,7 +1,8 @@
 <template>
   <label :class="size">
-    <input v-model="switchState" @change="switchChangeEvent" class="box-show" :class="['mui-switch', shape]" :data-open="switchOpen"
-           :data-close="switchClose" type="checkbox">
+    <input v-model="switchState" @change="switchChangeEvent"  type="checkbox"
+           :data-open="switchOpen" :data-close="switchClose"
+           :class="['mui-switch box-show', shape]">
   </label>
 </template>
 

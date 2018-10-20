@@ -14,12 +14,12 @@ export default {
 }
 </script>
 
-<style scoped>
-  i.exciting {
-    margin-right: 38px;
-    color:#AAA;
-  }
-  i.exciting:hover {
-    color: #00d8ff;
+<style lang="less" scoped>
+  .exciting {
+    margin-right:38px; color:#AAA;
+
+    &:hover {
+      color:#00d8ff;
+    }
   }
 </style>
