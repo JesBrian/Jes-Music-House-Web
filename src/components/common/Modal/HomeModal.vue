@@ -1,15 +1,12 @@
 <template>
-  <div v-if="this.$store.state.Modal.modalType !== ''" style="width:100%; height:100%; top:0; left:0; position:fixed; background:rgba(0, 0, 0, 0.5); z-index:9999;">
+  <div v-if="$store.state.Modal.modalType !== ''" id="modalComponent">
 
     <!-- 各种拟态框组件 -->
-    <component :is="this.$store.state.Modal.modalType" style="z-index:5">
-      <!-- 关闭按钮 -->
-      <div @click="closeShowModal" class="super-btn-out" style="width:28px; height:28px; top:-6px; right:-6px; position:absolute;">
-        <div class="super-btn-in mh-if all-arrow" style="width:21px; height:20.5px; top:48%; font-size:17px; font-weight:500; line-height:23px;"></div>
-      </div>
+    <component :is="$store.state.Modal.modalType">
+      <modal-close-btn />
     </component>
 
-    <div @click="closeShowModal" style="width:100%; height:100%; position:relative; z-index:1;"></div>
+    <div id="modalMask" @click="closeShowModal"></div>
   </div>
 </template>
 
@@ -17,11 +14,13 @@
 import Warning from './type/Warning.vue'
 import Login from './type/Login.vue'
 import Register from './type/Register.vue'
+import ModalCloseBtn from './ModalCloseBtn.vue'
 
 export default {
   name: 'HomeModal',
 
   components: {
+    ModalCloseBtn,
     Warning,
     Login,
     Register
@@ -35,9 +34,17 @@ export default {
 }
 </script>
 
-<style scoped>
-  div >>> #modalType {
-    width:638px; top:50%; left:50%; padding:18px; position:absolute; transform:translate(-50%, -50%); box-sizing:border-box;
-    box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 0 5px -1px #20DBFC, inset 0 0 0 1px #272727;
+<style lang="less" scoped>
+  #modalComponent {
+    width:100%; height:100%; top:0; left:0; position:fixed; background:rgba(0, 0, 0, 0.5); z-index:9999;
+
+    /deep/ #modalType {
+      width:638px; top:50%; left:50%; padding:18px; position:absolute; transform:translate(-50%, -50%); box-sizing:border-box; z-index:5;
+      box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 0 5px -1px #20DBFC, inset 0 0 0 1px #272727;
+    }
+  }
+
+  #modalMask {
+    width:100%; height:100%; position:relative; z-index:1;
   }
 </style>

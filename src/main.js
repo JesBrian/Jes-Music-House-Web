@@ -7,11 +7,12 @@ import axios from 'axios'
 import store from './config/vuex/frontend/index.js'
 import vueLazyload from 'vue-lazyload'
 import GeminiScrollbar from 'vue-gemini-scrollbar'
-
-import '@/assets/css/reset.less'
-import '@/assets/css/common.less'
-import './assets/plugins/myiconfont/iconfont.css'
 import localForage from 'localforage'
+
+import '@/assets/styles/reset.less'
+import '@/assets/styles/common.less'
+import '@/assets/styles/mixin.less'
+import '@/assets/fonts/iconfont.css'
 
 Vue.config.productionTip = false
 

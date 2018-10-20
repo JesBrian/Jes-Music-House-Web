@@ -40,12 +40,24 @@
           </router-link>
           <div class="user-operation-info-btn-container">
             <div class="super-btn-out">
-              <router-link class="btn-cell" to="/user"><i class="MyIF home"></i> 个人主页</router-link>
-              <router-link class="btn-cell" to="/message"><i class="MyIF add-data"></i> 消息管理</router-link>
-              <router-link class="btn-cell" to="/level"><i class="MyIF IDcard-1"></i> 我的等级</router-link>
-              <router-link class="btn-cell" to="/vip"><i class="MyIF IDcard-1"></i> VIP会员</router-link>
-              <router-link class="btn-cell" to="/update"><i class="MyIF gears"></i> 修改资料</router-link>
-              <a @click="userLogout" class="btn-cell"><i class="mh-if exit-1"></i> 安全退出</a>
+              <router-link class="btn-cell" to="/user">
+                <i class="mh-if avatar"></i> 个人主页
+              </router-link>
+              <router-link class="btn-cell" to="/message">
+                <i class="mh-if feedback"></i> 消息管理
+              </router-link>
+              <router-link class="btn-cell" to="/level">
+                <i class="mh-if level"></i> 我的等级
+              </router-link>
+              <router-link class="btn-cell" to="/vip">
+                <i class="mh-if diamond"></i> VIP 会员
+              </router-link>
+              <router-link class="btn-cell" to="/update">
+                <i class="mh-if gear"></i> 修改资料
+              </router-link>
+              <a @click="userLogout" class="btn-cell">
+                <i class="mh-if exit-1"></i> 安全退出
+              </a>
             </div>
           </div>
         </div>
@@ -224,11 +236,11 @@ export default {
           transform:scaleY(0); transition:all 0.48s; transform-origin:0 10px;
 
           > .super-btn-out {
-            width:100px; margin:10px 0 0 -8px; padding:1px 4px 3px; text-align:center; line-height:26px;
+            width:100px; margin:10px 0 0 -8px; padding:1px 4px 3px; text-align:center; line-height:24px;
 
             > .btn-cell {
               width:100%;
-              height:25px;
+              height:23px;
               margin:2px 0;
               display:inline-block;
               box-sizing: border-box;
