@@ -568,7 +568,7 @@ export default {
 
     showModal (modalType) {
       this.$store.commit('CHANGE_MODAL_TYPE', modalType)
-    },
+    }
   }
 }
 </script>
