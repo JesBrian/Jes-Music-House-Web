@@ -1,7 +1,12 @@
 <template>
   <div id="homeLayout">
-    this is home message
-    <router-link to="/album">To Album</router-link>
+
+    <div class="user-message-category">
+    </div>
+
+    <div class="user-message-container box-show">
+    </div>
+
   </div>
 </template>
 
@@ -11,6 +16,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  #homeLayout {
+    min-height:100%; display:flex;
+  }
 
+  .user-message-category {
+    width:20%; height:100%;
+  }
+
+  .user-message-container {
+    flex:1;
+  }
 </style>

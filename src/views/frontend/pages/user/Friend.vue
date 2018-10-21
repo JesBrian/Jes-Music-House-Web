@@ -1,7 +1,12 @@
 <template>
   <div id="homeLayout">
-    this is home friend
-    <router-link to="/">To Index</router-link>
+
+    <div class="user-friend-event box-show">
+    </div>
+
+    <div class="user-self-info">
+    </div>
+
   </div>
 </template>
 
@@ -11,6 +16,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  #homeLayout {
+    display:flex;
+  }
 
+  .user-friend-event {
+    flex:1;
+  }
+
+  .user-self-info {
+    width:30%; height:100%;
+  }
 </style>
