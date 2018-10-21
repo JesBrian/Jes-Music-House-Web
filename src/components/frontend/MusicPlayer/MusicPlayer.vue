@@ -27,7 +27,7 @@
           <div style="width:628px; height:100%; margin-left:28px; display:inline-block;">
             <div style="width:100%; height:19px; font-size:13.5px;">
               <router-link to="/song" style="height:100%; margin:-10.5px 28px 0 8px; float:left; color:#AAA;">Name of the Song 123 歌曲名字</router-link>
-              <router-link to="/singer" style="height:100%; margin-top:-10.7px; float:left; font-size:12px; color:#AAA;">歌手<i style="margin:0 3px;">/</i>Singer Name</router-link>
+              <router-link to="/singer/11" style="height:100%; margin-top:-10.7px; float:left; font-size:12px; color:#AAA;">歌手<i style="margin:0 3px;">/</i>Singer Name</router-link>
             </div>
             <!-- 播放进度 -->
             <div @click="clickMusicProgressBar" id="progressBarClickContent" class="box-show" style="width:508px; height:10px; margin-top:5px; float:left; position:relative; border-radius:8px; background:#000;">
@@ -115,7 +115,7 @@
                     <i @click="delMusicListItem(index)" style="margin-left:3.5px;" class="mh-if trash-1"></i>
                   </p>
                   <p style="max-width:18%; left:432px; display:inline-block;">
-                    <router-link to="/singer" style="color:#999;">{{ index }}</router-link>
+                    <router-link to="/singer/11" style="color:#999;">{{ index }}</router-link>
                   </p>
                   <p @click="playThisMusic(index)" style="width:6%; left:568px; display:inline-block;">00:00</p>
                   <!-- END 歌曲信息 OR 操作 END -->

@@ -33,7 +33,17 @@
 
 <script>
 export default {
-  name: 'CommentCell'
+  name: 'CommentCell',
+
+  methods: {
+    changeLike () {
+    },
+    showModal (modalType) {
+      this.$store.commit('CHANGE_MODAL_TYPE', modalType)
+    },
+    replyComment () {
+    }
+  }
 }
 </script>
 

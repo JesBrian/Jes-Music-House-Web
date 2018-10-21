@@ -6,8 +6,8 @@
       <i class="mh-if non-colloection" style="margin:0 2px;"></i>
       <i class="mh-if download" style="margin:0 2px;"></i>
     </p>
-    <p class="text-hidden" style="width:47%; padding:0 38px 0 3px; float:left; box-sizing:border-box;">66</p>
-    <p class="text-hidden" style="width:22%; float:left;">66</p>
+    <router-link to="/song" class="text-hidden" style="width:47%; padding:0 38px 0 3px; float:left; box-sizing:border-box; color:#CCC;">66</router-link>
+    <router-link to="/singer-detail/song/1" class="text-hidden" style="width:22%; float:left; color:#CCC;">66</router-link>
     <p style="width:10%; float:left; text-align:center;">59:59</p>
   </div>
 </template>
@@ -28,6 +28,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 
 </style>

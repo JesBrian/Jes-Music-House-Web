@@ -25,7 +25,7 @@
             <div class="super-btn-out ripple" style="width:72px; height:31px; margin:10px 13px 0 0;">
               <span class="super-btn-in mh-if play" style="width:64px; height:23px;">&nbsp;列表</span>
             </div>
-            <div @click="showModal('AddAlbum')" class="super-btn-out ripple" style="width:72px; height:31px; margin:10px 13px 0 0;">
+            <div @click="showModal('Collection')" class="super-btn-out ripple" style="width:72px; height:31px; margin:10px 13px 0 0;">
               <span class="super-btn-in mh-if collection-music" style="width:64px; height:23px;">&nbsp;收藏</span>
             </div>
             <div class="super-btn-out ripple" style="width:72px; height:31px; margin:10px 13px 0 0;">

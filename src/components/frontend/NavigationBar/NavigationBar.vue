@@ -18,7 +18,7 @@
         <router-link to="/user/music" :class="{'active': menuType === 'my'}" class="first-menu-link">
           我的音乐<div class="triangle-up"></div>
         </router-link>
-        <router-link to="/friend/0" :class="{'active': menuType === 'friend'}" class="first-menu-link">
+        <router-link to="/friend/other" :class="{'active': menuType === 'friend'}" class="first-menu-link">
           消息动态<div class="triangle-up"></div>
         </router-link>
         <router-link to="/musician" :class="{'active': menuType === 'musician'}" class="first-menu-link">
@@ -77,21 +77,21 @@
     <!-- 二级菜单 -->
     <div class="second-menu super-btn-out">
       <div v-if="menuType === 'find'" class="second-menu-container">
-        <router-link to="/index" class="second-menu-link box-show">主页推荐</router-link>
-        <router-link to="/rank" class="second-menu-link box-show">排行榜</router-link>
-        <router-link to="/album" class="second-menu-link box-show">歌单</router-link>
-        <router-link to="/singer" class="second-menu-link box-show">歌手</router-link>
-        <router-link to="/disc" class="second-menu-link box-show">新碟上架</router-link>
+        <router-link to="/index" :class="{active: $route.path.split('/')[1] === 'index'}" class="second-menu-link box-show">主页推荐</router-link>
+        <router-link to="/rank" :class="{active: $route.path.split('/')[1] === 'rank'}" class="second-menu-link box-show">排行榜</router-link>
+        <router-link to="/album" :class="{active: $route.path.split('/')[1] === 'album'}" class="second-menu-link box-show">歌单</router-link>
+        <router-link to="/singer/11" :class="{active: $route.path.split('/')[1] === 'singer'}" class="second-menu-link box-show">歌手</router-link>
+        <router-link to="/disc" :class="{active: $route.path.split('/')[1] === 'disc'}" class="second-menu-link box-show">新碟上架</router-link>
       </div>
       <div v-else-if="menuType === 'my'" class="second-menu-container">
-        <router-link to="/user/music" class="second-menu-link box-show">我的音乐</router-link>
-        <router-link to="/user/recommend" class="second-menu-link box-show">个人推荐</router-link>
-        <router-link to="/user/rank" class="second-menu-link box-show">听歌排行</router-link>
+        <router-link to="/user/music" :class="{active: $route.path.split('/')[2] === 'music'}" class="second-menu-link box-show">我的音乐</router-link>
+        <router-link to="/user/recommend" :class="{active: $route.path.split('/')[2] === 'recommend'}" class="second-menu-link box-show">个人推荐</router-link>
+        <router-link to="/user/rank" :class="{active: $route.path.split('/')[2] === 'rank'}" class="second-menu-link box-show">听歌排行</router-link>
       </div>
       <div v-else-if="menuType === 'friend'" class="second-menu-container">
-        <router-link to="/friend/0" class="second-menu-link box-show">朋友圈</router-link>
-        <router-link to="/friend/888" class="second-menu-link box-show">我的动态</router-link>
-        <router-link to="/message" class="second-menu-link box-show">我的消息</router-link>
+        <router-link to="/friend/other" :class="{active: $route.path.split('/')[2] === 'other'}" class="second-menu-link box-show">朋友圈</router-link>
+        <router-link to="/friend/self" :class="{active: $route.path.split('/')[2] === 'self'}" class="second-menu-link box-show">我的动态</router-link>
+        <router-link to="/message" :class="{active: $route.path.split('/')[1] === 'message'}" class="second-menu-link box-show">我的消息</router-link>
       </div>
     </div>
   </div>
@@ -306,7 +306,7 @@ export default {
       line-height:24px;
       text-shadow: 2px 2px 5px #000;
 
-      &:hover, &.router-link-exact-active {
+      &:hover, &.active {
         margin-top:7px;
         height:23px;
         color: #20dbfc;

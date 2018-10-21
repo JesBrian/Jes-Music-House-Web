@@ -9,10 +9,10 @@
         <router-link to="/user/recommend" style="width:100%; height:108px; margin-top:3px; display:inline-block; position:relative; line-height:103px;">
           <img v-lazy="require('../../../../static/img/default/calendar.png')" style="width:100%; height:100%;"/>
           <div style="width:50%; height:100%; top:-3px; left:0; position:absolute;">
-            <b style="display:inline-block; transform:scaleY(1.2); font-size:56px; color:#666; text-shadow:rgb(0, 0, 0) 0.5px 0.5px 1px;">12</b>
+            <b style="display:inline-block; transform:scaleY(1.2); font-size:56px; color:#666; text-shadow:rgb(0, 0, 0) 0.5px 0.5px 1px;">{{ getDateMonth }}</b>
           </div>
           <div style="width:50%; height:100%; top:-3px; right:0; position:absolute;">
-            <b style="display:inline-block; transform:scaleY(1.2); font-size:56px; color:#666; text-shadow:rgb(0, 0, 0) 0.5px 0.5px 1px;">12</b>
+            <b style="display:inline-block; transform:scaleY(1.2); font-size:56px; color:#666; text-shadow:rgb(0, 0, 0) 0.5px 0.5px 1px;">{{ getDateDay }}</b>
           </div>
         </router-link>
         <router-link to="user" style="color:#BBB; font-size:20px; font-weight:700; line-height:2.8em;">每日歌曲推荐</router-link>
@@ -41,6 +41,20 @@
 <script>
 export default {
   name: 'PersonalRecom',
+
+  data () {
+    return {
+    }
+  },
+
+  computed: {
+    getDateMonth () {
+      return new Date().getMonth() + 1
+    },
+    getDateDay () {
+      return new Date().getDate()
+    }
+  },
 
   methods: {
     playThisPlayList () {

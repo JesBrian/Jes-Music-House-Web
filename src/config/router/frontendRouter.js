@@ -23,8 +23,12 @@ export default new Router({
           component: () => import('../../views/frontend/pages/base/Search.vue')
         },
         {
-          path: '/rank',
+          path: '/rank/:id',
           component: () => import('../../views/frontend/pages/base/Rank.vue')
+        },
+        {
+          path: '/rank',
+          redirect: '/rank/111'
         },
         {
           path: '/download/client',
@@ -99,7 +103,7 @@ export default new Router({
           component: () => import('../../views/frontend/pages/download/DownloadMusic.vue')
         },
         {
-          path: '/singer',
+          path: '/singer/:type',
           component: () => import('../../views/frontend/pages/music/Singer.vue')
         },
         {

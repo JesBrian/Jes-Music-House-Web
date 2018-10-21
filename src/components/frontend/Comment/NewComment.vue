@@ -37,8 +37,7 @@ export default {
 
   computed: {
     commentNums () {
-      let nums = 200 - this.comment.length
-      return nums
+      return 200 - this.comment.length
     }
   },
 

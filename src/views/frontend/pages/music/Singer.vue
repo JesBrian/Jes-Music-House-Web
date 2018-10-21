@@ -2,86 +2,13 @@
   <div id="homeLayout">
     <div class="box-show" style="width:20%; height:100%; top:0; left:0; padding-top:12px; position:absolute; box-sizing:border-box; color:#999;">
       <ul style="width:85%; margin:0 auto;">
-        <li class="box-shadow" style="margin-top:8px; padding-bottom:8px;">
-          <span class="singer-type-title">推荐</span>
-          <ul>
-            <li class="box-show singer-type-cell">
-              <i></i>推荐歌手
-            </li>
-            <li class="box-show singer-type-cell">
-              <i></i>入驻歌手
-            </li>
-          </ul>
-        </li>
-        <li class="box-shadow" style="margin-top:8px; padding-bottom:8px;">
-          <span class="singer-type-title">华语</span>
-          <ul>
-            <li class="box-show singer-type-cell active">
-              <i></i>华语男歌手
-            </li>
-            <li class="box-show singer-type-cell">
-              <i></i>华语女歌手
-            </li>
-            <li class="box-show singer-type-cell">
-              <i></i>华语组合/乐队
-            </li>
-          </ul>
-        </li>
-        <li class="box-shadow" style="margin-top:8px; padding-bottom:8px;">
-          <span class="singer-type-title">欧美</span>
-          <ul>
-            <li class="box-show singer-type-cell">
-              <i></i>欧美男歌手
-            </li>
-            <li class="box-show singer-type-cell">
-              <i></i>欧美女歌手
-            </li>
-            <li class="box-show singer-type-cell">
-              <i></i>欧美组合/乐队
-            </li>
-          </ul>
-        </li>
-        <li class="box-shadow" style="margin-top:8px; padding-bottom:8px;">
-          <span class="singer-type-title">日本</span>
-          <ul>
-            <li class="box-show singer-type-cell">
-              <i></i>日本男歌手
-            </li>
-            <li class="box-show singer-type-cell">
-              <i></i>日本女歌手
-            </li>
-            <li class="box-show singer-type-cell">
-              <i></i>日本组合/乐队
-            </li>
-          </ul>
-        </li>
-        <li class="box-shadow" style="margin-top:8px; padding-bottom:8px;">
-          <span class="singer-type-title">韩国</span>
-          <ul>
-            <li class="box-show singer-type-cell">
-              <i></i>韩国男歌手
-            </li>
-            <li class="box-show singer-type-cell">
-              <i></i>韩国女歌手
-            </li>
-            <li class="box-show singer-type-cell">
-              <i></i>韩国组合/乐队
-            </li>
-          </ul>
-        </li>
-        <li class="box-shadow" style="margin-top:8px; padding-bottom:8px;">
-          <span class="singer-type-title">其他</span>
-          <ul>
-            <li class="box-show singer-type-cell">
-              <i></i>其他男歌手
-            </li>
-            <li class="box-show singer-type-cell">
-              <i></i>其他女歌手
-            </li>
-            <li class="box-show singer-type-cell">
-              <i></i>其他组合/乐队
-            </li>
-          </ul>
+        <li v-for="fItem in singerCategory" :key="fItem.id" class="box-shadow" style="margin-top:8px; padding-bottom:8px;">
+          <span class="singer-type-title">{{ fItem.fCategory }}</span>
+          <router-link v-for="sItem in fItem.sCategory" :key="sItem.id" :to="`/singer/${sItem.id}`"
+                       :class="{active: sItem.id === Number($route.params['type'])}"
+                       class="box-show singer-type-cell">
+            <i></i>{{ sItem.name }}
+          </router-link>
         </li>
       </ul>
     </div>
@@ -127,7 +54,60 @@
 
 <script>
 export default {
-  name: 'Singer'
+  name: 'Singer',
+
+  data () {
+    return {
+      singerCategory: [
+        {
+          fCategory: '推荐',
+          sCategory: [
+            {id: 11, name: '推荐歌手'}
+          ]
+        },
+        {
+          fCategory: '华语',
+          sCategory: [
+            {id: 21, name: '华语男歌手'},
+            {id: 22, name: '华语女歌手'},
+            {id: 23, name: '华语组合/乐队'}
+          ]
+        },
+        {
+          fCategory: '欧美',
+          sCategory: [
+            {id: 31, name: '欧美男歌手'},
+            {id: 32, name: '欧美女歌手'},
+            {id: 33, name: '欧美组合/乐队'}
+          ]
+        },
+        {
+          fCategory: '日本',
+          sCategory: [
+            {id: 41, name: '日本男歌手'},
+            {id: 42, name: '日本女歌手'},
+            {id: 43, name: '日本组合/乐队'}
+          ]
+        },
+        {
+          fCategory: '韩国',
+          sCategory: [
+            {id: 51, name: '韩国男歌手'},
+            {id: 52, name: '韩国女歌手'},
+            {id: 53, name: '韩国组合/乐队'}
+          ]
+        },
+        {
+          fCategory: '其他',
+          sCategory: [
+            {id: 61, name: '其他男歌手'},
+            {id: 62, name: '其他女歌手'},
+            {id: 63, name: '其他组合/乐队'}
+          ]
+        }
+      ]
+    }
+  }
 }
 </script>
 
@@ -137,13 +117,13 @@ export default {
   }
 
   .singer-type-cell {
-    width:100%; height:32px; margin-bottom:8px;line-height:31px;
+    height:32px; margin-bottom:8px; display:block; line-height:31px; color:#AAA;
   }
   .singer-type-cell:hover {
-    color:#DDD; cursor:pointer;
+    color:#EEE; cursor:pointer;
   }
   .singer-type-cell.active {
-    color: #00d8ff;
+    color:#00d8ff;
   }
   .singer-type-cell > i {
     width:6px; height:6px; margin:12.5px 15px; background:#999; float:left; opacity:0;

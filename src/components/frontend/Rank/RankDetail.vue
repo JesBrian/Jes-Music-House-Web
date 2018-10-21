@@ -19,10 +19,10 @@
         <div class="super-btn-out" style="width:80px; height:35px; margin-right:18px;">
           <span class="super-btn-in mh-if menu" style="width:68px; height:26px;">&nbsp;添加</span>
         </div>
-        <div class="super-btn-out" style="width:80px; height:35px; margin-right:18px;">
+        <div @click="showModal('Collection')" class="super-btn-out" style="width:80px; height:35px; margin-right:18px;">
           <span class="super-btn-in mh-if collection-music" style="width:68px; height:26px;">&nbsp;收藏</span>
         </div>
-        <div class="super-btn-out" style="width:80px; height:35px; margin-right:18px;">
+        <div @click="showModal('Share')" class="super-btn-out" style="width:80px; height:35px; margin-right:18px;">
           <span class="super-btn-in mh-if share" style="width:68px; height:26px;">&nbsp;分享</span>
         </div>
         <div class="super-btn-out" style="width:80px; height:35px; margin-right:18px;">
@@ -33,18 +33,17 @@
 
     <div style="width:93%; margin:0 auto;">
 
-      <div>
-        <div style="width:100%; height:68px; margin-bottom:28px; padding:0 68px; box-sizing:border-box; box-shadow:0 2px 3px -3px #FFF; line-height:80px;">
+      <div style="margin:18px 0 38px;">
+        <div style="width:100%; height:38px; box-sizing:border-box; box-shadow:0 2px 3px -3px #FFF;">
           <span style="float:left; font-size:26px; font-weight:700;">歌曲列表</span>
         </div>
-        <div style="width:100%; height:688px; background:lightgreen;"></div>
+        <song-group />
       </div>
 
-      <div>
-        <div style="width:100%; height:68px; margin-bottom:28px; padding:0 68px; box-sizing:border-box; box-shadow:0 2px 3px -3px #FFF; line-height:80px;">
+      <div style="margin:18px 0 38px;">
+        <div style="width:100%; height:38px; box-sizing:border-box; box-shadow:0 2px 3px -3px #FFF;">
           <span style="float:left; font-size:26px; font-weight:700;">听友评论</span>
         </div>
-
         <comment-total />
       </div>
     </div>
@@ -52,15 +51,24 @@
 </template>
 
 <script>
+import SongGroup from '../SongGroup/SongGroup.vue'
 import CommentTotal from '../Comment/CommentTotal.vue'
 
 export default {
   name: 'RankDetail',
 
   components: {
-    CommentTotal
-  }
+    SongGroup, CommentTotal
+  },
 
+  methods: {
+    playThisRank () {
+    },
+
+    showModal (modalType) {
+      this.$store.commit('CHANGE_MODAL_TYPE', modalType)
+    }
+  }
 }
 </script>
 
