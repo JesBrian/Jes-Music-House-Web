@@ -79,8 +79,12 @@ export default new Router({
           component: () => import('../../views/frontend/pages/user/Rank.vue')
         },
         {
-          path: '/album',
+          path: '/album/:label/:type',
           component: () => import('../../views/frontend/pages/music/Album.vue')
+        },
+        {
+          path: '/album',
+          redirect: '/album/全部/hot'
         },
         {
           path: '/disc',

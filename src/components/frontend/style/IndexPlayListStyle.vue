@@ -2,7 +2,7 @@
   <div class="glass-bg box-show" style="width:840px; top:52px; left:-123%; position:absolute; z-index:9; line-height:1.68em;">
     <i @click="closePlayListStyleContent" class="mh-if all-arrow" style="top:4px; right:8px; position:absolute; font-size:18px; color:#BBB; cursor:pointer;"></i>
     <div style="width:100%; box-shadow:0 3px 3px -4px #FFF;">
-      <div @click="changePlayListStyle(0, '全部')" class="super-btn-out" style="width:86px; height:30px; margin:8px 28px 2px;">
+      <div @click="changePlayListStyle('全部')" class="super-btn-out" style="width:86px; height:30px; margin:8px 28px 2px;">
         <span class="super-btn-in" style="width:76px; height:22px; top:48.5%; padding-left:1.5px; line-height:22px; letter-spacing:1.2px;">全部风格</span>
       </div>
     </div>
@@ -11,7 +11,12 @@
         <i :class="['mh-if', styleItem.icon]" style="margin:0 -3px 0 18px; float:left; font-size:23px;"></i>{{ styleItem.name }}
       </div>
       <div style="width:87%; padding:18px 8px 0 23px; display:inline-block; box-sizing:border-box;">
-        <span v-for="styleCellItem in styleItem['cell']" :key="styleCellItem.id" @click="changePlayListStyle(styleCellItem.id, styleCellItem.name)" :class="['play-list-style', {'active' : styleCellItem.id === nowStyle}]">{{ styleCellItem.name }}</span>
+        <span @click="changePlayListStyle(styleCellItem.name)"
+              v-for="styleCellItem in styleItem['cell']"
+              :key="styleCellItem.id"
+              :class="['play-list-style', {'active' : styleCellItem.name === nowStyle}]">
+          {{ styleCellItem.name }}
+        </span>
       </div>
     </div>
   </div>
@@ -22,6 +27,12 @@ export default {
   name: 'IndexPlayListStyle',
 
   props: {
+    styleList: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    },
     nowStyleId: {
       type: Number,
       default: 0
@@ -30,38 +41,13 @@ export default {
 
   data () {
     return {
-      nowStyle: this.nowStyleId,
-      styleList: []
+      nowStyle: this.nowStyleId
     }
   },
 
-  created () {
-    let nowTimeStamp = (new Date()).valueOf()
-
-    this.$localForage.getItem('allStyle', (result, value) => {
-      if (value && ((nowTimeStamp - value.time) < 86400000)) {
-        this.styleList = value.style
-      } else {
-        this.$http.post('getAllStyle').then(response => {
-          let result = response.data
-          if (result.state === '200') {
-            this.styleList = result.data
-            this.$localForage.setItem('allStyle', {
-              style: result.data,
-              time: nowTimeStamp
-            })
-          }
-          console.log(this.styleList)
-        }).catch(error => {
-          console.log(error)
-        })
-      }
-    })
-  },
-
   methods: {
-    changePlayListStyle (styleId, styleLabel) {
-      this.$emit('changePlayListStyle', styleId, styleLabel)
+    changePlayListStyle (styleLabel) {
+      this.$emit('changePlayListStyle', styleLabel)
       this.closePlayListStyleContent()
     },
 

@@ -5,16 +5,15 @@
         <span style="float:left; font-size:32px; font-weight:700;">{{ styleLabel }}</span>
         <div style="width:128px; height:36px; margin:15px 28px 0; position:relative; display:inline-block;">
           <div @click="changeShowPlayListStyleContent" class="super-btn-out ripple" style="width:100%; height:100%;">
-            <span class="super-btn-in" style="width:118px; height:27px; line-height:27px;">选择分类 <i class="mh-if double-arrow-down"></i></span>
+            <span class="super-btn-in" style="width:118px; height:27px; line-height:27px;">选择分类&nbsp;<i class="mh-if double-arrow-down"></i></span>
           </div>
 
-          <IndexPlayListStyle v-if="showAlbumTypeContent" @changePlayListStyle="changePlayListStyle" />
-
+          <IndexPlayListStyle v-if="showAlbumTypeContent" @changePlayListStyle="changePlayListStyle" :style-list="styleList" />
         </div>
 
-        <div style="width:108px; height:32px; margin-top:30px; float:right; text-align:center; line-height:28.8px; font-weight:700; cursor:pointer;">
-          <div @click="changeContentType('hot')" :class="contentType === 'hot' ? 'cube-bg' : 'glass-bg'" class="box-show" style="width:50%; height:100%; float:left; border-radius:5px 0 0 5px; text-shadow:1px 1px 2px #000;">热门</div>
-          <div @click="changeContentType('new')" :class="contentType === 'new' ? 'cube-bg' : 'glass-bg'" class="box-show" style="width:50%; height:100%; float:right; border-radius:0 5px 5px 0; text-shadow:1px 1px 2px #000;">最新</div>
+        <div style="width:108px; height:32px; margin-top:30px; float:right; display:flex; text-align:center; line-height:28.8px; font-weight:700; cursor:pointer;">
+          <div @click="changeContentType('hot')" :class="contentType === 'hot' ? 'cube-bg' : 'glass-bg'" class="box-show" style="flex:1; border-radius:5px 0 0 5px; text-shadow:1px 1px 2px #000;">热门</div>
+          <div @click="changeContentType('new')" :class="contentType === 'new' ? 'cube-bg' : 'glass-bg'" class="box-show" style="flex:1; border-radius:0 5px 5px 0; text-shadow:1px 1px 2px #000;">最新</div>
         </div>
       </div>
 
@@ -55,29 +54,52 @@ export default {
 
   data () {
     return {
-      styleId: 0,
-      styleLabel: '全部',
-      contentType: 'hot',
+      styleLabel: this.$route.params['label'],
+      contentType: this.$route.params['type'],
+      styleList: [],
       showAlbumTypeContent: false
     }
   },
 
+  created () {
+    let nowTimeStamp = (new Date()).valueOf()
+
+    this.$localForage.getItem('allStyle', (result, value) => {
+      if (value && ((nowTimeStamp - value.time) < 86400000)) {
+        this.styleList = value.style
+      } else {
+        this.$http.post('getAllStyle').then(response => {
+          let result = response.data
+          if (result.state === '200') {
+            this.styleList = result.data
+            this.$localForage.setItem('allStyle', {
+              style: result.data,
+              time: nowTimeStamp
+            })
+          }
+          console.log(this.styleList)
+        }).catch(error => {
+          console.log(error)
+        })
+      }
+    })
+  },
+
   methods: {
     playThisPlayList () {
-      console.log(65666)
-    },
-
-    changeContentType (type) {
-      this.contentType = type
+      alert(65666)
     },
 
     changeShowPlayListStyleContent () {
       this.showAlbumTypeContent = !this.showAlbumTypeContent
     },
 
-    changePlayListStyle (id, label) {
-      this.styleId = id
-      this.styleLabel = label
+    changeContentType (type) {
+      this.$router.push(`/album/${encodeURIComponent(this.styleLabel)}/${type}`)
+    },
+
+    changePlayListStyle (label) {
+      this.$router.push(`/album/${encodeURIComponent(label)}/${this.contentType}`)
     }
   }
 }

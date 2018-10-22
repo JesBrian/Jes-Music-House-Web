@@ -7,9 +7,9 @@
         <span style="margin:0 8px; font-size:23px; font-weight:700;">听歌排行</span>
         <span style="font-size:14px;">累积听歌18547首</span>
 
-        <div style="width:188px; height:32px; float:right; text-align:center; line-height:28.8px; font-weight:700; cursor:pointer;">
-          <div @click="changeContentType('week')" :class="contentType === 'week' ? 'cube-bg' : 'glass-bg'" class="box-show" style="width:50%; height:100%; float:left; border-radius:5px 0 0 5px; text-shadow:1px 1px 2px #000;">最近一周</div>
-          <div @click="changeContentType('all')" :class="contentType === 'all' ? 'cube-bg' : 'glass-bg'" class="box-show" style="width:50%; height:100%; float:right; border-radius:0 5px 5px 0; text-shadow:1px 1px 2px #000;">所有时间</div>
+        <div style="width:188px; height:32px; float:right; display:flex; text-align:center; line-height:28.8px; font-weight:700; cursor:pointer;">
+          <div @click="changeContentType('week')" :class="contentType === 'week' ? 'cube-bg' : 'glass-bg'" class="box-show" style="flex:1; border-radius:5px 0 0 5px; text-shadow:1px 1px 2px #000;">最近一周</div>
+          <div @click="changeContentType('all')" :class="contentType === 'all' ? 'cube-bg' : 'glass-bg'" class="box-show" style="flex:1; border-radius:0 5px 5px 0; text-shadow:1px 1px 2px #000;">所有时间</div>
         </div>
       </div>
 
