@@ -1,7 +1,7 @@
 <template>
   <div id="leftMenu" class="glass-bg box-show" :class="{'active' : $store.state.View.showLeftMenu}">
     <div v-show="$store.state.View.showLeftMenu" style="width:100%; height:100%; padding:13px 0 0; overflow-y:auto; color:#DDD; box-sizing:border-box;">
-      <gemini-scrollbar id="superScrollbar">
+      <gemini-scrollbar @ready="scrollbarOnReady">
         <div v-for="(firstMenuItem, index) in menuTreeData" :key="`${index}3`" class="first-menu" :class="{'active': firstMenuItem.id === nowFirstMenu}">
           <div @click="showThisFirstMenuSecondMenuContainer(firstMenuItem.id)" class="first-menu-link glass-bg box-show">
             <i class="mh-if menu-user" style="margin:0 8px 0 12px;"></i>
@@ -11,7 +11,8 @@
             </div>
           </div>
           <div class="second-menu">
-            <router-link v-for="(secondMenuItem, index) in firstMenuItem.cell" :key="`${index}2`" :to="secondMenuItem.url" class="second-menu-link cube-bg box-show" :class="{'active': routerPath === secondMenuItem.url}">
+            <router-link v-for="(secondMenuItem, index) in firstMenuItem.cell" :key="`${index}2`" :to="secondMenuItem.url"
+                         class="second-menu-link cube-bg box-show" :class="{'active': routerPath === secondMenuItem.url}">
               <i class="mh-if all-user"></i>
               <p class="second-menu-link-label text-hidden">{{ secondMenuItem.name }}</p>
               <i class="mh-if double-arrow-left"></i>
@@ -32,6 +33,8 @@ export default {
 
   data () {
     return {
+      scrollbarObj: null,
+
       nowFirstMenu: 0, // 当前一级菜单
       nowSecondMenu: 0, // 当前二级菜单
 
@@ -42,15 +45,6 @@ export default {
   computed: {
     routerPath () {
       return this.$route.path
-    }
-  },
-
-  watch: {
-    $route () {
-      this.hackReset = false
-      this.$nextTick(() => {
-        this.hackReset = true
-      })
     }
   },
 
@@ -80,16 +74,17 @@ export default {
   },
 
   methods: {
+    scrollbarOnReady (scrollbarObj) {
+      this.scrollbarObj = scrollbarObj
+    },
+
     showLeftMenu () {
       this.$store.commit('CHANGE_SHOW_LEFT_MENU')
     },
 
     showThisFirstMenuSecondMenuContainer (firstMenuId) {
       this.nowFirstMenu = firstMenuId === this.nowFirstMenu ? 0 : firstMenuId
-      this.hackReset = false
-      this.$nextTick(() => {
-        this.hackReset = true
-      })
+      this.scrollbarObj.update()
     }
   }
 }
