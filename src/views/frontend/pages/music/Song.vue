@@ -6,7 +6,7 @@
       <!-- 歌曲基本信息 -->
       <div style="margin:28px 0 88px;">
         <div style="width:32%; margin-top:12px; float:left; text-align:center;">
-          <div class="box-show" style="width:188px; height:188px; margin:4px 23px; padding:33px; display:flex; justify-content:center; align-items:center; border-radius:50%; background:url('../../../static/img/default/disk.png') no-repeat; background-size:100% 100%;">
+          <div class="box-show" style="width:188px; height:188px; margin:4px 23px; padding:33px; display:flex; justify-content:center; align-items:center; border-radius:50%; background:url('../../../../../static/img/default/disk.png') no-repeat; background-size:100% 100%;">
             <img v-lazy="'http://p4.music.126.net/fNps5V_Auva93TgjLURyEw==/7960464187263772.jpg?param=200y200'" style="width:100%; height:100%; border-radius:50%;"/>
           </div>
         </div>
@@ -41,7 +41,6 @@
 
           <div style="width:88%; position:relative; letter-spacing:1px; font-size:14px;">
             <p ref="playListDescription" :style="isShowDescription ? 'height:100%;' : 'height:135px;'" style="width:92%; word-break:break-all; line-height:19px; overflow:hidden;">
-              <span style="color:#DDD;">简介：</span>
               wsedjnm'fgvh测试jnkml,ws恐怕edjn4515gvhjnk486djnm相差谁vhjnkml,wsed场设jnm'fgvh4156jnkml,w现备和健康sedjnm'fgvhjnkml513vjv处理vhjnk产量数52edjnm急哦fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml
             </p>
             <i v-if="isShowDescriptionBtn" @click="isShowDescription = !isShowDescription" :class="['mh-if', isShowDescription ? 'double-arrow-up' : 'double-arrow-down']" class="show-description-btn"></i>

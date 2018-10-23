@@ -79,7 +79,7 @@
     </div>
 
     <!-- 播放列表内容区域 -->
-    <div v-show="this.musicPlayListContentShowStatus" class="glass-bg box-show" style="width:1028px; height:290px; left:50%; bottom:45px; position:absolute; transform:translate(-50%,0); z-index:-1; background:#151515; opacity:0.988; border-radius:8px 8px 0 0; color:#999;">
+    <div v-if="musicPlayListContentShowStatus" class="glass-bg box-show" style="width:1028px; height:290px; left:50%; bottom:45px; position:absolute; transform:translate(-50%,0); z-index:-1; background:#151515; opacity:0.988; border-radius:8px 8px 0 0; color:#999;">
       <div class="box-show" style="width:100%; height:38px; border-radius:8px 8px 0 0; line-height:40px; z-index:9;">
         <div style="width:62%; height:100%; padding:0 2%; float:left; box-sizing:border-box;">
           <span style="font-weight:700;">播放列表 [ {{ this.musicPlayList.length }} ]</span>
@@ -94,40 +94,12 @@
         </div>
       </div>
       <div class="box-show" style="width:100%; height:250px; padding-bottom:2px; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727; font-size:14px;">
+
         <!-- 歌曲列表 -->
-        <div style="width:62%; height:250px; padding-top:3px; float:left; box-sizing:border-box; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;">
-          <gemini-scrollbar v-if="musicPlayListContentShowStatus" >
-            <ul style="width:100%; padding-right:8px; box-sizing:border-box; line-height:27px; overflow-y:auto; overflow-x:hidden;">
-              <li v-for="(item ,index) in musicPlayList" :key="index + 99" class="box-shadow" style="width:100%; height:28px; padding:1px; box-sizing:border-box; z-index:2;">
-                <div :class="{'active': musicPlayListNowIndex === index}" class="music-list-cell" style="width:100%; height:100%; position:relative;">
-
-                  <!-- BEGIN 点击切换播放歌曲 BEGIN -->
-                  <div @click="playThisMusic(index)" style="width:100%; height:100%; position:relative; z-index:1;"></div>
-                  <!-- END 点击切换播放歌曲 END -->
-
-                  <!-- BEGIN 歌曲信息 OR 操作 BEGIN -->
-                  <p @click="playThisMusic(index)" class="mh-if play" style="width:23px; display:inline-block; text-align:right;"></p>
-                  <p @click="playThisMusic(index)" style="max-width:288px; left:33px; display:inline-block;">12331 {{ item.name }}</p>
-                  <p class="music-cell-oper">
-                    <i style="margin-left:3.5px;" class="mh-if non-colloection"></i>
-                    <i style="margin-left:3.5px;" class="mh-if share"></i>
-                    <i style="margin-left:3.5px;" class="mh-if download"></i>
-                    <i @click="delMusicListItem(index)" style="margin-left:3.5px;" class="mh-if trash-1"></i>
-                  </p>
-                  <p style="max-width:18%; left:432px; display:inline-block;">
-                    <router-link to="/singer/11" style="color:#999;">{{ index }}</router-link>
-                  </p>
-                  <p @click="playThisMusic(index)" style="width:6%; left:568px; display:inline-block;">00:00</p>
-                  <!-- END 歌曲信息 OR 操作 END -->
-
-                </div>
-              </li>
-            </ul>
-          </gemini-scrollbar>
-        </div>
+        <music-player-list :now-index="musicPlayListNowIndex" :song-list="musicPlayList" />
 
         <!-- 歌词滚动区域 -->
-        <music-player-lyric :is-show="musicPlayListContentShowStatus" />
+        <music-player-lyric />
 
       </div>
     </div>
@@ -137,13 +109,14 @@
 
 <script>
 import { timeStampToTime } from '../../../assets/js/music/base.js'
+import MusicPlayerList from './MusicPlayerList.vue'
 import MusicPlayerLyric from './MusicPlayerLyric.vue'
 
 export default {
   name: 'MusicPlayer',
 
   components: {
-    MusicPlayerLyric
+    MusicPlayerList, MusicPlayerLyric
   },
 
   data () {
@@ -160,62 +133,20 @@ export default {
       musicPlayModel: 'loop', // 三种播放模式 [ loop-歌单循环，single-loop-单曲循环，random-歌单里歌曲随机播放 ]
       musicPlayListNowIndex: 0, // 当前播放歌曲的下标 - 对应播放列表 musicPlayList 的数组下标
       musicPlayList: [
-        {
-          id: '11',
-          name: 'test1'
-        },
-        {
-          id: '12',
-          name: 'test2'
-        },
-        {
-          id: '13',
-          name: 'test3'
-        },
-        {
-          id: '14',
-          name: 'test4'
-        },
-        {
-          id: '15',
-          name: 'test5'
-        },
-        {
-          id: '16',
-          name: 'test6'
-        },
-        {
-          id: '17',
-          name: 'test7'
-        },
-        {
-          id: '18',
-          name: 'test1'
-        },
-        {
-          id: '19',
-          name: 'test2'
-        },
-        {
-          id: '20',
-          name: 'test3'
-        },
-        {
-          id: '21',
-          name: 'test4'
-        },
-        {
-          id: '22',
-          name: 'test5'
-        },
-        {
-          id: '23',
-          name: 'test6'
-        },
-        {
-          id: '24',
-          name: 'test7'
-        }
+        {id: '11', name: 'test1'},
+        {id: '12', name: 'test2'},
+        {id: '13', name: 'test3'},
+        {id: '14', name: 'test4'},
+        {id: '15', name: 'test5'},
+        {id: '16', name: 'test6'},
+        {id: '17', name: 'test7'},
+        {id: '18', name: 'test1'},
+        {id: '19', name: 'test2'},
+        {id: '20', name: 'test3'},
+        {id: '21', name: 'test4'},
+        {id: '22', name: 'test5'},
+        {id: '23', name: 'test6'},
+        {id: '24', name: 'test7'}
       ],
       musicPlayListContentShowStatus: false
     }
@@ -623,39 +554,5 @@ export default {
   }
   .play-model:hover > span {
     display: block;
-  }
-
-  .music-list-cell .play {
-    opacity:0;
-    color: #20dbfc;
-  }
-  .music-list-cell.active > .play {
-    opacity:1;
-  }
-  .music-list-cell .music-cell-oper {
-    width:15%;
-    left:325px;
-    opacity:0;
-    display:inline-block;
-  }
-  .music-list-cell {
-    padding:0 13px 0 0;
-  }
-  .music-list-cell:hover, .music-list-cell.active {
-    color:#EEE;
-  }
-  .music-list-cell:hover {
-    background:#0B0B0B;
-  }
-  .music-list-cell.active {
-    background:#030303;
-  }
-  .music-list-cell:hover > .music-cell-oper {
-    opacity:1;
-  }
-  .music-list-cell > p {
-    top:0;
-    position:absolute;
-    z-index:9;
   }
 </style>
