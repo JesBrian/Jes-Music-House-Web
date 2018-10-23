@@ -19,7 +19,7 @@
           <div style="width:83%; height:58px; margin:0 auto; font-size:19px;">
             <label class="MyIF IDcard-1" for="loginPhone" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
             <span style="margin-left:8px; color:#DDD;">
-              <i class="mh-if headphone" style="margin:0 8px 0 0;"></i>手机
+              <i class="mh-if phone" style="margin:0 5px 0 0; font-size:23px;"></i>手机
             </span>
             </label>
             <input v-model="phone" id="loginPhone" type="text" class="cube-bg box-show" style="width:268px; margin-top:2px; padding:6px 10px; float:right; font-size:15px;" placeholder="请填写手机号码"/>
@@ -27,7 +27,7 @@
           <div style="width:83%; height:58px; margin:0 auto; font-size:19px;">
             <label class="MyIF yuechi" for="loginPwd" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
             <span style="margin-left:8px; color:#DDD;">
-              <i class="mh-if headphone" style="margin:0 8px 0 0;"></i>密码
+              <i class="mh-if key" style="margin:0 5px 0 0; font-size:23px;"></i>密码
             </span>
             </label>
             <input v-model="passwd" id="loginPwd" type="password" class="cube-bg box-show" style="width:268px; margin-top:2px; padding:6px 10px; float:right; font-size:15px;" placeholder="请填写密码"/>
@@ -35,10 +35,10 @@
         </form>
 
         <div style="text-align:center;">
-          <span class="super-btn-out ripple" style="width:108px; height:38px; margin:0 18px;">
+          <span @click="resetForm" class="super-btn-out ripple" style="width:108px; height:38px; margin:0 18px;">
             <span class="super-btn-in mh-if cancel" style="width:98px; height:28px; top:49%; left:50%; font-size:16px;">&nbsp;重新填写</span>
           </span>
-          <span class="super-btn-out ripple" @click="userPhoneLogin" style="width:108px; height:38px; margin:0 18px;">
+          <span @click="userPhoneLogin" class="super-btn-out ripple" style="width:108px; height:38px; margin:0 18px;">
             <span class="super-btn-in mh-if makesure" style="width:98px; height:28px; top:49%; left:50%; font-size:16px;">&nbsp;确认登陆</span>
           </span>
         </div>
@@ -128,6 +128,11 @@ export default {
   },
 
   methods: {
+    resetForm () {
+      this.phone = ''
+      this.passwd = ''
+    },
+
     showUserRegisterModal () {
       this.$store.commit('CHANGE_MODAL_TYPE', 'register')
     },

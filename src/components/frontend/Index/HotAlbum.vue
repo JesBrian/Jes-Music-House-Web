@@ -4,15 +4,15 @@
       <i class="mh-if hot" style="margin-right:8px; color:#00d8ff; font-size:32px;"></i>
       <span style="font-size:23px; font-weight:700;">热门推荐</span>
       <p style="margin:5px 0 0 28px; display:inline-block; font-size:14px;">
-        <router-link to="/album" style="color:#999;">华语</router-link>
+        <router-link to="/album/华语/hot" style="color:#999;">华语</router-link>
         <i style="margin:0 8px; color:#333;">|</i>
-        <router-link to="/album" style="color:#999;">流行</router-link>
+        <router-link to="/album/流行/hot" style="color:#999;">流行</router-link>
         <i style="margin:0 8px; color:#333;">|</i>
-        <router-link to="/album" style="color:#999;">摇滚</router-link>
+        <router-link to="/album/摇滚/hot" style="color:#999;">摇滚</router-link>
         <i style="margin:0 8px; color:#333;">|</i>
-        <router-link to="/album" style="color:#999;">民谣</router-link>
+        <router-link to="/album/民谣/hot" style="color:#999;">民谣</router-link>
         <i style="margin:0 8px; color:#333;">|</i>
-        <router-link to="/album" style="color:#999;">电子</router-link>
+        <router-link to="/album/电子/hot" style="color:#999;">电子</router-link>
       </p>
       <router-link to="/album" class="read-more">更多 <i class="mh-if double-arrow-right"></i></router-link>
     </div>

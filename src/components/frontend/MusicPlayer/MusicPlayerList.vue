@@ -63,7 +63,7 @@ export default {
 
 <style lang="less" scoped>
   #musicPlayerList {
-    width:62%; height:250px; padding-top:3px; float:left; background:#1A1A1A; box-sizing:border-box; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;
+    width:62%; height:250px; padding-top:3px; float:left; box-sizing:border-box; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727;
   }
 
   .music-list {
@@ -89,7 +89,7 @@ export default {
         }
       }
       &.active {
-        background:#000;
+        background:#0A0A0A;
 
         > .play {
           opacity:1;
@@ -125,7 +125,7 @@ export default {
       }
 
       &-container {
-        width:100%; height:28px; padding:2px 1px 1px 1px; box-sizing:border-box; z-index:2;
+        width:100%; height:28px; padding:1px; box-sizing:border-box; z-index:2;
       }
     }
   }

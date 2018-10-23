@@ -11,6 +11,17 @@
 
     <!-- 拟态框内容 -->
     <div class="modal-collection-container">
+      <div class="new-play-list box-show">
+        <i class="mh-if add"></i>
+        <span class="new-play-list-label">创建新歌单</span>
+      </div>
+      <div v-for="item in playList" :key="item.id" class="play-list-cell box-show">
+        <img class="play-list-cell-img" src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80"/>
+        <div>
+          <p class="play-list-cell-label">{{ item.title }}</p>
+          <p class="play-list-cell-nums">{{ item.nums }} 首</p>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -24,6 +35,17 @@ export default {
     label: {
       type: String,
       default: '确定要执行该操作 ?'
+    }
+  },
+
+  data () {
+    return {
+      playList: [
+        {id: 201, title: '歌单1111', nums: 35},
+        {id: 202, title: '歌单2Bb', nums: 18},
+        {id: 203, title: '歌 c 单3CCC', nums: 108},
+        {id: 204, title: 'play list dddd dd', nums: 62}
+      ]
     }
   },
 
@@ -54,7 +76,32 @@ export default {
 
     .modal-collection {
       &-container {
-        width:100%; text-align:center;
+        width:100%; margin-top:28px; display:flex; flex-direction:row; justify-content:space-between; flex-wrap:wrap;
+
+        .new-play-list {
+          width:49.3%; height:50px; margin-bottom:10px; display:flex; align-items:center; border-radius:4px;
+
+          > .add {
+            margin:0 13px 0 5px; font-size:38px;
+          }
+          &-label {
+            font-size:18px;
+          }
+        }
+
+        .play-list-cell {
+          width:49.3%; height:50px; margin-bottom:10px; display:flex; align-items:center; border-radius:4px; cursor:pointer;
+
+          &-img {
+            width:38px; height:38px; margin:0 13px 0 5px; border-radius:3px;
+          }
+          &-label {
+            margin-bottom:6px;
+          }
+          &-nums {
+            font-size:13px;
+          }
+        }
       }
     }
   }
