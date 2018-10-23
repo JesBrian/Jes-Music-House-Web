@@ -8,7 +8,8 @@
             <span class="super-btn-in" style="width:118px; height:27px; line-height:27px;">选择分类&nbsp;<i class="mh-if double-arrow-down"></i></span>
           </div>
 
-          <IndexPlayListStyle v-if="showAlbumTypeContent" @changePlayListStyle="changePlayListStyle" :style-list="styleList" />
+          <IndexPlayListStyle v-if="showAlbumTypeContent" @changePlayListStyle="changePlayListStyle"
+                              :style-list="styleList" :now-style-id="styleId" />
         </div>
 
         <div style="width:108px; height:32px; margin-top:30px; float:right; display:flex; text-align:center; line-height:28.8px; font-weight:700; cursor:pointer;">
@@ -54,6 +55,7 @@ export default {
 
   data () {
     return {
+      styleId: 0,
       styleLabel: this.$route.params['label'],
       contentType: this.$route.params['type'],
       styleList: [],
@@ -67,6 +69,7 @@ export default {
     this.$localForage.getItem('allStyle', (result, value) => {
       if (value && ((nowTimeStamp - value.time) < 86400000)) {
         this.styleList = value.style
+        this.getNowStyleId()
       } else {
         this.$http.post('getAllStyle').then(response => {
           let result = response.data
@@ -76,8 +79,8 @@ export default {
               style: result.data,
               time: nowTimeStamp
             })
+            this.getNowStyleId()
           }
-          console.log(this.styleList)
         }).catch(error => {
           console.log(error)
         })
@@ -86,6 +89,18 @@ export default {
   },
 
   methods: {
+    getNowStyleId () {
+      for (let i = 0, fLen = this.styleList.length; i < fLen; i++) {
+        for (let j = 0, sLen = this.styleList[i].cell.length; j < sLen; j++) {
+          if (this.styleList[i].cell[j].name === this.styleLabel) {
+            this.styleId = this.styleList[i].cell[j].id
+            break
+          }
+        }
+        if (this.styleId !== 0) break
+      }
+    },
+
     playThisPlayList () {
       alert(65666)
     },

@@ -14,7 +14,7 @@
         <span @click="changePlayListStyle(styleCellItem.name)"
               v-for="styleCellItem in styleItem['cell']"
               :key="styleCellItem.id"
-              :class="['play-list-style', {'active' : styleCellItem.name === nowStyle}]">
+              :class="['play-list-style', {active : styleCellItem.id === nowStyleId}]">
           {{ styleCellItem.name }}
         </span>
       </div>
@@ -41,7 +41,6 @@ export default {
 
   data () {
     return {
-      nowStyle: this.nowStyleId
     }
   },
 
