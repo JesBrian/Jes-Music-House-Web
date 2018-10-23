@@ -2,9 +2,30 @@
   <div id="homeLayout">
 
     <div class="user-music-category-container">
-      收藏的歌手
-      创建的歌单
-      收藏的歌单
+      <div class="box-shadow"></div>
+      <div @click="changeType('collection-singer')"
+           :class="{active: type === 'collection-singer'}"
+           class="user-music-category-cell box-shadow">
+        <i class="user-music-category-cell-logo mh-if singer" ></i>
+        <span class="user-music-category-cell-label">收藏的歌手</span>
+      </div>
+      <div @click="changeType('create-play-list')"
+           :class="{active: type === 'create-play-list'}"
+           class="user-music-category-cell box-shadow">
+        <i class="user-music-category-cell-logo mh-if redis" ></i>
+        <span class="user-music-category-cell-label">创建的歌单</span>
+
+        <div @click.stop="showModal('Collection')" class="super-btn-out">
+          <i class="super-btn-in mh-if add-collection"></i>
+        </div>
+      </div>
+      <div @click="changeType('collection-play-list')"
+           :class="{active: type === 'collection-play-list'}"
+           class="user-music-category-cell box-shadow">
+        <i class="user-music-category-cell-logo mh-if add-collection" ></i>
+        <span class="user-music-category-cell-label">收藏的歌单</span>
+      </div>
+      <div class="box-shadow"></div>
     </div>
 
     <div class="user-music-detail-container box-show">
@@ -80,6 +101,8 @@ export default {
 
   data () {
     return {
+      type: 'collection-singer',
+
       isShowDescriptionBtn: false,
       isShowDescription: false
     }
@@ -92,6 +115,10 @@ export default {
   },
 
   methods: {
+    changeType (type = 'collection-singer') {
+      this.type = type
+    },
+
     showModal (modalType) {
       this.$store.commit('CHANGE_MODAL_TYPE', modalType)
     }
@@ -105,8 +132,38 @@ export default {
     min-height:100%; display:flex;
   }
 
-  .user-music-category-container {
-    width:20%; height:100%;
+  .user-music-category {
+    &-container {
+      width:20%; height:100%; padding-top:38px;
+    }
+
+    &-cell {
+      width:100%; height:43px; display:flex; flex-direction:row; align-items:center; cursor:pointer;
+
+      &-logo {
+        margin:0 8px 0 18px; font-size:19px;
+      }
+      &-label {
+        color:#AAA;
+      }
+
+      &:hover > .user-music-category-cell-label {
+        color:#EEE;
+      }
+      &.active {
+        > .user-music-category-cell-label {
+          color:#00d8ff;
+        }
+        background:#1D1D1D;
+      }
+
+      > .super-btn-out {
+        width:28px; height:28px; margin-left:38px;
+        > .super-btn-in {
+          width:22px; height:22px;
+        }
+      }
+    }
   }
 
   .user-music-detail-container {
