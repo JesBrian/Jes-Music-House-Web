@@ -18,13 +18,14 @@ import Login from './type/Login.vue'
 import Register from './type/Register.vue'
 import Share from './type/Share.vue'
 import Collection from './type/Collection.vue'
+import CreatePlayList from './type/CreatePlayList.vue'
 import ModalCloseBtn from './ModalCloseBtn.vue'
 
 export default {
   name: 'HomeModal',
 
   components: {
-    ModalCloseBtn, Warning, Login, Share, Collection, Register
+    ModalCloseBtn, Warning, Login, Share, Collection, CreatePlayList, Register
   },
 
   methods: {

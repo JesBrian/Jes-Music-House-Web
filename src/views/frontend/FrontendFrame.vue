@@ -19,6 +19,9 @@
     <!-- 拟态框组件 -->
     <home-modal />
 
+    <!-- 操作提示条 -->
+    <super-tips v-if="$store.state.View.tips" />
+
     <!-- 音乐播放器组件 -->
     <music-player />
   </div>
@@ -29,13 +32,14 @@ import NavigationBar from '../../components/frontend/NavigationBar/NavigationBar
 import MusicPlayer from '../../components/frontend/MusicPlayer/MusicPlayer.vue'
 import FloatBlock from '../../components/frontend/FloatBlock/FloatBlock'
 import HomeModal from '../../components/common/Modal/HomeModal.vue'
+import SuperTips from '../../components/common/Tips/SuperTips.vue'
 import HomeFooter from '../../components/frontend/HomeFooter/HomeFooter.vue'
 
 export default {
   name: 'FrontendFrame',
 
   components: {
-    NavigationBar, HomeFooter, FloatBlock, HomeModal, MusicPlayer
+    NavigationBar, HomeFooter, FloatBlock, HomeModal, SuperTips, MusicPlayer
   },
 
   data () {

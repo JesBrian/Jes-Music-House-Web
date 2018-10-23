@@ -154,13 +154,13 @@ export default {
         passwd: this.passwd
       }).then(response => {
         let result = response.data
-        // let tipsType = 'warning'
+        let tipsType = 'warning'
         if (result.state === '200') {
-          // tipsType = 'info'
+          tipsType = 'info'
           this.$store.commit('SAVE_LOGIN_USER_INFO', result.data)
           this.$localForage.setItem('user', result.data)
         }
-        // this.$store.commit('SHOW_TIPS', {msg: result.msg, type: tipsType})
+        this.$store.commit('SHOW_TIPS', {msg: result.msg, type: tipsType})
       }).catch(error => {
         console.error(error)
       })

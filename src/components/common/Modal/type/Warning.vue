@@ -38,7 +38,7 @@ export default {
 
   methods: {
     sureOperation () {
-      console.log(6666)
+      this.$store.commit('SHOW_TIPS', {msg: '确定操作', type: 'info'})
     },
 
     cancelOperation () {

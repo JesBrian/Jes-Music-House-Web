@@ -6,7 +6,7 @@
     <!-- 拟态框标题 -->
     <div class="modal-title cube-bg box-show">
       <img v-lazy="require('../../../../../static/img/icon/warning.png')" class="modal-title-icon" />
-      <span class="modal-title-label">分享信息</span>
+      <span class="modal-title-label">创建新歌单</span>
     </div>
 
     <!-- 拟态框内容 -->
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'Share',
+  name: 'CreatePlayList',
 
   props: {
   },

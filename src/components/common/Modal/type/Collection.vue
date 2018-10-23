@@ -11,11 +11,11 @@
 
     <!-- 拟态框内容 -->
     <div class="modal-collection-container">
-      <div class="new-play-list box-show">
+      <div @click="showModal('CreatePlayList')" class="new-play-list box-show">
         <i class="mh-if add"></i>
         <span class="new-play-list-label">创建新歌单</span>
       </div>
-      <div v-for="item in playList" :key="item.id" class="play-list-cell box-show">
+      <div v-for="item in playList" :key="item.id" @click="collectionSongToThisPlayList(item.id)" class="play-list-cell box-show">
         <img class="play-list-cell-img" src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80"/>
         <div>
           <p class="play-list-cell-label">{{ item.title }}</p>
@@ -50,12 +50,13 @@ export default {
   },
 
   methods: {
-    sureOperation () {
-      console.log(6666)
+    collectionSongToThisPlayList (playListId) {
+      this.$store.commit('SHOW_TIPS', {msg: '歌曲收藏成功！' + playListId, type: 'info'})
+      this.$parent.closeShowModal()
     },
 
-    cancelOperation () {
-      this.$parent.closeShowModal()
+    showModal (modalType) {
+      this.$store.commit('CHANGE_MODAL_TYPE', modalType)
     }
   }
 }
@@ -79,10 +80,10 @@ export default {
         width:100%; margin-top:28px; display:flex; flex-direction:row; justify-content:space-between; flex-wrap:wrap;
 
         .new-play-list {
-          width:49.3%; height:50px; margin-bottom:10px; display:flex; align-items:center; border-radius:4px;
+          width:49.3%; height:50px; margin-bottom:10px; display:flex; align-items:center; border-radius:4px; cursor:pointer;
 
           > .add {
-            margin:0 13px 0 5px; font-size:38px;
+            margin:0 13px 0 5px; font-size:38px; color:#00D8FF;
           }
           &-label {
             font-size:18px;

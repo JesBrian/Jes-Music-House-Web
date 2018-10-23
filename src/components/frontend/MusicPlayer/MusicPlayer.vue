@@ -43,7 +43,7 @@
           </div>
           <div style="float:right;">
             <i @click="showModal('Collection')" class="mh-if add-collection" style="margin-right:6px; font-size:24px;"></i>
-            <i @click="showModal('Collection')" class="mh-if share" style="margin-right:6px; font-size:20px; font-weight:700;"></i>
+            <i @click="showModal('Share')" class="mh-if share" style="margin-right:6px; font-size:20px; font-weight:700;"></i>
           </div>
         </div>
         <!-- 其他控制 -->
