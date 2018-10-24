@@ -22,7 +22,7 @@
               <i class="mh-if phone" style="margin:0 5px 0 0; font-size:23px;"></i>手机
             </span>
             </label>
-            <input v-model="phone" id="loginPhone" type="text" class="cube-bg box-show" style="width:268px; margin-top:2px; padding:6px 10px; float:right; font-size:15px;" placeholder="请填写手机号码"/>
+            <input v-model="phone" id="loginPhone" type="text" class="glow-input cube-bg box-show" style="width:268px; margin-top:2px; padding:6px 10px; float:right; font-size:15px;" placeholder="请填写手机号码"/>
           </div>
           <div style="width:83%; height:58px; margin:0 auto; font-size:19px;">
             <label class="MyIF yuechi" for="loginPwd" style="font-size:20px; line-height:1.8em; color:#2DBEFF;">
@@ -30,7 +30,7 @@
               <i class="mh-if key" style="margin:0 5px 0 0; font-size:23px;"></i>密码
             </span>
             </label>
-            <input v-model="passwd" id="loginPwd" type="password" class="cube-bg box-show" style="width:268px; margin-top:2px; padding:6px 10px; float:right; font-size:15px;" placeholder="请填写密码"/>
+            <input v-model="passwd" id="loginPwd" type="password" class="glow-input cube-bg box-show" style="width:268px; margin-top:2px; padding:6px 10px; float:right; font-size:15px;" placeholder="请填写密码"/>
           </div>
         </form>
 

@@ -1,52 +1,108 @@
 <template>
-  <div class="comment-cell" style="color:#999; padding:13px 0 16px 68px; position:relative;">
-    <router-link class="box-show" to="/user" style="width:40px; height:38px; top:16px; left:16px; padding:3px; position:absolute;">
-      <img v-lazy="'http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80'" style="width:100%; height:100%;"/>
+  <div class="comment-cell">
+    <router-link class="comment-cell-user box-show" to="/user">
+      <img v-lazy="'http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80'" class="comment-cell-user-img" />
     </router-link>
 
-    <div style="width:100%;">
-      <p style="word-break:break-all; line-height:1.38em; color:#CDD;">
-        <router-link to="/user" style="float:left; color:#00d8ff;">JesBrian</router-link>：rdctfvygrdchjrdctfvygubhjrdctfvygrdchjrdctfvygubhj
-      </p>
+    <p class="comment-cell-content">
+      <router-link to="/user" class="comment-cell-user-link">JesBrian</router-link>
+      ：rdctfvygrdchjrdctfvygubhjrdctfvygrdchjrdctfvygubhj
+    </p>
 
-      <p style="margin-top:10px; text-align:right; font-size:13px;">
-        <span style="float:left; font-size:15px;">2018-09-30 12:12</span>
+    <p class="comment-cell-info">
+      <span class="comment-cell-info-time">2018-09-30 12:12</span>
 
-        <span class="repost-button" style="padding:0 13px; border-right:1px solid #383838;">
-          <span style="cursor:pointer;">举报</span>
-        </span>
-        <span style="padding:0 13px; border-right:1px solid #383838;">
-          <span @click="changeLike" style="cursor:pointer;"><i class="mh-if add-collection" style="margin-right:3px;"></i>123132</span>
-        </span>
-        <span style="padding:0 13px; border-right:1px solid #383838;">
-          <span @click="showModal('Share')" style="cursor:pointer;">分享</span>
-        </span>
-        <span class="reply-button" style="padding:0 13px;">
-          <span @click="replyComment" style="cursor:pointer;">回复</span>
-        </span>
-      </p>
+      <span class="comment-cell-info-operation">
+        <i class="mh-if horn"></i>举报</span>
+      <span class="comment-cell-info-operation">
+        <i class="mh-if add-collection"></i>123132
+      </span>
+      <span @click="showModal('Share')" class="comment-cell-info-operation">
+        <i class="mh-if share"></i>分享</span>
+      <span @click="replyComment" class="comment-cell-info-operation">
+        <i class="mh-if feedback"></i>回复</span>
+    </p>
+
+    <div v-if="isShowReplyContent" style="margin-top:18px;">
+      <create-comment />
     </div>
 
-    <!--<new-comment v-if="isShowReplyContent" />-->
   </div>
 </template>
 
 <script>
+import CreateComment from './CreateComment.vue'
+
 export default {
   name: 'CommentCell',
+
+  components: {
+    CreateComment
+  },
+
+  data () {
+    return {
+      isShowReplyContent: false
+    }
+  },
 
   methods: {
     changeLike () {
     },
+
     showModal (modalType) {
       this.$store.commit('CHANGE_MODAL_TYPE', modalType)
     },
+
     replyComment () {
+      this.$emit('hiddenOtherReplyContent', this)
+      this.isShowReplyContent = !this.isShowReplyContent
     }
   }
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  .comment-cell {
+    color:#999; padding:13px 0 16px 68px; position:relative;
 
+    &-user {
+      width:40px; height:38px; top:16px; left:16px; padding:3px; position:absolute;
+      &-img {
+        width:100%; height:100%;
+      }
+      &-link {
+        float:left; color:#00d8ff;
+      }
+    }
+
+    &-content {
+      word-break:break-all; line-height:1.38em; color:#CDD;
+    }
+
+    &-info {
+      margin-top:10px; text-align:right; font-size:13px;
+
+      &-time {
+        float:left; font-size:15px;
+      }
+      &-operation {
+        padding:0 10px 0 8px; border-right:1px solid #383838; cursor:pointer;
+
+        > .mh-if {
+          margin-right:2px; font-size:16px;
+        }
+
+        &:last-child {
+          border:none;
+        }
+        &:hover {
+          color:#DDD;
+        }
+        &:active, &.active {
+          color:#00D8FF;
+        }
+      }
+    }
+  }
 </style>
