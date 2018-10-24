@@ -7,7 +7,7 @@
 
     <!-- 播放器主控制 -->
     <div :class="{'show-unlock' : !musicPlayShow}" class="music-play-controller glass-bg box-show">
-      <!--<div style="width:28px; border:8px solid; border-bottom:18px solid; border-color:transparent transparent rgba(18,18,18, 0.8) transparent; top:-26px; right:38px; position:absolute; z-index:-1; opacity:0.96;"></div>-->
+      <!--<div Style="width:28px; border:8px solid; border-bottom:18px solid; border-color:transparent transparent rgba(18,18,18, 0.8) transparent; top:-26px; right:38px; position:absolute; z-index:-1; opacity:0.96;"></div>-->
       <div @click="changeShowMusicPlay" style="width:28px; border:8px solid; border-bottom:18px solid; border-color:transparent transparent rgba(18,18,18, 0.8) transparent; top:-26px; right:38px; position:absolute; z-index:-1; opacity:0.96;">
         <i :class="musicPlayShow ? 'lock' : 'unlock'" class="mh-if" style="bottom:-17px; right:6px; position:absolute;"></i>
       </div>

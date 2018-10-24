@@ -44,7 +44,7 @@
 
 <script>
 import Pagination from '../../../../components/common/Pagination/Pagination.vue'
-import IndexPlayListStyle from '../../../../components/frontend/style/IndexPlayListStyle.vue'
+import IndexPlayListStyle from '../../../../components/frontend/Style/IndexPlayListStyle.vue'
 
 export default {
   name: 'album',
