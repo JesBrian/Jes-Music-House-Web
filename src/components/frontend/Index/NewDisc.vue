@@ -11,16 +11,16 @@
 
         <transition-group name="list-complete" tag="div" mode="in-out" style="overflow:hidden;">
           <div v-for="item in discList" :key="item.id" class="new-disc-cell list-complete-item" style="width:20%; height:100%; display:inline-block; text-align:center; z-index:5; overflow:hidden;">
-            <router-link to="playList" style="margin:6px 0 0 6px; position:relative; display:inline-block;">
+            <router-link to="/play-list/song-group/1" style="margin:6px 0 0 6px; position:relative; display:inline-block;">
               <img v-lazy="item.img" style="width:65px; height:65px; top:5px; left:5px; position:absolute;"/>
               <img src="../../../../static/img/default/disc.png" style="width:88px; height:75px;"/>
             </router-link>
             <!--<i class="mh-if play"></i>-->
             <p class="text-hidden" style="margin-left:12px; padding-right:8px; text-align:left;">
-              <router-link to="playList" style="font-size:14.5px; color:#BBB;">{{ item.name }}</router-link>
+              <router-link to="/play-list/song-group/1" style="font-size:14.5px; color:#BBB;">{{ item.name }}</router-link>
             </p>
             <p class="text-hidden" style="margin-left:12px; padding-right:8px; text-align:left;">
-              <router-link to="singer" style="font-size:12.3px; color:#999;">{{ item.id + ' / ' + item.singer }}</router-link>
+              <router-link to="/singer-detail/hot-song/1" style="font-size:12.3px; color:#999;">{{ item.id + ' / ' + item.singer }}</router-link>
             </p>
           </div>
         </transition-group>

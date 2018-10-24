@@ -9,21 +9,44 @@
         <i class="user-music-category-cell-logo mh-if singer" ></i>
         <span class="user-music-category-cell-label">收藏的歌手</span>
       </div>
-      <div @click="changeType('create-play-list')"
+
+      <div @click="showSecondMenu('create-play-list')"
            :class="{active: type === 'create-play-list'}"
            class="user-music-category-cell box-shadow">
         <i class="user-music-category-cell-logo mh-if redis" ></i>
         <span class="user-music-category-cell-label">创建的歌单</span>
 
-        <div @click.stop="showModal('Collection')" class="super-btn-out">
+        <div @click.stop="showModal('CreatePlayList')" class="super-btn-out">
           <i class="super-btn-in mh-if add-collection"></i>
         </div>
+
+        <i :class="createActive ? 'double-arrow-down' : 'double-arrow-up'" class="show-btn mh-if"></i>
       </div>
-      <div @click="changeType('collection-play-list')"
+      <div v-if="createActive" class="box-shadow">
+        <div v-for="n in 4" :key="n + '881'" class="play-list-cell box-shadow" >
+          <img class="play-list-cell-img" src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80" />
+          <div class="play-list-cell-info" >
+            <p class="play-list-cell-title">我喜欢的音乐</p>
+            <p class="play-list-cell-other">66 首</p>
+          </div>
+        </div>
+      </div>
+
+      <div @click="showSecondMenu('collection-play-list')"
            :class="{active: type === 'collection-play-list'}"
            class="user-music-category-cell box-shadow">
         <i class="user-music-category-cell-logo mh-if add-collection" ></i>
         <span class="user-music-category-cell-label">收藏的歌单</span>
+        <i :class="collectionActive ? 'double-arrow-down' : 'double-arrow-up'" class="show-btn mh-if"></i>
+      </div>
+      <div v-if="collectionActive" class="box-shadow">
+        <div v-for="n in 108" :key="n + '882'" class="play-list-cell box-shadow" >
+          <img class="play-list-cell-img" src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80" />
+          <div class="play-list-cell-info" >
+            <p class="play-list-cell-title">我喜欢的音乐</p>
+            <p class="play-list-cell-other">66 首</p>
+          </div>
+        </div>
       </div>
       <div class="box-shadow"></div>
     </div>
@@ -102,6 +125,8 @@ export default {
   data () {
     return {
       type: 'collection-singer',
+      createActive: false,
+      collectionActive: false,
 
       isShowDescriptionBtn: false,
       isShowDescription: false
@@ -119,6 +144,14 @@ export default {
       this.type = type
     },
 
+    showSecondMenu (type) {
+      if (type === 'create-play-list') {
+        this.createActive = !this.createActive
+      } else {
+        this.collectionActive = !this.collectionActive
+      }
+    },
+
     showModal (modalType) {
       this.$store.commit('CHANGE_MODAL_TYPE', modalType)
     }
@@ -130,18 +163,35 @@ export default {
 
   #homeLayout {
     min-height:100%; display:flex;
+
+    .play-list-cell {
+      width:98%; height:38px; margin:0 auto; display:flex; align-items:center;
+
+      &-img {
+        width:28px; height:28px; margin:0 8px 0 3px; border-radius:3px;
+      }
+      &-info {
+        box-sizing:border-box;
+      }
+      &-title {
+        margin-bottom:2px; font-size:14px;
+      }
+      &-other {
+        font-size:12px;
+      }
+    }
   }
 
   .user-music-category {
     &-container {
-      width:20%; height:100%; padding-top:38px;
+      width:20%; height:100%; padding:38px 0 3px;
     }
 
     &-cell {
-      width:100%; height:43px; display:flex; flex-direction:row; align-items:center; cursor:pointer;
+      width:100%; height:43px; position:relative; display:flex; flex-direction:row; align-items:center; cursor:pointer;
 
       &-logo {
-        margin:0 8px 0 18px; font-size:19px;
+        margin:0 8px 0 13px; font-size:19px;
       }
       &-label {
         color:#AAA;
@@ -158,10 +208,15 @@ export default {
       }
 
       > .super-btn-out {
-        width:28px; height:28px; margin-left:38px;
+        width:23px; height:23px; margin-left:18px;
         > .super-btn-in {
-          width:22px; height:22px;
+          width:18px; height:18px;
         }
+      }
+
+      > .show-btn {
+        right:8px;
+        position:absolute;
       }
     }
   }
