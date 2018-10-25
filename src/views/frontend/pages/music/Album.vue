@@ -12,29 +12,15 @@
                               :style-list="styleList" :now-style-id="styleId" />
         </div>
 
-        <div style="width:108px; height:32px; margin-top:30px; float:right; display:flex; text-align:center; line-height:28.8px; font-weight:700; cursor:pointer;">
-          <div @click="changeContentType('hot')" :class="contentType === 'hot' ? 'cube-bg' : 'glass-bg'" class="box-show" style="flex:1; border-radius:5px 0 0 5px; text-shadow:1px 1px 2px #000;">热门</div>
-          <div @click="changeContentType('new')" :class="contentType === 'new' ? 'cube-bg' : 'glass-bg'" class="box-show" style="flex:1; border-radius:0 5px 5px 0; text-shadow:1px 1px 2px #000;">最新</div>
+        <div class="choose-type-container">
+          <div @click="changeContentType('hot')" :class="contentType === 'hot' ? 'cube-bg' : 'glass-bg'"
+               class="choose-type-btn left box-show">热门</div>
+          <div @click="changeContentType('new')" :class="contentType === 'new' ? 'cube-bg' : 'glass-bg'"
+               class="choose-type-btn right box-show">最新</div>
         </div>
       </div>
 
-      <ul style="width:93%; margin:0 auto;">
-        <li v-for="n in 30" :key="n + 99" style="width:20%; height:188px; margin:0; padding:0; position:relative; display:inline-block;">
-          <router-link to="/play-list/song-group/1" class="cube-bg box-show" style="width:118px; height:118px; margin:0 0 8px 23px; padding:2px; position:relative; display:inline-block;">
-            <img v-lazy="'http://p1.music.126.net/7goVc5XONBxnSS5FiGtV9A==/18999560928548815.jpg?param=140y140'" style="width:100%; height:100%;"/>
-            <div class="glass-bg" style="width:120px; height:24px; left:-2px; bottom:-1px; padding:0 8px; position:absolute; border-radius:0; opacity:0.9; line-height:21px; font-size:14px; color:#999;">
-              <i class="mh-if headphone" style="margin:1px 3px 0 0; float:left;"></i>5656
-            </div>
-          </router-link>
-          <i @click="playThisPlayList" class="mh-if play"></i>
-          <p class="text-hidden" style="width:118px; margin-left:23px; color:#DDD;">
-            <router-link to="/play-list/song-group/1" style="color:#DDD;">c4s成8识vg删除yr54</router-link>
-          </p>
-          <p class="text-hidden" style="width:118px; margin-left:23px; line-height:2em; color:#888; font-size:13.3px;">
-            <span style="float:left; margin:-1px 8px 0 0;">by</span><router-link to="singer" style="color:#AAA;">JesBrian</router-link>
-          </p>
-        </li>
-      </ul>
+      <play-list-group :play-list-data="playList" />
 
       <!-- 分页组件 -->
       <pagination />
@@ -43,14 +29,15 @@
 </template>
 
 <script>
-import Pagination from '../../../../components/common/Pagination/Pagination.vue'
 import IndexPlayListStyle from '../../../../components/frontend/Style/IndexPlayListStyle.vue'
+import PlayListGroup from '../../../../components/frontend/PlayList/PlayListGroup.vue'
+import Pagination from '../../../../components/common/Pagination/Pagination.vue'
 
 export default {
   name: 'album',
 
   components: {
-    IndexPlayListStyle, Pagination
+    IndexPlayListStyle, PlayListGroup, Pagination
   },
 
   data () {
@@ -59,7 +46,39 @@ export default {
       styleLabel: this.$route.params['label'],
       contentType: this.$route.params['type'],
       styleList: [],
-      showAlbumTypeContent: false
+      showAlbumTypeContent: false,
+      playList: [
+        {id: 111, title: 'play-list-111'},
+        {id: 222, title: 'play-list-222'},
+        {id: 333, title: 'play-list-333'},
+        {id: 444, title: 'play-list-444'},
+        {id: 555, title: 'play-list-555'},
+        {id: 666, title: 'play-list-666'},
+        {id: 777, title: 'play-list-777'},
+        {id: 888, title: 'play-list-888'},
+        {id: 999, title: 'play-list-999'},
+        {id: 101010, title: 'play-list-101010'},
+        {id: 1111, title: 'play-list-1111'},
+        {id: 1222, title: 'play-list-1222'},
+        {id: 1333, title: 'play-list-1333'},
+        {id: 1444, title: 'play-list-1444'},
+        {id: 1555, title: 'play-list-1555'},
+        {id: 1666, title: 'play-list-1666'},
+        {id: 1777, title: 'play-list-1777'},
+        {id: 1888, title: 'play-list-1888'},
+        {id: 1999, title: 'play-list-1999'},
+        {id: 1101010, title: 'play-list-1101010'},
+        {id: 11111, title: 'play-list-11111'},
+        {id: 11222, title: 'play-list-11222'},
+        {id: 11333, title: 'play-list-11333'},
+        {id: 11444, title: 'play-list-11444'},
+        {id: 11555, title: 'play-list-11555'},
+        {id: 11666, title: 'play-list-11666'},
+        {id: 11777, title: 'play-list-11777'},
+        {id: 11888, title: 'play-list-11888'},
+        {id: 11999, title: 'play-list-11999'},
+        {id: 11101010, title: 'play-list-11101010'}
+      ]
     }
   },
 
@@ -120,14 +139,20 @@ export default {
 }
 </script>
 
-<style scoped>
-  li > .mh-if {
-    top:97px; left:121px; position:absolute; display:none;
-  }
-  li:hover > .mh-if {
-    display:inline-block;
-  }
-  li:hover > .mh-if:hover {
-    color:#20dbfc;
+<style lang="less" scoped>
+  .choose-type {
+    &-container {
+      width:108px; height:32px; margin-top:30px; float:right; display:flex; text-align:center; line-height:28.8px; font-weight:700; cursor:pointer;
+    }
+
+    &-btn {
+      flex:1; text-shadow:1px 1px 2px #000;
+      &.left {
+        border-radius:6px 0 0 6px;
+      }
+      &.right {
+        border-radius:0 6px 6px 0;
+      }
+    }
   }
 </style>

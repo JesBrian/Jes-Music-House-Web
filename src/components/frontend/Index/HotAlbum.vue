@@ -1,44 +1,51 @@
 <template>
-  <div>
-    <div style="width:93%; height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;">
-      <i class="mh-if hot" style="margin-right:8px; color:#00d8ff; font-size:32px;"></i>
-      <span style="font-size:23px; font-weight:700;">热门推荐</span>
-      <p style="margin:5px 0 0 28px; display:inline-block; font-size:14px;">
-        <router-link to="/album/华语/hot" style="color:#999;">华语</router-link>
-        <i style="margin:0 8px; color:#333;">|</i>
-        <router-link to="/album/流行/hot" style="color:#999;">流行</router-link>
-        <i style="margin:0 8px; color:#333;">|</i>
-        <router-link to="/album/摇滚/hot" style="color:#999;">摇滚</router-link>
-        <i style="margin:0 8px; color:#333;">|</i>
-        <router-link to="/album/民谣/hot" style="color:#999;">民谣</router-link>
-        <i style="margin:0 8px; color:#333;">|</i>
-        <router-link to="/album/电子/hot" style="color:#999;">电子</router-link>
+  <div class="hot-album">
+    <div class="hot-album-nav">
+      <i class="hot-album-nav-icon mh-if hot"></i>
+      <span class="hot-album-nav-title">热门推荐</span>
+      <p class="hot-album-nav-links">
+        <router-link to="/album/华语/hot" class="hot-album-nav-link">华语</router-link>
+        <i class="hot-album-nav-link-split">|</i>
+        <router-link to="/album/流行/hot" class="hot-album-nav-link">流行</router-link>
+        <i class="hot-album-nav-link-split">|</i>
+        <router-link to="/album/摇滚/hot" class="hot-album-nav-link">摇滚</router-link>
+        <i class="hot-album-nav-link-split">|</i>
+        <router-link to="/album/民谣/hot" class="hot-album-nav-link">民谣</router-link>
+        <i class="hot-album-nav-link-split">|</i>
+        <router-link to="/album/电子/hot" class="hot-album-nav-link">电子</router-link>
       </p>
-      <router-link to="/album" class="read-more">更多 <i class="mh-if double-arrow-right"></i></router-link>
+      <router-link to="/album" class="hot-album-nav-read-more">更多 <i class="mh-if double-arrow-right"></i></router-link>
     </div>
-    <ul style="width:93%; margin:0 auto;">
-      <li v-for="n in 8" :key="n + 99" style="width:25%; height:188px; margin:0; padding:0; position:relative; display:inline-block;">
-        <router-link to="/play-list/song-group/1" class="cube-bg box-show" style="width:118px; height:118px; margin:0 0 8px 23px; padding:2px; position:relative; display:inline-block;">
-          <img v-lazy="'http://p1.music.126.net/7goVc5XONBxnSS5FiGtV9A==/18999560928548815.jpg?param=140y140'" style="width:100%; height:100%;"/>
-          <div class="glass-bg" style="width:120px; height:24px; left:-2px; bottom:-1px; padding:0 8px; position:absolute; border-radius:0; opacity:0.9; line-height:21px; font-size:14px; color:#999;">
-            <i class="mh-if headphone" style="margin:1px 3px 0 0; float:left;"></i>5656
-          </div>
-        </router-link>
-        <i @click="playThisPlayList" class="mh-if play"></i>
-        <p class="text-hidden" style="width:118px; margin-left:23px; color:#DDD;">
-          <router-link to="/play-list/song-group/1" style="color:#DDD;">c4s成8识vg删除yr54</router-link>
-        </p>
-        <p class="text-hidden" style="width:118px; margin-left:23px; line-height:2em; color:#888; font-size:13.3px;">
-          <span style="float:left; margin:-1px 8px 0 0;">by</span><router-link to="singer" style="color:#AAA;">JesBrian</router-link>
-        </p>
-      </li>
-    </ul>
+
+    <play-list-group :play-list-data="playList" />
+
   </div>
 </template>
 
 <script>
+import PlayListGroup from '../PlayList/PlayListGroup.vue'
+
 export default {
   name: 'HotAlbum',
+
+  components: {
+    PlayListGroup
+  },
+
+  data () {
+    return {
+      playList: [
+        {id: 111, title: 'play-list-111'},
+        {id: 222, title: 'play-list-222'},
+        {id: 333, title: 'play-list-333'},
+        {id: 444, title: 'play-list-444'},
+        {id: 555, title: 'play-list-555'},
+        {id: 666, title: 'play-list-666'},
+        {id: 777, title: 'play-list-777'},
+        {id: 888, title: 'play-list-888'}
+      ]
+    }
+  },
 
   methods: {
     playThisPlayList () {
@@ -47,29 +54,42 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 
-  li > .mh-if {
-    top:97px; left:121px; position:absolute; display:none;
-  }
-  li:hover>.mh-if {
-    display:inline-block;
-  }
-  li:hover>.mh-if:hover {
-    color:#20dbfc;
-  }
+  .hot-album {
+    &-nav {
+      width:93%; height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;
+      &-icon {
+        margin-right:8px; color:#00d8ff; font-size:32px;
+      }
+      &-title {
+        font-size:23px; font-weight:700;
+      }
+      &-links {
+        margin:5px 0 0 28px; display:inline-block; font-size:14px;
+      }
+      &-link {
+        color:#999;
+        &:hover {
+          color:#DDD;
+        }
+        &-split {
+          margin:0 8px; color:#333;
+        }
+      }
+      &-read-more {
+        margin-top:46px; float:right; font-size:13px; color:#888; line-height:1em;
+        &:hover {
+          color:#EEE; text-decoration:underline;
+          > .mh-if {
+            color: #20dbfc;
+          }
+        }
 
-  .read-more {
-    margin-top:46px; float:right; font-size:13px; color:#888; line-height:1em;
-  }
-  .read-more:hover {
-    color:#EEE;
-    text-decoration:underline;
-  }
-  .read-more > .mh-if {
-    font-size:12.5px;
-  }
-  .read-more:hover > .mh-if {
-    color: #20dbfc;
+        > .mh-if {
+          font-size:12.5px;
+        }
+      }
+    }
   }
 </style>
