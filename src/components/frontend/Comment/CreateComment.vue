@@ -1,14 +1,14 @@
 <template>
-  <div>
-    <textarea v-model="comment" class="cube-bg box-show glow-input" style="width:100%; height:82px; resize:none;" placeholder="评论"></textarea>
-    <div style="width:100%; height:38px; padding:0 0 0 8px; box-sizing:border-box; line-height:36px;">
+  <div class="create-comment">
+    <textarea v-model="comment" class="cube-bg box-show glow-input" placeholder="评论"></textarea>
+    <div class="create-comment-operation">
       <emoji-button @sendEmoji="changeShowEmojiContent" />
 
-      <div class="super-btn-out ripple" style="width:68px; height:27px; margin:6px 8px 0 0; float:right;">
-        <span class="super-btn-in mh-if comment" style="width:60px; height:20px; line-height:22px;"> 评论</span>
+      <div class="super-btn-out ripple">
+        <span class="super-btn-in mh-if comment"> 评论</span>
       </div>
 
-      <span style="margin:3px 18px; float:right;">{{ commentNums }}</span>
+      <span class="create-comment-num">{{ commentNums }}</span>
 
       <emoji-content v-if="isShowEmojiContent" />
     </div>
@@ -58,6 +58,29 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  .create-comment {
+    width:100%;
 
+    > .glow-input {
+      width:100%; height:82px; resize:none;
+    }
+
+    &-operation {
+      width:100%; height:38px; padding:0 0 0 8px; box-sizing:border-box; line-height:36px;
+
+      .super-btn {
+        &-out {
+          width:68px; height:28px; margin:6px 8px 0 0; float:right;
+        }
+        &-in {
+          width:60px; height:22px;
+        }
+      }
+    }
+
+    &-num {
+      margin:3px 18px; float:right;
+    }
+  }
 </style>

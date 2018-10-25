@@ -1,7 +1,8 @@
 <template>
   <div class="comment-cell">
     <router-link class="comment-cell-user box-show" to="/user">
-      <img v-lazy="'http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80'" class="comment-cell-user-img" />
+      <img v-lazy="'http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80'"
+           class="comment-cell-user-img" />
     </router-link>
 
     <p class="comment-cell-content">

@@ -1,15 +1,15 @@
 <template>
-  <div style="padding:0 3%; box-sizing:border-box;">
+  <div class="comment-total">
     <new-comment />
 
-    <div style="width:100%; margin-top:18px;">
-      <div style="height:53px; margin:0 auto; padding:0 23px; box-sizing:border-box; box-shadow:0 3px 3px -3px #999; line-height:68px; text-shadow:1px 1px 0.5px #000;">
-        <span style="font-size:16px; color:#CCC;">精彩评论</span>
+    <div class="comment-container">
+      <div class="comment-group-title">
+        <span class="comment-group-title-label">精彩评论</span>
       </div>
       <comment-group />
 
-      <div style="height:53px; margin:0 auto; padding:0 23px; box-sizing:border-box; box-shadow:0 3px 3px -3px #999; line-height:68px; text-shadow:1px 1px 0.5px #000;">
-        <span style="font-size:16px; color:#CCC;">最新评论</span>
+      <div class="comment-group-title">
+        <span class="comment-group-title-label">最新评论</span>
       </div>
       <comment-group />
 
@@ -32,6 +32,21 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  .comment {
+    &-total {
+      padding:0 3%; box-sizing:border-box;
+    }
 
+    &-container {
+      width:100%; margin-top:18px;
+    }
+
+    &-group-title {
+      height:53px; margin:0 auto; padding:0 23px; box-sizing:border-box; box-shadow:0 3px 3px -3px #999; line-height:68px; text-shadow:1px 1px 0.5px #000;
+      &-label {
+        font-size:16px; color:#CCC;
+      }
+    }
+  }
 </style>
