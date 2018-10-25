@@ -1,61 +1,33 @@
 <template>
   <div id="homeLayout">
-    <div style="padding:0 58px 28px; box-sizing:border-box;">
-
-      <div style="width:100%; height:80px; margin-bottom:28px; padding:0 68px; box-sizing:border-box; box-shadow:0 2px 3px -3px #FFF; line-height:88px;">
-        <span style="float:left; font-size:32px; font-weight:700;">热门新碟</span>
-      </div>
-
-      <ul style="width:93%; margin:0 auto;">
-        <li v-for="n in 25" :key="n + 99" style="width:20%; height:228px; margin:0; padding:0; position:relative; display:inline-block;">
-          <router-link to="/play-list/song-group/1" style="width:139px; height:119px; margin:0 20px; position:relative; display:inline-block;">
-            <img v-lazy="'http://p3.music.126.net/w_GpzV7fky3gOgIf4-gC4Q==/109951163241853988.jpg?param=130y130'" style="width:108px; height:108px; top:5px; left:6px; position:absolute;"/>
-            <img src="../../../../../static/img/default/disc.png" style="width:100%; height:100%;"/>
-          </router-link>
-          <i @click="playThisPlayList" class="mh-if play"></i>
-          <p class="text-hidden" style="width:138px; margin-left:23px; color:#DDD;">
-            <router-link to="/play-list/song-group/1" style="color:#DDD;">c4s成8识vg删除yr54</router-link>
-          </p>
-          <p class="text-hidden" style="width:138px; margin-left:23px; line-height:2em; color:#888; font-size:13.3px;">
-            <span style="float:left; margin:-1px 8px 0 0;">by</span><router-link to="singer" style="color:#AAA;">JesBrian</router-link>
-          </p>
-        </li>
-      </ul>
-
-      <div style="width:100%; height:80px; margin-bottom:28px; padding:0 68px; box-sizing:border-box; box-shadow:0 2px 3px -3px #FFF; line-height:88px;">
-        <span style="float:left; font-size:32px; font-weight:700;">全部新碟</span>
-      </div>
-
-      <ul style="width:93%; margin:0 auto 18px;">
-        <li v-for="n in 25" :key="n + 99" style="width:20%; height:228px; margin:0; padding:0; position:relative; display:inline-block;">
-          <router-link to="/play-list/song-group/1" style="width:139px; height:119px; margin:0 20px; position:relative; display:inline-block;">
-            <img v-lazy="'http://p3.music.126.net/w_GpzV7fky3gOgIf4-gC4Q==/109951163241853988.jpg?param=130y130'" style="width:108px; height:108px; top:5px; left:6px; position:absolute;"/>
-            <img src="../../../../../static/img/default/disc.png" style="width:100%; height:100%;"/>
-          </router-link>
-          <i @click="playThisPlayList" class="mh-if play"></i>
-          <p class="text-hidden" style="width:138px; margin-left:23px; color:#DDD;">
-            <router-link to="/play-list/song-group/1" style="color:#DDD;">c4s成8识vg删除yr54</router-link>
-          </p>
-          <p class="text-hidden" style="width:138px; margin-left:23px; line-height:2em; color:#888; font-size:13.3px;">
-            <span style="float:left; margin:-1px 8px 0 0;">by</span><router-link to="singer" style="color:#AAA;">JesBrian</router-link>
-          </p>
-        </li>
-      </ul>
-
-      <!-- 分页组件 -->
-      <pagination />
+    <div class="disc-title">
+      <span class="disc-title-label">热门新碟</span>
     </div>
+    <disc-list-group />
+
+    <div class="disc-title">
+      <span class="disc-title-label">全部新碟</span>
+    </div>
+    <disc-list-group />
+
+    <!-- 分页组件 -->
+    <pagination />
   </div>
 </template>
 
 <script>
+import DiscListGroup from '../../../../components/frontend/Disc/DiscListGroup.vue'
 import Pagination from '../../../../components/common/Pagination/Pagination.vue'
 
 export default {
   name: 'Disc',
 
   components: {
-    Pagination
+    DiscListGroup, Pagination
+  },
+
+  data () {
+    return {}
   },
 
   methods: {
@@ -65,14 +37,14 @@ export default {
 }
 </script>
 
-<style scoped>
-  li > .mh-if {
-    top:88px; left:108px; position:absolute; font-size:25px; display:none;
+<style lang="less" scoped>
+  #homeLayout {
+    padding:0 58px 28px; box-sizing:border-box;
   }
-  li:hover > .mh-if {
-    display:inline-block;
-  }
-  li:hover > .mh-if:hover {
-    color:#20dbfc;
+  .disc-title {
+    width:100%; height:80px; margin-bottom:28px; padding:0 68px; box-sizing:border-box; box-shadow:0 2px 3px -3px #FFF; line-height:88px;
+    &-label {
+      float:left; font-size:32px; font-weight:700;
+    }
   }
 </style>

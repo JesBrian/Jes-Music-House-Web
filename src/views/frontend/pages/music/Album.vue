@@ -1,30 +1,28 @@
 <template>
   <div id="homeLayout">
-    <div style="padding:0 58px 28px; box-sizing:border-box;">
-      <div style="width:100%; height:80px; margin-bottom:28px; padding:0 68px; box-sizing:border-box; box-shadow:0 2px 3px -3px #FFF; line-height:88px;">
-        <span style="float:left; font-size:32px; font-weight:700;">{{ styleLabel }}</span>
-        <div style="width:128px; height:36px; margin:15px 28px 0; position:relative; display:inline-block;">
-          <div @click="changeShowPlayListStyleContent" class="super-btn-out ripple" style="width:100%; height:100%;">
-            <span class="super-btn-in" style="width:118px; height:27px; line-height:27px;">选择分类&nbsp;<i class="mh-if double-arrow-down"></i></span>
-          </div>
-
-          <IndexPlayListStyle v-if="showAlbumTypeContent" @changePlayListStyle="changePlayListStyle"
-                              :style-list="styleList" :now-style-id="styleId" />
+    <div class="album-title-container">
+      <span class="album-title-label">{{ styleLabel }}</span>
+      <div class="album-title-chooser">
+        <div @click="changeShowPlayListStyleContent" class="super-btn-out ripple">
+          <span class="super-btn-in">选择分类&nbsp;<i class="mh-if double-arrow-down"></i></span>
         </div>
 
-        <div class="choose-type-container">
-          <div @click="changeContentType('hot')" :class="contentType === 'hot' ? 'cube-bg' : 'glass-bg'"
-               class="choose-type-btn left box-show">热门</div>
-          <div @click="changeContentType('new')" :class="contentType === 'new' ? 'cube-bg' : 'glass-bg'"
-               class="choose-type-btn right box-show">最新</div>
-        </div>
+        <IndexPlayListStyle v-if="showAlbumTypeContent" @changePlayListStyle="changePlayListStyle"
+                            :style-list="styleList" :now-style-id="styleId" />
       </div>
 
-      <play-list-group :play-list-data="playList" />
-
-      <!-- 分页组件 -->
-      <pagination />
+      <div class="choose-type-container">
+        <div @click="changeContentType('hot')" :class="contentType === 'hot' ? 'cube-bg' : 'glass-bg'"
+             class="choose-type-btn left box-show">热门</div>
+        <div @click="changeContentType('new')" :class="contentType === 'new' ? 'cube-bg' : 'glass-bg'"
+             class="choose-type-btn right box-show">最新</div>
+      </div>
     </div>
+
+    <play-list-group :play-list-data="playList" />
+
+    <!-- 分页组件 -->
+    <pagination />
   </div>
 </template>
 
@@ -140,6 +138,30 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  #homeLayout {
+    padding:0 58px 28px; box-sizing:border-box;
+  }
+
+  .album-title {
+    &-container {
+      width:100%; height:80px; margin-bottom:28px; padding:0 68px; box-sizing:border-box; box-shadow:0 2px 3px -3px #FFF; line-height:88px;
+    }
+    &-label {
+      float:left; font-size:32px; font-weight:700;
+    }
+    &-chooser {
+      width:128px; height:36px; margin:15px 28px 0; position:relative; display:inline-block;
+      .super-btn {
+        &-out {
+          width:100%; height:100%;
+        }
+        &-in {
+          width:118px; height:27px;
+        }
+      }
+    }
+  }
+
   .choose-type {
     &-container {
       width:108px; height:32px; margin-top:30px; float:right; display:flex; text-align:center; line-height:28.8px; font-weight:700; cursor:pointer;
