@@ -3,7 +3,7 @@
     <router-link to="/play-list/song-group/1" class="play-list-cell-post cube-bg box-show">
       <img v-lazy="'http://p1.music.126.net/7goVc5XONBxnSS5FiGtV9A==/18999560928548815.jpg?param=140y140'" class="play-list-cell-img"/>
       <div class="play-list-cell-num glass-bg">
-        <i class="mh-if headphone" style="margin:1px 3px 0 0; float:left;"></i>5656
+        <i class="mh-if headphone"></i>5656
       </div>
     </router-link>
     <i @click="playThisPlayList" class="play-btn mh-if play"></i>
@@ -11,7 +11,8 @@
       <router-link to="/play-list/song-group/1" style="color:#DDD;">{{ playList.title }}</router-link>
     </p>
     <p class="text-hidden" style="width:118px; margin-left:23px; line-height:2em; color:#888; font-size:13.3px;">
-      <span style="float:left; margin:-1px 8px 0 0;">by</span><router-link to="singer" style="color:#AAA;">JesBrian</router-link>
+      <span style="float:left; margin:-1px 8px 0 0;">by</span>
+      <router-link to="/singer-detail/hot-song/1" style="color:#AAA;">JesBrian</router-link>
     </p>
   </div>
 </template>
@@ -43,6 +44,9 @@ export default {
     }
     &-num {
       width:120px; height:24px; left:-1px; bottom:-1px; padding:0 8px; position:absolute; border-radius:0; opacity:0.9; line-height:21px; font-size:14px; color:#999;
+      > .headphone {
+        margin:1px 3px 0 0; float:left;
+      }
     }
 
     > .play-btn {
