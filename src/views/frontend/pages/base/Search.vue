@@ -2,9 +2,9 @@
   <div id="homeLayout">
 
     <div class="search-container box-show">
-      <div style="width:100%; margin:0 auto 10px; padding-top:28px; box-shadow:0 4px 3px -3px #00d8ff; text-align:center; border-bottom:1px solid #00d8ff; line-height:27px; font-weight:700;">
-        <p style="margin-right:8px; text-align:right; color:#CCC; font-size:14px;">
-          搜索 " <span style="color:#00d8ff; text-decoration:underline;">{{ searchKey }}</span> "，共找到 <span style="color:#00d8ff;">2222</span> 首单曲
+      <div class="search-type-container">
+        <p class="search-result-tips">
+          搜索 " <span class="search-result-tips-key">{{ searchKey }}</span> "，共找到 <span class="search-result-tips-num">2222</span> 首单曲
         </p>
 
         <div @click="changeSearchType('song')" :class="{'active' : searchType === 'song'}" class="super-btn-out ripple">
@@ -25,6 +25,7 @@
           <i @click="goSearch" class="mh-if search" style="top:2px; right:14px; position:absolute; z-index:5;"></i>
         </label>
       </div>
+
       <div class="search-result-container">
         <ul>
           <li v-for="n in 18" :key="n + 99" class="box-shadow">
@@ -52,7 +53,9 @@ import Pagination from '../../../../components/common/Pagination/Pagination.vue'
 export default {
   name: 'search',
 
-  components: {Pagination},
+  components: {
+    Pagination
+  },
 
   data () {
     return {
@@ -94,19 +97,32 @@ export default {
     > .search-result-container {
       width:98%; margin:6px auto 0;
     }
+
+    > .search-type-container {
+      width:100%; margin:0 auto 10px; padding-top:28px; box-shadow:0 4px 3px -3px #00d8ff; text-align:center; border-bottom:1px solid #00d8ff; line-height:27px; font-weight:700;
+
+      .search-result-tips {
+        margin-right:8px; text-align:right; color:#CCC; font-size:14px;
+        &-key {
+          color:#00d8ff; text-decoration:underline;
+        }
+        &-num {
+          color:#00d8ff;
+        }
+      }
+
+      .super-btn {
+        &-out {
+          width:88px; height:32px; margin:0 3px; display:inline-block;
+        }
+        &-in {
+          width:79px; height:23px;
+        }
+      }
+    }
   }
 
   .search-recommend-container {
     width:25%; height:100%; padding:34px 18px;
-  }
-
-  .super-btn-out {
-    width:88px; height:32px; margin:0 3px; display:inline-block;
-  }
-  .super-btn-out > .super-btn-in {
-    width:79px; height:23px; line-height:23.8px;
-  }
-  .super-btn-out.active > .super-btn-in {
-    line-height:22px;
   }
 </style>

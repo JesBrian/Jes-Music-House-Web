@@ -7,7 +7,8 @@
         <dt class="rank-category-container-title box-shadow">云音乐特色榜</dt>
 
         <dd v-for="item in rankListData" :key="item.id" class="box-shadow">
-          <router-link :to="`/rank/${item.id}`" :class="{active: item.id === Number($route.params['id'])}" class="rank-category-cell">
+          <router-link :to="`/rank/${item.id}`" :class="{active: item.id === Number($route.params['id'])}"
+                       class="rank-category-cell">
             <img v-lazy="item.logo" class="rank-category-cell-logo" />
             <span class="rank-category-cell-label">{{ item.name }}</span>
           </router-link>
