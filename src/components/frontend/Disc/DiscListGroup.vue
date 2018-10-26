@@ -1,5 +1,5 @@
 <template>
-  <div style="width:93%; margin:0 auto 18px;">
+  <div class="disc-list-group">
 
     <disc-list-cell v-for="n in 25" :key="n + 99" />
 
@@ -18,6 +18,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+  .disc-list-group {
+    width:93%; margin:0 auto 18px; display:flex; flex-wrap:wrap; justify-content:space-between;
+  }
 </style>
