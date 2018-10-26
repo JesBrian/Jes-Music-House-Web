@@ -72,28 +72,28 @@
              text-align:center; font-size:12.5px; line-height:20px; color:#666; text-shadow:2px 2px 6px #000;">{{ this.musicPlayList.length }}</span>
           </i>
         </div>
-
-        <div style="width:0; height:100%; margin:0; padding:0; float:right; display:inline-block; border-right:1px solid; border-image:linear-gradient(#181818, #1D1D1D, #080808, #1D1D1D, #181818) 1 1;"></div>
-        <div style="width:0; height:100%; margin:0; padding:0; float:right; display:inline-block; border-left:1px solid; border-image:linear-gradient(#181818, #1D1D1D, #444, #1D1D1D, #181818) 1 1;"></div>
       </div>
     </div>
 
     <!-- 播放列表内容区域 -->
-    <div v-if="musicPlayListContentShowStatus" class="glass-bg box-show" style="width:1028px; height:290px; left:50%; bottom:45px; position:absolute; transform:translate(-50%,0); z-index:-1; background:#151515; opacity:0.988; border-radius:8px 8px 0 0; color:#999;">
-      <div class="box-show" style="width:100%; height:38px; border-radius:8px 8px 0 0; line-height:40px; z-index:9;">
-        <div style="width:62%; height:100%; padding:0 2%; float:left; box-sizing:border-box;">
-          <span style="font-weight:700;">播放列表 [ {{ this.musicPlayList.length }} ]</span>
-          <div style="float:right;">
-            <a style="font-size:14px;"><i class="mh-if collection-music" style="margin:0 3px 0 18px;"></i>收藏全部</a>
-            <a @click="clearMusicPlayList" style="font-size:14px;"><i class="mh-if trash-2" style="margin:0 3px 0 18px;"></i>清空列表</a>
+    <div v-if="musicPlayListContentShowStatus" class="music-player-menu glass-bg box-show">
+      <div class="music-player-menu-title box-show">
+        <div class="music-player-menu-operation">
+          <span class="music-player-menu-operation-label">播放列表 [ {{ musicPlayList.length }} ]</span>
+          <div class="music-player-menu-operation-container">
+            <a @click="showModal('Collection')"><i class="mh-if collection-music"></i>收藏全部</a>
+            <a @click="clearMusicPlayList"><i class="mh-if trash-2"></i>清空列表</a>
           </div>
         </div>
-        <div style="width:38%; height:100%; float:right; position:relative; text-align:center;">
-          <p style="width:80%; height:100%; margin:0 auto; display:inline-block;">Name of the Song</p>
-          <i @click="changeMusicPlayListContentShowStatus" class="mh-if all-arrow" style="top:-3px; right:5px; position:absolute; font-size:20px;"></i>
+        <div class="music-player-menu-now-song">
+          <p class="music-player-menu-now-song-label">
+            {{ musicPlayList.length === 0 ? '' : musicPlayList[musicPlayListNowIndex].name }}
+          </p>
+          <i @click="changeMusicPlayListContentShowStatus" class="music-player-menu-close mh-if all-arrow"></i>
         </div>
       </div>
-      <div class="box-show" style="width:100%; height:250px; padding-bottom:2px; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727; font-size:14px;">
+
+      <div class="music-player-menu-container box-show">
 
         <!-- 歌曲列表 -->
         <music-player-list :now-index="musicPlayListNowIndex" :song-list="musicPlayList" />
@@ -495,7 +495,39 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  .music-player-menu {
+    width:1028px; height:290px; left:50%; bottom:45px; position:absolute; transform:translate(-50%,0); z-index:-1; background:#151515; opacity:0.988; border-radius:8px 8px 0 0; color:#999;
+
+    &-title {
+      width:100%; height:38px; border-radius:8px 8px 0 0; line-height:40px; z-index:9;
+    }
+    &-operation {
+      width:62%; height:100%; padding:0 2%; float:left; box-sizing:border-box;
+      &-label {
+        font-weight:700;
+      }
+      &-container {
+        float:right; font-size:14px;
+        .mh-if {
+          margin:0 3px 0 18px;
+        }
+      }
+    }
+    &-now-song {
+      width:38%; height:100%; float:right; position:relative; text-align:center;
+      &-label {
+        width:80%; height:100%; margin:0 auto; display:inline-block;
+      }
+    }
+    &-close {
+      top:-3px; right:5px; position:absolute; font-size:20px;
+    }
+    &-container {
+      width:100%; height:250px; padding-bottom:2px; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727; font-size:14px;
+    }
+  }
+
   .mh-if {
     color:#999; text-shadow: 0 0 6px #000;
   }

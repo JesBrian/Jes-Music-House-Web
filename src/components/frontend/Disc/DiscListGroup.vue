@@ -14,6 +14,15 @@ export default {
 
   components: {
     DiscListCell
+  },
+
+  props: {
+    discList: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
   }
 }
 </script>

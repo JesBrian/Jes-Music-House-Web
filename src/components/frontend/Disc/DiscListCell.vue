@@ -1,7 +1,8 @@
 <template>
   <div class="disc-list-cell">
     <router-link to="/play-list/song-group/1" class="disc-list-cell-post">
-      <img v-lazy="'http://p3.music.126.net/w_GpzV7fky3gOgIf4-gC4Q==/109951163241853988.jpg?param=130y130'" class="disc-list-cell-bg" />
+      <img v-lazy="'http://p3.music.126.net/w_GpzV7fky3gOgIf4-gC4Q==/109951163241853988.jpg?param=130y130'"
+           class="disc-list-cell-bg" />
       <img src="../../../../static/img/default/disc.png" class="disc-list-cell-img" />
     </router-link>
     <i @click="playThisPlayList" class="play-btn mh-if play"></i>
@@ -10,14 +11,29 @@
     </p>
     <p class="disc-list-cell-singer text-hidden">
       <span class="disc-list-cell-singer-label">by</span>
-      <router-link to="singer" class="disc-list-cell-singer-link">JesBrian</router-link>
+      <router-link to="/singer-detail/hot-song/1" class="disc-list-cell-singer-link">JesBrian</router-link>
     </p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'DiscListCell'
+  name: 'DiscListCell',
+
+  props: {
+    discData: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
+
+  methods: {
+    playThisPlayList () {
+      alert(88)
+    }
+  }
 }
 </script>
 
@@ -51,7 +67,7 @@ export default {
     }
 
     > .play-btn {
-      top:88px; left:110px; position:absolute; font-size:25px; display:none;
+      top:88px; left:109px; position:absolute; font-size:25px; display:none;
     }
     &:hover > .play-btn {
       display:inline-block;

@@ -1,7 +1,7 @@
 <template>
   <div id="homeLayout">
 
-    <div class="box-show" style="width:75%; height:100%; display:inline-block;">
+    <div class="singer-detail-left box-show">
       <!-- 歌手信息 -->
       <div style="width:96%; margin:28px auto 18px;">
         <div style="width:20%; height:100%; display:inline-block; text-align:center;">
@@ -26,18 +26,17 @@
       <!-- 歌手内容切换 -->
       <div style="height:32px; margin:28px auto 0; padding:0 3%; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; color:#BBB; font-size:17px; font-weight:700; text-shadow:1px 1px 0.5px #000; line-height:28px;">
         <span @click="changeContent('hot-song')" :class="{'active': type === 'hot-song'}" class="singer-menu-cell">热门歌曲</span>
-        <span @click="changeContent('play-list')" :class="{'active': type === 'play-list'}" class="singer-menu-cell">所有专辑</span>
-        <span @click="changeContent('description')" :class="{'active': type === 'description'}" class="singer-menu-cell">艺人介绍</span>
+        <span @click="changeContent('all-disc')" :class="{'active': type === 'all-disc'}" class="singer-menu-cell">所有专辑</span>
+        <span @click="changeContent('singer-description')" :class="{'active': type === 'singer-description'}" class="singer-menu-cell">艺人介绍</span>
       </div>
 
       <!-- 不同内容 -->
-      <div style="margin:0 auto 28px;">
-        <!--<component :is="type" />-->
-        <div style="height:388px;"></div>
+      <div style="min-height:388px; margin:0 auto 28px;">
+        <component :is="type" />
       </div>
     </div>
 
-    <div style="width:25%; padding:34px 18px; float:right; box-sizing:border-box;">
+    <div class="singer-detail-right">
       <div style="margin-bottom:38px;">
         <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">相似歌手推荐</div>
         <div style="display:flex; justify-content:space-between; flex-wrap:wrap;">
@@ -47,6 +46,7 @@
           </router-link>
         </div>
       </div>
+
       <div style="margin-bottom:38px;">
         <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">客户端多端下载</div>
         <div>
@@ -59,10 +59,15 @@
 </template>
 
 <script>
+import HotSong from '../../../../components/frontend/SingerDetail/HotSong.vue'
+import AllDisc from '../../../../components/frontend/SingerDetail/AllDisc.vue'
+import SingerDescription from '../../../../components/frontend/SingerDetail/SingerDescription.vue'
+
 export default {
   name: 'SingerPage',
 
   components: {
+    HotSong, AllDisc, SingerDescription
   },
 
   data () {
@@ -85,7 +90,20 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  #homeLayout {
+    min-height:100%; display:flex;
+  }
+
+  .singer-detail {
+    &-left {
+      flex:1;
+    }
+    &-right {
+      width:25%; padding:34px 18px; box-sizing:border-box;
+    }
+  }
+
   .singer-menu-cell {
     margin:0 15px; padding:0 12px 6px 10px; cursor:pointer;
   }

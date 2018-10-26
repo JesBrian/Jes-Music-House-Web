@@ -28,6 +28,12 @@ export default {
         return {}
       }
     }
+  },
+
+  methods: {
+    playThisPlayList () {
+      alert('playThisPlayList')
+    }
   }
 }
 </script>

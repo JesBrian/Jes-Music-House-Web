@@ -11,7 +11,7 @@
 
             <!-- BEGIN 歌曲信息 OR 操作 BEGIN -->
             <p @click="playThisMusic(index)" class="cell mh-if play"></p>
-            <p @click="playThisMusic(index)" class="cell music-list-cell-label">{{ item.name }} song name 12331</p>
+            <p @click="playThisMusic(index)" class="cell music-list-cell-label">{{ item.name }}</p>
             <p class="cell music-cell-oper">
               <i @click="showModal('Collection')" class="mh-if non-colloection"></i>
               <i @click="showModal('Share')" class="mh-if share"></i>
@@ -86,6 +86,15 @@ export default {
 
         > .music-cell-oper {
           opacity:1;
+          > .mh-if {
+            color:#999;
+            &:hover {
+              color:#EEE;
+            }
+            &:active {
+              color:#00D8FF;
+            }
+          }
         }
       }
       &.active {
