@@ -3,7 +3,7 @@
 
     <song-title />
 
-    <div v-for="n in 108" :key="n + '22'" class="box-shadow" style="padding:2px 0;">
+    <div v-for="n in 108" :key="n + '22'" class="song-item-container box-shadow">
       <song-item :index="n" />
     </div>
 
@@ -23,6 +23,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+  .song-item-container {
+    padding:2px 0;
+  }
 </style>

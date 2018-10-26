@@ -29,6 +29,6 @@ export default {
 
 <style lang="less" scoped>
   .play-list-container {
-    width:93%; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap;
+    width:100%; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap;
   }
 </style>

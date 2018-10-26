@@ -1,86 +1,38 @@
 <template>
-  <div>
-    <div style="width:93%; height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;">
-      <i class="mh-if exponential" style="margin-right:8px; color:#00d8ff; font-size:32px;"></i><span style="font-size:23px; font-weight:700;">榜单</span>
-      <router-link to="/rank" class="read-more">更多 <i class="mh-if double-arrow-right"></i></router-link>
+  <div class="recom-rank">
+    <div class="recom-rank-nav">
+      <i class="recom-rank-nav-icon mh-if exponential"></i>
+      <span class="recom-rank-nav-title">榜单</span>
+      <router-link to="/rank" class="recom-rank-nav-read-more">
+        更多 <i class="mh-if double-arrow-right"></i>
+      </router-link>
     </div>
 
-    <div style="width:93%; height:100%; margin:0 auto;">
-      <div class="" style="width:33%; height:100%; float:left; box-sizing:border-box; border:1px solid #282828;">
-        <div style="width:100%; height:104px; overflow:auto;">
+    <div class="recom-rank-container">
+      <div v-for="n in 3" class="recom-rank-cell">
+        <div class="recom-rank-cell-title">
           <router-link to="rank">
-            <img class="box-show" v-lazy="'http://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=150y150'" style="width:68px; height:68px; margin:16px 10px 0 16px; padding:3px; float:left;"/>
+            <img class="recom-rank-cell-title-img box-show" v-lazy="'http://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=150y150'"/>
           </router-link>
-          <p style="width:100%; margin:18px 0 12px; font-size:17px;"><router-link to="rank" style="color:#BBB;">XXXX飙升榜单</router-link></p>
-          <div class="super-btn-out" style="width:30px; height:30px;">
-            <span class="super-btn-in mh-if play" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
-          </div>
-          <div class="super-btn-out" style="width:30px; height:30px;">
-            <span class="super-btn-in mh-if collection-music" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
-          </div>
-          <div class="super-btn-out" style="width:30px; height:30px;">
-            <span class="super-btn-in mh-if share" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
-          </div>
+          <p class="recom-rank-cell-title-label text-hidden">
+            <router-link to="rank" class="recom-rank-cell-title-label-link">XXXX飙升榜单</router-link>
+          </p>
+          <i class="mh-if play"></i>
+          <i class="mh-if collection-music"></i>
+          <i class="mh-if share"></i>
         </div>
-        <ul style="width:100%; line-height:32px;">
-          <li v-for="n in 10" :key="n + 99" class="rank-cell" style="width:100%; height:32px; padding:0 12px 0 18px; box-sizing:border-box;">
-            <span style="width:23px; float:left; margin-right:8px; text-align:center;">{{ n }}</span>
-            <p class="text-hidden" style="max-width:80%; float:left;">The Name of the Song {{ n }}</p>
+
+        <ul class="recom-rank-cell-container">
+          <li v-for="n in 10" :key="n + 99" class="song-cell">
+            <span class="song-cell-index">{{ n }}</span>
+            <p class="song-cell-title text-hidden">
+              <router-link to="/song" class="song-cell-link">The Name of the Song {{ n }}</router-link>
+            </p>
           </li>
-          <li class="rank-cell" style="width:100%; height:32px;">
-            <router-link to="rank" class="read-more" style="margin:0 23px; line-height:32px;">查看全部 <i class="mh-if double-arrow-right"></i></router-link>
-          </li>
-        </ul>
-      </div>
-      <div  style="width:34%; height:100%; float:left; box-sizing:border-box; border-top:1px solid #282828; border-bottom:1px solid #282828;">
-        <div style="width:100%; height:104px; overflow:auto;">
-          <router-link to="rank">
-            <img class="box-show" v-lazy="'http://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=150y150'" style="width:68px; height:68px; margin:16px 10px 0 16px; padding:3px; float:left;"/>
-          </router-link>
-          <p style="width:100%; margin:18px 0 12px; font-size:17px;"><router-link to="rank" style="color:#BBB;">XXXX飙升榜单</router-link></p>
-          <div class="super-btn-out" style="width:30px; height:30px;">
-            <span class="super-btn-in mh-if play" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
-          </div>
-          <div class="super-btn-out" style="width:30px; height:30px;">
-            <span class="super-btn-in mh-if collection-music" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
-          </div>
-          <div class="super-btn-out" style="width:30px; height:30px;">
-            <span class="super-btn-in mh-if share" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
-          </div>
-        </div>
-        <ul style="width:100%; line-height:32px;">
-          <li v-for="n in 10" :key="n + 99" class="rank-cell" style="width:100%; height:32px; padding:0 12px 0 18px; box-sizing:border-box;">
-            <span style="width:23px; float:left; margin-right:8px; text-align:center;">{{ n }}</span>
-            <p class="text-hidden" style="max-width:80%; float:left;">The Name of the Song {{ n }}</p>
-          </li>
-          <li class="rank-cell" style="width:100%; height:32px;">
-            <router-link to="rank" class="read-more" style="margin:0 23px; line-height:32px;">查看全部 <i class="mh-if double-arrow-right"></i></router-link>
-          </li>
-        </ul>
-      </div>
-      <div style="width:33%; height:100%; float:left; box-sizing:border-box; border:1px solid #282828;">
-        <div style="width:100%; height:104px; overflow:auto;">
-          <router-link to="rank">
-            <img class="box-show" v-lazy="'http://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=150y150'" style="width:68px; height:68px; margin:16px 10px 0 16px; padding:3px; float:left;"/>
-          </router-link>
-          <p style="width:100%; margin:18px 0 12px; font-size:17px;"><router-link to="rank" style="color:#BBB;">XXXX飙升榜单</router-link></p>
-          <div class="super-btn-out" style="width:30px; height:30px;">
-            <span class="super-btn-in mh-if play" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
-          </div>
-          <div class="super-btn-out" style="width:30px; height:30px;">
-            <span class="super-btn-in mh-if collection-music" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
-          </div>
-          <div class="super-btn-out" style="width:30px; height:30px;">
-            <span class="super-btn-in mh-if share" style="width:23px; height:23px; top:48%; font-size:18px;"></span>
-          </div>
-        </div>
-        <ul style="width:100%; line-height:32px;">
-          <li v-for="n in 10" :key="n + 99" class="rank-cell" style="width:100%; height:32px; padding:0 12px 0 18px; box-sizing:border-box;">
-            <span style="width:23px; margin-right:8px; float:left; text-align:center;">{{ n }}</span>
-            <p class="text-hidden" style="max-width:80%; float:left;">The Name of the Song {{ n }}</p>
-          </li>
-          <li class="rank-cell" style="width:100%; height:32px;">
-            <router-link to="rank" class="read-more" style="margin:0 23px; line-height:32px;">查看全部 <i class="mh-if double-arrow-right"></i></router-link>
+          <li class="song-cell">
+            <router-link to="rank" class="read-more">
+              查看全部 <i class="mh-if double-arrow-right"></i>
+            </router-link>
           </li>
         </ul>
       </div>
@@ -94,22 +46,100 @@ export default {
 }
 </script>
 
-<style scoped>
-  .read-more {
-    margin-top:46px; float:right; font-size:13px; color:#888; line-height:1em;
-  }
-  .read-more:hover {
-    color:#EEE;
-    text-decoration:underline;
-  }
-  .read-more > .mh-if {
-    font-size:12.5px;
-  }
-  .read-more:hover > .mh-if {
-    color: #20dbfc;
-  }
+<style lang="less" scoped>
+  .recom-rank {
+    &-nav {
+      width:93%; height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;
+      &-icon {
+        margin-right:8px; color:#00d8ff; font-size:32px;
+      }
+      &-title {
+        font-size:23px; font-weight:700;
+      }
+      &-links {
+        margin:5px 0 0 28px; display:inline-block; font-size:14px;
+      }
+      &-link {
+        color:#999;
+        &:hover {
+          color:#DDD; text-decoration:underline;
+        }
+        &-split {
+          margin:0 8px; color:#333;
+        }
+      }
+      &-read-more {
+        margin-top:46px; float:right; font-size:13px; color:#888; line-height:1em;
+        &:hover {
+          color:#EEE; text-decoration:underline;
+          > .mh-if {
+            color: #20dbfc;
+          }
+        }
 
-  li.rank-cell:nth-child(odd) {
-    background:#181818;
+        > .mh-if {
+          font-size:12.5px;
+        }
+      }
+    }
+
+    &-container {
+      width:93%; height:100%; margin:0 auto; display:flex;
+    }
+    &-cell {
+      flex:1; box-sizing:border-box; border:1px solid #282828; border-right:none;
+      &:last-child {
+        border-right:1px solid #282828;
+      }
+
+      &-title {
+        width:100%; height:104px; overflow:auto;
+        &-img {
+          width:68px; height:68px; margin:16px 10px 0 16px; padding:3px; float:left;
+        }
+        &-label {
+          margin:22px 0 12px; font-size:17px;
+          &-link {
+            color:#BBB;
+          }
+        }
+        > .mh-if {
+          margin:0 2px 0 0; font-size:23px; line-height:1.3em;
+          &.play {
+            font-size:26px;
+          }
+          &:hover {
+            color:#00D8FF;
+          }
+        }
+      }
+      &-container {
+        width:100%; line-height:32px;
+
+        .song-cell {
+          width:100%; height:32px; padding:0 12px 0 18px; box-sizing:border-box;
+          &:nth-child(odd) {
+            background:#181818;
+          }
+
+          &-index {
+            width:20px; float:left; margin-right:8px; text-align:center;
+          }
+          &-title {
+            max-width:80%; float:left;
+          }
+          &-link {
+            color:#999;
+            &:hover {
+              color:#DDD;
+            }
+          }
+
+          > .read-more {
+            float:right; font-size:15px; color:#BBB;
+          }
+        }
+      }
+    }
   }
 </style>

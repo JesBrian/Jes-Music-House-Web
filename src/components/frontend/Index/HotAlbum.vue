@@ -17,7 +17,9 @@
       <router-link to="/album" class="hot-album-nav-read-more">更多 <i class="mh-if double-arrow-right"></i></router-link>
     </div>
 
-    <play-list-group :play-list-data="playList" />
+    <div style="width:93%; margin:0 auto;">
+      <play-list-group :play-list-data="playList" />
+    </div>
 
   </div>
 </template>
@@ -71,7 +73,7 @@ export default {
       &-link {
         color:#999;
         &:hover {
-          color:#DDD;
+          color:#DDD; text-decoration:underline;
         }
         &-split {
           margin:0 8px; color:#333;

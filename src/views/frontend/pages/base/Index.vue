@@ -1,6 +1,7 @@
 <template>
   <div id="homeLayout">
 
+    <!-- 顶部推荐内容 -->
     <div class="top-container box-show">
       <!-- 轮播图区域 -->
       <div class="top-container-slider">
@@ -15,18 +16,26 @@
       </div>
     </div>
 
+    <!-- 主页主体内容 -->
     <div class="main-container box-show">
-      <!-- 主页主体内容 -->
+
+      <!-- 左侧 -->
       <div class="main-container-left box-show">
+        <!-- 热门推荐  -->
         <hot-album />
+
+        <!-- 个性化推荐 -->
         <personal-recom />
+
+        <!-- 新碟上架 -->
         <new-disc />
+
+        <!-- 榜单 -->
         <recom-rank />
       </div>
 
-      <!--  -->
+      <!-- 右侧 -->
       <div class="main-container-right">
-
         <!-- 个人信息 -->
         <div class="user-info-container box-shadow">
           <router-link to="/user" class="user-info-avatar">

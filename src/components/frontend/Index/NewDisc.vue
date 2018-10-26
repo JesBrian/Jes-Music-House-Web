@@ -1,9 +1,13 @@
 <template>
-  <div>
-    <div style="width:93%; height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;">
-      <i class="mh-if music-albu-2" style="margin-right:8px; color:#00d8ff; font-size:30px;"></i><span style="font-size:23px; font-weight:700;">新碟上架</span>
-      <router-link to="/disc" class="read-more">更多 <i class="mh-if double-arrow-right"></i></router-link>
+  <div class="new-disc">
+    <div class="new-disc-nav">
+      <i class="new-disc-nav-icon mh-if music-albu-2"></i>
+      <span class="new-disc-nav-title">新碟上架</span>
+      <router-link to="/disc" class="new-disc-nav-read-more">
+        更多 <i class="mh-if double-arrow-right"></i>
+      </router-link>
     </div>
+
     <div class="glass-bg box-show" style="width:93%; height:138px; margin:0 auto 18px; position:relative;">
       <a @click="changeNewDiscContent('prev')" class="p-n-btn prev-btn ban-select" style="width:23px; height:43px; top:48%; left:13px; position:absolute; display:inline-block; transform:translate(0,-50%); z-index:9;"></a>
       <a @click="changeNewDiscContent('next')" class="p-n-btn next-btn ban-select" style="width:23px; height:43px; top:48%; right:13px; position:absolute; display:inline-block; transform:translate(0,-50%); z-index:9;"></a>
@@ -130,19 +134,42 @@ export default {
 }
 </script>
 
-<style scoped>
-  .read-more {
-    margin-top:46px; float:right; font-size:13px; color:#888; line-height:1em;
-  }
-  .read-more:hover {
-    color:#EEE;
-    text-decoration:underline;
-  }
-  .read-more > .mh-if {
-    font-size:12.5px;
-  }
-  .read-more:hover > .mh-if {
-    color: #20dbfc;
+<style lang="less" scoped>
+  .new-disc {
+    &-nav {
+      width:93%; height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;
+      &-icon {
+        margin-right:8px; color:#00d8ff; font-size:32px;
+      }
+      &-title {
+        font-size:23px; font-weight:700;
+      }
+      &-links {
+        margin:5px 0 0 28px; display:inline-block; font-size:14px;
+      }
+      &-link {
+        color:#999;
+        &:hover {
+          color:#DDD; text-decoration:underline;
+        }
+        &-split {
+          margin:0 8px; color:#333;
+        }
+      }
+      &-read-more {
+        margin-top:46px; float:right; font-size:13px; color:#888; line-height:1em;
+        &:hover {
+          color:#EEE; text-decoration:underline;
+          > .mh-if {
+            color: #20dbfc;
+          }
+        }
+
+        > .mh-if {
+          font-size:12.5px;
+        }
+      }
+    }
   }
 
   .p-n-btn {

@@ -34,10 +34,10 @@ export default {
 
 <style lang="less" scoped>
   .play-list-cell {
-    width:158px; height:188px; position:relative; display:inline-block;
+    width:138px; height:188px; margin:0 8px; position:relative; display:inline-block;
 
     &-post {
-      width:120px; height:120px; margin:0 auto 8px; padding:2px; position:relative; display:block;
+      width:120px; height:120px; margin:0 auto 6px; padding:2px; position:relative; display:block;
     }
     &-img {
       width:100%; height:100%;
@@ -49,13 +49,13 @@ export default {
       }
     }
     &-title {
-      width:120px; margin-left:23px; color:#DDD;
+      width:120px; margin-left:10px; color:#DDD;
       &-link {
         color:#DDD;
       }
     }
     &-singer {
-      width:118px; margin-left:23px; line-height:2em; color:#888; font-size:13.3px;
+      width:118px; margin-left:10px; line-height:1.68em; color:#888; font-size:13.3px;
       &-label {
         float:left; margin:-1px 8px 0 0;
       }
@@ -65,7 +65,7 @@ export default {
     }
 
     > .play-btn {
-      top:99px; left:120px; position:absolute; display:none;
+      top:99px; left:108px; position:absolute; display:none;
     }
     &:hover > .play-btn {
       display:inline-block;

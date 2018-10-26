@@ -24,7 +24,7 @@
         <i class="mh-if feedback"></i>回复</span>
     </p>
 
-    <div v-if="isShowReplyContent" style="margin-top:18px;">
+    <div v-if="isShowReplyContent" class="create-comment-container">
       <create-comment />
     </div>
 
@@ -104,6 +104,10 @@ export default {
           color:#00D8FF;
         }
       }
+    }
+
+    > .create-comment-container {
+      margin-top:18px;
     }
   }
 </style>

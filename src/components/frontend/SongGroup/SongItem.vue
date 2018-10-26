@@ -2,9 +2,9 @@
   <div class="song-item">
     <div class="song-item-index">{{ index }}</div>
     <div class="song-item-operation">
-      <i class="mh-if play" style="margin:0 2px;"></i>
-      <i class="mh-if non-colloection" style="margin:0 2px;"></i>
-      <i class="mh-if download" style="margin:0 2px;"></i>
+      <i class="song-item-operation-btn mh-if play"></i>
+      <i class="song-item-operation-btn mh-if non-colloection"></i>
+      <i class="song-item-operation-btn mh-if download"></i>
     </div>
     <div class="song-item-title">
       <router-link to="/song" class="song-item-link text-hidden">66</router-link>
@@ -42,6 +42,9 @@ export default {
     }
     &-operation {
       width:15%; text-align:center;
+      &-btn {
+        margin:0 2px;
+      }
     }
     &-title {
       padding:0 18px 0 3px; flex:1; box-sizing:border-box;
