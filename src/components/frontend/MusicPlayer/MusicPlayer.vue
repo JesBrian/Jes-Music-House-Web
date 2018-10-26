@@ -108,7 +108,7 @@
 </template>
 
 <script>
-import { timeStampToTime } from '../../../assets/js/music/base.js'
+import { timeStampToTime } from '../../../assets/js/utils.js'
 import MusicPlayerList from './MusicPlayerList.vue'
 import MusicPlayerLyric from './MusicPlayerLyric.vue'
 

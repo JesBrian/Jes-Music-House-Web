@@ -4,7 +4,7 @@
     <img v-lazy="'http://p4.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=50y50'"
          class="user-avatar box-show" />
 
-    <create-comment />
+    <create-comment class="create-comment-container" />
 
   </div>
 </template>
@@ -35,6 +35,10 @@ export default {
 
     > .user-avatar {
       width:42px; height:42px; margin:18px 28px 0 18px; padding:2px; float:left;
+    }
+
+    > .create-comment-container {
+      flex:1;
     }
   }
 </style>

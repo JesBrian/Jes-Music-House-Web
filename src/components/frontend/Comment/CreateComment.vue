@@ -1,10 +1,10 @@
 <template>
   <div class="create-comment">
-    <textarea v-model="comment" class="cube-bg box-show glow-input" placeholder="评论"></textarea>
+    <textarea v-model="comment" class="cube-bg box-show glow-input" placeholder="请输入您的评论"></textarea>
     <div class="create-comment-operation">
       <emoji-button @sendEmoji="changeShowEmojiContent" />
 
-      <div class="super-btn-out ripple">
+      <div @click="saveComment" class="super-btn-out ripple">
         <span class="super-btn-in mh-if comment"> 评论</span>
       </div>
 
@@ -52,7 +52,12 @@ export default {
       this.isShowEmojiContent = !this.isShowEmojiContent
     },
 
-    createComment () {
+    writeEmoji (emoji) {
+      this.comment += `[-${emoji}-]`
+    },
+
+    saveComment () {
+      alert(this.comment)
     }
   }
 }
@@ -63,7 +68,7 @@ export default {
     width:100%;
 
     > .glow-input {
-      width:100%; height:82px; resize:none;
+      width:100%; height:88px; padding:3px 8px; box-sizing:border-box; color:#BBB; text-indent:2em; letter-spacing:1.2px; line-height:1.28em; resize:none;
     }
 
     &-operation {

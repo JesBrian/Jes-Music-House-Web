@@ -3,8 +3,8 @@
 
     <song-title />
 
-    <div v-for="n in 108" :key="n + '22'" class="song-item-container box-shadow">
-      <song-item :index="n" />
+    <div v-for="(item, index) in songList" :key="item.id" class="song-item-container box-shadow">
+      <song-item :index="index + 1" :song-data="item" />
     </div>
 
   </div>
@@ -19,6 +19,50 @@ export default {
 
   components: {
     SongTitle, SongItem
+  },
+
+  props: {
+    searchKey: '',
+
+    songList: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  },
+
+  data () {
+    return {
+      tempSongList: [],
+      timer: null
+    }
+  },
+
+  watch: {
+    searchKey (nVal) {
+      if (this.timer === null) {
+        this.songList.forEach((item) => {
+          this.tempSongList.push(item)
+        })
+      }
+      if (this.timer) {
+        clearTimeout(this.timer)
+      }
+      this.timer = setTimeout(() => {
+        if (nVal === '') {
+          this.songList = this.tempSongList
+        } else {
+          let tempData = []
+          this.tempSongList.forEach(item => {
+            if (item.name.includes(nVal) || item.singer.includes(nVal)) {
+              tempData.push(item)
+            }
+          })
+          this.songList = tempData
+        }
+      }, 100)
+    }
   }
 }
 </script>

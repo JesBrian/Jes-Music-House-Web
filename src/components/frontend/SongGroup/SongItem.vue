@@ -2,17 +2,17 @@
   <div class="song-item">
     <div class="song-item-index">{{ index }}</div>
     <div class="song-item-operation">
-      <i class="song-item-operation-btn mh-if play"></i>
-      <i class="song-item-operation-btn mh-if non-colloection"></i>
+      <i @click="playThisSong" class="song-item-operation-btn mh-if play"></i>
+      <i @click="showModal('Collection')" class="song-item-operation-btn mh-if non-colloection"></i>
       <i class="song-item-operation-btn mh-if download"></i>
     </div>
     <div class="song-item-title">
-      <router-link to="/song" class="song-item-link text-hidden">66</router-link>
+      <router-link to="/song" class="song-item-link text-hidden">{{ songData.name }}</router-link>
     </div>
     <div class="song-item-singer">
-      <router-link to="/singer-detail/hot-song/1" class="song-item-link text-hidden">66</router-link>
+      <router-link to="/singer-detail/hot-song/1" class="song-item-link text-hidden">{{ songData.singer }}</router-link>
     </div>
-    <div class="song-item-time">59:59</div>
+    <div class="song-item-time">{{ songData.time }}</div>
   </div>
 </template>
 
@@ -22,12 +22,22 @@ export default {
   name: 'SongItem',
 
   props: {
-    index: Number
+    index: Number,
+    songData: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
   },
 
   methods: {
     playThisSong () {
       alert('play this song')
+    },
+
+    showModal (modalType) {
+      this.$store.commit('CHANGE_MODAL_TYPE', modalType)
     }
   }
 }
@@ -44,6 +54,9 @@ export default {
       width:15%; text-align:center;
       &-btn {
         margin:0 2px;
+        &:hover {
+          color:#00D8FF;
+        }
       }
     }
     &-title {

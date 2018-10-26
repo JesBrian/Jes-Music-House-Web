@@ -1,6 +1,6 @@
 <template>
   <div id="homeLayout">
-    <div class="box-show" style="width:75%; height:100%; display:inline-block;">
+    <div class="play-list-left box-show">
       <!-- 歌单基本信息 -->
       <div style="margin-top:28px;">
         <div style="width:32%; margin-top:12px; float:left; text-align:center;">
@@ -59,18 +59,18 @@
         <span @click="changeContent('song-group')" :class="{'active': type === 'song-group'}" class="play-list-menu-cell">歌曲 [888]</span>
         <span @click="changeContent('comment-total')" :class="{'active': type === 'comment-total'}" class="play-list-menu-cell">评论 [666]</span>
         <label v-if="type === 'song-group'" class="super-btn-out active" style="width:268px; height:32px; margin:-2px 8px 0 0; float:right; position:relative; border:none; border-radius:16px;">
-          <input type="text" class="super-btn-in" placeholder="搜索本歌单音乐" style="width:258px; height:76%; top:50%; padding:0 12px; box-sizing:border-box; border-radius:12px; text-align:left; font-size:17px;"/>
+          <input v-model="searchKey" class="super-btn-in" placeholder="搜索本歌单音乐" style="width:258px; height:76%; top:50%; padding:0 12px; box-sizing:border-box; border-radius:12px; text-align:left; font-size:17px;"/>
           <i class="mh-if search" style="top:2px; right:14px; position:absolute;"></i>
         </label>
       </div>
 
       <!-- 歌单内容 [ 歌曲列表/评论 ] -->
       <div style="min-height:263px; margin:0 auto 28px;">
-        <component :is="type"/>
+        <component :is="type" :search-key="searchKey" :song-list="songList" />
       </div>
     </div>
 
-    <div style="width:25%; padding:34px 18px; float:right; box-sizing:border-box;">
+    <div class="play-list-right">
       <div style="margin-bottom:38px;">
         <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">收藏这个歌单的人</div>
         <div style="display:flex; justify-content:space-between; flex-wrap:wrap;">
@@ -117,7 +117,31 @@ export default {
       playListId: this.$route.params['id'],
       type: this.$route.params['type'],
       isShowDescriptionBtn: false,
-      isShowDescription: false
+      isShowDescription: false,
+
+      searchKey: '',
+      songList: [
+        {id: 101, name: 'test1', singer: 'JesBrian', time: '00:58'},
+        {id: 102, name: 'test2', singer: 'Jehfrian', time: '01:45'},
+        {id: 103, name: 'test3', singer: '曾56跟随', time: '01:30'},
+        {id: 104, name: 'test4', singer: 'vsaguc', time: '11:30'},
+        {id: 105, name: 'test5', singer: 'gqe8fyug', time: '03:33'},
+        {id: 106, name: 'test6', singer: '参数部分', time: '12:05'},
+        {id: 107, name: 'test7', singer: '二45幺', time: '08:45'},
+        {id: 108, name: 'test8', singer: 'sxJcbh', time: '06:34'},
+        {id: 109, name: 'test9', singer: '二45幺', time: '06:45'},
+        {id: 110, name: 'test10', singer: 'ruqwoho', time: '06:45'},
+        {id: 111, name: 'test11', singer: 'JesBrian', time: '00:58'},
+        {id: 112, name: 'test12', singer: 'Jehfrian', time: '01:45'},
+        {id: 113, name: 'test13', singer: '曾12跟随', time: '01:30'},
+        {id: 114, name: 'test14', singer: 'vsaguc', time: '11:30'},
+        {id: 115, name: 'test15', singer: 'gqefyug', time: '03:33'},
+        {id: 116, name: 'test16', singer: '参数55部分', time: '12:05'},
+        {id: 117, name: 'test17', singer: '二45幺', time: '08:45'},
+        {id: 118, name: 'test18', singer: 'sxJcbh', time: '06:34'},
+        {id: 119, name: 'test19', singer: '二45幺', time: '06:45'},
+        {id: 120, name: 'test20', singer: 'ruqwoho', time: '18:45'}
+      ]
     }
   },
 
@@ -141,7 +165,19 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  #homeLayout {
+    min-height:100%; display:flex;
+  }
+
+  .play-list {
+    &-left {
+      flex:1;
+    }
+    &-right {
+      width:25%; padding:34px 18px; box-sizing:border-box;
+    }
+  }
 
   .play-list-menu-cell {
     margin:0 15px; padding:0 12px 6px 10px; cursor:pointer;
