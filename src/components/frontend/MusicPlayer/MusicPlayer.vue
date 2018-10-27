@@ -1,99 +1,105 @@
 <template>
   <!-- 音乐播放器组件 -->
-  <div class="music-play">
+  <div class="player">
 
     <!-- 音乐播放器资源 -->
-    <audio id="homeMusicSource" v-if="this.musicPlayList.length !== 0" preload @ended="nowMusicEndNextPlay" :src="'/static/music/' + this.musicPlayList[musicPlayListNowIndex].name + '.mp3'" style="top:0; position:absolute;"></audio>
+    <audio id="homeMusicSource" v-if="this.musicPlayList.length !== 0" preload @ended="nowMusicEndNextPlay"
+           :src="'/static/music/' + this.musicPlayList[musicPlayListNowIndex].name + '.mp3'"></audio>
 
     <!-- 播放器主控制 -->
-    <div :class="{'show-unlock' : !musicPlayShow}" class="music-play-controller glass-bg box-show">
-      <!--<div Style="width:28px; border:8px solid; border-bottom:18px solid; border-color:transparent transparent rgba(18,18,18, 0.8) transparent; top:-26px; right:38px; position:absolute; z-index:-1; opacity:0.96;"></div>-->
-      <div @click="changeShowMusicPlay" style="width:28px; border:8px solid; border-bottom:18px solid; border-color:transparent transparent rgba(18,18,18, 0.8) transparent; top:-26px; right:38px; position:absolute; z-index:-1; opacity:0.96;">
-        <i :class="musicPlayShow ? 'lock' : 'unlock'" class="mh-if" style="bottom:-17px; right:6px; position:absolute;"></i>
+    <div :class="{'show-unlock' : !musicPlayShow}" class="player-controller glass-bg box-show">
+      <div @click="changeShowMusicPlay" class="player-controller-show">
+        <i :class="musicPlayShow ? 'lock' : 'unlock'" class="player-controller-show-btn mh-if"></i>
       </div>
 
-      <div style="width:1080px; height:88%; margin:3px auto; position:relative; z-index:5; line-height:42px; color:#AAA;">
+      <div class="player-controller-main">
         <!-- 播放控制 -->
-        <div style="width:98px; height:100%; float:left; display:inline-block; text-align:center;">
-          <i @click="prevMusic" class="mh-if double-arrow-left" style="margin-top:0.5px; float:left; font-size:18px;"></i>
-          <i @click="switchMusicPlay" class="mh-if" :class="this.musicIsPlay ? 'stop' : 'play'" style="margin-right:-2px; font-size:33px;"></i>
-          <i @click="nextMusic" class="mh-if double-arrow-right" style="margin-top:1px; float:right; font-size:18px;"></i>
+        <div class="player-controller-main-play">
+          <i @click="prevMusic" class="mh-if double-arrow-left"></i>
+          <i @click="switchMusicPlay" class="mh-if" :class="this.musicIsPlay ? 'stop' : 'play'"></i>
+          <i @click="nextMusic" class="mh-if double-arrow-right"></i>
         </div>
+
         <!-- 歌曲控制 -->
-        <div style="width:800px; height:100%; padding:0 0 0 28px; box-sizing:border-box; display:inline-block;">
-          <router-link id="songResource" to="/song" class="glass-bg" style="width:31px; height:31px; margin:4px 0; float:left; display:inline-block;">
-            <img v-lazy="require('../../../../static/img/default/default_album.jpg')" style="width:100%; height:100%; border-radius:3.5px;" />
+        <div class="player-controller-main-song">
+          <router-link id="songResource" to="/song" class="glass-bg">
+            <img v-lazy="require('../../../../static/img/default/default_album.jpg')" class="song-img" />
           </router-link>
-          <div style="width:628px; height:100%; margin-left:28px; display:inline-block;">
-            <div style="width:100%; height:19px; font-size:13.5px;">
-              <router-link to="/song" style="height:100%; margin:-10.5px 28px 0 8px; float:left; color:#AAA;">Name of the Song 123 歌曲名字</router-link>
-              <router-link to="/singer-detail/hot-song/1" style="height:100%; margin-top:-10.7px; float:left; font-size:12px; color:#AAA;">歌手<i style="margin:0 3px;">/</i>Singer Name</router-link>
+          <div class="main-container">
+            <div class="song-info">
+              <router-link to="/song" class="song-info-name">
+                {{ musicPlayList.length === 0 ? '' : musicPlayList[musicPlayListNowIndex].name }}
+              </router-link>
+              <router-link to="/singer-detail/hot-song/1" class="song-info-singer">
+                歌手<i class="split">/</i>Singer Name
+              </router-link>
             </div>
             <!-- 播放进度 -->
-            <div @click="clickMusicProgressBar" id="progressBarClickContent" class="box-show" style="width:508px; height:10px; margin-top:5px; float:left; position:relative; border-radius:8px; background:#000;">
-              <div :style="{'width': musicBufferedRate * 100 + '%'}" class="box-show" style="width:0; height:100%; border-radius:6px; background:#181818; z-index:9;"></div>
-              <div :style="{'width': musicCTime / musicDTime * 100 + '%'}" style="height:83%; top:9%; left:0; position:absolute; background:linear-gradient(to right, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px;">
-                <a @mousedown="dragProgressControllerPointer" id="progressPointer" class="controller-pointer box-show" style="top:-4px; right:-9px;"></a>
+            <div @click="clickMusicProgressBar" id="progressBarClickContent" class="progress-bar box-show">
+              <div :style="{'width': musicBufferedRate * 100 + '%'}" class="progress-bar-buffer box-show"></div>
+              <div :style="{'width': musicCTime / musicDTime * 100 + '%'}" class="progress-bar-now">
+                <a @mousedown="dragProgressControllerPointer" id="progressPointer" class="controller-pointer box-show"></a>
               </div>
             </div>
             <!-- 播放时间 -->
-            <div style="width:16%; height:50%; float:right; text-align:center; line-height:8px; font-size:13.5px;">
+            <div class="song-time">
               {{ timeStampToTime(musicCTime) }} - {{ timeStampToTime(musicDTime) }}
             </div>
           </div>
-          <div style="float:right;">
-            <i @click="showModal('Collection')" class="mh-if add-collection" style="margin-right:6px; font-size:24px;"></i>
-            <i @click="showModal('Share')" class="mh-if share" style="margin-right:6px; font-size:20px; font-weight:700;"></i>
+          <div class="song-oper">
+            <i @click="showModal('Collection')" class="mh-if add-collection"></i>
+            <i @click="showModal('Share')" class="mh-if share"></i>
           </div>
         </div>
+
         <!-- 其他控制 -->
-        <div style="height:100%; margin:0 23px; display:inline-block; float:right;">
+        <div class="player-controller-main-other">
           <!-- 音量 -->
-          <div id="volumeButton" style="margin-right:8px; display:inline-block; position:relative;">
-            <i @click="changeMusicVolumeStatus" class="mh-if" :class="this.musicVolumeStatus ? 'volume-on' : 'volume-off'" style="font-size:23px;"></i>
+          <div id="volumeButton">
+            <i @click="changeMusicVolumeStatus" class="mh-if" :class="this.musicVolumeStatus ? 'volume-on' : 'volume-off'"></i>
             <div v-show="this.musicVolumeStatus" id="volumeBar">
-              <div class="glass-bg box-show" style="width:100%; height:96%;">
-                <div @click="clickMusicVolumeBar" id="volumeBarClickContent" class="box-show" style="width:10px; height:100px; margin:13px 9.5px 0; display:inline-block; position:relative; border-radius:5px; background:#000;">
-                  <div :style="{'height': this.musicVolumeLevel * 100 + '%'}" style="width:100%; left:0; bottom:0; background:linear-gradient(to top, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px; position:absolute;">
-                    <a @mousedown="dragVolumeControllerPointer" class="controller-pointer box-show" style="top:-9px; right:-4px;"></a>
+              <div class="volume-bar glass-bg box-show">
+                <div @click="clickMusicVolumeBar" id="volumeBarClickContent" class="box-show">
+                  <div :style="{'height': this.musicVolumeLevel * 100 + '%'}" class="volume-bar-now">
+                    <a @mousedown="dragVolumeControllerPointer" class="controller-pointer box-show"></a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <!-- 播放模式 -->
-          <i @click="changeMusicPlayModel" class="play-model mh-if" :class="this.musicPlayModel" style="margin-right:8px; position:relative; z-index:2; font-size:22px;">
-            <span class="glass-bg box-show">{{ musicPlayModel === 'loop' ? '循环列表': musicPlayModel === 'single-loop' ? '单曲循环' : '随机播放' }}</span>
+          <i @click="changeMusicPlayModel" class="play-model mh-if" :class="this.musicPlayModel">
+            <span class="play-model-label glass-bg box-show">
+              {{ musicPlayModel === 'loop' ? '循环列表': musicPlayModel === 'single-loop' ? '单曲循环' : '随机播放' }}
+            </span>
           </i>
           <!-- 播放列表 -->
-          <i @click="changeMusicPlayListContentShowStatus" class="mh-if menu" style="margin-right:8px; position:relative; z-index:2; font-size:24px;">
-            <span style="width:38px; height:19px; top:3.2px; left:20px; padding:0 3px; position:absolute; z-index:-1; box-sizing:border-box; border-radius:0 10px 10px 0;
-             box-shadow:0.3px 0.3px 2.5px -0.6px #AAA, inset 0 0 6px #000, inset 0 2px 2px #000, inset 3px 0 2px #000, inset -2px 0 2px #000;
-             text-align:center; font-size:12.5px; line-height:20px; color:#666; text-shadow:2px 2px 6px #000;">{{ this.musicPlayList.length }}</span>
+          <i @click="changeMusicPlayListContentShowStatus" class="play-menu mh-if menu">
+            <span class="play-menu-label">{{ this.musicPlayList.length }}</span>
           </i>
         </div>
       </div>
     </div>
 
     <!-- 播放列表内容区域 -->
-    <div v-if="musicPlayListContentShowStatus" class="music-player-menu glass-bg box-show">
-      <div class="music-player-menu-title box-show">
-        <div class="music-player-menu-operation">
-          <span class="music-player-menu-operation-label">播放列表 [ {{ musicPlayList.length }} ]</span>
-          <div class="music-player-menu-operation-container">
+    <div v-if="musicPlayListContentShowStatus" class="player-menu glass-bg box-show">
+      <div class="player-menu-title box-show">
+        <div class="player-menu-operation">
+          <span class="player-menu-operation-label">播放列表 [ {{ musicPlayList.length }} ]</span>
+          <div class="player-menu-operation-container">
             <a @click="showModal('Collection')"><i class="mh-if collection-music"></i>收藏全部</a>
             <a @click="clearMusicPlayList"><i class="mh-if trash-2"></i>清空列表</a>
           </div>
         </div>
-        <div class="music-player-menu-now-song">
-          <p class="music-player-menu-now-song-label">
+        <div class="player-menu-now-song">
+          <p class="player-menu-now-song-label">
             {{ musicPlayList.length === 0 ? '' : musicPlayList[musicPlayListNowIndex].name }}
           </p>
-          <i @click="changeMusicPlayListContentShowStatus" class="music-player-menu-close mh-if all-arrow"></i>
+          <i @click="changeMusicPlayListContentShowStatus" class="player-menu-close mh-if all-arrow"></i>
         </div>
       </div>
 
-      <div class="music-player-menu-container box-show">
+      <div class="player-menu-container box-show">
 
         <!-- 歌曲列表 -->
         <music-player-list :now-index="musicPlayListNowIndex" :song-list="musicPlayList" />
@@ -496,35 +502,176 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .music-player-menu {
-    width:1028px; height:290px; left:50%; bottom:45px; position:absolute; transform:translate(-50%,0); z-index:-1; background:#151515; opacity:0.988; border-radius:8px 8px 0 0; color:#999;
+  .player {
+    width:100%; height:48px; left:0; bottom:0; position:fixed;
 
-    &-title {
-      width:100%; height:38px; border-radius:8px 8px 0 0; line-height:40px; z-index:9;
+    > #homeMusicSource {
+      top:0; position:absolute;
     }
-    &-operation {
-      width:62%; height:100%; padding:0 2%; float:left; box-sizing:border-box;
-      &-label {
-        font-weight:700;
+
+    &-menu {
+      width:1028px; height:290px; left:50%; bottom:45px; position:absolute; transform:translate(-50%,0); z-index:-1; background:#151515; opacity:0.988; border-radius:8px 8px 0 0; color:#999;
+
+      &-title {
+        width:100%; height:38px; border-radius:8px 8px 0 0; line-height:40px; z-index:9;
+      }
+      &-operation {
+        width:62%; height:100%; padding:0 2%; float:left; box-sizing:border-box;
+        &-label {
+          font-weight:700;
+        }
+        &-container {
+          float:right; font-size:14px;
+          .mh-if {
+            margin:0 3px 0 18px;
+          }
+        }
+      }
+      &-now-song {
+        width:38%; height:100%; float:right; position:relative; text-align:center;
+        &-label {
+          width:80%; height:100%; margin:0 auto; display:inline-block;
+        }
+      }
+      &-close {
+        top:-3px; right:5px; position:absolute; font-size:20px;
       }
       &-container {
-        float:right; font-size:14px;
-        .mh-if {
-          margin:0 3px 0 18px;
+        width:100%; height:250px; padding-bottom:2px; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727; font-size:14px;
+      }
+    }
+
+    &-controller {
+      width:100%; height:100%; position:absolute; border-radius:0; background:rgba(24,24,24,0.985); z-index:9;
+      transition: all 0.28s;
+      &-show {
+        width:28px; border:8px solid; border-bottom:18px solid; border-color:transparent transparent rgba(18,18,18, 0.8) transparent; top:-26px; right:38px; position:absolute; z-index:-1; opacity:0.96;
+        &-btn {
+          bottom:-17px; right:6px; position:absolute;
+        }
+      }
+
+      &-main {
+        width:1080px; height:88%; margin:3px auto; position:relative; z-index:5; line-height:42px; color:#AAA;
+
+        &-play {
+          width:98px; height:100%; float:left; display:inline-block; text-align:center;
+          > .double-arrow-left {
+            float:left; font-size:18px;
+          }
+          > .play, .stop {
+            margin-right:-2px; font-size:33px;
+          }
+          > .double-arrow-right {
+            float:right; font-size:18px;
+          }
+        }
+        &-song {
+          width:800px; height:100%; padding:0 0 0 28px; box-sizing:border-box; display:inline-block;
+          .song-img {
+            width:100%; height:100%; border-radius:3.5px;
+          }
+          > .main-container {
+            width:628px; height:100%; margin-left:28px; display:inline-block;
+            .song-info {
+              width:100%; height:19px; font-size:13.5px;
+              &-name {
+                height:100%; margin:-10.5px 28px 0 8px; float:left; color:#AAA;
+              }
+              &-singer {
+                height:100%; margin-top:-10.7px; float:left; font-size:12px; color:#AAA;
+                > .split {
+                  padding:0 5px 0 3px; cursor:default;
+                }
+              }
+            }
+            .progress-bar {
+              width:508px; height:10px; margin-top:5px; float:left; position:relative; border-radius:8px; background:#000;
+              &-buffer {
+                width:0; height:100%; border-radius:6px; background:#181818; z-index:9;
+              }
+              &-now {
+                height:83%; top:9%; left:0; position:absolute; background:linear-gradient(to right, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px;
+                > .controller-pointer {
+                  top:-4px; right:-9px;
+                }
+              }
+            }
+            .song-time {
+              width:16%; height:50%; float:right; text-align:center; line-height:8px; font-size:13.5px;
+            }
+          }
+
+          > .song-oper {
+            float:right;
+            > .add-collection {
+              margin-right:6px; font-size:24px;
+            }
+            > .share {
+              font-size:20px; font-weight:700;
+            }
+          }
+
+          > #songResource {
+            width:31px; height:31px; margin:4px 0; float:left; display:inline-block; box-shadow:0 0.5px 3px -2px #FFF;
+            &:hover {
+              box-shadow:0 0.5px 3px -0.8px #FFF;
+            }
+          }
+        }
+        &-other {
+          height:100%; margin:0 23px; display:inline-block; float:right;
+          #volumeButton {
+            margin-right:8px; display:inline-block; position:relative;
+            > .mh-if {
+              font-size:23px;
+            }
+            > #volumeBar {
+              width:30px; height:133px; left:-20%; bottom:41.5px; position:absolute;
+              display:none;
+              .volume-bar {
+                width:100%; height:96%; opacity:0.96; background:#181818; border-radius:4px 4px 0 0;
+                #volumeBarClickContent {
+                  width:10px; height:100px; margin:13px 9.5px 0; display:inline-block; position:relative; border-radius:5px; background:#000;
+                }
+                &-now {
+                  width:100%; left:0; bottom:0; background:linear-gradient(to top, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px; position:absolute;
+                  .controller-pointer {
+                    top:-10px; right:-4px;
+                  }
+                }
+              }
+            }
+            &:hover > #volumeBar {
+              display:block;
+            }
+          }
+          .play-model {
+            margin-right:8px; position:relative; z-index:2; font-size:22px;
+            &-label {
+              width:80px; height:28px; top:-43px; left:50%; padding-left:2px; position:absolute; transform:translate(-50%,0); display:none; text-align:center; font-size:15px; line-height:28px; letter-spacing:1.2px;
+            }
+            &:hover > .play-model-label {
+              display: block;
+            }
+          }
+          .play-menu {
+            margin-right:8px; position:relative; z-index:2; font-size:24px;
+            &-label {
+              width:38px; height:19px; top:3.2px; left:20px; padding:0 3px; position:absolute; z-index:-1; box-sizing:border-box; border-radius:0 10px 10px 0;
+              box-shadow:0.3px 0.3px 2.5px -0.6px #AAA, inset 0 0 6px #000, inset 0 2px 2px #000, inset 3px 0 2px #000, inset -2px 0 2px #000;
+              text-align:center; font-size:12.5px; line-height:20px; color:#666; text-shadow:2px 2px 6px #000;
+            }
+          }
         }
       }
     }
-    &-now-song {
-      width:38%; height:100%; float:right; position:relative; text-align:center;
-      &-label {
-        width:80%; height:100%; margin:0 auto; display:inline-block;
-      }
+
+    > .player-controller.show-unlock {
+      bottom:-42px;
     }
-    &-close {
-      top:-3px; right:5px; position:absolute; font-size:20px;
-    }
-    &-container {
-      width:100%; height:250px; padding-bottom:2px; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727; font-size:14px;
+    &:hover > .player-controller.show-unlock {
+      bottom:0;
     }
   }
 
@@ -535,56 +682,11 @@ export default {
     cursor:pointer; color: #46dfff; text-shadow: 0 0 3px #666, 0 0 18px #000; opacity:1!important;
   }
 
-  .music-play {
-    width:100%; height:48px; left:0; bottom:0; position:fixed;
-  }
-  .music-play-controller {
-    width:100%; height:100%; position:absolute; border-radius:0; background:rgba(24,24,24,0.985); z-index:9;
-    transition: all 0.28s;
-  }
-  .music-play > .music-play-controller.show-unlock {
-    bottom:-42px;
-  }
-  .music-play:hover > .music-play-controller.show-unlock {
-    bottom:0;
-  }
-
-  #songResource {
-    box-shadow:0 0.5px 3px -2px #FFF;
-  }
-  #songResource:hover {
-    box-shadow:0 0.5px 3px -0.8px #FFF;
-  }
-
   .controller-pointer {
     width:18px; height:18px; position:absolute; display:inline-block; border-radius:50%; line-height:12px; text-align:center;
     background:url(../../../../static/img/default/slide-pointer.png) no-repeat; background-size:100% 100%;
   }
   .controller-pointer:hover {
     box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727, 0 0 8px #2af1fc;
-  }
-
-  #volumeButton {
-    display:inline-block;
-  }
-  #volumeBar {
-    width:30px; height:133px; left:-20%; bottom:41.5px; position:absolute;
-    display:none;
-  }
-  #volumeBar > div {
-    opacity:0.96; background:#181818; border-radius:4px 4px 0 0;
-  }
-  #volumeButton:hover > #volumeBar {
-    display:block;
-  }
-  #volumeButton:hover > #volumeBar:hover {
-    display:block;
-  }
-
-  .play-model > span {
-    width:80px; height:28px; top:-43px; left:50%; padding-left:2px; position:absolute; transform:translate(-50%,0); display:none; text-align:center; font-size:15px; line-height:28px; letter-spacing:1.2px;
-  }
-  .play-model:hover > span {
-    display: block;
   }
 </style>
