@@ -157,6 +157,7 @@ export default {
         let tipsType = 'warning'
         if (result.state === '200') {
           tipsType = 'info'
+          result.msg = '用户登录成功！'
           this.$store.commit('SAVE_LOGIN_USER_INFO', result.data)
           this.$localForage.setItem('user', result.data)
         }

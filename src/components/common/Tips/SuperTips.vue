@@ -1,5 +1,6 @@
 <template>
-  <div :class="[$store.state.View.tipsType, {active: $store.state.View.topMenuIsShowSecond}]" class="super-tips glass-bg box-show">
+  <div :class="[$store.state.View.tipsType, {active: $store.state.View.topMenuIsShowSecond}]"
+       class="super-tips glass-bg box-show">
     <div class="super-tips-icon">
       <i class="mh-if gear"></i>
     </div>

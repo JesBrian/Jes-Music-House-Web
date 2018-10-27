@@ -20,9 +20,9 @@
           <span class="super-btn-in mh-if avatar">&nbsp;用户</span>
         </div>
 
-        <label class="super-btn-out active" style="width:238px; height:32px; margin:1px 8px 0; float:right; position:relative; border:none; border-radius:16px;">
-          <input v-model="searchKey" type="text" class="super-btn-in" placeholder="搜索本歌单音乐" style="width:228px; height:76%; top:50%; padding:0 12px; box-sizing:border-box; border-radius:12px; text-align:left; font-size:17px;"/>
-          <i @click="goSearch" class="mh-if search" style="top:2px; right:14px; position:absolute; z-index:5;"></i>
+        <label class="search-input-container super-btn-out active">
+          <input v-model="searchKey" type="text" class="super-btn-in" placeholder="搜索本歌单音乐"/>
+          <i @click="goSearch" class="mh-if search"></i>
         </label>
       </div>
 
@@ -38,7 +38,6 @@
     </div>
 
     <div class="search-recommend-container">
-
       <div style="width:100%; margin-bottom:48px;">
         <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">客户端多端下载</div>
       </div>
@@ -117,6 +116,16 @@ export default {
         }
         &-in {
           width:79px; height:23px;
+        }
+      }
+
+      > .search-input-container {
+        width:238px; height:32px; margin:1px 8px 0; float:right; position:relative; border:none; border-radius:16px;
+        > .super-btn-in {
+          width:228px; height:76%; top:50%; padding:0 12px; box-sizing:border-box; border-radius:12px; text-align:left; font-size:17px;
+        }
+        > .search {
+          top:2px; right:14px; position:absolute; z-index:5;
         }
       }
     }

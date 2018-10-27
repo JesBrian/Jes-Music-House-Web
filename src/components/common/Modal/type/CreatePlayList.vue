@@ -21,11 +21,11 @@
       </div>
 
       <div class="modal-create-play-list-operation">
-        <div @click="sureOperation" class="super-btn-out ripple">
-          <span class="super-btn-in mh-if makesure"> 确认新建</span>
-        </div>
         <div @click="cancelOperation" class="super-btn-out ripple">
           <span class="super-btn-in mh-if cancel"> 取消返回</span>
+        </div>
+        <div @click="sureOperation" class="super-btn-out ripple">
+          <span class="super-btn-in mh-if makesure"> 确认新建</span>
         </div>
       </div>
     </div>

@@ -203,10 +203,12 @@ export default {
     _musicBuffered () {
       clearInterval(this.timer)
       this.timer = setInterval(() => {
-        this.musicBufferedRate = this.musicSource.buffered.end(0) / this.musicDTime
-        if (this.musicBufferedRate === 1) {
-          clearInterval(this.timer)
-          this.timer = null
+        if (this.musicSource.buffered.length !== 0) { // 容错处理
+          this.musicBufferedRate = this.musicSource.buffered.end(0) / this.musicDTime
+          if (this.musicBufferedRate === 1) {
+            clearInterval(this.timer)
+            this.timer = null
+          }
         }
       }, 368)
     },

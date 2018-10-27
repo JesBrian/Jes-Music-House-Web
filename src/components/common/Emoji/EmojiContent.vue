@@ -2,7 +2,7 @@
   <!-- 表情选择组件 -->
   <div @mouseleave="mouseLeave" class="emoji-content glass-bg box-show">
     <!-- 单个小表情组件 -->
-    <emoji-cell :index=index+1 :emojiInfo="value" style="float:left;" v-for="(value, index) in emojiInfos" :key="index"/>
+    <emoji-cell :index=index+1 :emojiInfo="value" v-for="(value, index) in emojiInfos" :key="index"/>
 
     <!-- 当前鼠标选中的表情展示 -->
     <div class="now-emoji glass-bg box-show">

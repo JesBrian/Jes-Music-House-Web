@@ -3,8 +3,8 @@
     <!-- 歌词报错 -->
     <div class="mh-if question">
       <div class="glass-bg box-show">
-        <router-link to="/" class="question-link box-shadow">上传歌词</router-link>
-        <router-link to="/" class="question-link box-shadow">歌词报错</router-link>
+        <router-link to="/lyric" class="question-link box-shadow">上传歌词</router-link>
+        <router-link to="/lyric" class="question-link box-shadow">歌词报错</router-link>
       </div>
     </div>
 

@@ -1,22 +1,22 @@
 <template>
   <div id="homeLayout">
 
-    <div class="box-show" style="width:75%; height:100%; min-height:608px; padding-bottom:18px; display:inline-block;">
+    <div class="user-recom-left box-show">
 
-      <div style="margin-top:48px; padding:0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:38px;">
-        <i class="mh-if hot" style="float:left; color:#00d8ff; font-size:32px;"></i>
-        <span style="margin:0 8px; font-size:23px; font-weight:700;">推荐列表</span>
-        <span style="font-size:14px;">30 首歌曲</span>
+      <div class="user-recom-title">
+        <i class="mh-if hot"></i>
+        <span class="user-recom-name">推荐列表</span>
+        <span class="user-recom-num">30 首歌曲</span>
 
-        <div style="margin-top:-8px; float:right; cursor:pointer;">
-          <div class="super-btn-out ripple" style="width:71px; height:31px;">
-            <span class="super-btn-in mh-if play" style="width:63px; height:24px;">&nbsp;播放</span>
+        <div class="user-recom-oper">
+          <div class="super-btn-out ripple">
+            <span class="super-btn-in mh-if play">&nbsp;播放</span>
           </div>
-          <div class="super-btn-out ripple" style="width:71px; height:31px;">
-            <span class="super-btn-in mh-if menu" style="width:63px; height:24px;">&nbsp;列表</span>
+          <div class="super-btn-out ripple">
+            <span class="super-btn-in mh-if menu">&nbsp;列表</span>
           </div>
-          <div class="super-btn-out ripple" style="width:71px; height:31px;">
-            <span class="super-btn-in mh-if non-colloection" style="width:63px; height:24px;">&nbsp;收藏</span>
+          <div @click="showModal('Collection')" class="super-btn-out ripple">
+            <span class="super-btn-in mh-if non-colloection">&nbsp;收藏</span>
           </div>
         </div>
       </div>
@@ -24,8 +24,7 @@
       <song-group :song-list="songList" />
     </div>
 
-    <div style="width:25%; padding:34px 18px; float:right; box-sizing:border-box;">
-
+    <div class="user-recom-right">
       <div style="width:100%; margin-bottom:48px;">
         <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">客户端多端下载</div>
       </div>
@@ -79,10 +78,54 @@ export default {
         {id: 120, name: 'test30', singer: 'ruqwoho', time: '18:45'}
       ]
     }
+  },
+
+  methods: {
+    showModal (modalType) {
+      this.$store.commit('CHANGE_MODAL_TYPE', modalType)
+    }
   }
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  #homeLayout {
+    min-height:100%; display:flex;
+  }
 
+  .user-recom {
+    &-left {
+      min-height:608px; padding-bottom:18px; flex:1;
+
+      .user-recom {
+        &-title {
+          margin-top:48px; padding:0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:38px;
+          > .mh-if {
+            float:left; color:#00d8ff; font-size:32px;
+          }
+        }
+        &-name {
+          margin:0 8px; font-size:23px; font-weight:700;
+        }
+        &-num {
+          font-size:14px;
+        }
+
+        &-oper {
+          margin-top:-8px; float:right; cursor:pointer;
+          .super-btn {
+            &-out {
+              width:71px; height:31px;
+            }
+            &-in {
+              width:63px; height:24px;
+            }
+          }
+        }
+      }
+    }
+    &-right {
+      width:25%; padding:34px 18px; box-sizing:border-box;
+    }
+  }
 </style>
