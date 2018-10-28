@@ -25,9 +25,7 @@
     </div>
 
     <div class="user-recom-right">
-      <div style="width:100%; margin-bottom:48px;">
-        <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">客户端多端下载</div>
-      </div>
+      <download-client />
     </div>
 
   </div>
@@ -35,12 +33,13 @@
 
 <script>
 import SongGroup from '../../../../components/frontend/SongGroup/SongGroup.vue'
+import DownloadClient from '../../../../components/frontend/RightCommend/DownloadClient.vue'
 
 export default {
   name: 'Recommend',
 
   components: {
-    SongGroup
+    SongGroup, DownloadClient
   },
 
   data () {

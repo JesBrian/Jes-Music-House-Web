@@ -32,22 +32,20 @@
     </div>
 
     <div style="width:25%; padding:34px 18px; float:right; box-sizing:border-box;">
-
-      <div style="width:100%; margin-bottom:48px;">
-        <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">客户端多端下载</div>
-      </div>
+      <download-client />
     </div>
   </div>
 </template>
 
 <script>
 import SongItem from '../../../../components/frontend/SongGroup/SongItem.vue'
+import DownloadClient from '../../../../components/frontend/RightCommend/DownloadClient.vue'
 
 export default {
   name: 'Rank',
 
   components: {
-    SongItem
+    SongItem, DownloadClient
   },
 
   data () {

@@ -37,22 +37,10 @@
     </div>
 
     <div class="singer-detail-right">
-      <div style="margin-bottom:38px;">
-        <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">相似歌手推荐</div>
-        <div style="display:flex; justify-content:space-between; flex-wrap:wrap;">
-          <router-link v-for="n in 6" :key="`${n}88`" to="/singer-detail/hot-song/1" style="margin-bottom:16px;">
-            <img class="box-show" style="width:58px; height:58px; padding:2px;" src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80"/>
-            <p style="font-size:14px; color:#BBB;">JesBrian</p>
-          </router-link>
-        </div>
-      </div>
 
-      <div style="margin-bottom:38px;">
-        <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">客户端多端下载</div>
-        <div>
-          <p>同步歌单，随时畅听云音乐</p>
-        </div>
-      </div>
+      <similar-singer />
+
+      <download-client />
     </div>
 
   </div>
@@ -62,12 +50,14 @@
 import HotSong from '../../../../components/frontend/SingerDetail/HotSong.vue'
 import AllDisc from '../../../../components/frontend/SingerDetail/AllDisc.vue'
 import SingerDescription from '../../../../components/frontend/SingerDetail/SingerDescription.vue'
+import DownloadClient from '../../../../components/frontend/RightCommend/DownloadClient.vue'
+import SimilarSinger from '../../../../components/frontend/RightCommend/SimilarSinger.vue'
 
 export default {
   name: 'SingerPage',
 
   components: {
-    HotSong, AllDisc, SingerDescription
+    SimilarSinger, HotSong, AllDisc, SingerDescription, DownloadClient
   },
 
   data () {

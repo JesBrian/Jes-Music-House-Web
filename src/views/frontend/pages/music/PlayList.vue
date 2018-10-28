@@ -45,7 +45,7 @@
               <i style="margin:0 3px; color:#FFF;">/</i>
               <router-link :to="'/album'" style="color:#00d8ff;">999</router-link>
             </p>
-            <p ref="playListDescription" :style="isShowDescription ? 'height:100%;' : 'height:38px;'" style="width:92%; word-break:break-all; line-height:19px; overflow:hidden;">
+            <p ref="playListDescription" :style="isShowDescription ? 'height:100%;' : 'max-height:38px;'" style="width:92%; word-break:break-all; line-height:19px; overflow:hidden;">
               <span style="color:#DDD;">简介：</span>
               wsedjnm'fgvh测试jnkml,ws恐怕edjn4515gvhjnk486djnm相差谁vhjnkml,wsed场设jnm'fgvh4156jnkml,w现备和健康sedjnm'fgvhjnkml513vjv处理vhjnk产量数52edjnm急哦fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml,wsedjnm'fgvhjnkml
             </p>
@@ -92,10 +92,7 @@
         </div>
       </div>
       <div style="margin-bottom:38px;">
-        <div style="margin:0 0 12px; padding-left:13px; border-left:3px solid #00C4E1; font-size:15px;">客户端多端下载</div>
-        <div>
-          <p>同步歌单，随时畅听云音乐</p>
-        </div>
+        <download-client />
       </div>
     </div>
   </div>
@@ -104,12 +101,13 @@
 <script>
 import SongGroup from '../../../../components/frontend/SongGroup/SongGroup.vue'
 import CommentTotal from '../../../../components/frontend/Comment/CommentTotal.vue'
+import DownloadClient from '../../../../components/frontend/RightCommend/DownloadClient.vue'
 
 export default {
   name: 'PlayList',
 
   components: {
-    SongGroup, CommentTotal
+    DownloadClient, SongGroup, CommentTotal
   },
 
   data () {
