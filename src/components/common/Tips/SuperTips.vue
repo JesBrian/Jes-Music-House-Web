@@ -15,6 +15,9 @@
 export default {
   name: 'SuperTips',
 
+  created () {
+  },
+
   methods: {
     closeTips () {
       this.$store.commit('SHOW_TIPS', {})

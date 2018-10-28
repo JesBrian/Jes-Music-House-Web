@@ -1,8 +1,10 @@
 const state = {
+  timer: null,
+
   tips: '',
   tipsType: 'info', // info/warning
 
-  topMenuIsShowSecond: true
+  topMenuIsShowSecond: true // 是否展示顶部导航栏二级菜单
 }
 
 const mutations = {
@@ -15,7 +17,7 @@ const mutations = {
     if (tipsObj.msg !== '') {
       clearTimeout(state.timer)
       state.timer = setTimeout(() => {
-        state.tips = ''
+        this.commit('SHOW_TIPS', {})
       }, 3688)
     } else {
       clearTimeout(state.timer)

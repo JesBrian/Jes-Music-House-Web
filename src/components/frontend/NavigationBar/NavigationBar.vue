@@ -101,6 +101,10 @@
 export default {
   name: 'NavigationBar',
 
+  inject: [
+    'reload'
+  ],
+
   data () {
     return {
       menuType: '',
@@ -163,6 +167,7 @@ export default {
     userLogout () {
       this.$store.commit('RESET_USER_INFO')
       this.$localForage.setItem('user', null)
+      this.reload()
     }
   }
 }

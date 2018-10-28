@@ -42,6 +42,12 @@ export default {
     NavigationBar, HomeFooter, FloatBlock, HomeModal, SuperTips, MusicPlayer
   },
 
+  provide () {
+    return {
+      reload: this.reload
+    }
+  },
+
   data () {
     return {
       hackReset: true
@@ -51,10 +57,7 @@ export default {
   watch: {
     $route () {
       document.querySelector('.gm-scroll-view').scrollTop = 0
-      this.hackReset = false
-      this.$nextTick(() => {
-        this.hackReset = true
-      })
+      this.reload()
     }
   },
 
@@ -77,6 +80,15 @@ export default {
         })
       }
     })
+  },
+
+  methods: {
+    reload () {
+      this.hackReset = false
+      this.$nextTick(() => {
+        this.hackReset = true
+      })
+    }
   }
 }
 </script>

@@ -106,6 +106,10 @@
 export default {
   name: 'Login',
 
+  inject: [
+    'reload'
+  ],
+
   data () {
     return {
       phone: '',
@@ -160,6 +164,7 @@ export default {
           result.msg = '用户登录成功！'
           this.$store.commit('SAVE_LOGIN_USER_INFO', result.data)
           this.$localForage.setItem('user', result.data)
+          this.reload()
         }
         this.$store.commit('SHOW_TIPS', {msg: result.msg, type: tipsType})
       }).catch(error => {
