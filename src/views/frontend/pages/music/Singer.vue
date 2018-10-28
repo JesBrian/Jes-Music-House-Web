@@ -1,6 +1,6 @@
 <template>
   <div id="homeLayout">
-    <div class="box-show" style="width:20%; height:100%; top:0; left:0; padding-top:12px; position:absolute; box-sizing:border-box; color:#999;">
+    <div class="singer-container box-show">
       <ul style="width:85%; margin:0 auto;">
         <li v-for="fItem in singerCategory" :key="fItem.id" class="box-shadow" style="margin-top:8px; padding-bottom:8px;">
           <span class="singer-type-title">{{ fItem.fCategory }}</span>
@@ -111,7 +111,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+  .singer-container {
+    width:20%; height:100%; top:0; left:0; padding-top:12px; position:absolute; box-sizing:border-box; color:#999;
+  }
+
   .singer-type-title {
     font-size:20px; font-weight:700; line-height:2em; color:#DDD;
   }

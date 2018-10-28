@@ -100,7 +100,7 @@ export default {
       width:100%; margin:0 auto 10px; padding-top:28px; box-shadow:0 4px 3px -3px #00d8ff; text-align:center; border-bottom:1px solid #00d8ff; line-height:27px; font-weight:700;
 
       .search-result-tips {
-        margin-right:8px; text-align:right; color:#CCC; font-size:14px;
+        margin:0 8px 13px 0; text-align:right; color:#CCC; font-size:14px;
         &-key {
           color:#00d8ff; text-decoration:underline;
         }
@@ -119,7 +119,7 @@ export default {
       }
 
       > .search-input-container {
-        width:238px; height:32px; margin:1px 8px 0; float:right; position:relative; border:none; border-radius:16px;
+        width:238px; height:32px; margin:-6px 8px 0; float:right; position:relative; border:none; border-radius:16px;
         > .super-btn-in {
           width:228px; height:76%; top:50%; padding:0 12px; box-sizing:border-box; border-radius:12px; text-align:left; font-size:17px;
         }
