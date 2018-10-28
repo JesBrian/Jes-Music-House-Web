@@ -1,6 +1,6 @@
 <template>
   <div class="disc-list-cell">
-    <router-link to="/play-list/song-group/1" class="disc-list-cell-post">
+    <router-link to="/play-list/song-group/1" class="disc-list-cell-poster">
       <img v-lazy="'http://p3.music.126.net/w_GpzV7fky3gOgIf4-gC4Q==/109951163241853988.jpg?param=130y130'"
            class="disc-list-cell-bg" />
       <img src="../../../../static/img/default/disc.png" class="disc-list-cell-img" />
@@ -41,7 +41,7 @@ export default {
   .disc-list-cell {
     width:163px; height:208px; margin:0; padding:0; position:relative;
 
-    &-post {
+    &-poster {
       width:139px; height:119px; margin:0 20px; position:relative; display:inline-block;
     }
     &-bg {

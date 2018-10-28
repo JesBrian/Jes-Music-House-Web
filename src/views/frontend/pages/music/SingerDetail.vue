@@ -3,15 +3,16 @@
 
     <div class="singer-detail-left box-show">
       <!-- 歌手信息 -->
-      <div style="width:96%; margin:28px auto 18px;">
-        <div style="width:20%; height:100%; display:inline-block; text-align:center;">
-          <img src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80" class="glass-bg box-show" style="width:128px; height:128px; margin-right:28px; padding:6px;"/>
+      <div class="singer-info-container">
+        <div class="singer-info-avatar">
+          <img src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80"
+               class="singer-info-avatar-img glass-bg box-show"/>
         </div>
-        <div style="width:80%; height:100%; float:right;">
-          <p style="padding-top:8px; font-size:24px;">The Name of the Singer</p>
-          <p style="line-height:3em;">
+        <div class="singer-info-base">
+          <p class="singer-info-base-name">The Name of the Singer</p>
+          <p class="singer-info-base-publish">
             <span style="margin-right:26px;">
-              <i class="mh-if music-albu" style="margin-right:6px;"></i>单曲数：253
+              <i class="mh-if music-albu-2" style="margin-right:6px;"></i>单曲数：253
             </span>
             <span style="margin-right:26px;">
               <i class="mh-if redis" style="margin-right:6px;"></i>专辑数：63
@@ -37,9 +38,7 @@
     </div>
 
     <div class="singer-detail-right">
-
       <similar-singer />
-
       <download-client />
     </div>
 
@@ -91,6 +90,27 @@ export default {
     }
     &-right {
       width:25%; padding:34px 18px; box-sizing:border-box;
+    }
+  }
+
+  .singer-info {
+    &-container {
+      width:96%; margin:28px auto 18px;
+    }
+    &-avatar {
+      width:20%; height:100%; display:inline-block; text-align:center;
+      &-img {
+        width:128px; height:128px; margin-right:28px; padding:6px;
+      }
+    }
+    &-base {
+      width:80%; height:100%; float:right;
+      &-name {
+        padding-top:8px; font-size:24px;
+      }
+      &-publish {
+        line-height:3em;
+      }
     }
   }
 

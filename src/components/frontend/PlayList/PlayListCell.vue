@@ -1,6 +1,6 @@
 <template>
   <div class="play-list-cell">
-    <router-link to="/play-list/song-group/1" class="play-list-cell-post cube-bg box-show">
+    <router-link to="/play-list/song-group/1" class="play-list-cell-poster cube-bg box-show">
       <img v-lazy="'http://p1.music.126.net/7goVc5XONBxnSS5FiGtV9A==/18999560928548815.jpg?param=140y140'" class="play-list-cell-img"/>
       <div class="play-list-cell-num glass-bg">
         <i class="mh-if headphone"></i>5656
@@ -42,7 +42,7 @@ export default {
   .play-list-cell {
     width:138px; height:188px; margin:0 8px; position:relative; display:inline-block;
 
-    &-post {
+    &-poster {
       width:120px; height:120px; margin:0 auto 6px; padding:2px; position:relative; display:block;
     }
     &-img {
