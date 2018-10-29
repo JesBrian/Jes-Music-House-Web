@@ -12,8 +12,8 @@
         </li>
       </ul>
     </div>
-    <div style="width:100%; min-height:1268px; padding:0 3% 0 23%; box-sizing:border-box;">
 
+    <div style="width:100%; min-height:1268px; padding:0 3% 0 23%; box-sizing:border-box;">
       <div style="height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;">
         <span style="font-size:23px; font-weight:700;">入驻歌手</span>
         <router-link to="/" class="read-more">更多 <i class="mh-if double-arrow-right"></i></router-link>

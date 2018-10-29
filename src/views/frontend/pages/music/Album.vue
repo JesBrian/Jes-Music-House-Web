@@ -12,10 +12,10 @@
       </div>
 
       <div class="choose-type-container">
-        <div @click="changeContentType('hot')" :class="contentType === 'hot' ? 'cube-bg' : 'glass-bg'"
-             class="choose-type-btn left box-show">热门</div>
-        <div @click="changeContentType('new')" :class="contentType === 'new' ? 'cube-bg' : 'glass-bg'"
-             class="choose-type-btn right box-show">最新</div>
+        <div @click="changeContentType('hot')" class="choose-type-btn left box-show"
+             :class="contentType === 'hot' ? 'cube-bg' : 'glass-bg'">热门</div>
+        <div @click="changeContentType('new')" class="choose-type-btn right box-show"
+             :class="contentType === 'new' ? 'cube-bg' : 'glass-bg'">最新</div>
       </div>
     </div>
 
