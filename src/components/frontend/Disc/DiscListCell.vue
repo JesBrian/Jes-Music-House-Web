@@ -1,13 +1,13 @@
 <template>
   <div class="disc-list-cell">
-    <router-link to="/play-list/song-group/1" class="disc-list-cell-poster">
+    <router-link :to="`/play-list/song-group/${discData.id}`" class="disc-list-cell-poster">
       <img v-lazy="'http://p3.music.126.net/w_GpzV7fky3gOgIf4-gC4Q==/109951163241853988.jpg?param=130y130'"
            class="disc-list-cell-bg" />
       <img src="../../../../static/img/default/disc.png" class="disc-list-cell-img" />
     </router-link>
     <i @click="playThisPlayList" class="play-btn mh-if play"></i>
     <p class="disc-list-cell-title text-hidden">
-      <router-link to="/play-list/song-group/1" class="disc-list-cell-title-link">c4s成8识vg删除yr54</router-link>
+      <router-link to="/play-list/song-group/1" class="disc-list-cell-title-link">{{ discData.title }}</router-link>
     </p>
     <p class="disc-list-cell-singer text-hidden">
       <span class="disc-list-cell-singer-label">by</span>

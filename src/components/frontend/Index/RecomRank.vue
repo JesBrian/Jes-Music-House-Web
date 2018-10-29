@@ -26,7 +26,7 @@
           <li v-for="n in 10" :key="n + 99" class="song-cell">
             <span class="song-cell-index">{{ n }}</span>
             <p class="song-cell-title text-hidden">
-              <router-link to="/song" class="song-cell-link">The Name of the Song {{ n }}</router-link>
+              <router-link to="/song/1" class="song-cell-link">The Name of the Song {{ n }}</router-link>
             </p>
           </li>
           <li class="song-cell">

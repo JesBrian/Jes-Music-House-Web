@@ -22,12 +22,12 @@
 
         <!-- 歌曲控制 -->
         <div class="player-controller-main-song">
-          <router-link id="songResource" to="/song" class="glass-bg">
+          <router-link id="songResource" to="/song/1" class="glass-bg">
             <img v-lazy="require('../../../../static/img/default/default_album.jpg')" class="song-img" />
           </router-link>
           <div class="main-container">
             <div class="song-info">
-              <router-link to="/song" class="song-info-name">
+              <router-link to="/song/1" class="song-info-name">
                 {{ musicPlayList.length === 0 ? '' : musicPlayList[musicPlayListNowIndex].name }}
               </router-link>
               <router-link to="/singer-detail/hot-song/1" class="song-info-singer">

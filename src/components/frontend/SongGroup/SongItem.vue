@@ -7,7 +7,7 @@
       <i class="song-item-operation-btn mh-if download"></i>
     </div>
     <div class="song-item-title">
-      <router-link to="/song" class="song-item-link text-hidden">{{ songData.name }}</router-link>
+      <router-link :to="`/song/${songData.id}`" class="song-item-link text-hidden">{{ songData.name }}</router-link>
     </div>
     <div class="song-item-singer">
       <router-link to="/singer-detail/hot-song/1" class="song-item-link text-hidden">{{ songData.singer }}</router-link>

@@ -4,7 +4,7 @@
 
     <div v-for="n in 5" :key="`${n}2288`" class="similar-song box-shadow">
       <div class="similar-song-info">
-        <router-link to="/song" class="similar-song-info-name">Song Name</router-link>
+        <router-link to="/song/1" class="similar-song-info-name">Song Name</router-link>
         <router-link to="/singer-detail/hot-song/1" class="similar-song-info-singer">Singer 名称 Name</router-link>
       </div>
       <div class="similar-song-oper">

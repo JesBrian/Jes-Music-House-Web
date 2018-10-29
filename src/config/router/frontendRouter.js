@@ -95,7 +95,7 @@ export default new Router({
           component: () => import('../../views/frontend/pages/music/PlayList.vue')
         },
         {
-          path: '/song',
+          path: '/song/:id',
           component: () => import('../../views/frontend/pages/music/Song.vue')
         },
         {

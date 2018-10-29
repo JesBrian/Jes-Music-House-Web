@@ -7,7 +7,7 @@
 
     <div style="width:93%; height:888px; margin:0 auto;">
       <div class="glass-bg box-show" style="height:68px; margin:0 0 28px; position:relative;">
-        <router-link to="/song" class="cube-bg box-show" style="width:50px; height:50px; margin:7px 12px; padding:4px; display:inline-block; border-radius:3px;">
+        <router-link to="/song/1" class="cube-bg box-show" style="width:50px; height:50px; margin:7px 12px; padding:4px; display:inline-block; border-radius:3px;">
           <img src="http://p1.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=180y180" style="width:100%; height:100%;" />
         </router-link>
 

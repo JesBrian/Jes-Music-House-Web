@@ -1,7 +1,7 @@
 <template>
   <div class="disc-list-group">
 
-    <disc-list-cell v-for="n in 25" :key="n + 99" />
+    <disc-list-cell v-for="item in discList" :key="item.id" :disc-data="item" />
 
   </div>
 </template>
