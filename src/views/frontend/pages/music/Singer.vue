@@ -1,6 +1,6 @@
 <template>
   <div id="homeLayout">
-    <div class="singer-left box-show">
+    <div class="singer-left">
       <ul class="singer-category">
         <li v-for="fItem in singerCategory" :key="fItem.id" class="singer-category-cell box-shadow">
           <span class="singer-category-cell-title">{{ fItem.fCategory }}</span>
@@ -13,7 +13,7 @@
       </ul>
     </div>
 
-    <div class="singer-right">
+    <div class="singer-right box-show">
       <div class="singer-nav">
         <i class="singer-nav-icon mh-if hot"></i>
         <span class="singer-nav-title">热门歌手</span>

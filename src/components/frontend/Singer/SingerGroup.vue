@@ -1,6 +1,6 @@
 <template>
   <div class="singer-container">
-    <singer-cell v-for="item in singerList" :key="item.id" />
+    <singer-cell v-for="item in singerList" :key="item.id" :singer-data="item" />
   </div>
 </template>
 

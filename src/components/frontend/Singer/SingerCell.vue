@@ -1,9 +1,11 @@
 <template>
   <div class="singer-cell">
-    <router-link to="/singer-detail/hot-song/1" class="singer-poster box-show">
+    <router-link :to="`/singer-detail/hot-song/${singerData.id}`" class="singer-poster box-show">
       <img src="http://p1.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=180y180"/>
     </router-link>
-    <router-link to="/singer-detail/hot-song/1" class="singer-name">JesBrian</router-link>
+    <p class="text-hidden">
+      <router-link :to="`/singer-detail/hot-song/${singerData.id}`" class="singer-name">{{ singerData.name }}</router-link>
+    </p>
   </div>
 </template>
 
@@ -25,7 +27,7 @@ export default {
 <style lang="less" scoped>
   .singer {
     &-cell {
-      width:108px; height:188px; margin:0 8px; position:relative; display:inline-block;
+      width:108px; height:158px; margin:0 8px; position:relative; display:inline-block;
     }
 
     &-poster {
@@ -33,7 +35,7 @@ export default {
     }
 
     &-name {
-      line-height:1.38em;
+      max-width:100%; line-height:1.38em;
       &:hover {
         color:#DDD;
       }
