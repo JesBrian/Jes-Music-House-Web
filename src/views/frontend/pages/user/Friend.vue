@@ -24,15 +24,22 @@
           <p style="margin-left:9px; line-height:1.5em; letter-spacing:8px;">粉丝</p>
         </router-link>
       </div>
-      <div class="box-shadow"></div>
+
+      <download-client class="box-shadow" />
     </div>
 
   </div>
 </template>
 
 <script>
+import DownloadClient from '../../../../components/frontend/RightCommend/DownloadClient.vue'
+
 export default {
-  name: 'Friend'
+  name: 'Friend',
+
+  components: {
+    DownloadClient
+  }
 }
 </script>
 

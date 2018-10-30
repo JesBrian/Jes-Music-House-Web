@@ -15,22 +15,31 @@
     </div>
 
     <div class="user-message-container box-show">
+      <component :is="`${type}-group`" />
     </div>
 
   </div>
 </template>
 
 <script>
+import FeedbackGroup from '../../../../components/frontend/Message/Feedback/FeedbackGroup.vue'
+import CommentGroup from '../../../../components/frontend/Message/Comment/CommentGroup.vue'
+import NotifyGroup from '../../../../components/frontend/Message/Notify/NotifyGroup.vue'
+
 export default {
   name: 'Message',
 
+  components: {
+    FeedbackGroup, CommentGroup, NotifyGroup
+  },
+
   data () {
     return {
-      type: 'comment',
+      type: 'feedback',
 
       messageCategory: [
-        {id: 'comment', logo: 'feedback', name: '评论'},
         {id: 'feedback', logo: 'mail', name: '私信'},
+        {id: 'comment', logo: 'feedback', name: '评论'},
         {id: 'notify', logo: 'horn', name: '通知'}
       ]
     }
@@ -57,7 +66,7 @@ export default {
     }
 
     .message-category-cell {
-      width:100%; height:53px; display:flex; flex-direction:row; align-items:center;
+      width:100%; height:53px; display:flex; flex-direction:row; align-items:center; cursor:pointer;
 
       &-logo {
         margin:0 10px 0 18px; font-size:23px;
@@ -79,6 +88,6 @@ export default {
   }
 
   .user-message-container {
-    flex:1;
+    padding:8px; flex:1;
   }
 </style>

@@ -25,19 +25,20 @@
         <span class="singer-nav-title">相关歌手</span>
       </div>
       <singer-group :singer-list="allSingerList" />
-
+      <pagination />
     </div>
   </div>
 </template>
 
 <script>
 import SingerGroup from '../../../../components/frontend/Singer/SingerGroup.vue'
+import Pagination from '../../../../components/common/Pagination/Pagination.vue'
 
 export default {
   name: 'Singer',
 
   components: {
-    SingerGroup
+    SingerGroup, Pagination
   },
 
   data () {

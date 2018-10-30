@@ -10,7 +10,7 @@
         <div @click="changeSearchType('song')" :class="{'active' : searchType === 'song'}" class="super-btn-out ripple">
           <span class="super-btn-in mh-if music-albu-2">&nbsp;单曲</span>
         </div>
-        <div @click="changeSearchType('album')" :class="{'active' : searchType === 'album'}" class="super-btn-out ripple">
+        <div @click="changeSearchType('play-list')" :class="{'active' : searchType === 'play-list'}" class="super-btn-out ripple">
           <span class="super-btn-in mh-if redis">&nbsp;歌单</span>
         </div>
         <div @click="changeSearchType('singer')" :class="{'active' : searchType === 'singer'}" class="super-btn-out ripple">
@@ -27,11 +27,7 @@
       </div>
 
       <div class="search-result-container">
-        <ul>
-          <li v-for="n in 18" :key="n + 99" class="box-shadow">
-            <div style="height:48px;"></div>
-          </li>
-        </ul>
+        <component :is="`${searchType}-group`" :song-list="songList" :play-list-data="playListList" :singer-list="singerList" :user-list="userList" />
       </div>
 
       <pagination />
@@ -45,6 +41,10 @@
 </template>
 
 <script>
+import SongGroup from '../../../../components/frontend/SongGroup/SongGroup.vue'
+import PlayListGroup from '../../../../components/frontend/PlayList/PlayListGroup.vue'
+import SingerGroup from '../../../../components/frontend/Singer/SingerGroup.vue'
+import UserGroup from '../../../../components/frontend/User/UserGroup.vue'
 import Pagination from '../../../../components/common/Pagination/Pagination.vue'
 import DownloadClient from '../../../../components/frontend/RightCommend/DownloadClient.vue'
 
@@ -52,13 +52,70 @@ export default {
   name: 'search',
 
   components: {
-    Pagination, DownloadClient
+    SongGroup, PlayListGroup, SingerGroup, UserGroup, Pagination, DownloadClient
   },
 
   data () {
     return {
       searchType: this.$route.params['searchType'],
-      searchKey: this.$route.params['searchKey']
+      searchKey: this.$route.params['searchKey'],
+
+      songList: [
+        {id: 101, name: 'test1', singer: 'JesBrian', time: '00:58'},
+        {id: 102, name: 'test2', singer: 'Jehfrian', time: '01:45'},
+        {id: 103, name: 'test3', singer: '曾56跟随', time: '01:30'},
+        {id: 104, name: 'test4', singer: 'vsaguc', time: '11:30'},
+        {id: 105, name: 'test5', singer: 'gqe8fyug', time: '03:33'},
+        {id: 106, name: 'test6', singer: '参数部分', time: '12:05'},
+        {id: 107, name: 'test7', singer: '二45幺', time: '08:45'},
+        {id: 108, name: 'test8', singer: 'sxJcbh', time: '06:34'},
+        {id: 109, name: 'test9', singer: '二45幺', time: '06:45'},
+        {id: 110, name: 'test10', singer: 'ruqwoho', time: '06:45'},
+        {id: 111, name: 'test11', singer: 'JesBrian', time: '00:58'},
+        {id: 112, name: 'test12', singer: 'Jehfrian', time: '01:45'},
+        {id: 113, name: 'test13', singer: '曾12跟随', time: '01:30'},
+        {id: 114, name: 'test14', singer: 'vsaguc', time: '11:30'},
+        {id: 115, name: 'test15', singer: 'gqefyug', time: '03:33'},
+        {id: 116, name: 'test16', singer: '参数55部分', time: '12:05'},
+        {id: 117, name: 'test17', singer: '二45幺', time: '08:45'},
+        {id: 118, name: 'test18', singer: 'sxJcbh', time: '06:34'},
+        {id: 119, name: 'test19', singer: '二45幺', time: '06:45'},
+        {id: 120, name: 'test20', singer: 'ruqwoho', time: '18:45'}
+      ],
+      playListList: [
+        {id: 111, title: 'play-list-111'},
+        {id: 222, title: 'play-list-222'},
+        {id: 333, title: 'play-list-333'},
+        {id: 444, title: 'play-list-444'},
+        {id: 555, title: 'play-list-555'},
+        {id: 666, title: 'play-list-666'},
+        {id: 777, title: 'play-list-777'},
+        {id: 888, title: 'play-list-888'}
+      ],
+      singerList: [
+        {id: 111, name: '歌手名称1'},
+        {id: 112, name: 'The Name of the singer 2'},
+        {id: 113, name: '歌手名称3'},
+        {id: 114, name: 'xvagsyvcbhsdbchds'},
+        {id: 115, name: '歌手名称1'},
+        {id: 116, name: 'The Name of the singer 6'},
+        {id: 117, name: 'The Name of the singer 7'},
+        {id: 118, name: '歌手名称8'},
+        {id: 119, name: '歌手名称9'},
+        {id: 120, name: 'The Name of the singer 10'}
+      ],
+      userList: [
+        {id: 111, name: '用户名称1'},
+        {id: 112, name: 'The Name of the user 2'},
+        {id: 113, name: '用户名称3'},
+        {id: 114, name: 'xvagsyvcbhsdbchds'},
+        {id: 115, name: '用户名称1'},
+        {id: 116, name: 'The Name of the user 6'},
+        {id: 117, name: 'The Name of the user 7'},
+        {id: 118, name: '用户名称8'},
+        {id: 119, name: '用户名称9'},
+        {id: 120, name: 'The Name of the user 10'}
+      ]
     }
   },
 
@@ -93,7 +150,7 @@ export default {
     flex:1;
 
     > .search-result-container {
-      width:98%; margin:6px auto 0;
+      width:93%; margin:38px auto 0;
     }
 
     > .search-type-container {
