@@ -9,7 +9,7 @@
     </div>
 
     <div class="recom-rank-container">
-      <div v-for="n in 3" class="recom-rank-cell">
+      <div v-for="n in 3" :key="n + '56'" class="recom-rank-cell">
         <div class="recom-rank-cell-title">
           <router-link to="rank">
             <img class="recom-rank-cell-title-img box-show" v-lazy="'http://p1.music.126.net/DrRIg6CrgDfVLEph9SNh7w==/18696095720518497.jpg?param=150y150'"/>
@@ -55,18 +55,6 @@ export default {
       }
       &-title {
         font-size:23px; font-weight:700;
-      }
-      &-links {
-        margin:5px 0 0 28px; display:inline-block; font-size:14px;
-      }
-      &-link {
-        color:#999;
-        &:hover {
-          color:#DDD; text-decoration:underline;
-        }
-        &-split {
-          margin:0 8px; color:#333;
-        }
       }
       &-read-more {
         margin-top:46px; float:right; font-size:13px; color:#888; line-height:1em;

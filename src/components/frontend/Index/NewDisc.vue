@@ -144,18 +144,6 @@ export default {
       &-title {
         font-size:23px; font-weight:700;
       }
-      &-links {
-        margin:5px 0 0 28px; display:inline-block; font-size:14px;
-      }
-      &-link {
-        color:#999;
-        &:hover {
-          color:#DDD; text-decoration:underline;
-        }
-        &-split {
-          margin:0 8px; color:#333;
-        }
-      }
       &-read-more {
         margin-top:46px; float:right; font-size:13px; color:#888; line-height:1em;
         &:hover {
