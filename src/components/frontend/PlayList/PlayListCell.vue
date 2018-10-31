@@ -8,7 +8,7 @@
     </router-link>
     <i @click="playThisPlayList" class="play-btn mh-if play"></i>
     <p class="play-list-cell-title text-hidden">
-      <router-link to="/play-list/song-group/1" class="play-list-cell-title-link">{{ playList.title }}</router-link>
+      <router-link :to="`/play-list/song-group/${playList.id}`" class="play-list-cell-title-link">{{ playList.title }}</router-link>
     </p>
     <p class="play-list-cell-singer text-hidden">
       <span class="play-list-cell-singer-label">by</span>
