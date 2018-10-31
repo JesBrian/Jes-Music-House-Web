@@ -13,12 +13,12 @@
 
       <!-- 用户登录/操作 -->
       <div id="navMenuUser" style="width:40px; height:38px; margin:6px 68px; position:relative; float:right;">
-        <router-link to="/user/1" class="super-btn-out" style="width:100%; height:100%; display:inline-block;">
+        <router-link to="/user-info/1" class="super-btn-out" style="width:100%; height:100%; display:inline-block;">
           <span class="super-btn-in" style="width:32px; height:29px; top:48%; line-height:29.5px; font-size:20px;">X</span>
         </router-link>
         <div class="nav-user-operation" style="top:32px; left:-68%; position:absolute;">
           <div class="super-btn-out" style="width:100px; margin:10px 0 0 -8px; padding:1px 4px 3px; text-align:center; line-height:30px;">
-            <router-link to="/user/1"><i class="MyIF home"></i> 个人主页</router-link>
+            <router-link to="/user-info/1"><i class="MyIF home"></i> 个人主页</router-link>
             <router-link to="/message"><i class="MyIF add-data"></i> 消息管理</router-link>
             <router-link to="/level"><i class="MyIF IDcard-1"></i> 我的等级</router-link>
             <router-link to="/vip"><i class="MyIF IDcard-1"></i> VIP会员</router-link>

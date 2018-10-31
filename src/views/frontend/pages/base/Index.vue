@@ -38,12 +38,12 @@
       <div class="main-container-right">
         <!-- 个人信息 -->
         <div class="user-info-container box-shadow">
-          <router-link to="/user/1" class="user-info-avatar">
+          <router-link to="/user-info/1" class="user-info-avatar">
             <img v-lazy="'http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80'"
                  class="user-info-avatar-img box-show"/>
           </router-link>
 
-          <router-link to="/user/1" class="user-info-name">JesBrian</router-link>
+          <router-link to="/user-info/1" class="user-info-name">JesBrian</router-link>
 
           <div class="super-btn-out ripple">
             <span class="super-btn-in mh-if sign-in">&nbsp;签到</span>

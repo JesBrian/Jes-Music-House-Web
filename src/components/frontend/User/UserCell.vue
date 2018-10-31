@@ -4,11 +4,7 @@
       <img src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80" class="user-avatar" />
     </router-link>
     <div class="user-name text-hidden">
-      <router-link to="/user/1">
-        UserCell {{ userData.name }}
-        UserCell {{ userData.name }}
-        UserCell {{ userData.name }}
-      </router-link>
+      <router-link to="/user-info/1">{{ userData.name }}</router-link>
     </div>
     <div class="super-btn-out">
       <span class="super-btn-in">关注</span>
