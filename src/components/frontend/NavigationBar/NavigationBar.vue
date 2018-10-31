@@ -35,12 +35,12 @@
           <span class="super-btn-in mh-if avatar"></span>
         </div>
         <div v-else class="user-operation-info-container">
-          <router-link to="/user" class="user-operation-info super-btn-out ripple">
+          <router-link to="/user/1" class="user-operation-info super-btn-out ripple">
             <span class="super-btn-in">X</span>
           </router-link>
           <div class="user-operation-info-btn-container">
             <div class="super-btn-out">
-              <router-link class="btn-cell" to="/user">
+              <router-link class="btn-cell" to="/user/1">
                 <i class="mh-if avatar"></i> 个人主页
               </router-link>
               <router-link class="btn-cell" to="/message">

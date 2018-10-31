@@ -35,7 +35,7 @@ export default new Router({
           component: () => import('../../views/frontend/pages/download/DownloadClient.vue')
         },
         {
-          path: '/user',
+          path: '/user/:id',
           component: () => import('../../views/frontend/pages/user/User.vue')
         },
         {

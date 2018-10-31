@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <user-cell v-for="item in userList" :key="item.id" :user-data="item" />
+  <div class="user-group">
+    <user-cell v-for="item in userList" :key="item.id" :user-data="item" class="box-shadow" />
   </div>
 </template>
 
@@ -25,6 +25,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+  .user-group {
+    padding:2px 0;
+  }
 </style>

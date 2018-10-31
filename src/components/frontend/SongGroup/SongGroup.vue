@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <song-title />
+    <song-title v-if="showNav" />
 
     <div v-for="(item, index) in songList" :key="item.id" class="song-item-container box-shadow">
       <song-item :index="index + 1" :song-data="item" />
@@ -22,6 +22,11 @@ export default {
   },
 
   props: {
+    showNav: {
+      type: Boolean,
+      default: true
+    },
+
     searchKey: '',
 
     songList: {

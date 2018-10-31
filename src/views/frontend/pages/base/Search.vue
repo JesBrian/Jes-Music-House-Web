@@ -27,7 +27,7 @@
       </div>
 
       <div class="search-result-container">
-        <component :is="`${searchType}-group`" :song-list="songList" :play-list-data="playListList" :singer-list="singerList" :user-list="userList" />
+        <component :is="`${searchType}-group`" :show-nav="false" :song-list="songList" :play-list-data="playListList" :singer-list="singerList" :user-list="userList" />
       </div>
 
       <pagination />

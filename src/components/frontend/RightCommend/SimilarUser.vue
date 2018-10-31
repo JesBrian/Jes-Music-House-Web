@@ -3,7 +3,7 @@
     <div class="base-container-title">喜欢这首歌的人</div>
 
     <div class="similar-user">
-      <router-link v-for="n in 4" :key="`${n}88`" to="/user" class="similar-user-link">
+      <router-link v-for="n in 4" :key="`${n}88`" to="/user/1" class="similar-user-link">
         <img class="similar-user-avatar box-show" src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80"/>
       </router-link>
     </div>

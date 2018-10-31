@@ -19,15 +19,15 @@
         </div>
 
         <div style="width:100%; height:38px; padding:8px 0 10px; box-shadow:0 3px 2px -2px #666; clear:both; text-align:center;">
-          <router-link to="/user" style="width:88px; height:100%; float:left;">
+          <router-link to="/user/1" style="width:88px; height:100%; float:left;">
             <p style="font-size:20px; color:#DDD;">0</p>
             <p style="margin-left:9px; line-height:1.3em; letter-spacing:8px;">动态</p>
           </router-link>
-          <router-link to="/user" style="width:88px; height:100%; float:left; border-left:1px solid #333; border-right:1px solid #333;">
+          <router-link to="/user/1" style="width:88px; height:100%; float:left; border-left:1px solid #333; border-right:1px solid #333;">
             <p style="font-size:20px; color:#DDD;">0</p>
             <p style="margin-left:9px; line-height:1.3em; letter-spacing:8px;">关注</p>
           </router-link>
-          <router-link to="/user" style="width:88px; height:100%; float:left;">
+          <router-link to="/user/1" style="width:88px; height:100%; float:left;">
             <p style="font-size:20px; color:#DDD;">0</p>
             <p style="margin-left:9px; line-height:1.3em; letter-spacing:8px;">粉丝</p>
           </router-link>
