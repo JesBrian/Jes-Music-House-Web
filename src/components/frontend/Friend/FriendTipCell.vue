@@ -1,15 +1,15 @@
 <template>
   <div class="box-shadow">
-    CommentCell
+    动态
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CommentCell'
+  name: 'FriendTipCell'
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 
 </style>

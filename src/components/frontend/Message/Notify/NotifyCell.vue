@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="box-shadow">
     NotifyCell
   </div>
 </template>

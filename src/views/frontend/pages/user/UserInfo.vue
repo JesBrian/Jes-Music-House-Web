@@ -65,7 +65,7 @@
           <i class="user-info-nav-icon mh-if music-box"></i>
           <span class="user-info-nav-title">收藏的歌单</span>
         </div>
-        <play-list-group :play-list-data="createPlayList" style="width:93%; margin:0 auto;" />
+        <play-list-group :play-list-data="collectionPlayList" style="width:93%; margin:0 auto;" />
       </div>
 
     </div>
@@ -128,6 +128,20 @@ export default {
         {id: 101010, title: 'play-list-101010'},
         {id: 1111, title: 'play-list-1111'},
         {id: 1222, title: 'play-list-1222'}
+      ],
+      collectionPlayList: [
+        {id: 1111, title: 'co-play-list-111'},
+        {id: 1222, title: 'co-play-list-222'},
+        {id: 1333, title: 'co-play-list-333'},
+        {id: 1444, title: 'co-play-list-444'},
+        {id: 1555, title: 'co-play-list-555'},
+        {id: 1666, title: 'co-play-list-666'},
+        {id: 1777, title: 'co-play-list-777'},
+        {id: 1888, title: 'co-play-list-888'},
+        {id: 1999, title: 'co-play-list-999'},
+        {id: 1101010, title: 'co-play-list-101010'},
+        {id: 11111, title: 'co-play-list-1111'},
+        {id: 11222, title: 'co-play-list-1222'}
       ]
     }
   },

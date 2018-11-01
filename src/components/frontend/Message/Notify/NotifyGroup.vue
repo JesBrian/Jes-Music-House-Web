@@ -1,6 +1,6 @@
 <template>
   <div>
-    <notify-cell />
+    <notify-cell v-for="n in 8" />
   </div>
 </template>
 

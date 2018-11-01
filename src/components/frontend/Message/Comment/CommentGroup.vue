@@ -1,6 +1,6 @@
 <template>
   <div>
-    <comment-cell />
+    <comment-cell v-for="n in 6" />
   </div>
 </template>
 

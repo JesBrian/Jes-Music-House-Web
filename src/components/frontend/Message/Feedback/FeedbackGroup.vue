@@ -1,6 +1,6 @@
 <template>
   <div>
-    <feedback-cell />
+    <feedback-cell v-for="n in 4" />
   </div>
 </template>
 
