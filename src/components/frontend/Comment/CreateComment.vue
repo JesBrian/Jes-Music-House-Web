@@ -1,6 +1,7 @@
 <template>
   <div class="create-comment">
-    <textarea v-model="comment" @blur="markCursorPosition" ref="commentArea" class="cube-bg box-show glow-input" placeholder="请输入您的评论"></textarea>
+    <textarea v-model="comment" @blur="markCursorPosition" ref="commentArea"
+              class="cube-bg box-show glow-input" placeholder="请输入您的评论"></textarea>
     <div class="create-comment-operation">
       <emoji-button @sendEmoji="changeShowEmojiContent" />
 
@@ -30,7 +31,8 @@ export default {
     return {
       isShowEmojiContent: false,
       comment: '',
-      cursurPosition: -1
+      cursorPosition: -1,
+      cursorPositionEnd: -1
     }
   },
 
@@ -54,9 +56,14 @@ export default {
     },
 
     writeEmoji (emoji) {
-      if (this.cursurPosition !== -1) {
-        let pos = this.cursurPosition + emoji.length
-        this.comment = `${this.comment.slice(0, this.cursurPosition)}[-${emoji}-]${this.comment.slice(this.cursurPosition)}`
+      if ((this.cursorPosition !== -1) && (this.cursorPosition !== this.comment.length)) {
+        if (this.cursorPosition !== this.cursorPositionEnd) {
+          this.comment = `${this.comment.slice(0, this.cursorPosition)}[-${emoji}-]${this.comment.slice(this.cursorPositionEnd)}`
+        } else {
+          this.comment = `${this.comment.slice(0, this.cursorPosition)}[-${emoji}-]${this.comment.slice(this.cursorPosition)}`
+        }
+        let pos = this.cursorPosition + emoji.length + 4
+        this.setCursorPosition(pos)
       } else {
         this.comment += `[-${emoji}-]`
         this.$refs.commentArea.focus()
@@ -64,23 +71,48 @@ export default {
     },
 
     saveComment () {
+      this.cursorPosition = -1
+      this.cursorPositionEnd = -1
       alert(this.comment)
     },
 
     /**
-     * 标记当前文本域光标位置
+     * 标记当前文本域光标位置 [ 开始 & 结束 ]
      */
     markCursorPosition () {
       let pTextArea = this.$refs.commentArea
       if (pTextArea.selectionStart) { // 非 IE 浏览器
-        this.cursurPosition = pTextArea.selectionStart
+        this.cursorPosition = pTextArea.selectionStart
+        this.cursorPositionEnd = pTextArea.selectionEnd
       } else if (document.selection) { // IE
         let range = document.selection.createRange()
         range.moveStart('character', -pTextArea.value.length)
-        this.cursurPosition = range.text.length
+        this.cursorPosition = range.text.length
       } else {
-        this.cursurPosition = 0
+        this.cursorPosition = 0
+        this.cursorPositionEnd = 0
       }
+    },
+
+    /**
+     * 设置文本域光标位置
+     * @param pos
+     */
+    setCursorPosition (pos) {
+      setTimeout(() => { // 设置延时保证添加完再定位光标位置
+        let oTextarea = this.$refs.commentArea
+        if (document.all) {
+          let oTextRange = oTextarea.createTextRange()
+          oTextRange.moveStart('character', pos)
+          oTextRange.moveEnd('character', pos)
+          oTextRange.select()
+          oTextarea.focus()
+        } else {
+          oTextarea.select()
+          oTextarea.selectionStart = pos
+          oTextarea.selectionEnd = pos
+        }
+      }, 0)
     }
   }
 }
