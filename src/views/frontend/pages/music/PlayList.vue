@@ -32,7 +32,7 @@
 
 <script>
 import PlayListInfo from '../../../../components/frontend/PlayList/PlayListInfo.vue'
-import SongGroup from '../../../../components/frontend/SongGroup/SongGroup.vue'
+import SongGroup from '../../../../components/frontend/Song/SongGroup.vue'
 import CommentTotal from '../../../../components/frontend/Comment/CommentTotal.vue'
 import SimilarUser from '../../../../components/frontend/RightCommend/SimilarUser.vue'
 import SimilarPlayList from '../../../../components/frontend/RightCommend/SimilarPlayList.vue'

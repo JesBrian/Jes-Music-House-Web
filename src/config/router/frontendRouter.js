@@ -75,8 +75,8 @@ export default new Router({
           component: () => import('../../views/frontend/pages/user/Music.vue')
         },
         {
-          path: '/user/rank',
-          component: () => import('../../views/frontend/pages/user/Rank.vue')
+          path: '/user/listen',
+          component: () => import('../../views/frontend/pages/user/Listen.vue')
         },
         {
           path: '/album/:label/:type',

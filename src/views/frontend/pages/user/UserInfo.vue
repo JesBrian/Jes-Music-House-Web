@@ -49,7 +49,8 @@
             <div @click="changeRankType('all')" :class="rankType === 'all' ? 'cube-bg' : 'glass-bg'" class="box-show" style="flex:1; border-radius:0 5px 5px 0; text-shadow:1px 1px 2px #000;">所有时间</div>
           </div>
         </div>
-        <song-group :show-nav="false" :song-list="rankList" style="width:93%; margin:-20px auto 3px;" />
+
+        <listen-group :show-nav="false" :list-data="listenList" style="width:93%; margin:-20px auto 3px;" />
       </div>
 
       <div>
@@ -79,41 +80,41 @@
 
 <script>
 import DownloadClient from '../../../../components/frontend/RightCommend/DownloadClient.vue'
-import SongGroup from '../../../../components/frontend/SongGroup/SongGroup.vue'
+import ListenGroup from '../../../../components/frontend/Listen/ListenGroup.vue'
 import PlayListGroup from '../../../../components/frontend/PlayList/PlayListGroup.vue'
 
 export default {
   name: 'UserInfo',
 
   components: {
-    SongGroup, PlayListGroup, DownloadClient
+    ListenGroup, PlayListGroup, DownloadClient
   },
 
   data () {
     return {
       rankType: 'week',
 
-      rankList: [
-        {id: 101, name: 'test1', singer: 'JesBrian', time: '00:58'},
-        {id: 102, name: 'test2', singer: 'Jehfrian', time: '01:45'},
-        {id: 103, name: 'test3', singer: '曾56跟随', time: '01:30'},
-        {id: 104, name: 'test4', singer: 'vsaguc', time: '11:30'},
-        {id: 105, name: 'test5', singer: 'gqe8fyug', time: '03:33'},
-        {id: 106, name: 'test6', singer: '参数部分', time: '12:05'},
-        {id: 107, name: 'test7', singer: '二45幺', time: '08:45'},
-        {id: 108, name: 'test8', singer: 'sxJcbh', time: '06:34'},
-        {id: 109, name: 'test9', singer: '二45幺', time: '06:45'},
-        {id: 110, name: 'test10', singer: 'ruqwoho', time: '06:45'},
-        {id: 111, name: 'test11', singer: 'JesBrian', time: '00:58'},
-        {id: 112, name: 'test12', singer: 'Jehfrian', time: '01:45'},
-        {id: 113, name: 'test13', singer: '曾12跟随', time: '01:30'},
-        {id: 114, name: 'test14', singer: 'vsaguc', time: '11:30'},
-        {id: 115, name: 'test15', singer: 'gqefyug', time: '03:33'},
-        {id: 116, name: 'test16', singer: '参数55部分', time: '12:05'},
-        {id: 117, name: 'test17', singer: '二45幺', time: '08:45'},
-        {id: 118, name: 'test18', singer: 'sxJcbh', time: '06:34'},
-        {id: 119, name: 'test19', singer: '二45幺', time: '06:45'},
-        {id: 120, name: 'test20', singer: 'ruqwoho', time: '18:45'}
+      listenList: [
+        {id: 101, name: 'test1', singer: 'JesBrian', num: 45},
+        {id: 102, name: 'test2', singer: 'Jehfrian', num: 4555},
+        {id: 103, name: 'test3', singer: '曾56跟随', num: 235},
+        {id: 104, name: 'test4', singer: 'vsaguc', num: 4},
+        {id: 105, name: 'test5', singer: 'gqe8fyug', num: 78},
+        {id: 106, name: 'test6', singer: '参数部分', num: 266},
+        {id: 107, name: 'test7', singer: '二45幺', num: 12},
+        {id: 108, name: 'test8', singer: 'sxJcbh', num: 554},
+        {id: 109, name: 'test9', singer: '二45幺', num: 12},
+        {id: 110, name: 'test10', singer: 'ruqwoho', num: 485},
+        {id: 111, name: 'test11', singer: 'JesBrian', num: 78},
+        {id: 112, name: 'test12', singer: 'Jehfrian', num: 21},
+        {id: 113, name: 'test13', singer: '曾12跟随', num: 76},
+        {id: 114, name: 'test14', singer: 'vsaguc', num: 762},
+        {id: 115, name: 'test15', singer: 'gqefyug', num: 61},
+        {id: 116, name: 'test16', singer: '参数55部分', num: 94},
+        {id: 117, name: 'test17', singer: '二45幺', num: 456},
+        {id: 118, name: 'test18', singer: 'sxJcbh', num: 3721},
+        {id: 119, name: 'test19', singer: '二45幺', num: 216},
+        {id: 120, name: 'test20', singer: 'ruqwoho', num: 48}
       ],
       createPlayList: [
         {id: 111, title: 'play-list-111'},

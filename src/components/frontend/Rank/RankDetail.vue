@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import SongGroup from '../SongGroup/SongGroup.vue'
+import SongGroup from '../Song/SongGroup.vue'
 import CommentTotal from '../Comment/CommentTotal.vue'
 
 export default {

@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import SongGroup from '../../../../components/frontend/SongGroup/SongGroup.vue'
+import SongGroup from '../../../../components/frontend/Song/SongGroup.vue'
 import DownloadClient from '../../../../components/frontend/RightCommend/DownloadClient.vue'
 
 export default {

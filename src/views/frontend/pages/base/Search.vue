@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import SongGroup from '../../../../components/frontend/SongGroup/SongGroup.vue'
+import SongGroup from '../../../../components/frontend/Song/SongGroup.vue'
 import PlayListGroup from '../../../../components/frontend/PlayList/PlayListGroup.vue'
 import SingerGroup from '../../../../components/frontend/Singer/SingerGroup.vue'
 import UserGroup from '../../../../components/frontend/User/UserGroup.vue'

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import SongGroup from '../SongGroup/SongGroup.vue'
+import SongGroup from '../Song/SongGroup.vue'
 
 export default {
   name: 'HotSong',

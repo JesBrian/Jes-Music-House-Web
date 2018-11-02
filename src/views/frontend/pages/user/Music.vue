@@ -64,7 +64,7 @@
 
 <script>
 import PlayListInfo from '../../../../components/frontend/PlayList/PlayListInfo.vue'
-import SongGroup from '../../../../components/frontend/SongGroup/SongGroup.vue'
+import SongGroup from '../../../../components/frontend/Song/SongGroup.vue'
 
 export default {
   name: 'Music',
