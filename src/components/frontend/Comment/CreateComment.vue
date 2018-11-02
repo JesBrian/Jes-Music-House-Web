@@ -1,6 +1,6 @@
 <template>
   <div class="create-comment">
-    <textarea v-model="comment" class="cube-bg box-show glow-input" placeholder="请输入您的评论"></textarea>
+    <textarea v-model="comment" @blur="markCursorPosition" ref="commentArea" class="cube-bg box-show glow-input" placeholder="请输入您的评论"></textarea>
     <div class="create-comment-operation">
       <emoji-button @sendEmoji="changeShowEmojiContent" />
 
@@ -29,20 +29,21 @@ export default {
   data () {
     return {
       isShowEmojiContent: false,
-      comment: ''
+      comment: '',
+      cursurPosition: -1
     }
   },
 
   computed: {
     commentNums () {
-      return 200 - this.comment.length
+      return 180 - this.comment.length
     }
   },
 
   watch: {
     commentNums (nVal) {
       if (nVal <= 0) {
-        this.comment = this.comment.substr(0, 200)
+        this.comment = this.comment.substr(0, 180)
       }
     }
   },
@@ -53,11 +54,33 @@ export default {
     },
 
     writeEmoji (emoji) {
-      this.comment += `[-${emoji}-]`
+      if (this.cursurPosition !== -1) {
+        let pos = this.cursurPosition + emoji.length
+        this.comment = `${this.comment.slice(0, this.cursurPosition)}[-${emoji}-]${this.comment.slice(this.cursurPosition)}`
+      } else {
+        this.comment += `[-${emoji}-]`
+        this.$refs.commentArea.focus()
+      }
     },
 
     saveComment () {
       alert(this.comment)
+    },
+
+    /**
+     * 标记当前文本域光标位置
+     */
+    markCursorPosition () {
+      let pTextArea = this.$refs.commentArea
+      if (pTextArea.selectionStart) { // 非 IE 浏览器
+        this.cursurPosition = pTextArea.selectionStart
+      } else if (document.selection) { // IE
+        let range = document.selection.createRange()
+        range.moveStart('character', -pTextArea.value.length)
+        this.cursurPosition = range.text.length
+      } else {
+        this.cursurPosition = 0
+      }
     }
   }
 }
