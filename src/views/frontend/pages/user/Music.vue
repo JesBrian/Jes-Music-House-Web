@@ -11,7 +11,7 @@
       </router-link>
 
       <div @click="switchSecondMenu('create-play-list')"
-           :class="{active: type === 'create-play-list'}"
+           :class="{active: ['create-play-list', 'modify-play-list'].includes(type)}"
            class="user-music-category-cell box-shadow">
         <i class="user-music-category-cell-logo mh-if redis" ></i>
         <span class="user-music-category-cell-label">创建的歌单</span>
@@ -23,12 +23,16 @@
         <i :class="createActive ? 'double-arrow-down' : 'double-arrow-up'" class="show-btn mh-if"></i>
       </div>
       <div v-if="createActive" class="box-shadow">
-        <router-link :to="`/user/music/play-list/${item.id}`" v-for="item in createList" :key="item.id"
+        <router-link :to="`/user/music/play-list/${item.id}`" v-for="(item, index) in createList" :key="item.id"
                      class="play-list-cell box-shadow" :class="{active: playListId === item.id}" >
           <img class="play-list-cell-img" src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80" />
           <div class="play-list-cell-info" >
             <p class="play-list-cell-title">{{ item.title }}</p>
             <p class="play-list-cell-other">{{ item.num }} 首</p>
+          </div>
+          <div class="play-list-cell-oper">
+            <router-link :to="`/user/music/play-list/modify/${item.id}`" style="margin:1.5px 0;" class="mh-if comment"></router-link>
+            <i @click="delPlayList(index, createList, $event)" style="margin:1.5px 0 1.5px -2px;" class="mh-if trash-1"></i>
           </div>
         </router-link>
       </div>
@@ -41,12 +45,15 @@
         <i :class="collectionActive ? 'double-arrow-down' : 'double-arrow-up'" class="show-btn mh-if"></i>
       </div>
       <div v-if="collectionActive" class="box-shadow">
-        <router-link :to="`/user/music/play-list/${item.id}`" v-for="item in collectionList" :key="item.id"
+        <router-link :to="`/user/music/play-list/${item.id}`" v-for="(item, index) in collectionList" :key="item.id"
                      class="play-list-cell box-shadow" :class="{active: playListId === item.id}" >
           <img class="play-list-cell-img" src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80" />
           <div class="play-list-cell-info" >
             <p class="play-list-cell-title">{{ item.title }}</p>
             <p class="play-list-cell-other">{{ item.num }} 首</p>
+          </div>
+          <div class="play-list-cell-oper">
+            <i @click="delPlayList(index, collectionList, $event)" class="mh-if trash-1"></i>
           </div>
         </router-link>
       </div>
@@ -61,16 +68,18 @@
 </template>
 
 <script>
-import UserPlayList from '../../../../components/frontend/UserMusic/UserPlayList.vue'
 import CollectionSinger from '../../../../components/frontend/UserMusic/CollectionSinger.vue'
+import UserPlayList from '../../../../components/frontend/UserMusic/UserPlayList.vue'
+import ModifyPlayList from '../../../../components/frontend/UserMusic/ModifyPlayList.vue'
 
 export default {
   name: 'Music',
 
   components: {
+    CollectionSinger,
     'create-play-list': UserPlayList,
     'collection-play-list': UserPlayList,
-    CollectionSinger
+    ModifyPlayList
   },
 
   data () {
@@ -123,7 +132,7 @@ export default {
         for (let i = 0, len = this.createList.length; i < len; i++) {
           if (this.createList[i].id === playListId) {
             this.createActive = true
-            this.type = 'create-play-list'
+            this.type = this.$route.path.split('/')[4] === 'modify' ? 'modify-play-list' : 'create-play-list'
             return
           }
         }
@@ -144,6 +153,12 @@ export default {
       } else {
         this.collectionActive = !this.collectionActive
       }
+    },
+
+    delPlayList (playListIndex, playList, event) {
+      event.preventDefault() // 阻止 router-link 跳转事件
+      // axios - ajax
+      playList.splice(playListIndex, 1)
     },
 
     showModal (modalType) {
@@ -199,7 +214,7 @@ export default {
   }
 
   .play-list-cell {
-    width:98%; height:38px; margin:0 auto; display:flex; align-items:center;
+    width:98%; height:43px; margin:0 auto; display:flex; align-items:center;
     &.active {
       background:#1D1D1D;
     }
@@ -208,13 +223,25 @@ export default {
       width:28px; height:28px; margin:0 8px 0 3px; border-radius:3px;
     }
     &-info {
-      box-sizing:border-box;
+      flex:1; box-sizing:border-box;
     }
     &-title {
       margin-bottom:2px; font-size:14px;
     }
     &-other {
       font-size:12px;
+    }
+    &-oper {
+      width:28px; display:flex; flex-direction:column; justify-content:center; align-items:center;
+
+      > .mh-if {
+        &:hover {
+          color:#EEE;
+        }
+        &:active {
+          color:#00D8FF;
+        }
+      }
     }
   }
 
