@@ -50,7 +50,7 @@
           </div>
         </div>
 
-        <listen-group :show-nav="false" :list-data="listenList" style="width:93%; margin:-20px auto 3px;" />
+        <listen-group :show-nav="false" :list-data="listenList" style="width:93%; margin:-20px auto 18px;" />
       </div>
 
       <div>

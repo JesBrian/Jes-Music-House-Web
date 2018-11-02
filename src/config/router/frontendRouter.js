@@ -71,8 +71,16 @@ export default new Router({
           component: () => import('../../views/frontend/pages/user/Recommend.vue')
         },
         {
-          path: '/user/music',
+          path: '/user/music/singer',
           component: () => import('../../views/frontend/pages/user/Music.vue')
+        },
+        {
+          path: '/user/music/play-list/:id',
+          component: () => import('../../views/frontend/pages/user/Music.vue')
+        },
+        {
+          path: '/user/music',
+          redirect: '/user/music/singer'
         },
         {
           path: '/user/listen',
