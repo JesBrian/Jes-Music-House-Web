@@ -48,5 +48,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
+  .play-list-info-container {
+    margin-bottom:32px;
+  }
 </style>

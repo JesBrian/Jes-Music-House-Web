@@ -221,8 +221,4 @@ export default {
   .user-music-detail-container {
     padding:0 0 18px; flex:1;
   }
-
-  .play-list-info-container {
-    margin-bottom:32px;
-  }
 </style>
