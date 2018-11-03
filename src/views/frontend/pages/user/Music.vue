@@ -30,7 +30,7 @@
             <p class="play-list-cell-title">{{ item.title }}</p>
             <p class="play-list-cell-other">{{ item.num }} 首</p>
           </div>
-          <div class="play-list-cell-oper">
+          <div v-if="index !== 0" class="play-list-cell-oper">
             <router-link :to="`/user/music/play-list/modify/${item.id}`" style="margin:1.5px 0;" class="mh-if comment"></router-link>
             <i @click="delPlayList(index, createList, $event)" style="margin:1.5px 0 1.5px -2px;" class="mh-if trash-1"></i>
           </div>

@@ -46,7 +46,7 @@
     <div style="width:38%; float:right; text-align:center;">
       <img @click="toggleShow" :src="imgDataUrl" class="glass-bg box-show" style="width:138px; height:138px; margin:0 auto; padding:5px; display:block;"/>
       <div @click="toggleShow" class="super-btn-out" style="width:128px; height:32px; margin-top:12px;">
-        <span class="super-btn-in mh-if datum" style="width:118px; height:22px; line-height:22px;">&nbsp;&nbsp;修改头像</span>
+        <span class="super-btn-in mh-if avatar" style="width:118px; height:24px; top:48%;">&nbsp;&nbsp;修改头像</span>
       </div>
     </div>
 

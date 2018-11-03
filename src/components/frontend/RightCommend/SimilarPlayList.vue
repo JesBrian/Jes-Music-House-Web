@@ -32,13 +32,13 @@ export default {
   .similar-play-list {
     height:48px; margin:0 0 12px; display:block;
     &-img {
-      width:40px; height:40px; margin:4px; float:left;
+      width:40px; height:40px; margin:4px 8px 0 4px; float:left;
     }
     &-title {
-      font-size:15px; font-weight:700; line-height:2em; color:#BBB;
+      margin-top:6px; float:left; font-size:15px; font-weight:700; line-height:1.3em; color:#BBB;
     }
     &-creator {
-      width:70%; color:#888; font-size:13px;
+      width:70%; line-height:1.3em; color:#888; font-size:13px;
     }
   }
 </style>

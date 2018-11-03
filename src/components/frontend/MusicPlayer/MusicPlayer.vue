@@ -23,7 +23,7 @@
         <!-- 歌曲控制 -->
         <div class="player-controller-main-song">
           <router-link id="songResource" to="/song/1" class="glass-bg">
-            <img v-lazy="require('../../../../static/img/default/default_album.jpg')" class="song-img" />
+            <img :src="musicPlayList[musicPlayListNowIndex].poster" class="song-img" />
           </router-link>
           <div class="main-container">
             <div class="song-info">
@@ -139,20 +139,20 @@ export default {
       musicPlayModel: 'loop', // 三种播放模式 [ loop-歌单循环，single-loop-单曲循环，random-歌单里歌曲随机播放 ]
       musicPlayListNowIndex: 0, // 当前播放歌曲的下标 - 对应播放列表 musicPlayList 的数组下标
       musicPlayList: [
-        {id: '11', name: 'test1'},
-        {id: '12', name: 'test2'},
-        {id: '13', name: 'test3'},
-        {id: '14', name: 'test4'},
-        {id: '15', name: 'test5'},
-        {id: '16', name: 'test6'},
-        {id: '17', name: 'test7'},
-        {id: '18', name: 'test1'},
-        {id: '19', name: 'test2'},
-        {id: '20', name: 'test3'},
-        {id: '21', name: 'test4'},
-        {id: '22', name: 'test5'},
-        {id: '23', name: 'test6'},
-        {id: '24', name: 'test7'}
+        {id: '11', name: 'test1', poster: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1377828491,527978428&fm=26&gp=0.jpg'},
+        {id: '12', name: 'test2', poster: 'https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/0df3d7ca7bcb0a46c5d1bfec6063f6246a60af77.jpg'},
+        {id: '13', name: 'test3', poster: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3376239977,2671966586&fm=26&gp=0.jpg'},
+        {id: '14', name: 'test4', poster: 'http://p1.music.126.net/3M3PppFO_sWAV59dQOA2uA==/5890083790153984.jpg?param=130y130'},
+        {id: '15', name: 'test5', poster: 'http://p2.music.126.net/daZcHVIJicL3wXJWMIjAng==/7926379325753633.jpg?param=130y130'},
+        {id: '16', name: 'test6', poster: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=983893726,970464221&fm=26&gp=0.jpg'},
+        {id: '17', name: 'test7', poster: 'http://p1.music.126.net/3M3PppFO_sWAV59dQOA2uA==/5890083790153984.jpg?param=130y130'},
+        {id: '18', name: 'test1', poster: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1377828491,527978428&fm=26&gp=0.jpg'},
+        {id: '19', name: 'test2', poster: 'https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/0df3d7ca7bcb0a46c5d1bfec6063f6246a60af77.jpg'},
+        {id: '20', name: 'test3', poster: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3376239977,2671966586&fm=26&gp=0.jpg'},
+        {id: '21', name: 'test4', poster: 'http://p1.music.126.net/3M3PppFO_sWAV59dQOA2uA==/5890083790153984.jpg?param=130y130'},
+        {id: '22', name: 'test5', poster: 'http://p2.music.126.net/daZcHVIJicL3wXJWMIjAng==/7926379325753633.jpg?param=130y130'},
+        {id: '23', name: 'test6', poster: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=983893726,970464221&fm=26&gp=0.jpg'},
+        {id: '24', name: 'test7', poster: 'http://p1.music.126.net/3M3PppFO_sWAV59dQOA2uA==/5890083790153984.jpg?param=130y130'}
       ],
       musicPlayListContentShowStatus: false
     }
@@ -571,7 +571,7 @@ export default {
         &-song {
           width:800px; height:100%; padding:0 0 0 28px; box-sizing:border-box; display:inline-block;
           .song-img {
-            width:100%; height:100%; border-radius:3.5px;
+            width:98%; height:100%; margin:0 auto; border-radius:3.5px;
           }
           > .main-container {
             width:628px; height:100%; margin-left:28px; display:inline-block;
