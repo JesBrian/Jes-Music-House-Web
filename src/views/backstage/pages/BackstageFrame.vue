@@ -38,6 +38,7 @@ export default {
 <style lang="less">
   #backstageContainer {
     width:100%; height:100%; top:0; left:0; padding:59px 6px 31px 35px; display:inline-block; position:fixed; box-sizing:border-box; background:#666;
+    transition:all 1s;
 
     &.active {
       padding-left:215px;

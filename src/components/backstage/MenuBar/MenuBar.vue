@@ -1,6 +1,6 @@
 <template>
   <div id="leftMenu" class="glass-bg box-show" :class="{'active' : $store.state.View.showLeftMenu}">
-    <div v-show="$store.state.View.showLeftMenu" style="width:100%; height:100%; padding:13px 0 0; overflow-y:auto; color:#DDD; box-sizing:border-box;">
+    <div :class="{active: $store.state.View.showLeftMenu}" class="menu-bar-container">
       <gemini-scrollbar @ready="scrollbarOnReady">
         <div v-for="(firstMenuItem, index) in menuTreeData" :key="`${index}3`" class="first-menu" :class="{'active': firstMenuItem.id === nowFirstMenu}">
           <div @click="showThisFirstMenuSecondMenuContainer(firstMenuItem.id)" class="first-menu-link glass-bg box-show">
@@ -21,7 +21,7 @@
         </div>
       </gemini-scrollbar>
     </div>
-    <div @click="showLeftMenu" v-show="!$store.state.View.showLeftMenu" style="width:100%; height:100%; padding-left:6px; position:relative;">
+    <div @click="showLeftMenu" v-show="!$store.state.View.showLeftMenu" style="width:100%; height:100%; padding-left:6px; position:relative; cursor:pointer;">
       <i class="mh-if double-arrow-right" style="top:50%; position:absolute; display:inline-block; transform:translateY(-50%); color:#FFF;"></i>
     </div>
   </div>
@@ -90,22 +90,23 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
   #leftMenu {
     width:28px; height:100%; top:0; left:0; padding:50px 0 28px; box-sizing:border-box; position:fixed; z-index:9;
-  }
-  #leftMenu.active {
-    width:208px;
+    transition:all 1s;
+    &.active {
+      width:208px;
+    }
   }
 
   .first-menu {
-    width:100%; margin:0 0 8px;
+    width:98%; margin:0 0 8px;
   }
   .first-menu-link {
     width:93%; height:33px; margin:0 auto; position:relative; cursor:pointer;
   }
   .first-menu-link-label {
-    display:inline-block; line-height:30px; font-size:16.5px;
+    width:72%; display:inline-block; line-height:30px; font-size:16.5px;
   }
 
   .show-second-menu-btn {
@@ -171,7 +172,16 @@ export default {
     }
   }
 
-  #superScrollbar >>> .gm-scrollbar.-vertical {
+  #superScrollbar /deep/ .gm-scrollbar.-vertical {
     background:#111;
+  }
+
+  .menu-bar {
+    &-container {
+      width:100%; height:100%; padding:13px 0 0; overflow-y:auto; color:#DDD; box-sizing:border-box; transition:all 2s; display:none;
+      &.active {
+        display:block;
+      }
+    }
   }
 </style>
