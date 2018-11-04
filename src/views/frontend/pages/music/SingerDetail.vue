@@ -4,22 +4,13 @@
     <div class="singer-detail-left box-show">
       <!-- 歌手信息 -->
       <div class="singer-info-container">
-        <div class="singer-info-avatar">
-          <img src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80"
-               class="singer-info-avatar-img glass-bg box-show"/>
-        </div>
         <div class="singer-info-base">
           <p class="singer-info-base-name">The Name of the Singer</p>
-          <p class="singer-info-base-publish">
-            <span style="margin-right:26px;">
-              <i class="mh-if music-albu-2" style="margin-right:6px;"></i>单曲数：253
-            </span>
-            <span style="margin-right:26px;">
-              <i class="mh-if redis" style="margin-right:6px;"></i>专辑数：63
-            </span>
-          </p>
-          <div class="super-btn-out ripple" style="width:108px; height:38px;">
-            <span class="super-btn-in mh-if non-colloection" style="width:95px; height:25px; top:48%; font-size:21px; line-height:26px;"> 关注</span>
+
+          <div class="singer-info-base-poster box-show">
+            <div class="super-btn-out">
+              <span class="super-btn-in mh-if non-colloection">&nbsp;关注</span>
+            </div>
           </div>
         </div>
       </div>
@@ -32,7 +23,7 @@
       </div>
 
       <!-- 不同内容 -->
-      <div style="min-height:388px; margin:0 auto 28px;">
+      <div class="singer-detail-container">
         <component :is="type" />
       </div>
     </div>
@@ -91,25 +82,35 @@ export default {
     &-right {
       width:25%; padding:34px 18px; box-sizing:border-box;
     }
+    &-container {
+      min-height:388px; margin:0 auto 28px;
+    }
   }
 
   .singer-info {
     &-container {
-      width:96%; margin:28px auto 18px;
-    }
-    &-avatar {
-      width:20%; height:100%; display:inline-block; text-align:center;
-      &-img {
-        width:128px; height:128px; margin-right:28px; padding:6px;
-      }
+      width:90%; margin:28px auto 0;
     }
     &-base {
-      width:80%; height:100%; float:right;
       &-name {
-        padding-top:8px; font-size:24px;
+        padding-top:8px; font-size:22px;
       }
-      &-publish {
-        line-height:3em;
+      &-poster {
+        width:100%; height:328px; margin:8px auto 0; position:relative;
+        background:url(http://p1.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=180y180) no-repeat;
+        background-size:99% 98%; background-position:3px 3px;
+
+        .super-btn {
+          &-out {
+            width:73px; height:33px; right:18px; bottom:18px; position:absolute; opacity:0.8;
+            &:hover {
+              opacity:1;
+            }
+          }
+          &-in {
+            width:63px; height:22px;
+          }
+        }
       }
     }
   }

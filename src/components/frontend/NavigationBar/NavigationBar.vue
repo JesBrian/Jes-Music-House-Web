@@ -86,7 +86,7 @@
       <div v-else-if="menuType === 'my'" class="second-menu-container">
         <router-link to="/user/music" :class="{active: $route.path.split('/')[2] === 'music'}" class="second-menu-link box-show">我的音乐</router-link>
         <router-link to="/user/recommend" :class="{active: $route.path.split('/')[2] === 'recommend'}" class="second-menu-link box-show">个人推荐</router-link>
-        <router-link to="/user/listen" :class="{active: $route.path.split('/')[2] === 'rank'}" class="second-menu-link box-show">听歌排行</router-link>
+        <router-link to="/user/listen" :class="{active: $route.path.split('/')[2] === 'listen'}" class="second-menu-link box-show">听歌排行</router-link>
       </div>
       <div v-else-if="menuType === 'friend'" class="second-menu-container">
         <router-link to="/friend/other" :class="{active: $route.path.split('/')[2] === 'other'}" class="second-menu-link box-show">朋友圈</router-link>
