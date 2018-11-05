@@ -2,8 +2,8 @@
   <div id="musicPlayerList">
     <gemini-scrollbar>
       <ul class="music-list-container">
-        <li v-for="(item ,index) in songList" :key="index + 99" class="music-list-cell-container box-shadow">
-          <div :class="{'active': nowIndex === index}" class="music-list-cell">
+        <li v-for="(item ,index) in $store.state.Music.nowPlayList" :key="index + 99" class="music-list-cell-container box-shadow">
+          <div :class="{'active': $store.state.Music.nowIndex === index}" class="music-list-cell">
 
             <!-- BEGIN 点击切换播放歌曲 BEGIN -->
             <div @click="playThisMusic(index)" class="music-list-cell-player" ></div>
@@ -35,23 +35,17 @@
 export default {
   name: 'MusicPlayerList',
 
-  props: {
-    nowIndex: {
-      type: Number,
-      default: 0
-    },
-
-    songList: {
-      type: Array,
-      default: () => {
-        return []
-      }
-    }
-  },
-
   methods: {
     playThisMusic (index) {
-      this.$parent.playThisMusic(index)
+      // this.$parent.playThisMusic(index)
+    },
+
+    /**
+     * 删除播放列表某项
+     * @param delMusicListIndex
+     */
+    delMusicListItem (delMusicListIndex) {
+      this.$store.commit('DEL_PLAY_LIST_ITEM', delMusicListIndex)
     },
 
     showModal (type) {

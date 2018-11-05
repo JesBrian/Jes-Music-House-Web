@@ -8,6 +8,7 @@
           <p class="singer-info-base-name">The Name of the Singer</p>
 
           <div class="singer-info-base-poster box-show">
+            <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1464672532,2989234701&fm=26&gp=0.jpg" class="singer-info-base-poster-img" />
             <div class="super-btn-out">
               <span class="super-btn-in mh-if non-colloection">&nbsp;关注</span>
             </div>
@@ -96,9 +97,11 @@ export default {
         padding-top:8px; font-size:22px;
       }
       &-poster {
-        width:100%; height:328px; margin:8px auto 0; position:relative;
-        background:url(http://p1.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=180y180) no-repeat;
-        background-size:99% 98%; background-position:3px 3px;
+        width:100%; height:328px; margin:8px auto 0; padding:3px; box-sizing:border-box; position:relative;
+
+        &-img {
+          width:100%; height:100%;
+        }
 
         .super-btn {
           &-out {

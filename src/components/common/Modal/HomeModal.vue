@@ -3,12 +3,12 @@
 
     <!-- 各种拟态框组件 -->
     <transition name="updown">
-      <component :is="$store.state.Modal.modalType">
+      <component :is="$store.state.View.modalType">
         <modal-close-btn />
       </component>
     </transition>
 
-    <div v-if="$store.state.Modal.modalType !== ''" id="modalMask" @click="closeShowModal"></div>
+    <div v-if="$store.state.View.modalType !== ''" id="modalMask" @click="closeShowModal"></div>
   </div>
 </template>
 

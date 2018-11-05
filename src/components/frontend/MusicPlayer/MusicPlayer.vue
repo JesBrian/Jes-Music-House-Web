@@ -3,8 +3,8 @@
   <div class="player">
 
     <!-- 音乐播放器资源 -->
-    <audio id="homeMusicSource" v-if="this.musicPlayList.length !== 0" preload @ended="nowMusicEndNextPlay"
-           :src="'/static/music/' + this.musicPlayList[musicPlayListNowIndex].name + '.mp3'"></audio>
+    <audio id="homeMusicSource" v-if="$store.state.Music.nowPlayList.length !== 0" preload @ended="nowMusicEndNextPlay"
+           :src="'/static/music/' + $store.state.Music.nowPlayList[$store.state.Music.nowIndex].name + '.mp3'"></audio>
 
     <!-- 播放器主控制 -->
     <div :class="{'show-unlock' : !musicPlayShow}" class="player-controller glass-bg box-show">
@@ -23,12 +23,12 @@
         <!-- 歌曲控制 -->
         <div class="player-controller-main-song">
           <router-link id="songResource" to="/song/1" class="glass-bg">
-            <img :src="musicPlayList[musicPlayListNowIndex].poster" class="song-img" />
+            <img :src="$store.state.Music.nowPlayList.length === 0 ? '../../../../static/img/default/default_album.jpg' : $store.state.Music.nowPlayList[$store.state.Music.nowIndex].poster" class="song-img" />
           </router-link>
           <div class="main-container">
             <div class="song-info">
               <router-link to="/song/1" class="song-info-name">
-                {{ musicPlayList.length === 0 ? '' : musicPlayList[musicPlayListNowIndex].name }}
+                {{ $store.state.Music.nowPlayList.length === 0 ? '' : $store.state.Music.nowPlayList[$store.state.Music.nowIndex].name }}
               </router-link>
               <router-link to="/singer-detail/hot-song/1" class="song-info-singer">
                 歌手<i class="split">/</i>Singer Name
@@ -38,7 +38,11 @@
             <div @click="clickMusicProgressBar" id="progressBarClickContent" class="progress-bar box-show">
               <div :style="{'width': musicBufferedRate * 100 + '%'}" class="progress-bar-buffer box-show"></div>
               <div :style="{'width': musicCTime / musicDTime * 100 + '%'}" class="progress-bar-now">
-                <a @mousedown="dragProgressControllerPointer" id="progressPointer" class="controller-pointer box-show"></a>
+                <a @mousedown="dragProgressControllerPointer" id="progressPointer" class="controller-pointer box-show">
+                  <div v-if="musicLoading" style="width:100%; height:100%; position:relative;">
+                    <img src="../../../assets/img/pointer-loading.svg" style="width:100%; height:100%;" />
+                  </div>
+                </a>
               </div>
             </div>
             <!-- 播放时间 -->
@@ -75,86 +79,45 @@
           </i>
           <!-- 播放列表 -->
           <i @click="changeMusicPlayListContentShowStatus" class="play-menu mh-if menu">
-            <span class="play-menu-label">{{ this.musicPlayList.length }}</span>
+            <span class="play-menu-label">{{ $store.state.Music.nowPlayList.length }}</span>
           </i>
         </div>
       </div>
     </div>
 
     <!-- 播放列表内容区域 -->
-    <div v-if="musicPlayListContentShowStatus" class="player-menu glass-bg box-show">
-      <div class="player-menu-title box-show">
-        <div class="player-menu-operation">
-          <span class="player-menu-operation-label">播放列表 [ {{ musicPlayList.length }} ]</span>
-          <div class="player-menu-operation-container">
-            <a @click="showModal('Collection')"><i class="mh-if collection-music"></i>收藏全部</a>
-            <a @click="clearMusicPlayList"><i class="mh-if trash-2"></i>清空列表</a>
-          </div>
-        </div>
-        <div class="player-menu-now-song">
-          <p class="player-menu-now-song-label">
-            {{ musicPlayList.length === 0 ? '' : musicPlayList[musicPlayListNowIndex].name }}
-          </p>
-          <i @click="changeMusicPlayListContentShowStatus" class="player-menu-close mh-if all-arrow"></i>
-        </div>
-      </div>
-
-      <div class="player-menu-container box-show">
-
-        <!-- 歌曲列表 -->
-        <music-player-list :now-index="musicPlayListNowIndex" :song-list="musicPlayList" />
-
-        <!-- 歌词滚动区域 -->
-        <music-player-lyric />
-
-      </div>
-    </div>
+    <music-play-list-content v-if="musicPlayListContentShowStatus" />
 
   </div>
 </template>
 
 <script>
 import { timeStampToTime } from '../../../assets/js/utils.js'
-import MusicPlayerList from './MusicPlayerList.vue'
-import MusicPlayerLyric from './MusicPlayerLyric.vue'
+import MusicPlayListContent from './MusicPlayListContent.vue'
 
 export default {
   name: 'MusicPlayer',
 
   components: {
-    MusicPlayerList, MusicPlayerLyric
+    MusicPlayListContent
   },
 
   data () {
     return {
-      musicPlayShow: true,
+      musicPlayShow: true, // 播放器展示
+      musicPlayListContentShowStatus: false, // 播放列表内容区域展示
+
       musicSource: null, // 音乐资源 MP3
+      musicLoading: false, // 音乐资源加载
       musicCTime: 0,
       musicDTime: 0,
       musicBufferedRate: 0,
-      timer: null,
       musicIsPlay: false, // 音乐播放/暂停状态
       musicVolumeStatus: true, // 音量开关状态
-      musicVolumeLevel: 0.8, // 音量大小
+      musicVolumeLevel: 0.38, // 音量大小
       musicPlayModel: 'loop', // 三种播放模式 [ loop-歌单循环，single-loop-单曲循环，random-歌单里歌曲随机播放 ]
-      musicPlayListNowIndex: 0, // 当前播放歌曲的下标 - 对应播放列表 musicPlayList 的数组下标
-      musicPlayList: [
-        {id: '11', name: 'test1', poster: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1377828491,527978428&fm=26&gp=0.jpg'},
-        {id: '12', name: 'test2', poster: 'https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/0df3d7ca7bcb0a46c5d1bfec6063f6246a60af77.jpg'},
-        {id: '13', name: 'test3', poster: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3376239977,2671966586&fm=26&gp=0.jpg'},
-        {id: '14', name: 'test4', poster: 'http://p1.music.126.net/3M3PppFO_sWAV59dQOA2uA==/5890083790153984.jpg?param=130y130'},
-        {id: '15', name: 'test5', poster: 'http://p2.music.126.net/daZcHVIJicL3wXJWMIjAng==/7926379325753633.jpg?param=130y130'},
-        {id: '16', name: 'test6', poster: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=983893726,970464221&fm=26&gp=0.jpg'},
-        {id: '17', name: 'test7', poster: 'http://p1.music.126.net/3M3PppFO_sWAV59dQOA2uA==/5890083790153984.jpg?param=130y130'},
-        {id: '18', name: 'test1', poster: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1377828491,527978428&fm=26&gp=0.jpg'},
-        {id: '19', name: 'test2', poster: 'https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/0df3d7ca7bcb0a46c5d1bfec6063f6246a60af77.jpg'},
-        {id: '20', name: 'test3', poster: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3376239977,2671966586&fm=26&gp=0.jpg'},
-        {id: '21', name: 'test4', poster: 'http://p1.music.126.net/3M3PppFO_sWAV59dQOA2uA==/5890083790153984.jpg?param=130y130'},
-        {id: '22', name: 'test5', poster: 'http://p2.music.126.net/daZcHVIJicL3wXJWMIjAng==/7926379325753633.jpg?param=130y130'},
-        {id: '23', name: 'test6', poster: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=983893726,970464221&fm=26&gp=0.jpg'},
-        {id: '24', name: 'test7', poster: 'http://p1.music.126.net/3M3PppFO_sWAV59dQOA2uA==/5890083790153984.jpg?param=130y130'}
-      ],
-      musicPlayListContentShowStatus: false
+
+      timer: null
     }
   },
 
@@ -162,12 +125,14 @@ export default {
     this.musicSource = document.getElementById('homeMusicSource')
     this.musicSource.volume = this.musicVolumeLevel
 
+    // 添加事件监听
     this.musicSource.addEventListener('timeupdate', this._currentTime)
     this.musicSource.addEventListener('canplay', this._durationTime)
     this.musicSource.addEventListener('canplay', this._musicBuffered)
   },
 
   beforeDestroy () {
+    // 取消事件监听
     this.musicSource.removeEventListener('timeupdate', this._currentTime)
     this.musicSource.removeEventListener('canplay', this._durationTime)
     this.musicSource.removeEventListener('canplay', this._musicBuffered)
@@ -176,16 +141,6 @@ export default {
   watch: {
     '$route' () {
       this.musicPlayListContentShowStatus = false
-    },
-
-    musicPlayListNowIndex () {
-      setTimeout(() => {
-        this.musicSource.play()
-      }, 88)
-    },
-
-    musicVolumeLevel () {
-      this.musicSource.volume = this.musicVolumeLevel
     }
   },
 
@@ -204,11 +159,14 @@ export default {
       clearInterval(this.timer)
       this.timer = setInterval(() => {
         if (this.musicSource.buffered.length !== 0) { // 容错处理
+          this.musicLoading = false
           this.musicBufferedRate = this.musicSource.buffered.end(0) / this.musicDTime
           if (this.musicBufferedRate === 1) {
             clearInterval(this.timer)
             this.timer = null
           }
+        } else {
+          this.musicLoading = true
         }
       }, 368)
     },
@@ -217,7 +175,7 @@ export default {
      * 音乐播放 OR 停止
      */
     switchMusicPlay () {
-      if (this.musicPlayList.length === 0) {
+      if (this.$store.state.Music.nowPlayList.length === 0) {
         return false
       }
       this.musicIsPlay = !this.musicIsPlay
@@ -228,17 +186,17 @@ export default {
      * 上一首播放
      */
     prevMusic () {
-      if (this.musicPlayList.length === 0) {
+      if (this.$store.state.Music.nowPlayList.length === 0) {
         return false
       }
       if (this.musicPlayModel === 'random') {
         let indexTemp
         do {
-          indexTemp = Number.parseInt(this.musicPlayList.length * Math.random())
-        } while (indexTemp === this.musicPlayListNowIndex)
-        this.changemusicPlayListNowIndex({nowIndexNum: indexTemp})
+          indexTemp = Number.parseInt(this.$store.state.Music.nowPlayList.length * Math.random())
+        } while (indexTemp === this.$store.state.Music.nowIndex)
+        this.changeMusicPlayListNowIndex({nowIndexNum: indexTemp})
       } else {
-        this.changemusicPlayListNowIndex({nowIndexNum: -1, prevOrNext: 'prev'})
+        this.changeMusicPlayListNowIndex({nowIndexNum: -1, prevOrNext: 'prev'})
       }
     },
 
@@ -246,17 +204,17 @@ export default {
      * 下一首播放
      */
     nextMusic () {
-      if (this.musicPlayList.length === 0) {
+      if (this.$store.state.Music.nowPlayList.length === 0) {
         return false
       }
       if (this.musicPlayModel === 'random') {
         let indexTemp
         do {
-          indexTemp = Number.parseInt(this.musicPlayList.length * Math.random())
-        } while (indexTemp === this.musicPlayListNowIndex)
-        this.changemusicPlayListNowIndex({nowIndexNum: indexTemp})
+          indexTemp = Number.parseInt(this.$store.state.Music.nowPlayList.length * Math.random())
+        } while (indexTemp === this.$store.state.Music.nowIndex)
+        this.changeMusicPlayListNowIndex({nowIndexNum: indexTemp})
       } else {
-        this.changemusicPlayListNowIndex()
+        this.changeMusicPlayListNowIndex()
       }
     },
 
@@ -265,15 +223,15 @@ export default {
      */
     nowMusicEndNextPlay () {
       if (this.musicPlayModel === 'loop') {
-        this.changemusicPlayListNowIndex()
+        this.changeMusicPlayListNowIndex()
       } else if (this.musicPlayModel === 'single-loop') {
         this.musicSource.play()
       } else {
         let indexTemp
         do {
           indexTemp = Number.parseInt(this.musicPlayList.length * Math.random())
-        } while (indexTemp === this.musicPlayListNowIndex)
-        this.changemusicPlayListNowIndex({nowIndexNum: indexTemp})
+        } while (indexTemp === this.$store.state.Music.nowIndex)
+        this.changeMusicPlayListNowIndex({nowIndexNum: indexTemp})
       }
     },
 
@@ -282,7 +240,28 @@ export default {
      * @param playIndex
      */
     playThisMusic (playIndex) {
-      this.changemusicPlayListNowIndex({nowIndexNum: playIndex})
+      this.changeMusicPlayListNowIndex({nowIndexNum: playIndex})
+    },
+
+    /**
+     * 改变现在播放音乐在播放列表的索引号
+     * @param option
+     */
+    changeMusicPlayListNowIndex (option = {nowIndexNum: -1, prevOrNext: 'next'}) {
+      this.musicIsPlay = true
+      if (option.nowIndexNum === -1) {
+        if ((option.prevOrNext === 'next') && ((this.$store.state.Music.nowIndex + 1) === this.$store.state.Music.nowPlayList.length)) {
+          this.musicPlayListNowIndex = 0
+        } else if ((option.prevOrNext === 'prev') && ((this.$store.state.Music.nowIndex - 1) === -1)) {
+          this.musicPlayListNowIndex = this.$store.state.Music.nowPlayList.length - 1
+        } else if ((option.prevOrNext === 'next') && ((this.$store.state.Music.nowIndex + 1) < this.$store.state.Music.nowPlayList.length)) {
+          this.musicPlayListNowIndex++
+        } else {
+          this.musicPlayListNowIndex--
+        }
+      } else {
+        this.musicPlayListNowIndex = option.nowIndexNum
+      }
     },
 
     /**
@@ -311,8 +290,8 @@ export default {
      * 改变声音On或者Off状态
      */
     changeMusicVolumeStatus () {
-      this.musicVolumeStatus ? this.musicSource.volume = 0 : this.musicSource.volume = this.musicVolumeLevel
       this.musicVolumeStatus = !this.musicVolumeStatus
+      this.musicSource.volume = this.musicVolumeStatus ? this.musicVolumeLevel : 0
     },
 
     /**
@@ -322,7 +301,7 @@ export default {
       if (volume < 0 || volume > 1) {
         return false
       }
-      this.musicVolumeLevel = volume
+      this.musicSource.volume = this.musicVolumeLevel = volume
     },
 
     /**
@@ -397,69 +376,6 @@ export default {
       }
     },
 
-    /**
-     * 改变现在播放音乐在播放列表的索引号
-     * @param option
-     */
-    changemusicPlayListNowIndex (option = {nowIndexNum: -1, prevOrNext: 'next'}) {
-      this.musicIsPlay = true
-      if (option.nowIndexNum === -1) {
-        if ((option.prevOrNext === 'next') && ((this.musicPlayListNowIndex + 1) === this.musicPlayList.length)) {
-          this.musicPlayListNowIndex = 0
-        } else if ((option.prevOrNext === 'prev') && ((this.musicPlayListNowIndex - 1) === -1)) {
-          this.musicPlayListNowIndex = this.musicPlayList.length - 1
-        } else if ((option.prevOrNext === 'next') && ((this.musicPlayListNowIndex + 1) < this.musicPlayList.length)) {
-          this.musicPlayListNowIndex++
-        } else {
-          this.musicPlayListNowIndex--
-        }
-      } else {
-        this.musicPlayListNowIndex = option.nowIndexNum
-      }
-    },
-
-    /**
-     * 清空播放列表
-     */
-    clearMusicPlayList () {
-      this.musicSource.pause()
-      this.delMusicPlayList()
-    },
-
-    /**
-     * 删除播放列表某项
-     * @param delMusicListIndex
-     */
-    delMusicListItem (delMusicListIndex) {
-      this.delMusicPlayList(delMusicListIndex)
-      setTimeout(() => {
-        this.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
-      }, 88)
-    },
-
-    /**
-     * 删除特定/清空播放列表
-     * @param delMusicListIndex
-     */
-    delMusicPlayList (delMusicListIndex = -1) {
-      if (delMusicListIndex === -1) {
-        this.musicIsPlay = false
-        this.musicPlayListNowIndex = 0
-        this.musicPlayList = []
-      } else {
-        if (delMusicListIndex < this.musicPlayListNowIndex) {
-          this.musicPlayListNowIndex--
-        }
-        this.musicPlayList.splice(delMusicListIndex, 1)
-      }
-      if (this.musicPlayList.length === 0) {
-        this.musicSource.pause()
-        this.musicSource.src = ''
-        this.musicIsPlay = false
-        this.musicDTime = 0
-      }
-    },
-
     timeStampToTime (timeStamp) {
       return timeStampToTime(timeStamp)
     },
@@ -509,38 +425,6 @@ export default {
 
     > #homeMusicSource {
       top:0; position:absolute;
-    }
-
-    &-menu {
-      width:1028px; height:290px; left:50%; bottom:45px; position:absolute; transform:translate(-50%,0); z-index:-1; background:#151515; opacity:0.988; border-radius:8px 8px 0 0; color:#999;
-
-      &-title {
-        width:100%; height:38px; border-radius:8px 8px 0 0; line-height:40px; z-index:9;
-      }
-      &-operation {
-        width:62%; height:100%; padding:0 2%; float:left; box-sizing:border-box;
-        &-label {
-          font-weight:700;
-        }
-        &-container {
-          float:right; font-size:14px;
-          .mh-if {
-            margin:0 3px 0 18px;
-          }
-        }
-      }
-      &-now-song {
-        width:38%; height:100%; float:right; position:relative; text-align:center;
-        &-label {
-          width:80%; height:100%; margin:0 auto; display:inline-block;
-        }
-      }
-      &-close {
-        top:-3px; right:5px; position:absolute; font-size:20px;
-      }
-      &-container {
-        width:100%; height:250px; padding-bottom:2px; box-shadow:inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727; font-size:14px;
-      }
     }
 
     &-controller {

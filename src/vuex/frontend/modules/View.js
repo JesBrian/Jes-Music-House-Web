@@ -4,6 +4,8 @@ const state = {
   tips: '',
   tipsType: 'info', // info/warning
 
+  modalType: '',
+
   topMenuIsShowSecond: true // 是否展示顶部导航栏二级菜单
 }
 
@@ -22,6 +24,13 @@ const mutations = {
     } else {
       clearTimeout(state.timer)
     }
+  },
+
+  /**
+   * 改变拟态框类型
+   */
+  CHANGE_MODAL_TYPE (state, type = '') {
+    state.modalType = type
   },
 
   changeTopMenuIsShowSecond (state, status) {
