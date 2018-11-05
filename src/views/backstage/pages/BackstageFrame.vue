@@ -13,18 +13,23 @@
         <router-view/>
       </div>
     </div>
+
+    <!-- 拟态框组件 -->
+    <backstage-modal />
+
   </div>
 </template>
 
 <script>
 import NavigationBar from '../../../components/backstage/NavigationBar/NavigationBar.vue'
 import MenuBar from '../../../components/backstage/MenuBar/MenuBar.vue'
+import BackstageModal from '../../../components/common/Modal/BackstageModal.vue'
 
 export default {
   name: 'BackstageFrame',
 
   components: {
-    NavigationBar, MenuBar
+    NavigationBar, MenuBar, BackstageModal
   },
 
   beforeCreate () {

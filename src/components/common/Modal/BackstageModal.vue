@@ -16,7 +16,7 @@
 import ModalCloseBtn from './ModalCloseBtn.vue'
 
 export default {
-  name: 'HomeModal',
+  name: 'BackstageModal',
 
   components: {
     ModalCloseBtn

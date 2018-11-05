@@ -2,6 +2,9 @@
   <div id="backstage">
     <router-view />
 
+    <!-- 操作提示条 -->
+    <super-tips v-if="$store.state.View.tips" />
+
     <!-- 底部信息条 -->
     <footer class="backstage-footer glass-bg box-show">
       <!--©<span Style="margin:0 18px 0 8px;">2015 - 2020</span>Music House 所有版权归 JesBrian 个人所有-->
@@ -10,8 +13,14 @@
 </template>
 
 <script>
+import SuperTips from '../../components/common/Tips/SuperTips.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+
+  components: {
+    SuperTips
+  }
 }
 </script>
 
