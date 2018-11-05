@@ -115,7 +115,6 @@ export default {
       if (res.data.state === '200') {
         this.sliderData = res.data.data
       }
-      console.log(this.sliderData)
     }).catch(err => {
       console.log(err)
     })

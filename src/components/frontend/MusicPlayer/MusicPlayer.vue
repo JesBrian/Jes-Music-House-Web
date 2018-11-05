@@ -30,9 +30,12 @@
               <router-link to="/song/1" class="song-info-name">
                 {{ $store.state.Music.nowPlayList.length === 0 ? '' : $store.state.Music.nowPlayList[$store.state.Music.nowIndex].name }}
               </router-link>
-              <router-link to="/singer-detail/hot-song/1" class="song-info-singer">
-                歌手<i class="split">/</i>Singer Name
-              </router-link>
+              <p v-if="$store.state.Music.nowPlayList.length !== 0" class="song-info-singer">
+                <router-link v-for="singerItem in $store.state.Music.nowPlayList[$store.state.Music.nowIndex].singer"
+                             :to="`/singer-detail/hot-song/${singerItem.id}`" :key="singerItem.id" class="song-info-singer-link" >
+                  {{ singerItem.name }}
+                </router-link>
+              </p>
             </div>
             <!-- 播放进度 -->
             <div @click="clickMusicProgressBar" id="progressBarClickContent" class="progress-bar box-show">
@@ -121,6 +124,12 @@ export default {
     }
   },
 
+  computed: {
+    nowPlayIndex () {
+      return this.$store.state.Music.nowIndex
+    }
+  },
+
   mounted () {
     this.musicSource = document.getElementById('homeMusicSource')
     this.musicSource.volume = this.musicVolumeLevel
@@ -141,6 +150,21 @@ export default {
   watch: {
     '$route' () {
       this.musicPlayListContentShowStatus = false
+    },
+
+    nowPlayIndex (nVal) {
+      if (nVal === -1) {
+        this.musicSource.src = ''
+        this.musicIsPlay = false
+        return false
+      }
+
+      if (this.musicSource) {
+        this.musicIsPlay = true
+        this.$nextTick(() => {
+          this.musicSource.play()
+        })
+      }
     }
   },
 
@@ -189,15 +213,7 @@ export default {
       if (this.$store.state.Music.nowPlayList.length === 0) {
         return false
       }
-      if (this.musicPlayModel === 'random') {
-        let indexTemp
-        do {
-          indexTemp = Number.parseInt(this.$store.state.Music.nowPlayList.length * Math.random())
-        } while (indexTemp === this.$store.state.Music.nowIndex)
-        this.changeMusicPlayListNowIndex({nowIndexNum: indexTemp})
-      } else {
-        this.changeMusicPlayListNowIndex({nowIndexNum: -1, prevOrNext: 'prev'})
-      }
+      this.musicPlayModel === 'random' ? this.$store.commit('RANDOM_INDEX') : this.$store.commit('PREV_INDEX')
     },
 
     /**
@@ -207,61 +223,14 @@ export default {
       if (this.$store.state.Music.nowPlayList.length === 0) {
         return false
       }
-      if (this.musicPlayModel === 'random') {
-        let indexTemp
-        do {
-          indexTemp = Number.parseInt(this.$store.state.Music.nowPlayList.length * Math.random())
-        } while (indexTemp === this.$store.state.Music.nowIndex)
-        this.changeMusicPlayListNowIndex({nowIndexNum: indexTemp})
-      } else {
-        this.changeMusicPlayListNowIndex()
-      }
+      this.musicPlayModel === 'random' ? this.$store.commit('RANDOM_INDEX') : this.$store.commit('NEXT_INDEX')
     },
 
     /**
      * 播放结束下一首
      */
     nowMusicEndNextPlay () {
-      if (this.musicPlayModel === 'loop') {
-        this.changeMusicPlayListNowIndex()
-      } else if (this.musicPlayModel === 'single-loop') {
-        this.musicSource.play()
-      } else {
-        let indexTemp
-        do {
-          indexTemp = Number.parseInt(this.musicPlayList.length * Math.random())
-        } while (indexTemp === this.$store.state.Music.nowIndex)
-        this.changeMusicPlayListNowIndex({nowIndexNum: indexTemp})
-      }
-    },
-
-    /**
-     * 切换播放列表中的歌曲
-     * @param playIndex
-     */
-    playThisMusic (playIndex) {
-      this.changeMusicPlayListNowIndex({nowIndexNum: playIndex})
-    },
-
-    /**
-     * 改变现在播放音乐在播放列表的索引号
-     * @param option
-     */
-    changeMusicPlayListNowIndex (option = {nowIndexNum: -1, prevOrNext: 'next'}) {
-      this.musicIsPlay = true
-      if (option.nowIndexNum === -1) {
-        if ((option.prevOrNext === 'next') && ((this.$store.state.Music.nowIndex + 1) === this.$store.state.Music.nowPlayList.length)) {
-          this.musicPlayListNowIndex = 0
-        } else if ((option.prevOrNext === 'prev') && ((this.$store.state.Music.nowIndex - 1) === -1)) {
-          this.musicPlayListNowIndex = this.$store.state.Music.nowPlayList.length - 1
-        } else if ((option.prevOrNext === 'next') && ((this.$store.state.Music.nowIndex + 1) < this.$store.state.Music.nowPlayList.length)) {
-          this.musicPlayListNowIndex++
-        } else {
-          this.musicPlayListNowIndex--
-        }
-      } else {
-        this.musicPlayListNowIndex = option.nowIndexNum
-      }
+      this.musicPlayModel === 'loop' ? this.$store.commit('NEXT_INDEX') : this.musicPlayModel === 'single-loop' ? this.musicSource.play() : this.$store.commit('RANDOM_INDEX')
     },
 
     /**
@@ -466,8 +435,17 @@ export default {
               }
               &-singer {
                 height:100%; margin-top:-10.7px; float:left; font-size:12px; color:#AAA;
-                > .split {
-                  padding:0 5px 0 3px; cursor:default;
+                &-link {
+                  margin:0 0 0 2px;
+                  &:hover {
+                    color:#EEE;
+                  }
+                  &::after {
+                    content:'/'; margin-left:2px; color:#888;
+                  }
+                  &:last-child::after {
+                    content:'';
+                  }
                 }
               }
             }
@@ -563,16 +541,16 @@ export default {
 
   .mh-if {
     color:#999; text-shadow: 0 0 6px #000;
-  }
-  .mh-if:hover {
-    cursor:pointer; color: #46dfff; text-shadow: 0 0 3px #666, 0 0 18px #000; opacity:1!important;
+    &:hover {
+      cursor:pointer; color: #46dfff; text-shadow: 0 0 3px #666, 0 0 18px #000; opacity:1!important;
+    }
   }
 
   .controller-pointer {
     width:18px; height:18px; position:absolute; display:inline-block; border-radius:50%; line-height:12px; text-align:center;
     background:url(../../../../static/img/default/slide-pointer.png) no-repeat; background-size:100% 100%;
-  }
-  .controller-pointer:hover {
-    box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727, 0 0 8px #2af1fc;
+    &:hover {
+      box-shadow: inset 0 2px 1px -1px rgba(255, 255, 255, 0.2), inset 0 -2px 1px -1px rgba(0, 0, 0, 0.2), 0 12px 12px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 0 0 1px #272727, 0 0 8px #2af1fc;
+    }
   }
 </style>

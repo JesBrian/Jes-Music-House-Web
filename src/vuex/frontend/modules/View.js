@@ -4,7 +4,7 @@ const state = {
   tips: '',
   tipsType: 'info', // info/warning
 
-  modalType: '',
+  modalType: '', // 模态框类型
 
   topMenuIsShowSecond: true // 是否展示顶部导航栏二级菜单
 }

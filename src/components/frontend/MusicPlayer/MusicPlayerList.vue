@@ -36,16 +36,20 @@ export default {
   name: 'MusicPlayerList',
 
   methods: {
+    /**
+     * 切换播放列表中的歌曲
+     * @param index
+     */
     playThisMusic (index) {
-      // this.$parent.playThisMusic(index)
+      this.$store.commit('GO_INDEX', index)
     },
 
     /**
      * 删除播放列表某项
-     * @param delMusicListIndex
+     * @param delIndex
      */
-    delMusicListItem (delMusicListIndex) {
-      this.$store.commit('DEL_PLAY_LIST_ITEM', delMusicListIndex)
+    delMusicListItem (delIndex) {
+      this.$store.commit('DEL_PLAY_LIST_ITEM', delIndex)
     },
 
     showModal (type) {
