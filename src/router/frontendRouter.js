@@ -10,7 +10,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: () => import('../views/frontend/FrontendFrame.vue'),
+      component: () => import('../views/frontend/pages/FrontendFrame.vue'),
       redirect: '/index',
 
       children: [

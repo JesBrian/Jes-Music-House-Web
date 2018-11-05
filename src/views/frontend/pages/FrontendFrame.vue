@@ -28,12 +28,12 @@
 </template>
 
 <script>
-import NavigationBar from '../../components/frontend/NavigationBar/NavigationBar.vue'
-import MusicPlayer from '../../components/frontend/MusicPlayer/MusicPlayer.vue'
-import FloatBlock from '../../components/frontend/FloatBlock/FloatBlock'
-import HomeModal from '../../components/common/Modal/HomeModal.vue'
-import SuperTips from '../../components/common/Tips/SuperTips.vue'
-import HomeFooter from '../../components/frontend/HomeFooter/HomeFooter.vue'
+import NavigationBar from '../../../components/frontend/NavigationBar/NavigationBar.vue'
+import MusicPlayer from '../../../components/frontend/MusicPlayer/MusicPlayer.vue'
+import FloatBlock from '../../../components/frontend/FloatBlock/FloatBlock'
+import HomeModal from '../../../components/common/Modal/HomeModal.vue'
+import SuperTips from '../../../components/common/Tips/SuperTips.vue'
+import HomeFooter from '../../../components/frontend/HomeFooter/HomeFooter.vue'
 
 export default {
   name: 'FrontendFrame',

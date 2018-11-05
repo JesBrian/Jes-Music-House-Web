@@ -27,6 +27,22 @@ export default {
   },
 
   props: {
+  },
+
+  computed: {
+    nowPlayMusicId () {
+      return this.$store.state.Music.nowPlayList[this.$store.state.Music.nowIndex].id
+    }
+  },
+
+  watch: {
+    nowPlayMusicId: {
+      handler (nVal) {
+        // console.log(nVal)
+      }
+    },
+    deep: true,
+    immediate: true
   }
 }
 </script>

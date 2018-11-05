@@ -1,10 +1,10 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import App from './App'
-import router from './router/frontendRouter.js'
+import App from './App.vue'
+import router from '../../router/frontendRouter.js'
+import store from '../../vuex/frontend/index.js'
 import axios from 'axios'
-import store from './vuex/frontend/index.js'
 import vueLazyload from 'vue-lazyload'
 import GeminiScrollbar from 'vue-gemini-scrollbar'
 import localForage from 'localforage'
@@ -33,8 +33,8 @@ localForage.config({
 Vue.prototype.$localForage = localForage
 
 Vue.use(vueLazyload, {
-  error: require('./assets/img/loading.svg'),
-  loading: require('./assets/img/loading.svg')
+  error: require('../../assets/img/loading.svg'),
+  loading: require('../../assets/img/loading.svg')
 })
 Vue.use(GeminiScrollbar)
 
