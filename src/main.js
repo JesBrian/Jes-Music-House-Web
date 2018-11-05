@@ -2,9 +2,9 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import router from './config/router/frontendRouter.js'
+import router from './router/frontendRouter.js'
 import axios from 'axios'
-import store from './config/vuex/frontend/index.js'
+import store from './vuex/frontend/index.js'
 import vueLazyload from 'vue-lazyload'
 import GeminiScrollbar from 'vue-gemini-scrollbar'
 import localForage from 'localforage'

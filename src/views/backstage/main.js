@@ -2,8 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App.vue'
-import router from '../../config/router/backstageRouter.js'
-import store from '../../config/vuex/backstage/index.js'
+import router from '../../router/backstageRouter.js'
+import store from '../../vuex/backstage/index.js'
 import axios from 'axios'
 import vueLazyload from 'vue-lazyload'
 import GeminiScrollbar from 'vue-gemini-scrollbar'
