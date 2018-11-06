@@ -1,5 +1,5 @@
 <template>
-  <div style="background:#666;">
+  <div id="backstageFrame">
 
     <!-- 导航条 -->
     <navigation-bar />
@@ -41,6 +41,10 @@ export default {
 </script>
 
 <style lang="less">
+  #backstageFrame {
+    background:#666;
+  }
+
   #backstageContainer {
     width:100%; height:100%; top:0; left:0; padding:59px 6px 31px 35px; display:inline-block; position:fixed; box-sizing:border-box; background:#666;
     transition:all 1s;

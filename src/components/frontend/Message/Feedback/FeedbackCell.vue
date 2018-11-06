@@ -1,12 +1,21 @@
 <template>
   <div class="box-shadow">
-    FeedbakcCell
+    {{ itemData.content }}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'FeedbakcCell'
+  name: 'FeedbakcCell',
+
+  props: {
+    itemData: {
+      type: Object,
+      default: () => {
+        return null
+      }
+    }
+  }
 }
 </script>
 

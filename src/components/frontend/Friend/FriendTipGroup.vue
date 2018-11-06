@@ -1,6 +1,6 @@
 <template>
   <div>
-    <friend-tip-cell v-for="n in 88" />
+    <friend-tip-cell v-for="item in dataSource" :item-data="item" :key="item.id" />
   </div>
 </template>
 
@@ -12,6 +12,15 @@ export default {
 
   components: {
     FriendTipCell
+  },
+
+  props: {
+    dataSource: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
   }
 }
 </script>

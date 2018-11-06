@@ -1,12 +1,21 @@
 <template>
   <div class="box-shadow">
-    CommentCell
+    {{ itemData.content }}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'CommentCell'
+  name: 'CommentCell',
+
+  props: {
+    itemData: {
+      type: Object,
+      default: () => {
+        return null
+      }
+    }
+  }
 }
 </script>
 

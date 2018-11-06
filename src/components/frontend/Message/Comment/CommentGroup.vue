@@ -1,6 +1,6 @@
 <template>
   <div>
-    <comment-cell v-for="n in 6" />
+    <comment-cell v-for="item in dataSource" :item-data="item" :key="item.id" />
   </div>
 </template>
 
@@ -12,6 +12,15 @@ export default {
 
   components: {
     CommentCell
+  },
+
+  props: {
+    dataSource: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
   }
 }
 </script>

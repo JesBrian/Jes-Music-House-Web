@@ -1,6 +1,6 @@
 <template>
   <div>
-    <notify-cell v-for="n in 8" />
+    <notify-cell v-for="item in dataSource" :item-data="item" :key="item.id" />
   </div>
 </template>
 
@@ -12,6 +12,15 @@ export default {
 
   components: {
     NotifyCell
+  },
+
+  props: {
+    dataSource: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
   }
 }
 </script>

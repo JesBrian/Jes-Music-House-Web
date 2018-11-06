@@ -1,12 +1,21 @@
 <template>
   <div class="box-shadow">
-    NotifyCell
+    {{ itemData.content }}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'NotifyCell'
+  name: 'NotifyCell',
+
+  props: {
+    itemData: {
+      type: Object,
+      default: () => {
+        return null
+      }
+    }
+  }
 }
 </script>
 
