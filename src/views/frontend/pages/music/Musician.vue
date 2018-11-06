@@ -1,9 +1,8 @@
 <template>
   <div id="homeLayout">
     <div class="musician">
-      <div style="width:100%; height:1px;"></div>
-      <div class="super-btn-out" style="width:188px; height:48px; margin:328px auto 0; display:block;">
-        <span class="super-btn-in" style="width:173px; height:36px;">现在加入</span>
+      <div class="super-btn-out">
+        <span class="super-btn-in">现在加入</span>
       </div>
     </div>
   </div>
@@ -30,5 +29,14 @@ export default {
     width:100%; height:608px; margin-top:23px; display:block;
     background:url('/static/img/default/musician.png') no-repeat;
     background-size:100% auto;
+
+    .super-btn {
+      &-out {
+        width:188px; height:48px; top:328px; margin:0 auto; display:block;
+      }
+      &-in {
+        width:173px; height:36px; letter-spacing:6px; font-size:20px;
+      }
+    }
   }
 </style>

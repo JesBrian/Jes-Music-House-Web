@@ -31,8 +31,8 @@
             <p class="play-list-cell-other">{{ item.num }} 首</p>
           </div>
           <div v-if="index !== 0" class="play-list-cell-oper">
-            <router-link :to="`/user/music/play-list/modify/${item.id}`" style="margin:1.5px 0;" class="mh-if comment"></router-link>
-            <i @click="delPlayList(index, createList, $event)" style="margin:1.5px 0 1.5px -2px;" class="mh-if trash-1"></i>
+            <router-link :to="`/user/music/play-list/modify/${item.id}`" class="modify mh-if comment"></router-link>
+            <i @click="delPlayList(index, createList, $event)" class="del mh-if trash-1"></i>
           </div>
         </router-link>
       </div>
@@ -235,6 +235,13 @@ export default {
       width:28px; display:flex; flex-direction:column; justify-content:center; align-items:center;
 
       > .mh-if {
+        &.modify {
+          margin:1.5px 0;
+        }
+        &.del {
+          margin:1.5px 0 1.5px -2px;
+        }
+
         &:hover {
           color:#EEE;
         }

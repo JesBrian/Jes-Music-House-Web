@@ -2,11 +2,11 @@
   <div id="homeLayout">
 
     <div class="user-info-left box-show">
-      <div style="width:25%; padding:58px 28px 30px; display:inline-block; box-sizing:border-box;">
-        <img src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80" class="box-show" style="width:138px; height:138px; padding:5px; float:left;"/>
+      <div class="user-info-avatar">
+        <img src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80" class="user-info-avatar-img box-show"/>
       </div>
 
-      <div style="width:71%; min-height:188px; display:inline-block;">
+      <div class="user-info-base">
 
         <div class="box-shadow" style="width:100%; height:48px;">
           <p style="float:left; text-indent:0.9em; font-size:26px; line-height:2em;">JesBrian</p>
@@ -38,35 +38,30 @@
         </p>
       </div>
 
-      <div>
+      <div class="user-info-music">
         <div class="user-info-nav">
           <i class="user-info-nav-icon mh-if exponential"></i>
           <span class="user-info-nav-title">听歌排行</span>
-          <span style="margin-left:8px; font-size:14px;">累积听歌18547首</span>
+          <span class="user-info-nav-num">累积听歌18547首</span>
 
-          <div style="width:188px; height:32px; margin:23px -28px; float:right; display:flex; text-align:center; line-height:28.8px; font-weight:700; cursor:pointer;">
-            <div @click="changeRankType('week')" :class="rankType === 'week' ? 'cube-bg' : 'glass-bg'" class="box-show" style="flex:1; border-radius:5px 0 0 5px; text-shadow:1px 1px 2px #000;">最近一周</div>
-            <div @click="changeRankType('all')" :class="rankType === 'all' ? 'cube-bg' : 'glass-bg'" class="box-show" style="flex:1; border-radius:0 5px 5px 0; text-shadow:1px 1px 2px #000;">所有时间</div>
+          <div class="user-info-listen-rank-category">
+            <div @click="changeRankType('week')" :class="rankType === 'week' ? 'cube-bg' : 'glass-bg'" class="user-info-listen-rank-category-cell box-show">最近一周</div>
+            <div @click="changeRankType('all')" :class="rankType === 'all' ? 'cube-bg' : 'glass-bg'" class="user-info-listen-rank-category-cell box-show">所有时间</div>
           </div>
         </div>
+        <listen-group :show-nav="false" :list-data="listenList" class="user-info-listen-rank" />
 
-        <listen-group :show-nav="false" :list-data="listenList" style="width:93%; margin:-20px auto 18px;" />
-      </div>
-
-      <div>
         <div class="user-info-nav">
           <i class="user-info-nav-icon mh-if redis"></i>
           <span class="user-info-nav-title">创建的歌单</span>
         </div>
-        <play-list-group :play-list-data="createPlayList" style="width:93%; margin:0 auto;" />
-      </div>
+        <play-list-group :play-list-data="createPlayList" />
 
-      <div>
         <div class="user-info-nav">
           <i class="user-info-nav-icon mh-if music-box"></i>
           <span class="user-info-nav-title">收藏的歌单</span>
         </div>
-        <play-list-group :play-list-data="collectionPlayList" style="width:93%; margin:0 auto;" />
+        <play-list-group :play-list-data="collectionPlayList" />
       </div>
 
     </div>
@@ -168,13 +163,47 @@ export default {
       width:25%; padding:34px 18px; box-sizing:border-box;
     }
 
+    &-avatar {
+      width:25%; padding:58px 28px 30px; display:inline-block; box-sizing:border-box;
+      &-img {
+        width:138px; height:138px; padding:5px; float:left;
+      }
+    }
+
+    &-base {
+      width:71%; min-height:188px; display:inline-block;
+    }
+
+    &-music {
+      width:93%; margin:0 auto 18px;
+    }
+
+    &-listen-rank {
+      margin:-20px auto 18px;
+      &-category {
+      width:188px; height:32px; margin:23px -28px; float:right; display:flex; text-align:center; line-height:28.8px; font-weight:700; cursor:pointer;
+      &-cell {
+          flex:1; border-radius:0; text-shadow:1px 1px 2px #000;
+          &:first-child {
+            border-radius:5px 0 0 5px;
+          }
+          &:last-child {
+            border-radius:0 5px 5px 0;
+          }
+        }
+      }
+    }
+
     &-nav {
-      width:93%; height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;
+      width:100%; height:68px; margin:0 auto 28px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:80px;
       &-icon {
-        margin-right:8px; color:#00d8ff; font-size:32px;
+        color:#00d8ff; font-size:32px;
       }
       &-title {
-        font-size:23px; font-weight:700;
+        margin:0 8px; font-size:23px; font-weight:700;
+      }
+      &-num {
+        font-size:14px;
       }
     }
   }

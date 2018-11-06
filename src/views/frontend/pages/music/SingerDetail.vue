@@ -17,7 +17,7 @@
       </div>
 
       <!-- 歌手内容切换 -->
-      <div style="height:32px; margin:28px auto 0; padding:0 3%; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; color:#BBB; font-size:17px; font-weight:700; text-shadow:1px 1px 0.5px #000; line-height:28px;">
+      <div class="singer-menu">
         <span @click="changeContent('hot-song')" :class="{'active': type === 'hot-song'}" class="singer-menu-cell">热门歌曲</span>
         <span @click="changeContent('all-disc')" :class="{'active': type === 'all-disc'}" class="singer-menu-cell">所有专辑</span>
         <span @click="changeContent('singer-description')" :class="{'active': type === 'singer-description'}" class="singer-menu-cell">艺人介绍</span>
@@ -127,14 +127,17 @@ export default {
     }
   }
 
-  .singer-menu-cell {
-    margin:0 15px; padding:0 12px 6px 10px; cursor:pointer;
-  }
-  .singer-menu-cell:hover {
-    color:#EEE;
-  }
-  .singer-menu-cell.active {
-    border-bottom:2px solid #20dbfc; color:#20dbfc
+  .singer-menu {
+    height:32px; margin:28px auto 0; padding:0 3%; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; color:#BBB; font-size:17px; font-weight:700; text-shadow:1px 1px 0.5px #000; line-height:28px;
+    &-cell {
+      margin:0 15px; padding:0 12px 6px 10px; cursor:pointer;
+      &:hover {
+        color:#EEE;
+      }
+      &.active {
+        border-bottom:2px solid #20dbfc; color:#20dbfc
+      }
+    }
   }
 
   .play-list-type {

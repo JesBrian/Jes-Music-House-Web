@@ -1,24 +1,24 @@
 <template>
   <div id="homeLayout">
 
-    <div class="box-show" style="width:75%; height:100%; min-height:608px; padding-bottom:18px; display:inline-block;">
-      <div style="margin-top:48px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:38px;">
-        <i class="mh-if exponential" style="float:left; color:#00d8ff; font-size:32px;"></i>
-        <span style="margin:0 8px; font-size:23px; font-weight:700;">听歌排行</span>
-        <span style="font-size:14px;">累积听歌18547首</span>
+    <div class="listen-left box-show">
+      <div class="listen-rank-title">
+        <i class="listen-rank-title-icon mh-if exponential"></i>
+        <span class="listen-rank-title-label">听歌排行</span>
+        <span class="listen-rank-title-num">累积听歌18547首</span>
 
-        <div style="width:188px; height:32px; float:right; display:flex; text-align:center; line-height:28.8px; font-weight:700; cursor:pointer;">
-          <div @click="changeContentType('week')" :class="contentType === 'week' ? 'cube-bg' : 'glass-bg'" class="box-show" style="flex:1; border-radius:5px 0 0 5px; text-shadow:1px 1px 2px #000;">最近一周</div>
-          <div @click="changeContentType('all')" :class="contentType === 'all' ? 'cube-bg' : 'glass-bg'" class="box-show" style="flex:1; border-radius:0 5px 5px 0; text-shadow:1px 1px 2px #000;">所有时间</div>
+        <div class="listen-rank-category">
+          <div @click="changeContentType('week')" :class="contentType === 'week' ? 'cube-bg' : 'glass-bg'" class="listen-rank-category-cell box-show">最近一周</div>
+          <div @click="changeContentType('all')" :class="contentType === 'all' ? 'cube-bg' : 'glass-bg'" class="listen-rank-category-cell box-show">所有时间</div>
         </div>
       </div>
 
-      <div style="margin:0 0 18px;">
+      <div class="listen-rank-container">
         <listen-group :list-data="listenList" />
       </div>
     </div>
 
-    <div style="width:25%; padding:34px 18px; float:right; box-sizing:border-box;">
+    <div class="listen-right">
       <download-client />
     </div>
   </div>
@@ -153,5 +153,46 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  #homeLayout {
+    min-height:100%; display:flex;
+  }
 
+  .listen {
+    &-left {
+      min-height:608px; padding-bottom:18px; flex:1;
+    }
+    &-right {
+      width:25%; padding:34px 18px; box-sizing:border-box;
+    }
+
+    &-rank {
+      &-title {
+        margin-top:48px; padding:0 43px 0 28px; box-sizing:border-box; box-shadow:0 3px 3px -3px #20dbfc; line-height:38px;
+        &-icon {
+          float:left; color:#00d8ff; font-size:32px;
+        }
+        &-label {
+          margin:0 8px; font-size:23px; font-weight:700;
+        }
+        &-num {
+          font-size:14px;
+        }
+      }
+      &-category {
+        width:188px; height:32px; float:right; display:flex; text-align:center; line-height:28.8px; font-weight:700; cursor:pointer;
+        &-cell {
+          flex:1; border-radius:0; text-shadow:1px 1px 2px #000;
+          &:first-child {
+            border-radius:5px 0 0 5px;
+          }
+          &:last-child {
+            border-radius:0 5px 5px 0;
+          }
+        }
+      }
+      &-container {
+        margin:0 0 18px;
+      }
+    }
+  }
 </style>
