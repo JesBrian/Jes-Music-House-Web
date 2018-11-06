@@ -8,6 +8,7 @@ import axios from 'axios'
 import vueLazyload from 'vue-lazyload'
 import GeminiScrollbar from 'vue-gemini-scrollbar'
 import localForage from 'localforage'
+import { Global } from '../../config/global.js'
 
 import '@/assets/styles/reset.less'
 import '@/assets/styles/common.less'
@@ -19,7 +20,7 @@ Vue.config.productionTip = false
 
 // axios.defaults.withCredentials = true
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
-axios.defaults.baseURL = store.state.Global.API_URL // 配置 API 路径
+axios.defaults.baseURL = Global.API_URL // 配置 API 路径
 Vue.prototype.$http = axios
 
 localForage.config({
@@ -31,6 +32,7 @@ localForage.config({
   description: 'Music House'
 })
 Vue.prototype.$localForage = localForage
+Vue.global = Vue.prototype.$global = Global
 
 Vue.use(vueLazyload, {
   error: require('../../assets/img/loading.svg'),

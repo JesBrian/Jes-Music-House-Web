@@ -8,6 +8,7 @@ import axios from 'axios'
 import vueLazyload from 'vue-lazyload'
 import GeminiScrollbar from 'vue-gemini-scrollbar'
 import localForage from 'localforage'
+import { Global } from '../../config/global.js'
 
 import '@/assets/styles/reset.less'
 import '@/assets/styles/common.less'
@@ -17,7 +18,7 @@ import '@/assets/fonts/iconfont.css'
 
 Vue.config.productionTip = false
 
-axios.defaults.baseURL = store.state.Global.API_URL // 配置 API 路径
+axios.defaults.baseURL = Global.API_URL // 配置 API 路径
 Vue.prototype.$http = axios
 
 Vue.use(vueLazyload, {
@@ -35,6 +36,7 @@ localForage.config({
   description: 'Music House'
 })
 Vue.prototype.$localForage = localForage
+Vue.global = Vue.prototype.$global = Global
 
 /* eslint-disable no-new */
 new Vue({

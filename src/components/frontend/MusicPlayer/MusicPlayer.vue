@@ -4,7 +4,7 @@
 
     <!-- 音乐播放器资源 -->
     <audio id="homeMusicSource" v-if="$store.state.Music.nowPlayList.length !== 0" preload @ended="nowMusicEndNextPlay"
-           :src="'/static/music/' + $store.state.Music.nowPlayList[$store.state.Music.nowIndex].name + '.mp3'"></audio>
+           :src="$global.RESOURCE_URL + $store.state.Music.nowPlayList[$store.state.Music.nowIndex].name + '.mp3'"></audio>
 
     <!-- 播放器主控制 -->
     <div :class="{'show-unlock' : !musicPlayShow && !musicPlayListContentShowStatus}" class="player-controller glass-bg box-show">
