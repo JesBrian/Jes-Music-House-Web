@@ -35,7 +35,41 @@
 export default {
   name: 'MusicPlayerList',
 
+  computed: {
+    nowIndex () {
+      return this.$store.state.Music.nowIndex
+    }
+  },
+
+  watch: {
+    nowIndex: {
+      handler () {
+        this.positionNowIndex() // 修改后重新定位
+      },
+      deep: true
+    }
+  },
+
+  mounted () {
+    this.positionNowIndex() // 初始化定位
+  },
+
   methods: {
+    /**
+     * 定位当前播放的歌曲在列表中的位置
+     */
+    positionNowIndex () {
+      let playListContainerDom = document.getElementById('musicPlayerList').querySelector('.gm-scroll-view')
+
+      if (this.nowIndex < 4) {
+        playListContainerDom.scrollTop = 0
+      } else if (this.nowIndex + 4 > this.$store.state.Music.nowPlayList.length) {
+        playListContainerDom.scrollTop = this.$store.state.Music.nowPlayList.length * 28
+      } else {
+        playListContainerDom.scrollTop = 28 * (this.nowIndex - 4)
+      }
+    },
+
     /**
      * 切换播放列表中的歌曲
      * @param index
