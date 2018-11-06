@@ -1,9 +1,10 @@
 <template>
   <div class="base-container">
-    <div class="base-container-title">喜欢这首歌的人</div>
+    <div class="base-container-title">{{ title }}</div>
 
     <div class="similar-user">
-      <router-link v-for="n in 4" :key="`${n}88`" to="/user-info/1" class="similar-user-link">
+      <router-link v-for="item in dataSource" :key="item.id" :to="`/user-info/${item.id}`"
+                   :title="item.name" class="similar-user-link">
         <img class="similar-user-avatar box-show" src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80"/>
       </router-link>
     </div>
@@ -12,7 +13,21 @@
 
 <script>
 export default {
-  name: 'SimilarUser'
+  name: 'SimilarUser',
+
+  props: {
+    title: {
+      type: [String, Number],
+      default: '喜欢这首歌的人'
+    },
+
+    dataSource: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  }
 }
 </script>
 
@@ -27,7 +42,7 @@ export default {
   .similar-user {
     display:flex; justify-content:space-between; flex-wrap:wrap;
     &-link {
-      margin-bottom:16px;
+      margin:6px 0;
     }
     &-avatar {
       width:43px; height:43px; padding:2px;

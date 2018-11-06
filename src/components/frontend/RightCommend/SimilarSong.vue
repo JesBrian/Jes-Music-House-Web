@@ -1,10 +1,10 @@
 <template>
   <div class="base-container">
-    <div class="base-container-title">相似的歌曲</div>
+    <div class="base-container-title">{{ title }}</div>
 
-    <div v-for="n in 5" :key="`${n}2288`" class="similar-song box-shadow">
+    <div v-for="item in dataSource" :key="item.id" class="similar-song box-shadow">
       <div class="similar-song-info">
-        <router-link to="/song/1" class="similar-song-info-name">Song Name</router-link>
+        <router-link :to="`/song/${item.id}`" class="similar-song-info-name">{{ item.name }}</router-link>
         <router-link to="/singer-detail/hot-song/1" class="similar-song-info-singer">Singer 名称 Name</router-link>
       </div>
       <div class="similar-song-oper">
@@ -18,6 +18,20 @@
 <script>
 export default {
   name: 'SimilarSong',
+
+  props: {
+    title: {
+      type: [String, Number],
+      default: '相似的歌曲推荐'
+    },
+
+    dataSource: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  },
 
   methods: {
     showModal (modalType) {

@@ -1,23 +1,41 @@
 <template>
   <div class="base-container">
-    <div class="base-container-title">包含这首歌的歌单</div>
+    <div class="base-container-title">{{ title }}</div>
 
-    <div v-for="n in 3" :key="`${n}2288`" class="similar-play-list box-show">
-      <img v-lazy="'http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80'"
-           class="similar-play-list-img"/>
-      <router-link to="/play-list/song-group/1" class="similar-play-list-title">
-        专辑 Play List 歌单
+    <div v-for="item in dataSource" :key="item.id" class="similar-play-list box-show">
+      <router-link :to="`/play-list/song-group/${item.id}`">
+        <img v-lazy="'http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80'"
+             class="similar-play-list-img"/>
       </router-link>
-      <router-link to="/singer-detail/hot-song/1" class="similar-play-list-creator text-hidden">
-        by JesBrian
-      </router-link>
+      <div class="similar-play-list-info">
+        <router-link :to="`/play-list/song-group/${item.id}`" class="similar-play-list-title text-hidden">
+          {{ item.title }}
+        </router-link>
+        <router-link to="/singer-detail/hot-song/1" class="similar-play-list-creator text-hidden">
+          by JesBrian
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SimilarPlayList'
+  name: 'SimilarPlayList',
+
+  props: {
+    title: {
+      type: [String, Number],
+      default: '相似的歌单推荐'
+    },
+
+    dataSource: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  }
 }
 </script>
 
@@ -34,11 +52,17 @@ export default {
     &-img {
       width:40px; height:40px; margin:4px 8px 0 4px; float:left;
     }
+    &-info {
+      width:74%; display:flex; flex-direction:column; justify-content:center;
+    }
     &-title {
-      margin-top:6px; float:left; font-size:15px; font-weight:700; line-height:1.3em; color:#BBB;
+      margin:6px 0; font-size:15px; font-weight:700;
+      color:#BBB;
+      &-link {
+      }
     }
     &-creator {
-      width:70%; line-height:1.3em; color:#888; font-size:13px;
+      color:#888; font-size:13px;
     }
   }
 </style>

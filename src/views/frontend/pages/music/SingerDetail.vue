@@ -30,7 +30,7 @@
     </div>
 
     <div class="singer-detail-right">
-      <similar-singer />
+      <similar-singer :data-source="similarSingerList" />
       <download-client />
     </div>
 
@@ -54,7 +54,16 @@ export default {
   data () {
     return {
       singerId: this.$route.params['id'],
-      type: this.$route.params['type']
+      type: this.$route.params['type'],
+
+      similarSingerList: [
+        {id: 101, name: '相似歌手1'},
+        {id: 102, name: '相似歌手2'},
+        {id: 103, name: '相似歌手3'},
+        {id: 104, name: '相似歌手4'},
+        {id: 105, name: '相似歌手5'},
+        {id: 106, name: '相似歌手6'}
+      ]
     }
   },
 

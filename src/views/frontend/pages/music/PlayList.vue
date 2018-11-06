@@ -23,8 +23,8 @@
     </div>
 
     <div class="play-list-right">
-      <similar-user />
-      <similar-play-list />
+      <similar-user title="收藏该歌单的用户" :data-source="similarUserList" />
+      <similar-play-list :data-source="similarPlayListList" />
       <download-client />
     </div>
   </div>
@@ -72,6 +72,24 @@ export default {
         {id: 118, name: 'test18', singer: 'sxJcbh', time: '06:34'},
         {id: 119, name: 'test19', singer: '二45幺', time: '06:45'},
         {id: 120, name: 'test20', singer: 'ruqwoho', time: '18:45'}
+      ],
+
+      similarUserList: [
+        {id: 101, name: 'Jes'},
+        {id: 102, name: 'Brian'},
+        {id: 103, name: '察使'},
+        {id: 104, name: 'yui'},
+        {id: 105, name: 'JesBrian'},
+        {id: 106, name: '第五个月'},
+        {id: 107, name: 'iojh'},
+        {id: 108, name: 'yui tgb'}
+      ],
+      similarPlayListList: [
+        {id: 1111, title: '1歌1单1'},
+        {id: 1112, title: '歌单2歌单2'},
+        {id: 1113, title: 'Play List'},
+        {id: 1114, title: '歌单4歌'},
+        {id: 1115, title: 'znwy很难看suk'}
       ]
     }
   },

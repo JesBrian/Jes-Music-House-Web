@@ -58,9 +58,9 @@
     </div>
 
     <div class="song-right">
-      <similar-song />
-      <similar-play-list />
-      <similar-user />
+      <similar-user :data-source="similarUserList" />
+      <similar-play-list title="包含这首歌的歌单" :data-source="similarPlayListList" />
+      <similar-song :data-source="similarSongList" />
       <download-client />
     </div>
 
@@ -84,7 +84,26 @@ export default {
   data () {
     return {
       isShowDescriptionBtn: false,
-      isShowDescription: false
+      isShowDescription: false,
+
+      similarUserList: [
+        {id: 101, name: 'Jes'},
+        {id: 103, name: '察使'},
+        {id: 105, name: 'JesBrian'},
+        {id: 108, name: 'yui tgb'}
+      ],
+      similarPlayListList: [
+        {id: 111, title: '歌单1'},
+        {id: 112, title: '歌单2歌单2'},
+        {id: 112, title: '歌单33'}
+      ],
+      similarSongList: [
+        {id: 121, name: '相似歌曲1'},
+        {id: 122, name: '相似歌曲2'},
+        {id: 123, name: '相似歌曲3'},
+        {id: 124, name: '相似歌曲4'},
+        {id: 125, name: '相似歌曲5'}
+      ]
     }
   },
 
@@ -121,9 +140,9 @@ export default {
       }
 
       &-poster {
-        width:32%; margin-top:12px; float:left; text-align:center;
+        width:37%; margin-top:12px; float:left; text-align:center;
         &-container {
-          width:188px; height:188px; margin:4px 23px; padding:33px; display:flex; justify-content:center; align-items:center; border-radius:50%; background:url('../../../../../static/img/default/disk.png') no-repeat; background-size:100% 100%;
+          width:188px; height:188px; margin:4px 33px; padding:33px; display:flex; justify-content:center; align-items:center; border-radius:50%; background:url('../../../../../static/img/default/disk.png') no-repeat; background-size:100% 100%;
         }
         &-img {
           border-radius:50%;
@@ -131,7 +150,7 @@ export default {
       }
 
       &-base {
-        width:68%; margin-top:3px; display:inline-block; position:relative; color:#999;
+        width:63%; margin-top:3px; display:inline-block; position:relative; color:#999;
         &-name {
           font-size:23px; color:#EEE;
         }

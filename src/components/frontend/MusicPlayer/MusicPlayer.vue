@@ -7,7 +7,7 @@
            :src="'/static/music/' + $store.state.Music.nowPlayList[$store.state.Music.nowIndex].name + '.mp3'"></audio>
 
     <!-- 播放器主控制 -->
-    <div :class="{'show-unlock' : !musicPlayShow}" class="player-controller glass-bg box-show">
+    <div :class="{'show-unlock' : !musicPlayShow && !musicPlayListContentShowStatus}" class="player-controller glass-bg box-show">
       <div @click="changeShowMusicPlay" class="player-controller-show">
         <i :class="musicPlayShow ? 'lock' : 'unlock'" class="player-controller-show-btn mh-if"></i>
       </div>

@@ -1,11 +1,11 @@
 <template>
   <div class="base-container">
-    <div class="base-container-title">相似歌手推荐</div>
+    <div class="base-container-title">{{ title }}</div>
 
     <div class="similar-singer-container">
-      <router-link v-for="n in 6" :key="`${n}88`" to="/singer-detail/hot-song/1" class="similar-singer-link">
+      <router-link v-for="item in dataSource" :key="item.id" :to="`/singer-detail/hot-song/${item.id}`" class="similar-singer-link">
         <img class="similar-singer-avatar box-show" src="http://p2.music.126.net/kaISxJU3yP0Qvw6H_vUyAQ==/18984167765401316.jpg?param=80y80"/>
-        <p class="similar-singer-name">JesBrian</p>
+        <p class="similar-singer-name text-hidden">{{ item.name }}</p>
       </router-link>
     </div>
   </div>
@@ -13,7 +13,21 @@
 
 <script>
 export default {
-  name: 'SimilarSinger'
+  name: 'SimilarSinger',
+
+  props: {
+    title: {
+      type: [String, Number],
+      default: '相似的歌手推荐'
+    },
+
+    dataSource: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    }
+  }
 }
 </script>
 
@@ -30,13 +44,13 @@ export default {
       display:flex; justify-content:space-between; flex-wrap:wrap;
     }
     &-link {
-      margin-bottom:16px;
+      width:65px; margin-bottom:16px;
     }
     &-avatar {
-      width:58px; height:58px; padding:2px;
+      width:58px; height:58px; margin:0 2px; padding:2px;
     }
     &-name {
-      font-size:14px; color:#BBB;
+      font-size:14px; color:#BBB; text-align:center;
     }
   }
 </style>
