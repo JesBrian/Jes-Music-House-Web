@@ -9,8 +9,11 @@
 
           <div class="singer-info-base-poster box-show">
             <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1464672532,2989234701&fm=26&gp=0.jpg" class="singer-info-base-poster-img" />
+            <div class="super-btn-out" style="right:108px;">
+              <span class="super-btn-in mh-if music-box">&nbsp;主页</span>
+            </div>
             <div class="super-btn-out">
-              <span class="super-btn-in mh-if non-colloection">&nbsp;关注</span>
+              <span class="super-btn-in mh-if non-collection">&nbsp;关注</span>
             </div>
           </div>
         </div>

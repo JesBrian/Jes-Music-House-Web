@@ -3,7 +3,7 @@
     <div class="song-item-index">{{ index }}</div>
     <div class="song-item-operation">
       <i @click="playThisSong" class="song-item-operation-btn mh-if play"></i>
-      <i @click="showModal('Collection')" class="song-item-operation-btn mh-if non-colloection"></i>
+      <i @click="showModal('Collection')" class="song-item-operation-btn mh-if non-collection"></i>
       <i class="song-item-operation-btn mh-if download"></i>
     </div>
     <div class="song-item-title">

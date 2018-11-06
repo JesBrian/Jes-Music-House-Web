@@ -16,7 +16,7 @@
             <span class="super-btn-in mh-if menu">&nbsp;列表</span>
           </div>
           <div @click="showModal('Collection')" class="super-btn-out ripple">
-            <span class="super-btn-in mh-if non-colloection">&nbsp;收藏</span>
+            <span class="super-btn-in mh-if non-collection">&nbsp;收藏</span>
           </div>
         </div>
       </div>

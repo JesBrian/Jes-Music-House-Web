@@ -13,7 +13,7 @@
             <p @click="playThisMusic(index)" class="cell mh-if play"></p>
             <p @click="playThisMusic(index)" class="cell music-list-cell-label">{{ item.name }}</p>
             <p class="cell music-cell-oper">
-              <i @click="showModal('Collection')" class="mh-if non-colloection"></i>
+              <i @click="showModal('Collection')" class="mh-if non-collection"></i>
               <i @click="showModal('Share')" class="mh-if share"></i>
               <i class="mh-if download"></i>
               <i @click="delMusicListItem(index)" class="mh-if trash-1"></i>
