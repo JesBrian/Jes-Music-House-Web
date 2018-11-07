@@ -18,7 +18,7 @@
           <span class="super-btn-in mh-if play">&nbsp;播放</span>
         </div>
         <div class="super-btn-out ripple">
-          <span class="super-btn-in mh-if play">&nbsp;列表</span>
+          <span class="super-btn-in mh-if menu">&nbsp;列表</span>
         </div>
         <div @click="showModal('Collection')" class="super-btn-out ripple">
           <span class="super-btn-in mh-if collection-music">&nbsp;收藏</span>

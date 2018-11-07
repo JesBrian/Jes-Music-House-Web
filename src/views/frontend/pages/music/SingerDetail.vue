@@ -9,9 +9,9 @@
 
           <div class="singer-info-base-poster box-show">
             <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1464672532,2989234701&fm=26&gp=0.jpg" class="singer-info-base-poster-img" />
-            <div class="super-btn-out" style="right:108px;">
+            <router-link :to="`/user-info/${singerId}`" class="super-btn-out home">
               <span class="super-btn-in mh-if music-box">&nbsp;主页</span>
-            </div>
+            </router-link>
             <div class="super-btn-out">
               <span class="super-btn-in mh-if non-collection">&nbsp;关注</span>
             </div>
@@ -121,9 +121,12 @@ export default {
             &:hover {
               opacity:1;
             }
+            &.home {
+              right:108px;
+            }
           }
           &-in {
-            width:63px; height:22px;
+            width:64px; height:24px; left:51%;
           }
         }
       }
