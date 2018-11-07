@@ -8,7 +8,15 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+
+  beforeCreate () {
+    this.$localForage.getItem('playList', (result, value) => {
+      if (value) {
+        this.$store.commit('INIT_PLAY_LIST', value)
+      }
+    })
+  }
 }
 </script>
 

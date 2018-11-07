@@ -8,8 +8,8 @@
 
     <!-- 播放器主控制 -->
     <div :class="{'show-unlock' : !musicPlayShow && !musicPlayListContentShowStatus}" class="player-controller glass-bg box-show">
-      <div @click="changeShowMusicPlay" class="player-controller-show">
-        <i :class="musicPlayShow ? 'lock' : 'unlock'" class="player-controller-show-btn mh-if"></i>
+      <div class="player-controller-show">
+        <i @click="changeShowMusicPlay" :class="musicPlayShow ? 'lock' : 'unlock'" class="player-controller-show-btn mh-if"></i>
       </div>
 
       <div class="player-controller-main">
@@ -402,7 +402,7 @@ export default {
       &-show {
         width:28px; border:8px solid; border-bottom:18px solid; border-color:transparent transparent rgba(18,18,18, 0.8) transparent; top:-26px; right:38px; position:absolute; z-index:-1; opacity:0.96;
         &-btn {
-          bottom:-17px; right:6px; position:absolute;
+          bottom:-16px; right:6px; position:absolute; font-size:14px;
         }
       }
 
@@ -450,14 +450,14 @@ export default {
               }
             }
             .progress-bar {
-              width:508px; height:10px; margin-top:5px; float:left; position:relative; border-radius:8px; background:#000;
+              width:508px; height:10px; margin-top:3px; float:left; position:relative; border-radius:8px; background:#000;
               &-buffer {
-                width:0; height:100%; border-radius:6px; background:#181818; z-index:9;
+                width:0; height:100%; border-radius:6px; background:#282828; z-index:9;
               }
               &-now {
                 height:83%; top:9%; left:0; position:absolute; background:linear-gradient(to right, #007EF0, #00D8FF, #00D8FF, #5EEBFF); border-radius:6px;
                 > .controller-pointer {
-                  top:-4px; right:-9px;
+                  top:50%; right:-9px; transform:translateY(-48%);
                 }
               }
             }

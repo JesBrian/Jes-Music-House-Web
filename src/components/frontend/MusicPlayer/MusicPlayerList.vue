@@ -83,7 +83,7 @@ export default {
      * @param delIndex
      */
     delMusicListItem (delIndex) {
-      this.$store.commit('DEL_PLAY_LIST_ITEM', delIndex)
+      this.$store.commit('DEL_ITEM', delIndex)
     },
 
     showModal (type) {

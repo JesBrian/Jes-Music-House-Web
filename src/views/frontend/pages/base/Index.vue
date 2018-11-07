@@ -130,7 +130,7 @@ export default {
       width:76%; height:100%; padding:0.5px 0 0; float:left; box-sizing:border-box;
     }
     &-download {
-      width:24%; height:100%; float:right; position:relative; z-index:9; background:url('../../../../../static/img/default/download.png') no-repeat; background-size:100% 100%;
+      width:24%; height:100%; float:right; position:relative; z-index:9; background:url('/static/img/default/download.png') no-repeat; background-size:100% 100%;
       .super-btn {
         &-out {
           width:148px; height:43px; margin:238px 28px 0;

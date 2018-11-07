@@ -98,7 +98,7 @@ export default {
       width:208px; height:100%; padding:0 38px 0 0; float:left; text-align:center;
       &-link {
         width:100%; height:108px; margin-top:3px; display:flex; position:relative; line-height:103px;
-        background:url('../../../../static/img/default/calendar.png') no-repeat; background-size:100% 100%;
+        background:url('/static/img/default/calendar.png') no-repeat; background-size:100% 100%;
       }
       &-cell {
         flex:1; margin-top:-3px;

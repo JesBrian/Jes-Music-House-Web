@@ -65,7 +65,7 @@ export default {
       &-avatar {
         width:100%; height:100%; display:inline-block;
         &-img {
-          width:31px; height:29px; top:49%;
+          width:31px; height:29px; top:49%; padding:1px;
         }
       }
 

@@ -1,3 +1,5 @@
+import localForage from 'localforage'
+
 const state = {
   nowIndex: 0, // 当前播放歌曲的下标 - 对应播放列表 nowPlayList 的数组下标
 
@@ -206,11 +208,16 @@ const mutations = {
     state.nowIndex = index
   },
 
+  INIT_PLAY_LIST (state, playList) {
+    state.nowPlayList = playList
+  },
+
   /**
    * 删除列表某一项
    */
-  DEL_PLAY_LIST_ITEM (state, index) {
+  DEL_ITEM (state, index) {
     state.nowPlayList.splice(index, 1)
+    localForage.setItem('playList', state.nowPlayList)
   },
 
   /**
@@ -219,6 +226,41 @@ const mutations = {
   CLEAR_PLAY_LIST (state) {
     state.nowIndex = -1
     state.nowPlayList = []
+    localForage.setItem('playList', state.nowPlayList)
+  },
+
+  /**
+   * 添加单曲
+   */
+  ADD_ITEM (state, songItem = {}) {
+    let id = songItem.id
+    let flag = true
+    for (let i = 0, len = state.nowPlayList.length; i < len; i++) {
+      if (state.nowPlayList[i].id === id) {
+        flag = false
+        break
+      }
+    }
+    if (flag) {
+      state.nowPlayList.push(songItem)
+    }
+    localForage.setItem('playList', state.nowPlayList)
+  },
+
+  /**
+   * 添加播放列表
+   */
+  ADD_PLAY_LIST (state, playList = []) {
+    state.nowPlayList.concat(playList)
+    localForage.setItem('playList', state.nowPlayList)
+  },
+
+  /**
+   * 替换播放列表
+   */
+  REPLACE_PLAY_LIST (state, playList = []) {
+    state.nowPlayList = playList
+    localForage.setItem('playList', state.nowPlayList)
   }
 }
 
