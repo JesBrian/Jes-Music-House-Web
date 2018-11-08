@@ -52,50 +52,50 @@
 
       <!-- 其他授权登陆方式 -->
       <div class="modal-oauth-container">
-        <table style="width:100%;">
-          <tr>
-            <td style="text-align:right">
-              <!-- 微信 -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weixin'" target="_blank" class="super-btn-out ripple" title="微信登陆" style="width:40px; height:40px; margin:8px 0;">
-                <span class="super-btn-in MyIF wechat" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
-              </a>
-            </td>
-            <td>
-              <!-- QQ -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=QQ'" target="_blank" class="super-btn-out ripple" title="QQ登陆" style="width:40px; height:40px; margin:8px 0;">
-                <span class="super-btn-in MyIF qq" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td style="text-align:right">
-              <!-- 微博 -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weibo'" target="_blank" class="super-btn-out ripple" title="微博登陆" style="width:40px; height:40px; margin:8px 0;">
-                <span class="super-btn-in MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
-              </a>
-            </td>
-            <td>
-              <!-- 百度 -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Baidu'" target="_blank" class="super-btn-out ripple" style="width:40px; height:40px; margin:8px 0;">
-                <span class="super-btn-in MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td style="text-align:right">
-              <!-- Gitee -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Gitee'" target="_blank" class="super-btn-out ripple" title="码云登陆" style="width:40px; height:40px; margin:8px 0;">
-                <span class="super-btn-in MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
-              </a>
-            </td>
-            <td>
-              <!-- Github -->
-              <a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" class="super-btn-out ripple" title="Github登陆" style="width:40px; height:40px; margin:8px 0;">
-                <span class="super-btn-in MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>
-              </a>
-            </td>
-          </tr>
-        </table>
+        <!--<table style="width:100%;">-->
+          <!--<tr>-->
+            <!--<td style="text-align:right">-->
+              <!--&lt;!&ndash; 微信 &ndash;&gt;-->
+              <!--<a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weixin'" target="_blank" class="super-btn-out ripple" title="微信登陆" style="width:40px; height:40px; margin:8px 0;">-->
+                <!--<span class="super-btn-in MyIF wechat" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>-->
+              <!--</a>-->
+            <!--</td>-->
+            <!--<td>-->
+              <!--&lt;!&ndash; QQ &ndash;&gt;-->
+              <!--<a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=QQ'" target="_blank" class="super-btn-out ripple" title="QQ登陆" style="width:40px; height:40px; margin:8px 0;">-->
+                <!--<span class="super-btn-in MyIF qq" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>-->
+              <!--</a>-->
+            <!--</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+            <!--<td style="text-align:right">-->
+              <!--&lt;!&ndash; 微博 &ndash;&gt;-->
+              <!--<a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Weibo'" target="_blank" class="super-btn-out ripple" title="微博登陆" style="width:40px; height:40px; margin:8px 0;">-->
+                <!--<span class="super-btn-in MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>-->
+              <!--</a>-->
+            <!--</td>-->
+            <!--<td>-->
+              <!--&lt;!&ndash; 百度 &ndash;&gt;-->
+              <!--<a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Baidu'" target="_blank" class="super-btn-out ripple" style="width:40px; height:40px; margin:8px 0;">-->
+                <!--<span class="super-btn-in MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>-->
+              <!--</a>-->
+            <!--</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+            <!--<td style="text-align:right">-->
+              <!--&lt;!&ndash; Gitee &ndash;&gt;-->
+              <!--<a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Gitee'" target="_blank" class="super-btn-out ripple" title="码云登陆" style="width:40px; height:40px; margin:8px 0;">-->
+                <!--<span class="super-btn-in MyIF weibo" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>-->
+              <!--</a>-->
+            <!--</td>-->
+            <!--<td>-->
+              <!--&lt;!&ndash; Github &ndash;&gt;-->
+              <!--<a :href="this.$store.state.baseHost + 'index.php/oauth/login?oauthType=Github'" target="_blank" class="super-btn-out ripple" title="Github登陆" style="width:40px; height:40px; margin:8px 0;">-->
+                <!--<span class="super-btn-in MyIF github" style="width:30px; height:30px; top:49%; left:50%; line-height:30px; font-size:20px;"></span>-->
+              <!--</a>-->
+            <!--</td>-->
+          <!--</tr>-->
+        <!--</table>-->
       </div>
     </div>
 

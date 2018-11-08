@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import { validateInfoByReg } from '../../../assets/js/utils.js'
+
 export default {
   name: 'login',
 
@@ -67,19 +69,31 @@ export default {
 
   methods: {
     backstageLogin () {
-      if (this.phone === '') {
+      if ((this.phone === '') || (!validateInfoByReg('phone', this.phone))) {
+        this.$store.commit('SHOW_TIPS', {msg: '请填写正确的手机号码', type: 'warning'})
         return false
       }
       if (this.passwd === '') {
+        this.$store.commit('SHOW_TIPS', {msg: '请填写密码', type: 'warning'})
         return false
       }
 
       this.$http.post('backstageLogin', {
         'phone': this.phone,
         'passwd': this.passwd
-      }).then((response) => {
-        console.log(response)
-      }).catch((error) => {
+      }).then(response => {
+        let result = response.data
+        let tipsType = 'warning'
+        if (result.state === '200') {
+          tipsType = 'info'
+          result.msg = '用户登录成功！'
+          this.$store.commit('SAVE_LOGIN_USER_INFO', result.data)
+          setTimeout(() => {
+            this.$router.push('/')
+          }, 1000)
+        }
+        this.$store.commit('SHOW_TIPS', {msg: result.msg, type: tipsType})
+      }).catch(error => {
         console.log(error)
       })
     }

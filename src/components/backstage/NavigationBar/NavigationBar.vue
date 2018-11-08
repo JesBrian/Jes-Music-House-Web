@@ -39,6 +39,7 @@ export default {
     },
 
     backstageLogout () {
+      this.$router.push('/login')
     }
   }
 }
