@@ -103,6 +103,8 @@
 </template>
 
 <script>
+import { validateInfoByReg } from '../../../../assets/js/utils.js'
+
 export default {
   name: 'Login',
 
@@ -147,10 +149,12 @@ export default {
     },
 
     userPhoneLogin () {
-      if (this.phone === '') {
+      if ((this.phone === '') || (!validateInfoByReg('phone', this.phone))) {
+        this.$store.commit('SHOW_TIPS', {msg: '请填写正确的手机号码', type: 'warning'})
         return false
       }
       if (this.passwd === '') {
+        this.$store.commit('SHOW_TIPS', {msg: '请填写密码', type: 'warning'})
         return false
       }
       this.$http.post('phoneLogin', {

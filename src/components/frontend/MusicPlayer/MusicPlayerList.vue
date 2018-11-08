@@ -18,10 +18,13 @@
               <i class="mh-if download"></i>
               <i @click="delMusicListItem(index)" class="mh-if trash-1"></i>
             </p>
-            <p class="cell music-list-cell-singer">
-              <router-link to="/singer/11" class="label">{{ index }}</router-link>
+            <p class="cell music-list-cell-singer text-hidden">
+              <router-link v-for="singerItem in item.singer" :to="`/singer-detail/hot-song/${singerItem.id}`"
+                           :key="singerItem.id" class="label">
+                {{ singerItem.name }}
+              </router-link>
             </p>
-            <p @click="playThisMusic(index)" class="cell music-list-cell-time">00:00</p>
+            <p @click="playThisMusic(index)" class="cell music-list-cell-time">{{ item.time }}</p>
             <!-- END 歌曲信息 OR 操作 END -->
 
           </div>
@@ -131,7 +134,6 @@ export default {
       }
       &.active {
         background:#0A0A0A;
-
         > .play {
           opacity:1;
         }
@@ -146,18 +148,27 @@ export default {
       }
 
       &-label {
-        max-width:288px; left:33px; display:inline-block;
+        max-width:238px; left:33px; display:inline-block;
       }
 
       > .music-cell-oper {
-        width:15%; left:325px; display:flex; justify-content:space-around; opacity:0;
+        width:15%; left:285px; display:flex; justify-content:space-around; opacity:0;
       }
 
       &-singer {
-        max-width:18%; left:432px; display:inline-block;
+        max-width:24%; left:400px; display:inline-block; color:#999; font-size:13px;
 
         > .label {
           color:#999;
+          &:hover {
+            color:#DDD;
+          }
+          &::after {
+            content:'/'; color:#999;
+          }
+          &:last-child::after {
+            content:'';
+          }
         }
       }
 
