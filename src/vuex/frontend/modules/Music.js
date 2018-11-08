@@ -209,6 +209,7 @@ const mutations = {
    */
   PREV_INDEX (state) {
     state.nowIndex = state.nowIndex - 1 === -1 ? state.nowPlayList.length - 1 : state.nowIndex - 1
+    localForage.setItem('playIndex', state.nowIndex)
   },
 
   /**
@@ -216,6 +217,7 @@ const mutations = {
    */
   NEXT_INDEX (state) {
     state.nowIndex = state.nowIndex + 1 === state.nowPlayList.length ? 0 : state.nowIndex + 1
+    localForage.setItem('playIndex', state.nowIndex)
   },
 
   /**
@@ -227,6 +229,7 @@ const mutations = {
       indexTemp = Number.parseInt(state.nowPlayList.length * Math.random())
     } while (indexTemp === state.nowIndex)
     state.nowIndex = indexTemp
+    localForage.setItem('playIndex', state.nowIndex)
   },
 
   /**
@@ -234,8 +237,12 @@ const mutations = {
    */
   GO_INDEX (state, index) {
     state.nowIndex = index
+    localForage.setItem('playIndex', state.nowIndex)
   },
 
+  /**
+   * 初始化播放列表 - 页面一开始加载调用
+   */
   INIT_PLAY_LIST (state, playList) {
     state.nowPlayList = playList
   },
@@ -288,6 +295,7 @@ const mutations = {
    */
   REPLACE_PLAY_LIST (state, playList = []) {
     state.nowPlayList = playList
+    this.commit('GO_INDEX', 0)
     localForage.setItem('playList', state.nowPlayList)
   }
 }

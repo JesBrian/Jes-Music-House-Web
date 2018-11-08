@@ -63,7 +63,7 @@
         <div class="player-controller-main-other">
           <!-- 音量 -->
           <div id="volumeButton">
-            <i @click="changeMusicVolumeStatus" class="mh-if" :class="this.musicVolumeStatus ? 'volume-on' : 'volume-off'"></i>
+            <i @click="changeMusicVolumeStatus(0)" class="mh-if" :class="this.musicVolumeStatus ? 'volume-on' : 'volume-off'"></i>
             <div v-show="this.musicVolumeStatus" id="volumeBar">
               <div class="volume-bar glass-bg box-show">
                 <div @click="clickMusicVolumeBar" id="volumeBarClickContent" class="box-show">
@@ -130,6 +130,15 @@ export default {
     }
   },
 
+  created () {
+    // 读取本地存储的播放配置
+    this.$localForage.getItem('playerConfig', (result, value) => {
+      if (value) {
+        Object.assign(this, value)
+      }
+    })
+  },
+
   mounted () {
     this.musicSource = document.getElementById('homeMusicSource')
     this.musicSource.volume = this.musicVolumeLevel
@@ -171,6 +180,12 @@ export default {
   methods: {
     changeShowMusicPlay () {
       this.musicPlayShow = !this.musicPlayShow
+      this.$localForage.getItem('playerConfig', (result, value) => {
+        this.$localForage.setItem('playerConfig', {
+          ...value,
+          musicPlayShow: this.musicPlayShow
+        })
+      })
     },
 
     _currentTime () {
@@ -203,7 +218,7 @@ export default {
         return false
       }
       this.musicIsPlay = !this.musicIsPlay
-      this.musicIsPlay ? this.musicSource.play() : this.musicSource.pause()
+      this.musicIsPlay ? this.musicSource.play() && this.changeMusicVolumeStatus(this.musicVolumeStatus) : this.musicSource.pause()
     },
 
     /**
@@ -246,6 +261,12 @@ export default {
         type = 'loop'
       }
       this.musicPlayModel = type
+      this.$localForage.getItem('playerConfig', (result, value) => {
+        this.$localForage.setItem('playerConfig', {
+          ...value,
+          musicPlayModel: type
+        })
+      })
     },
 
     /**
@@ -258,9 +279,17 @@ export default {
     /**
      * 改变声音On或者Off状态
      */
-    changeMusicVolumeStatus () {
-      this.musicVolumeStatus = !this.musicVolumeStatus
+    changeMusicVolumeStatus (status = 0) {
+      status !== 0 ? this.musicVolumeStatus = status : this.musicVolumeStatus = !this.musicVolumeStatus
       this.musicSource.volume = this.musicVolumeStatus ? this.musicVolumeLevel : 0
+      if (status === 0) {
+        this.$localForage.getItem('playerConfig', (result, value) => {
+          this.$localForage.setItem('playerConfig', {
+            ...value,
+            musicVolumeStatus: this.musicVolumeStatus
+          })
+        })
+      }
     },
 
     /**
@@ -271,6 +300,12 @@ export default {
         return false
       }
       this.musicSource.volume = this.musicVolumeLevel = volume
+      this.$localForage.getItem('playerConfig', (result, value) => {
+        this.$localForage.setItem('playerConfig', {
+          ...value,
+          musicVolumeLevel: volume
+        })
+      })
     },
 
     /**
