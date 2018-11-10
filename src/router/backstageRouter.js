@@ -33,7 +33,18 @@ export default new Router({
           path: 'menuOrder',
           component: () => import('../views/backstage/pages/base/Menu/MenuOrder.vue')
         },
-
+        {
+          path: 'role',
+          component: () => import('../views/backstage/pages/base/Role/Role.vue')
+        },
+        {
+          path: 'roleList',
+          component: () => import('../views/backstage/pages/base/Role/RoleList.vue')
+        },
+        {
+          path: 'assignPermissions',
+          component: () => import('../views/backstage/pages/base/Permissions/AssignPermissions.vue')
+        },
         {
           path: 'slider',
           component: () => import('../views/backstage/pages/base/Slider/Slider.vue')
@@ -53,6 +64,22 @@ export default new Router({
         {
           path: 'styleList',
           component: () => import('../views/backstage/pages/base/Style/StyleList.vue')
+        },
+        {
+          path: 'playList',
+          component: () => import('../views/backstage/pages/base/PlayList/PlayList.vue')
+        },
+        {
+          path: 'playListList',
+          component: () => import('../views/backstage/pages/base/PlayList/PlayListList.vue')
+        },
+        {
+          path: 'user',
+          component: () => import('../views/backstage/pages/base/User/User.vue')
+        },
+        {
+          path: 'userList',
+          component: () => import('../views/backstage/pages/base/User/UserList.vue')
         }
       ]
     }

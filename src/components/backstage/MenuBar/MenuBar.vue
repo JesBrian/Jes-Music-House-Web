@@ -4,10 +4,10 @@
       <gemini-scrollbar @ready="scrollbarOnReady">
         <div v-for="(firstMenuItem, index) in menuTreeData" :key="`${index}3`" class="first-menu" :class="{'active': firstMenuItem.id === nowFirstMenu}">
           <div @click="showThisFirstMenuSecondMenuContainer(firstMenuItem.id)" class="first-menu-link glass-bg box-show">
-            <i class="mh-if menu-user" style="margin:0 8px 0 12px;"></i>
+            <i class="mh-if menu-user"></i>
             <p class="first-menu-link-label text-hidden">{{ firstMenuItem.name }}</p>
             <div class="show-second-menu-btn cube-bg box-show">
-              <i class="mh-if double-arrow-up" style="width:100%; height:100%; display:inline-block;"></i>
+              <i class="mh-if double-arrow-up"></i>
             </div>
           </div>
           <div class="second-menu">
@@ -21,8 +21,8 @@
         </div>
       </gemini-scrollbar>
     </div>
-    <div @click="showLeftMenu" v-show="!$store.state.View.showLeftMenu" style="width:100%; height:100%; padding-left:6px; position:relative; cursor:pointer;">
-      <i class="mh-if double-arrow-right" style="top:50%; position:absolute; display:inline-block; transform:translateY(-50%); color:#FFF;"></i>
+    <div @click="showLeftMenu" v-show="!$store.state.View.showLeftMenu" class="menu-bar-switch">
+      <i class="mh-if double-arrow-right"></i>
     </div>
   </div>
 </template>
@@ -44,7 +44,7 @@ export default {
 
   computed: {
     routerPath () {
-      return this.$route.path
+      return this.$route.path.split('/')[1]
     }
   },
 
@@ -99,63 +99,75 @@ export default {
     }
   }
 
-  .first-menu {
-    width:98%; margin:0 0 8px;
-  }
-  .first-menu-link {
-    width:93%; height:33px; margin:0 auto; position:relative; cursor:pointer;
-  }
-  .first-menu-link-label {
-    width:72%; display:inline-block; line-height:30px; font-size:16.5px;
+  .menu-bar {
+    &-container {
+      width:100%; height:100%; padding:13px 0 0; overflow-y:auto; color:#DDD; box-sizing:border-box; transition:all 2s; display:none;
+      &.active {
+        display:block;
+      }
+    }
+    &-switch {
+      width:100%; height:100%; padding-left:6px; position:relative; cursor:pointer;
+      > .mh-if {
+        top:50%; position:absolute; display:inline-block; transform:translateY(-50%); color:#FFF;
+      }
+    }
   }
 
-  .show-second-menu-btn {
-    width: 23px;
-    height: 22px;
-    top: 4px;
-    right: 4px;
-    display: inline-block;
-    position: absolute;
-    color: #30cdff;
-    text-align: center;
-    opacity: 0.68;
-  }
-  .show-second-menu-btn:hover {
-    opacity: 1;
-  }
-  .show-second-menu-btn > .mh-if {
-    font-size: 14px;
-    line-height: 20px;
-    animation: menuSwitchClose 0.6s forwards;
-  }
-  .first-menu.active .show-second-menu-btn > .mh-if {
-    animation: menuSwitchOpen 0.6s forwards;
+  .first-menu {
+    width:98%; margin:0 0 8px;
+    &-link {
+      width:93%; height:33px; margin:0 auto; position:relative; cursor:pointer;
+      > .mh-if {
+        margin:0 8px 0 12px;
+      }
+      &-label {
+        width:72%; display:inline-block; line-height:30px; font-size:16.5px;
+      }
+    }
+
+    &.active {
+      .show-second-menu-btn > .mh-if {
+        animation:menuSwitchOpen 0.6s forwards;
+      }
+
+      > .second-menu {
+        height:100%; padding:6px 0; transform:scaleY(1);
+      }
+    }
   }
 
   .second-menu {
-    width:100%; padding:6px 0; display:none;
+    width:100%; height:0; transform:scaleY(0); transition:all 380ms; transform-origin:0 0;
+    &-link {
+      width:85%; height:28px; margin:2px auto 6px; display:block; line-height:26px;
+      &.active {
+        background:#181818; animation:menuLinkActive 0.38s forwards;
+        > .second-menu-link-label {
+          color:#FFF;
+        }
+        > .double-arrow-left {
+          margin-right:5px; float:right; display:block; font-size:12px; color:#38daf0;
+        }
+      }
+
+      &-label {
+        margin-left:8px; display:inline-block; font-size:14px; color:#AAA;
+      }
+      > .double-arrow-left {
+        display:none;
+      }
+    }
   }
-  .first-menu.active > .second-menu {
-    display:block;
-  }
-  .second-menu-link {
-    width:85%; height:28px; margin:2px auto 6px; display:block; line-height:26px;
-  }
-  .second-menu-link-label {
-    margin-left:8px; display:inline-block; font-size:14px; color:#AAA;
-  }
-  .second-menu-link > .double-arrow-left {
-    display:none;
-  }
-  .second-menu-link.active {
-    background:#181818;
-    animation: menuLinkActive 0.38s forwards;
-  }
-  .second-menu-link.active > .second-menu-link-label {
-    color:#FFF;
-  }
-  .second-menu-link.active > .double-arrow-left {
-    margin-right:5px; float:right; display:block; font-size:12px; color:#38daf0;
+
+  .show-second-menu-btn {
+    width:23px; height:22px; top:4px; right:4px; display:inline-block; position:absolute; color:#30cdff; text-align:center; opacity:0.68;
+    &:hover {
+      opacity: 1;
+    }
+    > .mh-if {
+      width:100%; height:100%; display:inline-block; font-size:14px; line-height:20px; animation:menuSwitchClose 0.6s forwards;
+    }
   }
 
   @keyframes menuSwitchOpen {
@@ -174,14 +186,5 @@ export default {
 
   #superScrollbar /deep/ .gm-scrollbar.-vertical {
     background:#111;
-  }
-
-  .menu-bar {
-    &-container {
-      width:100%; height:100%; padding:13px 0 0; overflow-y:auto; color:#DDD; box-sizing:border-box; transition:all 2s; display:none;
-      &.active {
-        display:block;
-      }
-    }
   }
 </style>
