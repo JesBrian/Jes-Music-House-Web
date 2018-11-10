@@ -21,7 +21,7 @@
             <div style="width:80px; text-align:center;">图标</div>
             <div style="flex:1; padding-left:28px;">{{ item.name }}</div>
             <div style="width:80px; text-align:center;">优先度</div>
-            <div style="width:70px; text-align:center;">状态</div>
+            <div style="width:70px; text-align:center;">{{ item.status }}</div>
             <div style="width:120px; text-align:center;">操作</div>
           </div>
         </div>
