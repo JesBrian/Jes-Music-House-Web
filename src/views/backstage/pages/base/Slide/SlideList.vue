@@ -15,12 +15,12 @@
           <div style="width:120px; height:100%; text-align:center;">操作</div>
         </div>
 
-        <page-loading v-if="menuListData === null" />
+        <page-loading v-if="slideListData === null" />
 
-        <div v-for="(item, index) in menuListData" :key="index + 'a'" class="box-shadow" style="width:100%; height:35px; display:flex; align-items:center; color:#AAA;">
+        <div v-for="(item, index) in slideListData" :key="index + 'a'" class="box-shadow" style="width:100%; height:35px; display:flex; align-items:center; color:#AAA;">
           <div style="width:60px; text-align:center;">{{ index }}</div>
           <div style="width:138px; text-align:center; overflow:hidden; word-break:break-all; text-overflow:ellipsis; white-space:nowrap;">{{ item.title }}</div>
-          <div style="flex:1; text-align:center; overflow:hidden; word-break:break-all; text-overflow:ellipsis; white-space:nowrap;">{{ item.sliderImg }}</div>
+          <div style="flex:1; text-align:center; overflow:hidden; word-break:break-all; text-overflow:ellipsis; white-space:nowrap;">{{ item.img }}</div>
           <div style="flex:1; text-align:center; overflow:hidden; word-break:break-all; text-overflow:ellipsis; white-space:nowrap;">Url</div>
           <div style="width:128px; text-align:center;">{{ item.createTime }}</div>
           <div style="width:80px; text-align:center;">{{ item.level }}</div>
@@ -29,7 +29,7 @@
         </div>
       </div>
 
-      <pagination v-if="menuListData" />
+      <pagination v-if="slideListData" />
     </div>
   </gemini-scrollbar>
 </template>
@@ -40,7 +40,7 @@ import Pagination from '../../../../../components/common/Pagination/Pagination.v
 import PageLoading from '../../../../../components/common/Loading/PageLoading.vue'
 
 export default {
-  name: 'SliderList',
+  name: 'SlideList',
 
   components: {
     TitleBar, PageLoading, Pagination
@@ -53,9 +53,9 @@ export default {
   },
 
   created () {
-    this.$http.post('getSliderListPagination').then(result => {
+    this.$http.post('getSlideListPagination').then(result => {
       console.log(result)
-      this.menuListData = result.data.data
+      this.slideListData = result.data.data
     }).catch(error => {
       console.log(error)
     })

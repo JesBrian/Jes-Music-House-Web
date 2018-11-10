@@ -3,13 +3,13 @@
     <!-- 数据有分页的情况 -->
     <ul class="pagination-container cube-bg box-show" v-show="allPage !== 0">
       <li class="btn-cell no-select prev" @click="goto(current - 1)">
-        <a class="glass-bg mh-if double-arrow-left" :class="{ban: (current === 1)}"></a>
+        <a class="btn glass-bg mh-if double-arrow-left" :class="{ban: (current === 1)}"></a>
       </li>
       <li class="btn-cell page-btn no-select" v-for="n in showPage" @click="goto(n)" :key="n">
-        <a class="glass-bg" :class="{'active':current === n}">{{ n }}</a>
+        <a class="btn glass-bg" :class="{'active':current === n}">{{ n }}</a>
       </li>
       <li class="btn-cell no-select next" @click="goto(current + 1)">
-        <a class="glass-bg mh-if double-arrow-right" :class="{ban: (allPage === current)}"></a>
+        <a class="btn glass-bg mh-if double-arrow-right" :class="{ban: (allPage === current)}"></a>
       </li>
     </ul>
   </div>
@@ -22,8 +22,14 @@ export default {
   data () {
     return {
       current: 1,
-      showItem: 7,
-      allPage: 12
+      showItem: 7
+    }
+  },
+
+  props: {
+    allPage: {
+      type: Number,
+      default: 0
     }
   },
 
@@ -53,8 +59,10 @@ export default {
     goto: function (index) {
       // 如果 [ 要跳转的页数为当前页数 / 跳转页数 < 1 / 跳转页数 > 总页数 ] 都直接返回
       if (index === this.current || index < 1 || index > this.allPage) return false
-      // 否则进行跳转 / 数据更新
-      else this.current = index
+      else { // 否则进行跳转 / 数据更新
+        this.current = index
+        this.$emit('changePage', index)
+      }
     }
   }
 }
@@ -74,7 +82,7 @@ export default {
       > .btn-cell {
         margin:0 5px; display:inline-block; position:relative; bottom:-11px; text-align:center; cursor:pointer;
 
-        > a {
+        > .btn {
           width: 42px;
           display: block;
           border-radius: 3px;

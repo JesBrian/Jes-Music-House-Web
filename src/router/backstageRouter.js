@@ -46,16 +46,16 @@ export default new Router({
           component: () => import('../views/backstage/pages/base/Permissions/AssignPermissions.vue')
         },
         {
-          path: 'slider',
-          component: () => import('../views/backstage/pages/base/Slider/Slider.vue')
+          path: 'slide',
+          component: () => import('../views/backstage/pages/base/Slide/Slide.vue')
         },
         {
-          path: 'sliderList',
-          component: () => import('../views/backstage/pages/base/Slider/SliderList.vue')
+          path: 'slideList',
+          component: () => import('../views/backstage/pages/base/Slide/SlideList.vue')
         },
         {
-          path: 'sliderOrder',
-          component: () => import('../views/backstage/pages/base/Slider/SliderOrder.vue')
+          path: 'slideOrder',
+          component: () => import('../views/backstage/pages/base/Slide/SlideOrder.vue')
         },
         {
           path: 'style',

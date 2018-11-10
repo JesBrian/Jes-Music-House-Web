@@ -2,31 +2,22 @@
   <gemini-scrollbar>
     <div id="backstageLayout">
       <title-bar />
-
     </div>
   </gemini-scrollbar>
 </template>
 
 <script>
 import TitleBar from '../../../../../components/backstage/TitleBar/TitleBar.vue'
-import Pagination from '../../../../../components/common/Pagination/Pagination.vue'
 
 export default {
-  name: 'Slider',
+  name: 'SlideOrder',
 
   components: {
-    TitleBar, Pagination
-  },
-
-  data () {
-    return {
-    }
-  },
-
-  methods: {
+    TitleBar
   }
 }
 </script>
 
 <style scoped>
+
 </style>

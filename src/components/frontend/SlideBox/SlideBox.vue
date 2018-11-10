@@ -4,7 +4,7 @@
     <base-loading v-if="sliderData.length === 0" class="slider-box-loading" />
     <swiper v-else :options="swiperOption" class="slider-box-container">
       <swiper-slide v-for="(slide, index) in sliderData" :key="index">
-        <img :src="slide.sliderImg" class="slider-box-img" />
+        <img :src="slide.img" class="slider-box-img" />
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>

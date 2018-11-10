@@ -5,7 +5,7 @@
     <div class="top-container box-show">
       <!-- 轮播图区域 -->
       <div class="top-container-slider">
-        <slide-box :slider-data="sliderData"/>
+        <slide-box :slider-data="slideData"/>
       </div>
 
       <!-- 下载区域 -->
@@ -106,14 +106,14 @@ export default {
 
   data () {
     return {
-      sliderData: []
+      slideData: []
     }
   },
 
   created () {
-    this.$http.post('getFrontendSlider').then(res => {
+    this.$http.post('getFrontendSlide').then(res => {
       if (res.data.state === '200') {
-        this.sliderData = res.data.data
+        this.slideData = res.data.data
       }
     }).catch(err => {
       console.log(err)
