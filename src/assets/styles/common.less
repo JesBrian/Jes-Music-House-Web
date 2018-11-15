@@ -73,9 +73,8 @@
     -ms-user-select: none; /*IE10*/
     user-select: none;
 
-    &.ripple{
-
-      ::after {
+    &.ripple {
+      &::after {
         content: "";
         display: block;
         position: absolute;
@@ -100,7 +99,6 @@
         z-index: -2;
       }
     }
-
 
     &.active, &:active {
       & > .super-btn-in {

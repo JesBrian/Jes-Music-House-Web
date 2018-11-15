@@ -5,34 +5,37 @@
       </div>
 
       <div class="login-operation">
-        <div style="width:100%; text-align:center;">
-          <div style="width:83%; height:248px; margin:0 auto 8px; text-align:left;">
-            <div style="margin-bottom:8px; text-align:center; letter-spacing:3px; font-size:25px; font-weight:700; color:#DDD; line-height:3.8em;">管理后台登录</div>
+        <div class="login-info">
+          <div class="login-info-title">后台管理系统登录</div>
 
-            <div style="width:90%; height:58px; margin:0 auto; font-size:19px;">
-              <label class="MyIF IDcard-1" for="loginPhone" style="font-size:20px; line-height:2em; color:#2DBEFF;">
-                <span style="color:#DDD;">
-                  <i class="mh-if phone" style="margin:0 8px 0 0;"></i>手机
-                </span>
-              </label>
-              <input v-model="phone" id="loginPhone" type="text" class="glow-input cube-bg box-show" style="width:208px; margin-top:2px; padding:6px 10px; float:right; font-size:15px;" placeholder="请填写手机号码"/>
+          <section class="login-info-section">
+            <label class="login-info-section-label" for="loginPhone">
+              <i class="mh-if phone"></i>手机
+            </label>
+            <input v-model="phone" id="loginPhone" type="text" class="glow-input cube-bg box-show" placeholder="请填写手机号码"/>
+          </section>
+          <section class="login-info-section">
+            <label class="login-info-section-label" for="loginCode">
+              <i class="mh-if code"></i>验证码
+            </label>
+            <div class="super-btn-out ripple" style="width:90px; height:30px; margin-top:3.5px; float:right;">
+              <span class="super-btn-in" style="width:82px; height:23px; font-size:15px;">获取验证码</span>
             </div>
-            <div style="width:90%; height:58px; margin:0 auto; font-size:19px;">
-              <label class="MyIF yuechi" for="loginPwd" style="font-size:20px; line-height:2em; color:#2DBEFF;">
-                <span style="color:#DDD;">
-                  <i class="mh-if key" style="margin:0 8px 0 0;"></i>密码
-                </span>
-              </label>
-              <input v-model="passwd" id="loginPwd" type="password" class="glow-input cube-bg box-show" style="width:208px; margin-top:2px; padding:6px 10px; float:right; font-size:15px;" placeholder="请填写密码"/>
-            </div>
-          </div>
+            <input v-model="code" id="loginCode" type="text" class="code glow-input cube-bg box-show" placeholder="请填写验证码"/>
+          </section>
+          <section class="login-info-section">
+            <label class="login-info-section-label" for="loginPwd">
+              <i class="mh-if key"></i>密码
+            </label>
+            <input v-model="passwd" id="loginPwd" type="password" class="glow-input cube-bg box-show" placeholder="请填写密码"/>
+          </section>
+        </div>
 
-          <div class="super-btn-out ripple" style="width:118px; height:38px; margin:0 18px;">
-            <span class="super-btn-in" style="width:106px; height:26px; line-height:26px;">找回密码</span>
-          </div>
-          <div @keyup.enter="backstageLogin" @click="backstageLogin" class="super-btn-out ripple" style="width:118px; height:38px; margin:0 18px;">
-            <span class="super-btn-in" style="width:106px; height:26px; line-height:26px;">确认登陆</span>
-          </div>
+        <div class="login-btn super-btn-out ripple">
+          <span class="super-btn-in">找回密码</span>
+        </div>
+        <div @keyup.enter="backstageLogin" @click="backstageLogin" class="login-btn super-btn-out ripple">
+          <span class="super-btn-in">确认登陆</span>
         </div>
       </div>
     </div>
@@ -49,6 +52,7 @@ export default {
   data () {
     return {
       phone: '',
+      code: '',
       passwd: ''
     }
   },
@@ -108,21 +112,43 @@ export default {
 
   .login {
     &-container {
-      width:908px; height:388px; top:50%; left:50%; padding:28px 0; box-sizing:border-box; transform:translate(-50%, -50%); position:fixed; border-radius:12px;
+      width:938px; height:388px; top:50%; left:50%; padding:28px 0; box-sizing:border-box; transform:translate(-50%, -50%); position:fixed; border-radius:12px;
     }
-
     &-poster {
-      width:58%; height:100%; float:left; box-sizing:border-box; border-right:1px solid; border-image:linear-gradient(to bottom, #111, #181818, #222, #383838, #222, #181818, #111)30 30;
+      width:60%; height:100%; float:left; box-sizing:border-box; border-right:1px solid; border-image:linear-gradient(to bottom, #111, #181818, #222, #383838, #222, #181818, #111)30 30;
     }
-
     &-operation {
-      width:42%; height:100%; float:right;
+      width:40%; height:100%; float:right; text-align:center;
     }
-  }
 
-  input, textarea {
-    border-radius:4px;
-    border:2px solid #111;
-    color:#DDD; letter-spacing:1px;
+    &-info {
+      width:90%; height:268px; margin:0 auto 8px; text-align:left;
+      &-title {
+        text-align:center; letter-spacing:3px; font-size:25px; font-weight:700; color:#DDD; line-height:3.8em;
+      }
+      &-section {
+        width:93%; height:58px; margin:0 auto; font-size:19px;
+        &-label {
+          font-size:20px; color:#DDD; line-height:1.9em; font-weight:700;
+          > .mh-if {
+            margin:0 8px 0 0; font-size:20px; color:#00D8FF; font-weight:500;
+          }
+        }
+
+        > .glow-input {
+          width:213px; margin-top:2px; padding:6px 8px; float:right; border-radius:4px; border:2px solid #111; font-size:15px; color:#DDD; letter-spacing:1px;
+          &.code {
+            width:118px; margin-right:3px;
+          }
+        }
+      }
+    }
+
+    &-btn {
+      width:118px; height:38px; margin:0 28px;
+      > .super-btn-in {
+        width:106px; height:28px;
+      }
+    }
   }
 </style>
