@@ -66,6 +66,10 @@ export default new Router({
           component: () => import('../views/backstage/pages/base/Style/StyleList.vue')
         },
         {
+          path: 'songList',
+          component: () => import('../views/backstage/pages/base/Song/SongList.vue')
+        },
+        {
           path: 'playList',
           component: () => import('../views/backstage/pages/base/PlayList/PlayList.vue')
         },

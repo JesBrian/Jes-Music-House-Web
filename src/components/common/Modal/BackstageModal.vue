@@ -13,13 +13,14 @@
 </template>
 
 <script>
+import ChooseFirstMenu from './type/ChooseFirstMenu.vue'
 import ModalCloseBtn from './ModalCloseBtn.vue'
 
 export default {
   name: 'BackstageModal',
 
   components: {
-    ModalCloseBtn
+    ChooseFirstMenu, ModalCloseBtn
   },
 
   methods: {

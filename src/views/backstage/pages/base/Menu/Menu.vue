@@ -30,7 +30,7 @@
           <label>
             上级菜单
             <input v-model="parentMenuLabel" type="text" class="cube-bg box-show" disabled style="width:268px; margin-top:2px; padding:6px 10px; font-size:15px;"/>
-            <div class="super-btn-out ripple" style="width:68px; height:33px;">
+            <div @click="chooseFirstMenu" class="super-btn-out ripple" style="width:68px; height:33px;">
               <span class="super-btn-in" style="width:58px; height:23px; line-height:23px;">选择</span>
             </div>
           </label>
@@ -116,6 +116,10 @@ export default {
       }).catch(error => {
         console.log(error)
       })
+    },
+
+    chooseFirstMenu () {
+      this.$store.commit('CHANGE_MODAL_TYPE', 'ChooseFirstMenu')
     },
 
     cancelToBack () {

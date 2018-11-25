@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination ban-select">
+  <div v-if="allPage > 1" class="pagination ban-select">
     <!-- 数据有分页的情况 -->
     <ul class="pagination-container cube-bg box-show" v-show="allPage !== 0">
       <li class="btn-cell no-select prev" @click="goto(current - 1)">
